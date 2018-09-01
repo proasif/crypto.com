@@ -20,7 +20,7 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'wp_crypto');
+define('DB_NAME', 'crypto_wp');
 
 /** MySQL database username */
 define('DB_USER', 'cryptoweb');
