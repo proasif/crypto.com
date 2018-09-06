@@ -23,10 +23,10 @@
 define('DB_NAME', 'crypto_wp');
 
 /** MySQL database username */
-define('DB_USER', 'cryptoweb');
+define('DB_USER', 'webms3shots');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'sx9sibyZcRc0vf5b');
+define('DB_PASSWORD', 'AfQJ9@_t@zuhkxN2W4SYG@u$US7p=Z8fzxgJXAmE');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -46,14 +46,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'lH-[i=KY4;bb(]>X:ufX1R$1]&nwx>=o+}5jmYu~ceUl/TwI:qV}}I_(i?*Tcae ');
-define('SECURE_AUTH_KEY',  'f%1&?|/;o;y_ Z6K2CP6>+b<T+qP.}`-?p+})H0+VB|8r_oW@~3odD fe{0|BW_>');
-define('LOGGED_IN_KEY',    '1)2cdH<-qZPA|J5mW?6^h6S$t-Gh6as5JJyb@Nj5``;zPStaGC!K<gr0Rz^-}1B|');
-define('NONCE_KEY',        ' N1TMuy-yc?|QZir~uJEG_`Kb $a8$Tv?|sT#,!-/bA5b4wn,//a,:kng$_*/,~6');
-define('AUTH_SALT',        '|SMSl%@8-R:+$$9Zr3sS/~1+@|V=>ccGS()`f,CE+,:/pysF+&D1.81fwIsnfoht');
-define('SECURE_AUTH_SALT', '},`}%v<x,mdfb{r7{%88n*0LQ9zx;|u*ALD$z-IKQd$-6|Lvl3HiNMby%zh}9QCz');
-define('LOGGED_IN_SALT',   'fp97=+1N6h2oFZseWZz.y|VqEhAjSg(Jm-{Xc&YuUu*7Nn5*|]7lJH;%2m)/LMOq');
-define('NONCE_SALT',       'BCcL7TU4%Q!(d{ZUJ0:/Pz.MKh2-D>pO>uKqZu3/|}U4f,B!)r=Nd:-99`61mcV~');
+define('AUTH_KEY',         'put your unique phrase here');
+define('SECURE_AUTH_KEY',  'put your unique phrase here');
+define('LOGGED_IN_KEY',    'put your unique phrase here');
+define('NONCE_KEY',        'put your unique phrase here');
+define('AUTH_SALT',        'put your unique phrase here');
+define('SECURE_AUTH_SALT', 'put your unique phrase here');
+define('LOGGED_IN_SALT',   'put your unique phrase here');
+define('NONCE_SALT',       'put your unique phrase here');
 
 /**#@-*/
 
@@ -79,7 +79,6 @@ $table_prefix  = 'wp_';
  */
 define('WP_DEBUG', false);
 
-define('FS_METHOD', 'direct');
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
