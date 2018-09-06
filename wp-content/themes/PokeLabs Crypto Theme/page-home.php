@@ -1,6 +1,7 @@
 <?php
 /**
- * The template for displaying all pages
+ * Template Name: Front
+ * The template for home page
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
@@ -17,11 +18,17 @@
 
 get_header(); ?>
 
+
 <div class="wrap">
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
         
-        	<div class="container"><h1>Crypto Hawk</h1></div>
+        <div class="container">
+
+            <div class="navbar">
+                <h1>Crypto Hawk</h1><img src="https://www.scripophily.com/webcart/vigs/walthamwatch2vig.jpg" width="70px" >
+            </div>
+		</div>
 
 			<?php
 			while ( have_posts() ) : the_post();

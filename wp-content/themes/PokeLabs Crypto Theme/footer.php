@@ -14,8 +14,8 @@
 
 ?>
 
-		<footer>
-        <h1>Have a good day</h1>
+		<footer class="container">
+        
         </footer>
 	
 		</body>
