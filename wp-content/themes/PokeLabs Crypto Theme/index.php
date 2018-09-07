@@ -1,6 +1,7 @@
 <?php
 /**
- * Template Name: Front
+ * Template Name: Home Page
+ *
  * The template for home page
  *
  * This is the template that displays all pages by default.
@@ -9,9 +10,6 @@
  * different template.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Seventeen
  * @since 1.0
  * @version 1.0
  */
@@ -23,12 +21,6 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
         
-        <div class="container">
-
-            <div class="navbar">
-                <h1>Crypto Hawk</h1><img src="https://www.scripophily.com/webcart/vigs/walthamwatch2vig.jpg" width="70px" >
-            </div>
-		</div>
 
 			<?php
 			while ( have_posts() ) : the_post();
