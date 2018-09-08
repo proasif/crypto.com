@@ -17,6 +17,7 @@ add_action('wp_enqueue_scripts', 'crypto_script_enqueue');
 function crypto_theme_setup()
 {
 	add_theme_support('menus');
+	add_theme_support('custom-logo');
 	register_nav_menu('primary','Primary Header Navigation'); 
 }
 	
