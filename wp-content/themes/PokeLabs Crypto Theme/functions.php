@@ -352,7 +352,7 @@ function enqueue_scripts() {
 	//wp_enqueue_script( 'init-front', get_stylesheet_directory_uri() . '/js/front.js', array( 'jquery', 'enquire' ), $version, true );
 
 	//to enable custom rgb style of libgif/libgif.js
-	wp_enqueue_script( 'libgif', get_stylesheet_directory_uri() . '/js/libgif/libgif.js', array( 'jquery', 'enquire' ), $version, true );
+	wp_enqueue_script( 'libgif', get_stylesheet_directory_uri() . '/js/libgif/libgif.js', array( 'jquery', 'enquire' ), /*$version,*/ true ); // $version is undefined
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 // --- 3 ---
