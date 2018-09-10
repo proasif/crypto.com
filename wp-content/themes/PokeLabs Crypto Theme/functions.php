@@ -1,4 +1,3 @@
-
 <?php
 // Prevent direct script access
 if ( !defined( 'ABSPATH' ) )
