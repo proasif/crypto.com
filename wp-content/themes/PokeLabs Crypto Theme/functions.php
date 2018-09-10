@@ -337,8 +337,7 @@ function enqueue_scripts() {
  
 		wp_enqueue_style( 'init-style',
 			get_stylesheet_directory_uri() . '/style.css',
-			array( 'init-dynamic-style', 'g1-main', 'init-snax-extra', 'init-buddypress' ),
-			$version
+			array( 'init-dynamic-style', 'g1-main', 'init-snax-extra', 'init-buddypress' )
 		);
 	}
 	//use only for testing
