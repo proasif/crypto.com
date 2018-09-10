@@ -8,7 +8,7 @@ function ju_customize_register( $wp_customize ){
 	) );
 	
 	$wp_customize->add_section( 'ju_color_theme_section', array(
-	'title'					=> __( 'color', 'crypto' ),
+	'title'					=> __( 'Header', 'crypto' ),
 	'priority'				=> 	30
 	));
 	
