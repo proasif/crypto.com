@@ -380,9 +380,9 @@ add_filter( 'script_loader_tag', 'defer_js', 10, 3 );
 function register_custom_menus() {
   register_nav_menus(
     array(
-	  'av-subm-footer' => __( 'AintViral SubMenu Footer' ),
-	  'av-social-icons' => __( 'AintViral Social Icons' ),
-	  'av-footer-menu' => __( 'AintViral Bottom Footer' ),
+	  'crypto-subm-footer' => __( 'Crypto SubMenu Footer' ),
+	  'crypto-social-icons' => __( 'Crypto Social Icons' ),
+	  'crypto-footer-menu' => __( 'Crypto Bottom Footer' ),
     )
   );
 }
