@@ -12,7 +12,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No direct script access allowed' );
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 	<html>
     	<head>
         	<title>Crypto Hawk</title>

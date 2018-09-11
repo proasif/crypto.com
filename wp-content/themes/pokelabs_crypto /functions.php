@@ -87,7 +87,7 @@ function headerRelatedFunctions(){
 		
 	 	$enableFBPxl = true;
 		if (current_user_can('administrator')) {
-			$enableFBPxl = get_option( 'av_cpanel_enable_fb_pixel_for_admin' );
+			$enableFBPxl = get_option( 'crypto_panel_enable_fb_pixel_for_admin' );
 		}
 		
 		if ($enableFBPxl) {
@@ -96,7 +96,7 @@ function headerRelatedFunctions(){
 		
 		$enableGA = true;
 		if (current_user_can('administrator')) {
-			$enableGA = get_option( 'av_cpanel_enable_analytics_for_admin' );
+			$enableGA = get_option( 'crypto_panel_enable_analytics_for_admin' );
 		}
 		
 		if ($enableGA) {
@@ -105,7 +105,7 @@ function headerRelatedFunctions(){
 		
 		$enableGTag = true;
 		if (current_user_can('administrator')) {
-			$enableGTag = get_option( 'av_cpanel_enable_gtags_for_admin' );
+			$enableGTag = get_option( 'crypto_panel_enable_gtags_for_admin' );
 		}
 		
 		if ($enableGTag) {
@@ -114,7 +114,7 @@ function headerRelatedFunctions(){
 		
 		$enableAutoAds = true;
 		if (current_user_can('administrator')) {
-			$enableAutoAds = get_option( 'av_cpanel_enable_auto_ads_for_admin' );
+			$enableAutoAds = get_option( 'crypto_panel_enable_auto_ads_for_admin' );
 		}
 		
 		if ($enableAutoAds) {
@@ -123,7 +123,7 @@ function headerRelatedFunctions(){
 		
 		$enableHotJar = true;
 		if (current_user_can('administrator')) {
-			$enableHotJar = get_option( 'av_cpanel_enable_hotjar_for_admin' );
+			$enableHotJar = get_option( 'crypto_panel_enable_hotjar_for_admin' );
 		}
 		
 		if ($enableHotJar) {
@@ -158,6 +158,7 @@ function insertFBSDK() {
 	<!-- End Facebook SDK Code -->
 <?php	
 }
+
 
 function insertFBPixel() {
 ?>
@@ -225,7 +226,7 @@ function insertGTBody() {
 function insertGTBodyLogic() {
 	$enableGTag = true;
 	if (current_user_can('administrator')) {
-		$enableGTag = get_option( 'av_cpanel_enable_gtags_for_admin' );
+		$enableGTag = get_option( 'crypto_panel_enable_gtags_for_admin' );
 	}
 
 	if ($enableGTag) {
