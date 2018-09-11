@@ -232,7 +232,7 @@ function insertGTBodyLogic() {
 		insertGTBody();
 	}
 }
-add_action( 'init_body_start', 'insertGTBodyLogic');
+add_action( 'poke_body_start', 'insertGTBodyLogic');
 
 // 0.7 GOOGLE AUTO ADS
 function insertGoogleAutoAds() {
