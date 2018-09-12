@@ -26,17 +26,22 @@ if ( ! defined( 'ABSPATH' ) ) {
     
         <?php wp_head(); ?>
     
-                <?php if (has_custom_logo())
-                            {
-                             the_custom_logo();
-                            }
-                            else echo ("Put a logo"); 
-                ?>
+		<?php if (has_custom_logo())
+                    {
+                     the_custom_logo();
+                    }
+                    else echo ("Put a logo"); 
+        ?>
+        
+        <?php 
+			$menu = clean_custom_menu( "primary", true, "p1-main-nav", true, "", "", "");
+			echo $menu;
+			
+			
+		?>
+        
     </head>
 		
     <body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
 		  <?php do_action( 'poke_body_start' ); ?>
-     	  <?php 
-				clean_custom_menu();
-		   ?>
-    	
+    
