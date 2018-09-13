@@ -482,10 +482,10 @@ function clean_custom_menu( $theme_location, $includenav, $navclasses, $includeu
             if ( $menu_items[ $count + 1 ]->menu_item_parent != $parent_id ) { //check
                 $menu_list .= '</li>' ."\n";      
                 $submenu = false;
+				
             }
- 
-            $count++;
-        }
+				
+ 			
          
 		if ($includeul) {
 	        $menu_list .= '</ul>' ."\n";
@@ -493,12 +493,13 @@ function clean_custom_menu( $theme_location, $includenav, $navclasses, $includeu
 		
 		if ($includenav) {
 	        $menu_list .= '</nav>' ."\n";
-		}
+		}$count++;
+			}
     } 
 	}
-	else {
+	else 
         $menu_list = '<!-- no menu defined in location "'.$theme_location.'" -->';
-    }
+    
     echo $menu_list;
 }
 // --- 5 ---
