@@ -26,12 +26,21 @@ if ( ! defined( 'ABSPATH' ) ) {
     
         <?php wp_head(); ?>
     
-		<?php if (has_custom_logo())
-                    {
-                     the_custom_logo();
-                    }
-                    else echo ("Put a logo"); 
-        ?>
+        <?php if ( get_theme_mod( 'm1_logo' ) ) : ?>
+    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" id="site-logo" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+ 
+        <img src="<?php echo get_theme_mod( 'm1_logo' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+ 
+    </a>
+ 
+    <?php else : ?>
+               
+    <hgroup>
+        <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+        <p class="site-description"><?php bloginfo( 'description' ); ?></p>
+    </hgroup>
+               
+<?php endif; ?>
         
         <?php 
 			$menu = clean_custom_menu( "primary", true, "p1-main-nav", true, "", "", "");
