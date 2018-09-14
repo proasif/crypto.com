@@ -7,7 +7,7 @@ function crypto_script_enqueue(){
 	wp_enqueue_style('bootstrap', get_template_directory_uri() . 'assets/css/bootstrap.min.css', array(), '1.0', 'all');
 	wp_enqueue_script('bootstrap', get_template_directory_uri() . 'assets/js/bootstrap.min.js', array(), '1.0', 'true');
 	wp_enqueue_script('jquery');
-	
+	wp_enqueue_script('velocity', get_template_directory_uri() . 'assets/js/jquery.velocity.min.js', array(), '1.0', 'true');
 }
 
 add_action('wp_enqueue_scripts', 'crypto_script_enqueue');
@@ -26,9 +26,6 @@ add_action('init', 'crypto_theme_setup');
 add_action('customize_register', 'ju_customize_register');
 add_action('wp_head', 'ju_head');
 add_action( 'customize_register', 'm1_customize_register' );
-add_action( 'customize_register', 'm2_customize_register' );
-add_action( 'customize_register', 'm3_customize_register' );
-add_action( 'customize_register', 'm4_customize_register' );
 
 
 // Functions From AintViral

@@ -35,54 +35,6 @@ function m1_customize_register( $wp_customize ) {
     ) ) );
 	
 	}
-	function m2_customize_register( $wp_customize2 ) {
-	
-	$wp_customize2->add_setting( 'm2_logo' ); // Add setting for logo uploader
-   
-	$wp_customize2->add_section( 'theme_footer_section', array(
-	'title'					=> __( 'Footer', 'crypto' ),
-	'priority'				=> 	100
-	));
-    $wp_customize2->add_control( new WP_Customize_Image_Control( $wp_customize2, 'm2_logo', array(
-        'label'    => __( 'Upload Cloud_Image (replaces text)', 'm2' ),
-        'section'  => 'theme_footer_section',
-        'settings' => 'm2_logo',
-		
-    ) ) );
-	
-	}
-	function m3_customize_register( $wp_customize3 ) {
-	
-	$wp_customize3->add_setting( 'm3_logo' ); // Add setting for logo uploader
-   
-	$wp_customize3->add_section( 'theme_footer_section', array(
-	'title'					=> __( 'Footer', 'crypto' ),
-	'priority'				=> 	100
-	));
-    $wp_customize3->add_control( new WP_Customize_Image_Control( $wp_customize3, 'm3_logo', array(
-        'label'    => __( 'Upload BG_Image (replaces text)', 'm3' ),
-        'section'  => 'theme_footer_section',
-        'settings' => 'm3_logo',
-		
-    ) ) );
-	
-	}
-	function m4_customize_register( $wp_customize4 ) {
-	
-	$wp_customize4->add_setting( 'm4_logo' ); // Add setting for logo uploader
-   
-	$wp_customize4->add_section( 'theme_footer_section', array(
-	'title'					=> __( 'Footer', 'crypto' ),
-	'priority'				=> 	100
-	));
-    $wp_customize4->add_control( new WP_Customize_Image_Control( $wp_customize4, 'm4_logo', array(
-        'label'    => __( 'Upload FG_Image (replaces text)', 'm4' ),
-        'section'  => 'theme_footer_section',
-        'settings' => 'm4_logo',
-		
-    ) ) );
-	
-	}
 	
 
 
