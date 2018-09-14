@@ -26,6 +26,9 @@ add_action('init', 'crypto_theme_setup');
 add_action('customize_register', 'ju_customize_register');
 add_action('wp_head', 'ju_head');
 add_action( 'customize_register', 'm1_customize_register' );
+add_action( 'customize_register', 'm2_customize_register' );
+add_action( 'customize_register', 'm3_customize_register' );
+add_action( 'customize_register', 'm4_customize_register' );
 
 
 // Functions From AintViral
@@ -493,7 +496,8 @@ function clean_custom_menu( $theme_location, $includenav, $navclasses, $includeu
 		
 		if ($includenav) {
 	        $menu_list .= '</nav>' ."\n";
-		}$count++;
+		}	
+			$count++;
 			}
     } 
 	}
