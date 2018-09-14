@@ -1,9 +1,9 @@
             <footer>
                      <?php if ( get_theme_mod( 'm2_logo' ) && get_theme_mod( 'm3_logo' ) && get_theme_mod( 'm4_logo' ) ) : ?>
    
- 
+ 	<div class="cloud">
         <img src="<?php echo get_theme_mod( 'm2_logo' ); ?>"  ?>
- 
+ 	</div>
 <?php endif; ?>
 
 

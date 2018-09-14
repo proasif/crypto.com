@@ -1,0 +1,1940 @@
+@media (max-width: 720px) {
+    #heading {
+        background: url('../img/heading/life.jpg') center no-repeat;
+        background-size: cover !important;
+        background-position: center !important;
+        z-index: 2;
+    }
+}
+
+/***** LIFE FEED BASE LAYOUT *****/
+
+#life {
+	background-color: #F2F2F2;
+}
+
+/*** BLANK ***/
+
+life-blank {
+	background-color: transparent;
+	display: block;
+	width: 100%;
+}
+
+/*** BASE ITEM STYLING ***/
+
+life-instagram,
+life-twitter,
+life-note,
+life-story {
+	display: block;
+	position: relative;
+}
+
+
+/*** BASE RESPONSIVE ***/
+
+@media (min-width: 1621px) {
+	#life { padding: 6rem 0; }
+	#life grid-container > grid-row { margin-top: 1.25rem; }
+	life-instagram, life-twitter, life-note, life-story, life-blank {padding-bottom: 100%;}
+	.double-width ~ grid-column, .normal grid-column:nth-child(2n) ~ grid-column { margin-top: 1.25rem; }
+	.double-width life-instagram, .double-width life-twitter, .double-width life-note, .double-width life-story { padding-bottom: calc(50% - 0.625rem); }
+}
+
+@media (min-width: 1121px) and (max-width: 1620px) {
+	#life { padding: 6rem 0; }
+	life-instagram, life-twitter, life-note, life-story, life-blank {padding-bottom: 100%;}
+	.l14 life-instagram, .l14 life-twitter, .l14 life-note, .l14 life-story, .l14 life-blank { padding-bottom: calc(50% - 0.625rem); }
+	.double-width grid-column, grid-column.featured , .normal grid-column { margin-top: 1.25rem; }
+	.double-width life-instagram, .double-width life-twitter, .double-width life-note, .double-width life-story { padding-bottom: calc(50% - 0.625rem); }
+}
+
+@media (min-width: 921px) and (max-width: 1120px) {
+
+	#life { padding: 5rem 0; }
+
+	life-instagram,
+	life-twitter,
+	life-note,
+	life-story,
+	life-blank {
+		padding-bottom: 75%;
+	}
+
+	.m14 life-instagram,
+	.m14 life-twitter,
+	.m14 life-note,
+	.m14 life-story,
+	.m14 life-blank {
+		padding-bottom: 29.25%;
+	}
+
+	.m14 life-twitter blockquote { font-size: 1.063rem; padding-right: 30%; }
+
+	.featured life-story,
+	.double-width life-note {
+		padding-bottom: 42.5%;
+	}
+
+	.double-width grid-column,
+	grid-column.featured,
+	.normal grid-column { margin-top: 1.25rem; }
+
+}
+
+@media (min-width: 769px) and (max-width: 920px) {
+
+	#life { padding: 4rem 0; }
+
+	life-instagram,
+	life-twitter,
+	life-note,
+	life-story,
+	life-blank {
+		padding-bottom: 85%;
+	}
+
+	.m14 life-instagram,
+	.m14 life-twitter,
+	.m14 life-note,
+	.m14 life-story,
+	.m14 life-blank {
+		padding-bottom: 45%;
+	}
+
+	.m14 life-twitter blockquote { font-size: 1.063rem; padding-right: 30%; }
+
+	.featured life-story,
+	.double-width life-note {
+		padding-bottom: 42.5%;
+	}
+
+	.double-width grid-column,
+	grid-column.featured,
+	.normal grid-column { margin-top: 1.25rem; }
+
+}
+
+@media (min-width: 721px) and (max-width: 768px) {
+
+	#life { padding: 4rem 0; }
+
+	life-instagram,
+	life-twitter,
+	life-note,
+	life-story,
+	life-blank {
+		padding-bottom: 100%;
+	}
+
+	.s14 life-instagram,
+	.s14 life-twitter,
+	.s14 life-note,
+	.s14 life-story,
+	.s14 life-blank {
+		padding-bottom: 50%;
+	}
+
+	.s14 life-twitter blockquote { font-size: 1.063rem; padding-right: 15%; }
+
+	life-story story-content div { opacity: 1 !important; margin-bottom: 0 !important; }
+	life-story story-content h3:after { width: 5rem !important; }
+
+	.featured life-story,
+	.double-width life-note {
+		padding-bottom: 75%;
+	}
+
+	.double-width grid-column,
+	grid-column.featured,
+	.normal grid-column { margin-top: 1.25rem; }
+}
+
+@media (min-width: 551px) and (max-width: 720px) {
+
+	#life { padding: 3rem 0; }
+
+	life-instagram,
+	life-twitter,
+	life-note,
+	life-story,
+	life-blank {
+		padding-bottom: 55%;
+	}
+
+	life-twitter blockquote { font-size: 1.063rem; padding-right: 15%; }
+
+	life-story story-content div { opacity: 1 !important; margin-bottom: 0 !important; }
+	life-story story-content h3:after { width: 5rem !important; }
+
+	.featured life-story,
+	.double-width life-note {
+		padding-bottom: 75%;
+	}
+
+	.double-width grid-column,
+	grid-column.featured,
+	.normal grid-column { margin-top: 1.25rem; }
+
+}
+
+@media (min-width: 451px) and (max-width: 550px) {
+
+	#life { padding: 2rem 0; }
+
+	life-instagram,
+	life-twitter,
+	life-note,
+	life-story,
+	life-blank {
+		padding-bottom: 75%;
+	}
+
+	life-twitter blockquote { font-size: 1.063rem; padding-right: 15%; }
+
+	life-story story-content div { opacity: 1 !important; margin-bottom: 0 !important; }
+	life-story story-content div p { display: none; }
+	life-story story-content h3:after { display: none; }
+
+	.featured life-story,
+	.double-width life-note {
+		padding-bottom: 75%;
+	}
+
+	.double-width grid-column,
+	grid-column.featured,
+	.normal grid-column { margin-top: 1.25rem; }
+
+}
+
+@media (max-width: 450px) {
+
+	#life { padding: 0.325rem 0 1.25rem 0; }
+
+	life-instagram,
+	life-note,
+	life-story,
+	life-blank {
+		padding-bottom: 110%;
+	}
+
+	life-twitter blockquote { font-size: 0.938rem; }
+
+	life-story story-content div { opacity: 1 !important; margin-bottom: 0 !important; }
+	life-story story-content div p { display: none; }
+	life-story story-content h3:after { display: none; }
+
+	.featured life-story,
+	.double-width life-note {
+		padding-bottom: 110%;
+	}
+
+	.double-width grid-column,
+	grid-column.featured,
+	.normal grid-column { margin-top: 1.25rem; }
+
+}
+
+
+/********** TWITTER **********/
+
+life-twitter {
+	background-color: #FFF;
+}
+
+/*** CONTENT ***/
+
+life-twitter blockquote {
+	color: #888;
+	font-family: "merriweather";
+	font-weight: 300;
+	margin: 0;
+
+	-webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+@media (min-width: 769px) {
+	life-twitter blockquote {
+		padding: 0 2.313rem;
+		position: absolute;
+		top: 50%;
+
+		-webkit-transform: translateY(-70%);
+	       -moz-transform: translateY(-70%);
+	        -ms-transform: translateY(-70%);
+	         -o-transform: translateY(-70%);
+	            transform: translateY(-70%);
+	}
+}
+
+@media (max-width: 768px) {
+	life-twitter blockquote {
+		display: block;
+		padding: 2rem 2.313rem 6rem  2.313rem;
+		position: relative;
+	}
+}
+
+@media (min-width: 1501px) {
+	life-twitter blockquote { font-size: 1rem;line-height: 2rem; } 
+}
+
+@media (min-width: 1401px) and (max-width: 1500px) {
+	life-twitter blockquote { font-size: 0.938rem;line-height: 1.8rem; } 
+}
+
+@media (min-width: 1351px) and (max-width: 1400px) {
+	life-twitter blockquote { font-size: 0.938rem;line-height: 1.8rem; } 
+}
+
+@media (min-width: 1301px) and (max-width: 1350px) {
+	life-twitter blockquote { font-size: 0.75rem;line-height: 1.6rem; } 
+}
+
+@media (min-width: 1201px) and (max-width: 1300px) {
+	life-twitter blockquote { font-size: 0.75rem;line-height: 1.5rem; } 
+}
+
+@media (min-width: 1151px) and (max-width: 1200px) {
+	life-twitter blockquote { font-size: 0.75rem;line-height: 1.4rem; } 
+}
+
+@media (min-width: 1121px) and (max-width: 1150px) {
+	life-twitter blockquote { font-size: 0.675rem;line-height: 1.2rem; } 
+}
+
+@media (min-width: 769px) {
+
+	life-twitter blockquote a {
+	    background-color: transparent;
+	    padding: 0;
+	    color: inherit;
+	    display: inline-block;
+	    position: relative;
+	    text-decoration: none;
+	    z-index: 3;
+
+	    -webkit-transition: all 350ms ease;
+	       -moz-transition: all 350ms ease;
+	        -ms-transition: all 350ms ease;
+	         -o-transition: all 350ms ease;
+	            transition: all 350ms ease;
+	}
+
+	life-twitter blockquote a:hover { color: #FFF; }
+
+	life-twitter blockquote a:before {
+	    background-color: #FF7779;
+	    content: "";
+	    position: absolute;
+	    top: 0; right: 100%; bottom: 0; left: 0;
+	    z-index: -1;
+
+	    -webkit-transition: right 350ms ease;
+	       -moz-transition: right 350ms ease;
+	        -ms-transition: right 350ms ease;
+	         -o-transition: right 350ms ease;
+	            transition: right 350ms ease;
+	}
+
+	life-twitter blockquote a:hover:before {
+	    right: 0;
+	}
+
+	life-twitter blockquote a:after {
+	    background-color: rgba(0,0,0,0.03);
+	    content: "";
+	    position: absolute;
+	    top: 0; right: 0; bottom: 0; left: 0;
+	    z-index: -2;
+
+	    -webkit-transition: right 350ms ease;
+	       -moz-transition: right 350ms ease;
+	        -ms-transition: right 350ms ease;
+	         -o-transition: right 350ms ease;
+	            transition: right 350ms ease;
+	}
+
+	life-twitter blockquote a:hover:after {
+	    left: 100%;
+	}
+
+}
+
+@media (max-width: 768px) {
+
+	life-twitter blockquote { font-size: 0.938rem;line-height: 1.8rem; } 
+
+	life-twitter blockquote a {
+	    color: #FF7779;
+	    text-decoration: none;
+	}
+
+}
+
+/*** USER PROFILE ***/
+
+life-twitter twitter-user {
+	display: table;
+	position: absolute;
+	bottom: 2.313rem; left: 0;
+	padding: 0 2.313rem;
+	width: 100%;
+
+	-webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+life-twitter twitter-user img {
+	height: 2.313rem;
+	position: absolute;
+	width: 2.313rem;
+
+	-webkit-border-radius: 50%;
+			border-radius: 50%;
+}
+
+life-twitter twitter-user a {
+	color: #AAA;
+	display: block;
+	text-decoration: none;
+}
+
+life-twitter twitter-user a span:before {
+    background-color: #FF7779;
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 6px; left: 50%; right: 50%; height: 2px;
+
+    -webkit-transition: all 350ms ease;
+       -moz-transition: all 350ms ease;
+        -ms-transition: all 350ms ease;
+         -o-transition: all 350ms ease;
+            transition: all 350ms ease;
+}
+
+life-twitter twitter-user a:hover span:before {
+    left: 0%; right: 0%;
+}
+
+life-twitter twitter-user span {
+	display: block;
+	float: left;
+	font-size: 0.938rem;
+	line-height: 2.313rem;
+	margin-left: 3.313rem;
+	position: relative;
+	height: 2.313rem;
+
+	-webkit-border-radius: 50%;
+			border-radius: 50%;
+}
+
+/*** LINK TO TWEET ***/
+
+life-twitter > a {
+	position: absolute;
+	bottom: 2.313rem;
+	right: 2.313rem;
+}
+
+life-twitter > a svg {
+	fill: rgba(0,0,0,0.1);
+	height: 1.3rem;
+	width: 1.3rem;
+
+	-webkit-transition: fill 350ms ease;
+       -moz-transition: fill 350ms ease;
+        -ms-transition: fill 350ms ease;
+         -o-transition: fill 350ms ease;
+            transition: fill 350ms ease;
+}
+
+life-twitter > a:hover svg {
+	fill: #55ACEE;
+}
+
+
+/********** INSTAGRAM POST **********/
+
+life-instagram {
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+
+/*** IMAGE ***/
+
+life-instagram figure {
+	background-size: cover !important;
+	margin: 0;
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 1;
+
+	-webkit-transition: all 350ms ease 75ms;
+       -moz-transition: all 350ms ease 75ms;
+        -ms-transition: all 350ms ease 75ms;
+         -o-transition: all 350ms ease 75ms;
+            transition: all 350ms ease 75ms;
+
+	-webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+}
+
+life-instagram figure:before {
+	background-color: #000;
+	content: "";
+	margin: 0;
+	opacity: 0;
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 2;
+
+	-webkit-transition: all 350ms ease 75ms;
+       -moz-transition: all 350ms ease 75ms;
+        -ms-transition: all 350ms ease 75ms;
+         -o-transition: all 350ms ease 75ms;
+            transition: all 350ms ease 75ms;
+}
+
+/*** LINK TO POST ***/
+
+life-instagram > a svg {
+	bottom: 2.313rem;
+	fill: rgba(255,255,255,0.5);
+	height: 1.3rem;
+	position: absolute;
+	right: 2.313rem;
+	width: 1.3rem;
+	z-index: 2;
+
+	-webkit-transition: fill 350ms ease;
+       -moz-transition: fill 350ms ease;
+        -ms-transition: fill 350ms ease;
+         -o-transition: fill 350ms ease;
+            transition: fill 350ms ease;
+}
+
+/*** CONTENT OVERLAY ***/
+
+instagram-overlay {
+	opacity: 0;
+	overflow: hidden;
+	overflow-y: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%; height: 100%;
+	z-index: 2;
+
+	-webkit-transition: opacity 350ms ease;
+       -moz-transition: opacity 350ms ease;
+        -ms-transition: opacity 350ms ease;
+         -o-transition: opacity 350ms ease;
+            transition: opacity 350ms ease;
+
+	-webkit-transform: translateX(-50%) translateY(-50%);
+       -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+         -o-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+}
+
+life-instagram:hover instagram-overlay {
+	opacity: 1;
+}
+
+/*** OVERLAY CONTENTS ***/
+
+instagram-details {
+	color: #FFF;
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+instagram-details blockquote {
+	color: #FFF;
+	font-family: "merriweather";
+	font-size: 0.938rem;
+	font-weight: 300;
+	line-height: 1.7rem;
+	margin: 0;
+
+	-webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+/*** USER PROFILE LINK ***/
+
+instagram-details blockquote a.user {
+	color: #FFF;
+	display: table;
+	font-family: "brandon-grotesque", sans-serif;
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin-bottom: 1.5rem;
+	position: relative;
+	text-decoration: none;
+}
+
+instagram-details blockquote a.user:before {
+    background-color: #FF7779;
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -2px; left: 50%; right: 50%; height: 2px;
+    z-index: -1;
+
+    -webkit-transition: all 350ms ease;
+       -moz-transition: all 350ms ease;
+        -ms-transition: all 350ms ease;
+         -o-transition: all 350ms ease;
+            transition: all 350ms ease;
+}
+
+instagram-details blockquote a.user:hover:before {
+    left: 0%; right: 0%;
+}
+
+@media (min-width: 769px) {
+
+	instagram-details blockquote a:not(.user) {
+	    background-color: transparent;
+	    padding: 0;
+	    color: inherit;
+	    display: inline-block;
+	    position: relative;
+	    text-decoration: none;
+	    z-index: 4;
+
+	    -webkit-transition: all 350ms ease;
+	       -moz-transition: all 350ms ease;
+	        -ms-transition: all 350ms ease;
+	         -o-transition: all 350ms ease;
+	            transition: all 350ms ease;
+	}
+
+	instagram-details blockquote a:not(.user):hover { color: #FFF; }
+
+	instagram-details blockquote a:not(.user):before {
+	    background-color: #FF7779;
+	    content: "";
+	    position: absolute;
+	    top: 0; right: 100%; bottom: 0; left: 0;
+	    z-index: -1;
+
+	    -webkit-transition: right 350ms ease;
+	       -moz-transition: right 350ms ease;
+	        -ms-transition: right 350ms ease;
+	         -o-transition: right 350ms ease;
+	            transition: right 350ms ease;
+	}
+
+	instagram-details blockquote a:not(.user):hover:before {
+	    right: 0;
+	}
+
+	instagram-details blockquote a:not(.user):after {
+	    background-color: rgba(255,255,255,0.1);
+	    content: "";
+	    position: absolute;
+	    top: 0; right: 0; bottom: 0; left: 0;
+	    z-index: -2;
+
+	    -webkit-transition: right 350ms ease;
+	       -moz-transition: right 350ms ease;
+	        -ms-transition: right 350ms ease;
+	         -o-transition: right 350ms ease;
+	            transition: right 350ms ease;
+	}
+
+	instagram-details blockquote a:not(.user):hover:after {
+	    left: 100%;
+	}
+
+}
+
+@media (max-width: 768px) {
+
+	instagram-details blockquote a:not(.user) {
+	    color: #FF7779;
+	    text-decoration: none;
+	}
+
+}
+
+
+/*** HOVER ***/
+
+life-instagram:hover figure {
+	-webkit-transform: scale(1.2);
+       -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+         -o-transform: scale(1.2);
+            transform: scale(1.2);
+}
+
+life-instagram:hover figure:before {
+	opacity: 0.5;
+}
+
+life-instagram > a:hover svg {
+	fill: rgba(255,255,255,1);
+}
+
+/*** RESPONSIVE ***/
+
+@media (min-width: 1621px) {
+	instagram-details blockquote {
+		padding: 0 2.313rem;
+		position: absolute;
+		top: 50%;
+
+		-webkit-transform: translateY(-55%);
+	       -moz-transform: translateY(-55%);
+	        -ms-transform: translateY(-55%);
+	         -o-transform: translateY(-55%);
+	            transform: translateY(-55%);
+	}
+}
+
+@media (min-width: 1121px) and (max-width: 1620px) {
+	instagram-details blockquote { padding: 2rem 2.313rem; position: relative; }
+}
+
+@media (min-width: 721px) and (max-width: 1120px) {
+	instagram-details blockquote { padding: 2rem 2.313rem; position: relative; }
+}
+
+@media (min-width: 521px) and (max-width: 720px) {
+	instagram-details blockquote { padding: 2rem 2.313rem; position: relative; }
+}
+
+@media (max-width: 520px) {
+	instagram-details blockquote { padding: 2rem 2.313rem; position: relative; }
+}
+
+
+
+/********** NOTE PREVIEW **********/
+
+life-note a {
+	overflow: hidden;
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	text-decoration: none;
+}
+
+life-note figure {
+	background-size: cover !important;
+	margin: 0;
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 1;
+
+	-webkit-transition: all 350ms ease 75ms;
+       -moz-transition: all 350ms ease 75ms;
+        -ms-transition: all 350ms ease 75ms;
+         -o-transition: all 350ms ease 75ms;
+            transition: all 350ms ease 75ms;
+
+	-webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+}
+
+life-note figure:before {
+	background-color: rgba(67,0,255,0.7);
+	content: "";
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 2;
+}
+
+/*** NOTE NUMBER ***/
+
+life-note a > span {
+	color: #FFF;
+	display: table;
+	font-size: 1.25rem;
+	position: absolute;
+	top: 2.313rem; left: 50%;
+	z-index: 3;
+
+	-webkit-transform: translateX(-50%);
+       -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+         -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+
+life-note a > span:after {
+	bottom: -1rem;
+	background-color: #FFF;
+	content: "";
+	height: 2px;
+	left: 50%;
+	position: absolute;
+	width: 1.5rem;
+
+	-webkit-transform: translateX(-50%);
+       -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+         -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+
+/*** NOTE NAME ***/
+
+life-note h3 {
+	color: #FFF;
+	display: table;
+	font-family: "merriweather";
+	line-height: 1.2em;
+	padding: 0 2rem;
+	position: absolute;
+	top: 50%; left: 50%;
+	z-index: 3;
+
+	-webkit-transition: all 350ms ease 75ms;
+       -moz-transition: all 350ms ease 75ms;
+        -ms-transition: all 350ms ease 75ms;
+         -o-transition: all 350ms ease 75ms;
+            transition: all 350ms ease 75ms;
+
+	-webkit-transform: translateX(-50%) translateY(-60%) scale(1);
+       -moz-transform: translateX(-50%) translateY(-60%) scale(1);
+        -ms-transform: translateX(-50%) translateY(-60%) scale(1);
+         -o-transform: translateX(-50%) translateY(-60%) scale(1);
+            transform: translateX(-50%) translateY(-60%) scale(1);
+}
+
+@media (min-width: 1401px) {
+	life-note h3 { font-size: 2rem; }
+}
+
+@media (min-width: 1301px) and (max-width: 1400px) {
+	life-note h3 { font-size: 1.75rem; }
+}
+
+@media (min-width: 1201px) and (max-width: 1300px) {
+	life-note h3 { font-size: 1.5rem; }
+}
+
+@media (min-width: 1121px) and (max-width: 1200px) {
+	life-note h3 { font-size: 1.25rem; }
+}
+
+@media (min-width: 1769px) and (max-width: 1120px) {
+	life-note h3 { font-size: 2rem; }
+}
+
+@media (min-width: 551px) and (max-width: 720px) {
+	life-note h3 { font-size: 1.75rem; }
+}
+
+@media (max-width: 550px) {
+	life-note h3 { font-size: 1.5rem; }
+}
+
+
+/*** USER PROFILE ***/
+
+life-note author {
+	position: absolute;
+	bottom: 1.5rem; left: 50%;
+	z-index: 3;
+
+	-webkit-transform: translateX(-50%);
+       -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+         -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+
+life-note author img {
+	display: table;
+	height: 2.313rem;
+	margin: 0 auto;
+	width: 2.313rem;
+
+	-webkit-border-radius: 50%;
+			border-radius: 50%;
+}
+
+life-note author span {
+	color: #EEE;
+	display: table;
+	font-size: 0.938rem;
+	line-height: 2.313rem;
+	margin: 0 auto;
+}
+
+/*** HOVER ***/
+
+life-note:hover figure {
+	-webkit-transform: scale(1.2);
+       -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+         -o-transform: scale(1.2);
+            transform: scale(1.2);
+}
+
+life-note:hover h3 {
+	-webkit-transform: translateX(-50%) translateY(-60%) scale(1.1);
+       -moz-transform: translateX(-50%) translateY(-60%) scale(1.1);
+        -ms-transform: translateX(-50%) translateY(-60%) scale(1.1);
+         -o-transform: translateX(-50%) translateY(-60%) scale(1.1);
+            transform: translateX(-50%) translateY(-60%) scale(1.1);
+}
+
+
+/********** NOTE FULL **********/
+
+note-container {
+	overflow: hidden;
+	overflow-y: auto;
+	position: fixed;
+	top: 0; bottom: 0; left: 0;
+	z-index: 11;
+	width: 100%;
+}
+
+note-background {
+	opacity: 0;
+	position: fixed;
+	top: 0; bottom: 0; left: 0;
+	width: 100%;
+	z-index: 1;
+
+	-webkit-transition: opacity 500ms ease 500ms;
+       -moz-transition: opacity 500ms ease 500ms;
+        -ms-transition: opacity 500ms ease 500ms;
+         -o-transition: opacity 500ms ease 500ms;
+            transition: opacity 500ms ease 500ms;
+}
+
+.visible note-background {
+	opacity: 1;
+
+	-webkit-transition: opacity 500ms ease;
+       -moz-transition: opacity 500ms ease;
+        -ms-transition: opacity 500ms ease;
+         -o-transition: opacity 500ms ease;
+            transition: opacity 500ms ease;
+}
+
+/*** ***/
+
+note-placeholder {
+	background-size: cover !important;
+	background-position: center !important;
+	display: none;
+	position: absolute;
+	z-index: 3;
+}
+
+note-placeholder:before {
+	background-color: rgba(0,0,0,0.4);
+	content: "";
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 2;
+}
+
+
+/*** FULL ***/
+
+life-note-full {
+	display: block;
+	margin: 0 auto !important;
+	max-width: 96.25rem;
+	padding: 0 14.8%;
+	width: 100%;
+
+	-webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+note-container life-note-full {
+	display: block;
+	position: relative;
+	opacity: 0;
+
+	-webkit-transform: translateY(250px);
+       -moz-transform: translateY(250px);
+        -ms-transform: translateY(250px);
+         -o-transform: translateY(250px);
+            transform: translateY(250px);
+
+	-webkit-transition: all 750ms ease 1000ms, opacity 500ms ease;
+       -moz-transition: all 750ms ease 1000ms, opacity 500ms ease;
+        -ms-transition: all 750ms ease 1000ms, opacity 500ms ease;
+         -o-transition: all 750ms ease 1000ms, opacity 500ms ease;
+            transition: all 750ms ease 1000ms, opacity 500ms ease;
+}
+
+note-container.visible life-note-full {
+	opacity: 1;
+
+	-webkit-transform: translateY(0%);
+       -moz-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+         -o-transform: translateY(0%);
+            transform: translateY(0%);
+
+    -webkit-transition: all 750ms ease 250ms, opacity 1000ms ease 250ms;
+       -moz-transition: all 750ms ease 250ms, opacity 1000ms ease 250ms;
+        -ms-transition: all 750ms ease 250ms, opacity 1000ms ease 250ms;
+         -o-transition: all 750ms ease 250ms, opacity 1000ms ease 250ms;
+            transition: all 750ms ease 250ms, opacity 1000ms ease 250ms;
+}
+
+life-note-full note-header {
+	display: block;
+	overflow: hidden;
+	position: relative;
+	top: 0; right: 0; left: 0;
+	text-decoration: none;
+	z-index: 2;
+}
+
+life-note-full figure {
+	background-size: cover !important;
+	margin: 0;
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 1;
+
+	-webkit-transition: all 350ms ease 75ms;
+       -moz-transition: all 350ms ease 75ms;
+        -ms-transition: all 350ms ease 75ms;
+         -o-transition: all 350ms ease 75ms;
+            transition: all 350ms ease 75ms;
+}
+
+life-note-full img {
+	display: block;
+	width: 100%;
+}
+
+life-note-full figure:before {
+	background-color: rgba(0,0,0,0.4);
+	content: "";
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 2;
+}
+
+/*** ***/
+
+note-fill {
+	background-color: rgba(0,0,0,0.9);
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	z-index: 10;
+
+	-webkit-border-radius: 50%;
+			border-radius: 50%;
+
+	-webkit-transition: all 750ms ease;
+       -moz-transition: all 750ms ease;
+        -ms-transition: all 750ms ease;
+         -o-transition: all 750ms ease;
+            transition: all 750ms ease;
+
+	-webkit-transform: translateX(-50%) translateY(-50%);
+       -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+         -o-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+}
+
+note-fill.animated {
+	width: 300vw;
+	height: 300vw;
+}
+
+/*** NOTE NUMBER ***/
+
+life-note-full note-header > span {
+	color: #FFF;
+	display: table;
+	font-size: 1.25rem;
+	position: absolute;
+	top: 2.313rem; left: 50%;
+	z-index: 3;
+
+	-webkit-transform: translateX(-50%);
+       -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+         -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+
+life-note-full note-header > span:after {
+	bottom: -1rem;
+	background-color: #FFF;
+	content: "";
+	height: 2px;
+	left: 50%;
+	position: absolute;
+	width: 1.5rem;
+
+	-webkit-transform: translateX(-50%);
+       -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+         -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+
+/*** NOTE NAME ***/
+
+life-note-full h3 {
+	color: #FFF;
+	display: table;
+	font-family: "merriweather";
+	font-size: 2.5rem;
+	padding: 0 2rem;
+	position: absolute;
+	top: 50%; left: 50%;
+	z-index: 3;
+
+	-webkit-transition: all 350ms ease 75ms;
+       -moz-transition: all 350ms ease 75ms;
+        -ms-transition: all 350ms ease 75ms;
+         -o-transition: all 350ms ease 75ms;
+            transition: all 350ms ease 75ms;
+
+	-webkit-transform: translateX(-50%) translateY(-70%) scale(1);
+       -moz-transform: translateX(-50%) translateY(-70%) scale(1);
+        -ms-transform: translateX(-50%) translateY(-70%) scale(1);
+         -o-transform: translateX(-50%) translateY(-70%) scale(1);
+            transform: translateX(-50%) translateY(-70%) scale(1);
+}
+
+/*** USER PROFILE ***/
+
+life-note-full author {
+	position: absolute;
+	bottom: 1.5rem; left: 50%;
+	z-index: 3;
+
+	-webkit-transform: translateX(-50%);
+       -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+         -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+
+life-note-full author img {
+	display: table;
+	height: 2.313rem;
+	margin: 0 auto;
+	width: 2.313rem;
+
+	-webkit-border-radius: 50%;
+			border-radius: 50%;
+}
+
+life-note-full author span {
+	color: #EEE;
+	display: table;
+	font-size: 0.938rem;
+	line-height: 2.313rem;
+	margin: 0 auto;
+}
+
+/*** CONTENT ***/
+
+life-note-full note-content {
+	background-color: #FFF;
+	display: block;
+	padding: 5.75rem 6rem;
+	position: relative;
+	z-index: 2;
+}
+
+life-note-full note-content p {
+	font-family: "merriweather";
+	font-size: 1rem;
+	line-height: 2rem;
+}
+
+
+life-note-full note-content p a {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    z-index: 3;
+
+    -webkit-transition: all 350ms ease;
+       -moz-transition: all 350ms ease;
+        -ms-transition: all 350ms ease;
+         -o-transition: all 350ms ease;
+            transition: all 350ms ease;
+}
+
+life-note-full note-content p a:hover { color: #FFF; }
+
+life-note-full note-content p a:before {
+    background-color: #FF7779;
+    content: "";
+    position: absolute;
+    top: 0; right: 100%; bottom: 0; left: 0;
+    z-index: -1;
+
+    -webkit-transition: right 350ms ease;
+       -moz-transition: right 350ms ease;
+        -ms-transition: right 350ms ease;
+         -o-transition: right 350ms ease;
+            transition: right 350ms ease;
+}
+
+life-note-full note-content p a:after {
+    background-color: rgba(0,0,0,0.04);
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -2;
+
+    -webkit-transition: right 350ms ease;
+       -moz-transition: right 350ms ease;
+        -ms-transition: right 350ms ease;
+         -o-transition: right 350ms ease;
+            transition: right 350ms ease;
+}
+
+life-note-full note-content p a:hover:before {
+    right: 0;
+}
+
+life-note-full .twitter { padding: 0 0 3rem 0 ; } 
+
+
+life-note-full p + grid-container .twitter { padding: 3rem 0 3rem 0 ;   } 
+
+@media (min-width: 769px) {
+	note-container { padding-top: 6rem; padding-bottom: 6rem; }
+	life-note-full note-header { height: 30rem; }
+	life-note-full h3 { font-size: 2.5rem; line-height: 1.25em; }
+}
+
+@media (min-width: 521px) and (max-width: 768px) {
+	note-container { padding-top: 4rem; padding-bottom: 4rem; }
+	life-note-full note-header { height: 25rem; }
+	life-note-full { padding: 0 2rem; }
+	life-note-full note-content { padding: 3.75rem 4rem; }
+	life-note-full h3 { font-size: 2.25rem; line-height: 1.2em; }
+}
+@media (max-width: 520px) {
+	note-container { padding-top: 5rem; padding-bottom: 2rem; }
+	life-note-full note-header { height: 25rem; }
+	life-note-full { padding: 0 1rem; }
+	life-note-full h3 { font-size: 1.875rem;  line-height: 1.25em; }
+	life-note-full note-content { padding: 1.75rem 2rem; }
+	life-note-full note-content p { font-size: 0.938rem; }
+}
+
+
+/********** STORY **********/
+
+life-story a {
+	overflow: hidden;
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	text-decoration: none;
+}
+
+life-story figure {
+	background-size: cover !important;
+	margin: 0;
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 1;
+
+	-webkit-transition: all 500ms ease;
+       -moz-transition: all 500ms ease;
+        -ms-transition: all 500ms ease;
+         -o-transition: all 500ms ease;
+            transition: all 500ms ease;
+
+	-webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+}
+
+life-story figure:before {
+	background-color: rgba(20,20,20,0.2);
+	content: "";
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 2;
+}
+
+life-story story-content {
+	color: #FFF;
+	position: absolute;
+	text-align: left;
+	z-index: 3;
+}
+
+@media (min-width: 769px) {
+	life-story story-content {	
+		bottom: 3rem;
+		left: 3rem;
+		right: 3rem;
+	}
+}
+
+@media (min-width: 521px) and (max-width: 768px) {
+	life-story story-content {	
+		bottom: 2.25rem;
+		left: 2.25rem;
+		right: 2.25rem;
+	}
+}
+
+@media (max-width: 520px) {
+	life-story story-content {	
+		bottom: 1.5rem;
+		left: 1.5rem;
+		right: 1.5rem;
+	}
+}
+
+life-story story-content h3 {
+	color: #FFF;
+	font-family: "merriweather";
+	font-size: 2rem;
+	line-height: 1.2em;
+	position: relative;
+	text-align: left;
+}
+
+life-story story-content h3:after {
+	bottom: -1.125rem;
+	background-color: #FFF;
+	content: "";
+	height: 2px;
+	left: 0;
+	position: absolute;
+	width: 0;
+
+	-webkit-transition: width 350ms ease;
+       -moz-transition: width 350ms ease;
+        -ms-transition: width 350ms ease;
+         -o-transition: width 350ms ease;
+            transition: width 350ms ease;
+}
+
+life-story story-content p {
+	display: block;
+	padding-top: 2rem !important;
+}
+
+life-story story-content div {
+	opacity: 0;
+
+	-webkit-transition: all 350ms ease;
+       -moz-transition: all 350ms ease;
+        -ms-transition: all 350ms ease;
+         -o-transition: all 350ms ease;
+            transition: all 350ms ease;
+}
+
+life-story:hover figure {
+	-webkit-transform: scale(1.1);
+       -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+         -o-transform: scale(1.1);
+            transform: scale(1.1);
+}
+
+life-story:hover story-content h3:after {
+	width: 5rem;
+
+	-webkit-transition: width 350ms ease 200ms;
+       -moz-transition: width 350ms ease 200ms;
+        -ms-transition: width 350ms ease 200ms;
+         -o-transition: width 350ms ease 200ms;
+            transition: width 350ms ease 200ms;
+}
+
+life-story:hover story-content div {
+	opacity: 1;
+	margin-bottom: 0 !important;
+
+	-webkit-transition: all 350ms ease 75ms;
+       -moz-transition: all 350ms ease 75ms;
+        -ms-transition: all 350ms ease 75ms;
+         -o-transition: all 350ms ease 75ms;
+            transition: all 350ms ease 75ms;
+}
+
+/*** TIME LINE ***/
+
+#life grid-container {
+	position: relative;
+}
+
+#life main grid-container:before,
+life-story-full grid-container:before {
+	background-color: #E4D6CD;
+	bottom: -2.5rem;
+	content: "";
+	position: absolute;
+	left: calc(50% - 2px);
+	top: -7.25rem;
+	width: 2px;
+}
+
+#life main grid-container:after,
+life-story-full grid-container:after {
+	background-color: #E4D6CD;
+	bottom: -2.5rem;
+	content: "";
+	position: absolute;
+	left: calc(50% - 9px);
+	width: 16px;
+	height: 16px;
+
+	-webkit-border-radius: 50%;
+			border-radius: 50%;
+}
+
+#life loading-animation { margin-top: 2rem !important; }
+
+
+/********** STORY FULL **********/
+
+story-container {
+	background-color: #F2F2F2;
+	overflow: hidden;
+	overflow-y: auto;
+	position: fixed;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 50;
+}
+
+story-container life-story-full {
+	display: block;
+	position: relative;
+	opacity: 0;
+
+	-webkit-transform: translateY(250px);
+       -moz-transform: translateY(250px);
+        -ms-transform: translateY(250px);
+         -o-transform: translateY(250px);
+            transform: translateY(250px);
+
+	-webkit-transition: all 750ms ease 1000ms, opacity 500ms ease;
+       -moz-transition: all 750ms ease 1000ms, opacity 500ms ease;
+        -ms-transition: all 750ms ease 1000ms, opacity 500ms ease;
+         -o-transition: all 750ms ease 1000ms, opacity 500ms ease;
+            transition: all 750ms ease 1000ms, opacity 500ms ease;
+}
+
+story-container.visible life-story-full {
+	opacity: 1;
+
+	-webkit-transform: translateY(0%);
+       -moz-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+         -o-transform: translateY(0%);
+            transform: translateY(0%);
+
+    -webkit-transition: all 750ms ease 250ms, opacity 1000ms ease 250ms;
+       -moz-transition: all 750ms ease 250ms, opacity 1000ms ease 250ms;
+        -ms-transition: all 750ms ease 250ms, opacity 1000ms ease 250ms;
+         -o-transition: all 750ms ease 250ms, opacity 1000ms ease 250ms;
+            transition: all 750ms ease 250ms, opacity 1000ms ease 250ms;
+}
+
+/*** HEADER CONTAINER ***/
+
+life-story-full story-header-container {
+	display: block;
+	margin: 0 auto !important;
+	position: relative;
+	width: 100%;
+
+	-webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+life-story-full story-header figure {
+	background-size: cover !important;
+	margin: 0;
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 1;
+
+	-webkit-transition: all 350ms ease 75ms;
+       -moz-transition: all 350ms ease 75ms;
+        -ms-transition: all 350ms ease 75ms;
+         -o-transition: all 350ms ease 75ms;
+            transition: all 350ms ease 75ms;
+}
+
+life-story-full story-header figure:before {
+	background-color: rgba(0,0,0,0.4);
+	content: "";
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	z-index: 2;
+}
+
+/*** LOADING MASK ***/
+
+story-fill {
+	background-color: #F2F2F2;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	z-index: 10;
+
+	-webkit-border-radius: 50%;
+			border-radius: 50%;
+
+	-webkit-transition: all 750ms ease;
+       -moz-transition: all 750ms ease;
+        -ms-transition: all 750ms ease;
+         -o-transition: all 750ms ease;
+            transition: all 750ms ease;
+
+	-webkit-transform: translateX(-50%) translateY(-50%);
+       -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+         -o-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+}
+
+story-fill.animated {
+	width: 300vw;
+	height: 300vw;
+}
+
+/*** HEADER ***/
+
+life-story-full story-header {
+	display: block;
+	position: relative;
+}
+
+life-story-full story-header a {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    z-index: 3;
+
+    -webkit-transition: all 350ms ease;
+       -moz-transition: all 350ms ease;
+        -ms-transition: all 350ms ease;
+         -o-transition: all 350ms ease;
+            transition: all 350ms ease;
+}
+
+life-story-full story-header a:hover { color: #FFF; }
+
+life-story-full story-header a:before {
+    background-color: #FF7779;
+    content: "";
+    position: absolute;
+    top: 0; right: 100%; bottom: 0; left: 0;
+    z-index: -1;
+
+    -webkit-transition: right 350ms ease;
+       -moz-transition: right 350ms ease;
+        -ms-transition: right 350ms ease;
+         -o-transition: right 350ms ease;
+            transition: right 350ms ease;
+}
+
+life-story-full story-header a:before {
+    background-color: rgba(255,255,255,0.04);
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -3;
+
+    -webkit-transition: right 350ms ease;
+       -moz-transition: right 350ms ease;
+        -ms-transition: right 350ms ease;
+         -o-transition: right 350ms ease;
+            transition: right 350ms ease;
+}
+
+life-story-full story-header a:hover:before {
+    right: 0;
+}
+
+/*** HEADER CONTENTS ***/
+
+life-story-full story-header-contents p {
+	color: #FFF;
+	font-family: "merriweather";
+	font-size: 1rem;
+	padding: 1.7rem 0 0 0 !important;
+}
+
+life-story-full story-header-contents h3 {
+	color: #FFF;
+	font-family: "merriweather";
+	text-align: left;
+}
+
+@media (min-width: 1121px) {
+	life-story-full story-header-contents h3 { line-height: 1.1em; }
+	life-story-full story-header-contents p { line-height: 2rem; }
+	life-story-full story-header-container { max-width: 96.25rem; padding: 0 calc(7.14285714286% + 0.35rem); }
+	life-story-full story-header-contents { bottom: 5.5rem; left: 6rem; right: 6rem; position: absolute; z-index: 999; }
+}
+
+@media (min-width: 721px) and (max-width: 1120px) {
+	life-story-full story-header-contents h3 { line-height: 1.15em; }
+	life-story-full story-header-contents p { line-height: 2rem; }
+	life-story-full story-header-container { max-width: 96.25rem; padding: 0 calc(7.14285714286% + 0.35rem); }
+	life-story-full story-header-contents { bottom: 5.5rem; left: 6rem; right: 6rem; position: absolute; z-index: 999; }
+}
+
+@media (min-width: 521px) and (max-width: 720px) {
+	life-story-full story-header-contents h3 { line-height: 1.2em; }
+	life-story-full story-header-contents p { line-height: 1.85rem; }
+	life-story-full story-header-container { max-width: 96.25rem; padding: 0 calc(7.14285714286% + 0.35rem); }
+	life-story-full story-header-contents { bottom: 5.5rem; left: 6rem; right: 6rem; position: absolute; z-index: 999; }
+}
+
+@media (max-width: 520px) {
+	life-story-full story-header-contents h3 { line-height: 1.25em; }
+	life-story-full story-header-contents p { line-height: 1.7rem; }
+	life-story-full story-header-container { padding: 0 1.25rem; }
+	life-story-full story-header-contents { display: block; padding: 1.5rem 2rem; position: relative; z-index: 999; }
+}
+
+/*** STORY CONTENT ***/
+
+@media (min-width: 769px) {
+	life-story-full story-content > grid-container { padding-top: 6rem; margin-bottom: 6rem; }
+	story-container { padding-top: 4rem; }
+	life-story-full story-header { height: 40rem; }
+	life-story-full story-header h3 { font-size: 2.5rem; }
+}
+
+@media (min-width: 521px) and (max-width: 768px) {
+	life-story-full story-content > grid-container { padding-top: 2.5rem; margin-bottom: 2.5rem; }
+	story-container { padding-top: 5rem; }
+	life-story-full story-header { height: 32.5rem; }
+}
+@media (max-width: 520px) {
+	life-story-full story-content > grid-container { padding-top: 1.25rem; margin-bottom: 1.25rem; }
+	story-container { padding-top: 5rem; }
+	life-story-full story-header h3 { font-size: 2rem; }
+}
+
+/***** *****/
+
+@media (min-width: 9999px) {
+
+	.closeLifeOverlay {
+		color: #FFF;
+		cursor: pointer;
+		opacity: 0;
+		position: fixed;
+		right: 4.25rem;
+		top: 25%;
+		z-index: 1000;
+	}
+
+	.closeLifeOverlay svg {
+		height: 0.875rem;
+		line-height: 0.875rem;
+		fill: #FFF;
+		position: relative;
+		top: 0.063rem;
+		width: 0.875rem;
+	}
+
+	.closeLifeOverlay.dark { color: #242424; }
+	.closeLifeOverlay.dark svg { fill: #242424; }
+
+	.closeLifeOverlay span {
+		display: inline-block;
+		line-height: 0.875rem;
+		margin: 0 0 0 0.35rem;
+		position: relative;
+	}
+
+	.closeLifeOverlay span:before {
+	    background-color: #FF7779;
+	    content: "";
+	    display: block;
+	    position: absolute;
+	    bottom: -3px; left: 50%; right: 50%; height: 2px;
+
+	    -webkit-transition: all 350ms ease;
+	       -moz-transition: all 350ms ease;
+	        -ms-transition: all 350ms ease;
+	         -o-transition: all 350ms ease;
+	            transition: all 350ms ease;
+	}
+
+	.closeLifeOverlay:hover span:before {
+	    left: 0%; right: 0%;
+	}
+
+}
+
+
+@media (max-width: 9998px) {
+
+	/** CLOSE **/
+
+	.closeLifeOverlay {
+	    background-color: #FFF;
+	    right: 1.25rem;
+	    cursor: pointer;
+	    height: 3.75rem;
+	    position: fixed;
+	    top: 0;
+	    width: 3.75rem;
+	    z-index: 1000;
+
+	    -webkit-box-shadow: 3px 3px 0 0 rgba(0,0,0,0.05);
+                box-shadow: 3px 3px 0 0 rgba(0,0,0,0.05);
+
+	    -webkit-transition: all 350ms ease;
+	       -moz-transition: all 350ms ease;
+	        -ms-transition: all 350ms ease;
+	         -o-transition: all 350ms ease;
+	            transition: all 350ms ease;
+	}
+
+	.closeLifeOverlay span { display: none; }
+
+	.closeLifeOverlay div {
+    background-color: #E4D6CD;
+    height: 2px;
+    position: absolute;
+
+    -webkit-transition: all 350ms ease;
+       -moz-transition: all 350ms ease;
+        -ms-transition: all 350ms ease;
+         -o-transition: all 350ms ease;
+            transition: all 350ms ease;
+}
+
+	.closeLifeOverlay svg {
+		height: 0.875rem;
+		line-height: 0.875rem;
+		fill: #E4D6CD;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 0.875rem;
+
+		-webkit-transform: translateX(-50%) translateY(-50%);
+	       -moz-transform: translateX(-50%) translateY(-50%);
+	        -ms-transform: translateX(-50%) translateY(-50%);
+	         -o-transform: translateX(-50%) translateY(-50%);
+	            transform: translateX(-50%) translateY(-50%);
+
+		-webkit-transition: all 350ms ease;
+	       -moz-transition: all 350ms ease;
+	        -ms-transition: all 350ms ease;
+	         -o-transition: all 350ms ease;
+	            transition: all 350ms ease;
+	}
+
+	.closeLifeOverlay div:first-of-type {
+	    left: 50%;
+	    top: 50%;
+	    width: 30px;
+
+	    -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	       -moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	        -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	         -o-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	            transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	}
+
+	.closeLifeOverlay div:first-of-type + div {
+	    left: 50%;
+	    top: 50%;
+	    width: 30px;
+
+	    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+	       -moz-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+	        -ms-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+	         -o-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+	            transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+	}
+
+	/* HOVER */
+
+	.closeLifeOverlay:hover {
+	    background-color: #FF7779;
+	}
+
+	.closeLifeOverlay:hover div {
+	    background-color: #FFF;
+	}
+
+	.closeLifeOverlay:hover div:first-of-type {
+	    left: 50%;
+	    top: 50%;
+	    width: 40px;
+
+	    -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	       -moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	        -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	         -o-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	            transform: translateX(-50%) translateY(-50%) rotate(45deg);
+
+	}
+
+	.closeLifeOverlay:hover div:first-of-type + div {
+	    left: 50%;
+	    top: 50%;
+	    width: 40px;
+
+	    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+	       -moz-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+	        -ms-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+	         -o-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+	            transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.noScrollAlt .closeLifeOverlay { opacity: 1; }
+
+
+/* REVEAL */
+@media (min-width: 721px) {
+
+    life-note,
+    life-story,
+    life-twitter,
+    life-instagram {
+        opacity: 1;
+        top: 0;
+
+        -webkit-transition: opacity 650ms ease, top 650ms ease;
+           -moz-transition: opacity 650ms ease, top 650ms ease;
+            -ms-transition: opacity 650ms ease, top 650ms ease;
+             -o-transition: opacity 650ms ease, top 650ms ease;
+                transition: opacity 650ms ease, top 650ms ease;
+    }
+
+    life-note.hidden,
+    life-story.hidden,
+    life-twitter.hidden,
+    life-instagram.hidden {
+        opacity: 0;
+        top: 100px;
+    }
+
+}
+
+
+note-content .gif {
+	padding: 2.5rem 0;
+}
+
+note-content .gallery {
+	padding: 2.5rem 0;
+}
+
+note-content .gallery + .gallery {
+	margin-top: -1.25rem !important;
+	padding-top: 0 !important;
+}
+
+.lightbox.gallery {
+	padding: 2.5rem 0;
+}
+
+.lightbox.gallery a.fancybox {
+    display: block;
+    padding-bottom: 80%;
+    position: relative;
+}
+
+.lightbox.gallery figure {
+    background-size: cover !important;
+    background-position: center !important;
+    display: block;
+    margin: 0 0 1.25rem;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+}
+
+@media (max-width: 450px) {
+	
+	twitterwidget { width: 100% !important; }
+
+	note-content grid-column,
+	note-content grid-container {
+		padding: 0 !important;
+	}
+
+	note-fill {
+		position: fixed !important; 
+		top: 50% !important;
+		left: 50% !important;
+	}
+
+}
+
+.video .embed-container{
+	position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%; margin: 3rem 0 !important;
+}
+
+.video .embed-container embed,
+.video .embed-container iframe,
+.video .embed-container object{position:absolute;height:100%;left:0;top:0;width:100%}
