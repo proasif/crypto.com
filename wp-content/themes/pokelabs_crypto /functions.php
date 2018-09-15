@@ -5,6 +5,7 @@ if ( !defined( 'ABSPATH' ) )
 
 function crypto_script_enqueue(){
 	wp_enqueue_style('style', get_template_directory_uri().'/style.css', array(), '1.0', 'all');
+	wp_enqueue_style('grid', get_template_directory_uri().'assets/css/grid.min.css', array(), '1.0', 'all');
 	wp_enqueue_style('bootstrap', get_template_directory_uri().'assets/css/bootstrap.min.css', array(), '1.0', 'all');
 	wp_enqueue_script('bootstrap', get_template_directory_uri().'/assets/js/bootstrap.min.js', array(), '1.0', 'true');
 	wp_enqueue_script('jquery');
@@ -20,7 +21,7 @@ function crypto_theme_setup()
 {
 	add_theme_support('menus');
 	add_theme_support('custom-logo');
-	register_nav_menu('primary','Primary Header Navigation'); 
+	register_nav_menu('primary','Header Menu'); 
 }
 
 include ( get_template_directory() . '/inc/customizer.php' );
@@ -384,9 +385,9 @@ add_filter( 'script_loader_tag', 'defer_js', 10, 3 );
 function register_custom_menus() {
   register_nav_menus(
     array(
-	  'crypto-subm-footer' => __( 'Crypto SubMenu Footer' ), //id and label
-	  'crypto-social-icons' => __( 'Crypto Social Icons' ),
-	  'crypto-footer-menu' => __( 'Crypto Bottom Footer' ),
+	  'subm-footer' => __( 'Footer SubMenu' ), //id and label
+	  'social-icons' => __( 'Footer Social Icons' ),
+	  'footer-menu' => __( 'Footer Bottom' ),
     )
   );
 }
