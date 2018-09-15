@@ -45,8 +45,6 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php 
 			$menu = clean_custom_menu( "primary", true, "p1-main-nav", true, "", "", "");
 			echo $menu;
-			
-			
 		?>
         
     </head>

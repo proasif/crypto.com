@@ -13,10 +13,39 @@ Tags: black, white
 /* -------------------------
 Customizing Footer
 -------------------------- */
-
-body>footer footer-background{bottom:6.25rem;left:0;height:18rem;position:absolute;width:100%;z-index:1;transform:translate3d(0, 0, 0)}
-body>footer footer-background figure{bottom:0;left:0;height:15rem;margin:0;position:absolute;width:100%}
-body>footer footer-background .foreground{background-repeat:repeat-x!important;background:url(../inc/img/footer/foreground.png) repeat-x;background-size:225em 15em;position:absolute;top:1rem;right:0;bottom:0;left:0}
-body>footer footer-background .background{background-repeat:repeat-x!important;background:url(../inc/img/footer/background.png) repeat-x;background-size:225em 21.313em;position:absolute;top:-1em;right:0;bottom:0;left:0}
-body>footer footer-background .clouds{background-repeat:repeat-x!important;background:url(../inc/img/footer/clouds.png) repeat-x;background-size:225em 15em;position:absolute;top:-2em;right:0;bottom:0;left:0}
-body>footer footer-background .poof{background:url(../img/stagCam/poof.png) repeat-x;background-size:47px 29px!important;background-position:top left!important;opacity:0;position:absolute;bottom:3.5em;height:29px;left:10%;width:47px}
+body footer footer-background{bottom:6.25rem;left:0;height:18rem;position:absolute;width:100%;z-index:1;transform:translate3d(0, 0, 0)}
+body footer footer-background figure{bottom:0;left:0;height:15rem;margin:0;position:absolute;width:100%}
+body footer footer-background .foreground{background-repeat:repeat-x!important;background:url(./assets/img/footer/foreground.png) repeat-x;background-size:225em 15em;position:absolute;top:1rem;right:0;bottom:0;left:0}
+body footer footer-background .background{background-repeat:repeat-x!important;background:url(./assets/img/footer/background.png) repeat-x;background-size:225em 21.313em;position:absolute;top:-1em;right:0;bottom:0;left:0}
+body footer footer-background .clouds{background-repeat:repeat-x!important;background:url(./assets/img/footer/clouds.png) repeat-x;background-size:225em 15em;position:absolute;top:-2em;right:0;bottom:0;left:0}
+body footer footer-background .poof{background:url(../img/stagCam/poof.png) repeat-x;background-size:47px 29px!important;background-position:top left!important;opacity:0;position:absolute;bottom:3.5em;height:29px;left:10%;width:47px}
+@-webkit-keyframes poof{0%{opacity:0;left:11%}
+25%,
+45%{opacity:1}
+100%{opacity:0;left:18%}
+}
+@-moz-keyframes poof{0%{opacity:0;left:11%}
+25%,
+45%{opacity:1}
+100%{opacity:0;left:18%}
+}
+@-o-keyframes poof{0%{opacity:0;left:11%}
+25%,
+45%{opacity:1}
+100%{opacity:0;left:18%}
+}
+@keyframes poof{0%{opacity:0;left:11%}
+25%,
+45%{opacity:1}
+100%{opacity:0;left:18%}
+}
+body footer footer-background .poof.go{-moz-animation-duration:1s;-moz-animation-name:poof;-moz-animation-iteration-count:infinite;-moz-animation-direction:normal;-webkit-animation-duration:1s;-webkit-animation-name:poof;-webkit-animation-iteration-count:infinite;-webkit-animation-direction:normal;animation-duration:1s;animation-name:poof;animation-iteration-count:infinite;animation-direction:normal}
+body footer footer-background .stag{background-size:125px 125px!important;background-position:top left!important;position:absolute;bottom:1em;height:7.813em;left:10%;width:7.813em;-webkit-transition:all 2s ease;-moz-transition:all 2s ease;-ms-transition:all 2s ease;-o-transition:all 2s ease;transition:all 2s ease;-webkit-transform:translate3d(0, 0, 0);-moz-transform:translate3d(0, 0, 0);-ms-transform:translate3d(0, 0, 0);-o-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}
+body footer footer-background .stag img{display:block;height:6em;width:6em}
+body footer footer-background .stag img.quote{height:3.4065em;position:absolute;bottom:92px;left:84px;opacity:0;width:4.0315em;-webkit-transform-origin:bottom left;-ms-transform-origin:bottom left;transform-origin:bottom left;-webkit-transition:all 750ms ease;-moz-transition:all 750ms ease;-ms-transition:all 750ms ease;-o-transition:all 750ms ease;transition:all 750ms ease;-webkit-transform:scale(0);-moz-transform:scale(0);-ms-transform:scale(0);-o-transform:scale(0);transform:scale(0)}
+body footer footer-background .stag img.quote.visible{opacity:1;-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);transform:scale(1)}
+@keyframes speechBubble{from{transform:translateY(0)}
+to{transform:translateY(5px)}
+}
+body footer footer-background .stag.offRight{left:110%;-webkit-transition:all 1.25s ease;-moz-transition:all 1.25s ease;-ms-transition:all 1.25s ease;-o-transition:all 1.25s ease;transition:all 1.25s ease}
+body footer footer-background .stag.offLeft{left:-10%}

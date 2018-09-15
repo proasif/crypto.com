@@ -4,10 +4,14 @@ if ( !defined( 'ABSPATH' ) )
 	die ( 'No direct script access allowed' );
 
 function crypto_script_enqueue(){
-	wp_enqueue_style('bootstrap', get_template_directory_uri() . 'assets/css/bootstrap.min.css', array(), '1.0', 'all');
-	wp_enqueue_script('bootstrap', get_template_directory_uri() . 'assets/js/bootstrap.min.js', array(), '1.0', 'true');
+	wp_enqueue_style('style', get_template_directory_uri().'/style.css', array(), '1.0', 'all');
+	wp_enqueue_style('bootstrap', get_template_directory_uri().'assets/css/bootstrap.min.css', array(), '1.0', 'all');
+	wp_enqueue_script('bootstrap', get_template_directory_uri().'/assets/js/bootstrap.min.js', array(), '1.0', 'true');
 	wp_enqueue_script('jquery');
-	wp_enqueue_script('velocity', get_template_directory_uri() . 'assets/js/jquery.velocity.min.js', array(), '1.0', 'true');
+	wp_enqueue_script('velocity', get_template_directory_uri().'/assets/js/jquery.velocity.min.js', array(), '1.0', 'true');
+	wp_enqueue_script('particles', get_template_directory_uri().'/assets/js/particles.min.js', array(), '1.0', 'true');
+	wp_enqueue_script('inviewport', get_template_directory_uri().'/assets/js/jquery.inviewport.min.js', array(), '1.0', 'true');
+	wp_enqueue_script('common', get_template_directory_uri().'/assets/js/common.js', array(), '1.0', 'true');
 }
 
 add_action('wp_enqueue_scripts', 'crypto_script_enqueue');
