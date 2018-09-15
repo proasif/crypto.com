@@ -20,8 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 <!--[if !IE]><!-->
 <html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
     <head>
+    	<link rel="stylesheet" href="./assets/css/fontawesome.css" >
         <meta charset="<?php bloginfo( 'charset' ); ?>"/>
         <link rel="profile" href="http://gmpg.org/xfn/11"/>
+        
         <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>"/>
     
         <?php wp_head(); ?>
@@ -51,4 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		
     <body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
 		  <?php do_action( 'poke_body_start' ); ?>
+         <i class="fab fa-facebook-messenger"></i><br>
+         <i class="fab fa-stack-overflow"></i><br>
+          
     

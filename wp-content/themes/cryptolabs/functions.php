@@ -4,6 +4,7 @@ if ( !defined( 'ABSPATH' ) )
 	die ( 'No direct script access allowed' );
 
 function crypto_script_enqueue(){
+	
 	wp_enqueue_style('style', get_template_directory_uri().'/style.css', array(), '1.0', 'all');
 	wp_enqueue_style('grid', get_template_directory_uri().'assets/css/grid.min.css', array(), '1.0', 'all');
 	wp_enqueue_style('bootstrap', get_template_directory_uri().'assets/css/bootstrap.min.css', array(), '1.0', 'all');
@@ -31,6 +32,7 @@ add_action('init', 'crypto_theme_setup');
 add_action('customize_register', 'ju_customize_register');
 add_action('wp_head', 'ju_head');
 add_action( 'customize_register', 'm1_customize_register' );
+
 
 
 // Functions From AintViral
