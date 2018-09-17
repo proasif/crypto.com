@@ -15,8 +15,10 @@
  */
 
 get_header(); ?>
+<i class="fab fa-facebook-messenger"></i><br>
+<div class="icon-btc" data-icon="a">
 
-<i class="fab fa-facebook-square"></i>
+</div>
 <div class="wrap">
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">

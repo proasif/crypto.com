@@ -12,7 +12,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No direct script access allowed' );
 }
-?><!DOCTYPE html>
+?>
 <!--[if IE 8]>
 <html class="no-js lt-ie10 lt-ie9" id="ie8" <?php language_attributes(); ?>><![endif]-->
 <!--[if IE 9]>
@@ -20,7 +20,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 <!--[if !IE]><!-->
 <html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
     <head>
-    	<link rel="stylesheet" href="./assets/css/fontawesome.css" >
         <meta charset="<?php bloginfo( 'charset' ); ?>"/>
         <link rel="profile" href="http://gmpg.org/xfn/11"/>
         
@@ -53,7 +52,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		
     <body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
 		  <?php do_action( 'poke_body_start' ); ?>
-         <i class="fab fa-facebook-messenger"></i><br>
-         <i class="fab fa-stack-overflow"></i><br>
+          
           
     
