@@ -4,18 +4,24 @@ if ( !defined( 'ABSPATH' ) )
 	die ( 'No direct script access allowed' );
 
 function crypto_script_enqueue(){
-	wp_enqueue_script('jquery', get_template_directory_uri().'/assets/js/jquery-2.2.2.min.js');
-	wp_enqueue_script('particles', get_template_directory_uri().'/assets/js/particles.min.js');
-	wp_enqueue_script('velocity', get_template_directory_uri().'/assets/js/jquery.velocity.min.js');
-	wp_enqueue_script('index', get_template_directory_uri().'/assets/js/index.js');
-	wp_enqueue_script('life', get_template_directory_uri().'/assets/js/life.js');
+	//wp_enqueue_script('particles', get_template_directory_uri().'/assets/js/particles.min.js');
+	
+	
 	wp_enqueue_style('style', get_template_directory_uri().'/style.css');
-	wp_enqueue_style('fa-style', get_template_directory_uri().'/css/all.min.css' );
-	wp_enqueue_style('grid', get_template_directory_uri().'/assets/css/grid.min.css');
+	
+	//wp_enqueue_style('fa-style', get_template_directory_uri().'/css/all.min.css' );
+	//wp_enqueue_style('grid', get_template_directory_uri().'/assets/css/grid.min.css');
+	
 	wp_enqueue_style('bootstrapcss', get_template_directory_uri().'/assets/css/bootstrap.min.css');
-	wp_enqueue_script('bootstrapjs', get_template_directory_uri().'/assets/js/bootstrap.min.js', array(), '', 'true');
-	wp_enqueue_script('slideshow', get_template_directory_uri().'/assets/js/jquery.slideshow.min.js', array(), '', 'true');
-	wp_enqueue_script('common', get_template_directory_uri().'/assets/js/common.js', array(), '', 'true');
+	//wp_enqueue_script('bootstrapjs', get_template_directory_uri().'/assets/js/bootstrap.min.js', array(), '', 'true');
+	
+	//wp_enqueue_script('slideshow', get_template_directory_uri().'/assets/js/jquery.slideshow.min.js', array(), '', 'true');
+	//wp_enqueue_script('common', get_template_directory_uri().'/assets/js/common.js', array(), '', 'true');
+	
+	
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('velocity', get_template_directory_uri().'/assets/js/jquery.velocity.min.js', array('jquery'));
+	wp_enqueue_script('poke', get_template_directory_uri().'/assets/js/poke.js', array('jquery', 'velocity'));
 }
 
 add_action('wp_enqueue_scripts', 'crypto_script_enqueue');
