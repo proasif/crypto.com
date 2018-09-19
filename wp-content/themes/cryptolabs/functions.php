@@ -9,10 +9,11 @@ function crypto_script_enqueue(){
 	
 	wp_enqueue_style('style', get_template_directory_uri().'/style.css');
 	
-	//wp_enqueue_style('fa-style', get_template_directory_uri().'/css/all.min.css' );
+	
+	wp_enqueue_style('fa-style', get_template_directory_uri().'/css/all.min.css' );
 	//wp_enqueue_style('grid', get_template_directory_uri().'/assets/css/grid.min.css');
 	
-	wp_enqueue_style('bootstrapcss', get_template_directory_uri().'/assets/css/bootstrap.min.css');
+	//wp_enqueue_style('bootstrapcss', get_template_directory_uri().'/assets/css/bootstrap.min.css');
 	//wp_enqueue_script('bootstrapjs', get_template_directory_uri().'/assets/js/bootstrap.min.js', array(), '', 'true');
 	
 	//wp_enqueue_script('slideshow', get_template_directory_uri().'/assets/js/jquery.slideshow.min.js', array(), '', 'true');

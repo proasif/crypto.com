@@ -22,36 +22,29 @@ if ( ! defined( 'ABSPATH' ) ) {
     <head>
         <meta charset="<?php bloginfo( 'charset' ); ?>"/>
         <link rel="profile" href="http://gmpg.org/xfn/11"/>
-        
         <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>"/>
-    
         <?php wp_head(); ?>
-    
+        
         <?php if ( get_theme_mod( 'm1_logo' ) ) : ?>
-    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" id="site-logo" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
- 
-        <img src="<?php echo get_theme_mod( 'm1_logo' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
- 
-    </a>
- 
-    <?php else : ?>
+    		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" id="site-logo" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+ 			<img src="<?php echo get_theme_mod( 'm1_logo' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+ 		</a>
+ 		<?php else : ?>
                
-    <hgroup>
-        <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-        <p class="site-description"><?php bloginfo( 'description' ); ?></p>
-    </hgroup>
+        <hgroup>
+            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+            <p class="site-description"><?php bloginfo( 'description' ); ?></p>
+        </hgroup>
                
-<?php endif; ?>
+		<?php endif; ?>
         
         <?php 
 			$menu = clean_custom_menu( "primary", true, "p1-main-nav", true, "", "", "");
 			echo $menu;
-		?>
-        
+		?>  
     </head>
 		
-    <body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
-		  <?php do_action( 'poke_body_start' ); ?>
+   
           
           
     

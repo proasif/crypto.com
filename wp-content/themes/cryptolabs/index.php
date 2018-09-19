@@ -15,15 +15,11 @@
  */
 
 get_header(); ?>
-<i class="fab fa-facebook-messenger"></i><br>
-<div class="icon-btc" data-icon="a">
 
-</div>
-<div class="wrap">
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-        
-
+ <body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
+		<?php do_action( 'poke_body_start' ); ?>
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main" role="main">
 			<?php
 			while ( have_posts() ) : the_post();
 
@@ -39,6 +35,6 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-</div><!-- .wrap -->
 
+ </body>
 <?php get_footer();

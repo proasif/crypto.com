@@ -13,15 +13,10 @@ Tags: black, white
 /* -------------------------
 Customizing Footer
 -------------------------- */
+ul{list-style:none;
+}
 body footer,
-body footer{background-color:#FFF;padding:7.5rem 0 24.25rem;text-align:center;z-index:2}
-@media (min-width:721px){body footer{margin:7.5rem 0 0;padding:0 0 24.25rem}
-}
-@media (max-width:720px){body footer{margin:3.75rem 0 0;padding:0 1rem 20.25rem}
-}
-@media (max-width:450px){body footer ul li a svg{width:2rem;height:2rem}
-}
-
+body footer{background-color:#FFF;padding:7.5rem 0 10rem;text-align:center;z-index:2}
 body footer footer-background{bottom:6.25rem;left:0;height:18rem;position:absolute;width:100%;z-index:1;transform:translate3d(0, 0, 0)}
 body footer footer-background figure{bottom:0;left:0;height:15rem;margin:0;position:absolute;width:100%}
 body footer footer-background .foreground{background-repeat:repeat-x!important;background:url(../cryptolabs/assets/img/footer/foreground.png) repeat-x;background-size:225em 15em;position:absolute;top:1rem;right:0;bottom:0;left:0}
@@ -58,25 +53,3 @@ to{transform:translateY(5px)}
 }
 body footer footer-background .stag.offRight{left:110%;-webkit-transition:all 1.25s ease;-moz-transition:all 1.25s ease;-ms-transition:all 1.25s ease;-o-transition:all 1.25s ease;transition:all 1.25s ease}
 body footer footer-background .stag.offLeft{left:-10%}
-
-footer ol {
-	display: table;
-	list-style-type: none;
-	margin: 2.25rem auto 0 auto;
-	padding: 0;
-}
-
-footer ol li {
-	display: block;
-	float: left;
-}
-
-footer ol li + li { margin-left: 1rem; }
-
-footer ol a { color: #888; text-decoration: none; }
-footer ol a:hover { color: #FF7779; text-decoration: underline; }
-
-@media (max-width:420px){
-	footer ol li { float: none; display: table; width: 100%; text-align: center; }
-	footer ol li + li { margin-left: 0; margin-top: 0.5rem; }
-}
