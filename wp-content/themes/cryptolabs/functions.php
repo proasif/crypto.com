@@ -408,8 +408,7 @@ add_action( 'init', 'register_custom_menus' );
 
 // 5. INTERPRETING MENU
 function p1_custom_menu( $theme_location, $includenav, $navclasses, $includeul, $ulclasses, $liclasses, $anchorclasses) {
-	// theme_location is menu identity in appearance
-    if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($locations[$theme_location]) ) {
+	if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($locations[$theme_location]) ) {
         $menu = get_term( $locations[$theme_location], 'nav_menu' );
         $menu_items = wp_get_nav_menu_items($menu->term_id);
  	
@@ -431,11 +430,11 @@ function p1_custom_menu( $theme_location, $includenav, $navclasses, $includeul, 
 		
         $menu_list = '';
 		if ($includenav) {
-			$menu_list = '<nav class="navigation ' . $navclasses . '">' . "\n";	
+			$menu_list = '<nav class="av_nav ' . $navclasses . '">' . "\n";	
 		}
 		
 		if ($includeul) {
-       		$menu_list .= '<ul class="list ' . $ulclasses . '">' . "\n";
+       		$menu_list .= '<ul class="main-nav ' . $ulclasses . '">' . "\n";
 		}
  
         $count = 0;
@@ -458,7 +457,7 @@ function p1_custom_menu( $theme_location, $includenav, $navclasses, $includeul, 
 			if ($anchorclasses == "socialfooter") {
 				$title = "";	
 				
-				if(!(strpos($link,'3magicshots.com') !== false || strpos($link,"/") === '0'))  {
+				if(!(strpos($link,'aintviral.com') !== false || strpos($link,"/") === '0'))  {
 					$target = "target='_blank'";
 				}
 				
@@ -491,15 +490,14 @@ function p1_custom_menu( $theme_location, $includenav, $navclasses, $includeul, 
                 }
  
             }
-			
-			
-            if ( $menu_items[ $count + 1 ]->menu_item_parent != $parent_id ) { //check
+ 
+            if ( count($menu_item) >= ($count + 1) && $menu_items[ $count + 1 ]->menu_item_parent != $parent_id ) { 
                 $menu_list .= '</li>' ."\n";      
                 $submenu = false;
-				
             }
-				
- 			
+ 
+            $count++;
+        }
          
 		if ($includeul) {
 	        $menu_list .= '</ul>' ."\n";
@@ -507,14 +505,10 @@ function p1_custom_menu( $theme_location, $includenav, $navclasses, $includeul, 
 		
 		if ($includenav) {
 	        $menu_list .= '</nav>' ."\n";
-		}	
-			$count++;
-			}
-    } 
-	
-	else 
+		}
+    } else {
         $menu_list = '<!-- no menu defined in location "'.$theme_location.'" -->';
-    
+    }
     echo $menu_list;
 }
 // --- 5 ---

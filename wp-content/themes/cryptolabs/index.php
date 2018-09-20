@@ -1,38 +1,25 @@
 <?php
 /**
- * Template Name: Home Page
+ * The Template for displaying archive pages.
  *
- * The template for home page
+ * @license For the full license information, please view the Licensing folder
+ * that was distributed with this source code.
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- * @since 1.0
- * @version 1.0
+ * @package Bimber_Theme 4.10
  */
 
-get_header(); ?>
+// Prevent direct script access.
+if ( ! defined( 'ABSPATH' ) ) {
+	die( 'No direct script access allowed' );
+}
 
- <body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
-		<?php do_action( 'poke_body_start' ); ?>
-        <div id="primary" class="content-area">
-            <main id="main" class="site-main" role="main">
-			<?php
-			while ( have_posts() ) : the_post();
+get_header();
+?>
 
-				get_template_part( 'template-parts/page/content', 'page' );
+ 	<div id="primary" class="p1-primary-max">
+		<div id="content" role="main">
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
-
-			endwhile; // End of the loop.
-			?>
-
-		</main><!-- #main -->
+		</div><!-- #content -->
 	</div><!-- #primary -->
+
 <?php get_footer();
