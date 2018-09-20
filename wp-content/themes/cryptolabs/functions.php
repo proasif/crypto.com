@@ -407,7 +407,7 @@ add_action( 'init', 'register_custom_menus' );
 // --- 4 ---
 
 // 5. INTERPRETING MENU
-function clean_custom_menu( $theme_location, $includenav, $navclasses, $includeul, $ulclasses, $liclasses, $anchorclasses) {
+function p1_custom_menu( $theme_location, $includenav, $navclasses, $includeul, $ulclasses, $liclasses, $anchorclasses) {
 	// theme_location is menu identity in appearance
     if ( ($theme_location) && ($locations = get_nav_menu_locations()) && isset($locations[$theme_location]) ) {
         $menu = get_term( $locations[$theme_location], 'nav_menu' );
@@ -492,9 +492,7 @@ function clean_custom_menu( $theme_location, $includenav, $navclasses, $includeu
  
             }
 			
-			if ($count+1 > $menu_items){
-				break;
- 
+			
             if ( $menu_items[ $count + 1 ]->menu_item_parent != $parent_id ) { //check
                 $menu_list .= '</li>' ."\n";      
                 $submenu = false;
@@ -513,7 +511,7 @@ function clean_custom_menu( $theme_location, $includenav, $navclasses, $includeu
 			$count++;
 			}
     } 
-	}
+	
 	else 
         $menu_list = '<!-- no menu defined in location "'.$theme_location.'" -->';
     

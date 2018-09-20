@@ -39,10 +39,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php endif; ?>
         
         <?php 
-			$menu = clean_custom_menu( "primary", true, "p1-main-nav", true, "", "", "");
+			$menu = p1_custom_menu( "primary", true, "p1-main-nav", true, "", "", "");
 			echo $menu;
 		?>  
     </head>
+
 		
    
           

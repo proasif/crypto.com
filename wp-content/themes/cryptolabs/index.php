@@ -35,6 +35,4 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-
- </body>
 <?php get_footer();

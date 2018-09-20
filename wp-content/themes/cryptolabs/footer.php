@@ -1,4 +1,4 @@
-    <footer class="visible">
+ <footer>
         <footer-background>
             <figure class="clouds velocity-animating" ></figure>
             <figure class="background velocity-animating" ></figure>
@@ -8,15 +8,14 @@
             <img src="https://bluestag.co.uk/templates/blue_stag/img/footer/quote-1.png" class="quote" id="q-1">
             <img src="https://bluestag.co.uk/templates/blue_stag/img/footer/quote-2.png" class="quote visible" id="q-2"></div>
         </footer-background>
-    </footer>
-    <footer class="smu">
+        
             <?php 
-					$menu = clean_custom_menu( "social-icons", true, "foot-icons", true, "", "", "");
+					$menu = p1_custom_menu( "social-icons", true, "foot-icons", true, "", "", "");
 					echo $menu;
 				 
-					$menu1 = clean_custom_menu( "footer-menu", true, "foot-main-nav", true, "", "", "");
+					$menu1 = p1_custom_menu( "footer-menu", true, "foot-main-nav", true, "", "", "");
 					echo $menu1; 
 			?>
-       </footer>
-	
+    </footer>
+  </body>
 </html>
