@@ -29,7 +29,7 @@ Tags: black, white
 		Customizing Footer
    ------------------------- */
 body footer,
-body footer{background-color:#FFF;padding:7.5rem 0 10rem;text-align:center;z-index:2}
+body footer{background-color:#FFF;padding:15rem 0 10rem;text-align:center;z-index:2}
 body footer footer-background{bottom:6.25rem;left:0;height:18rem;position:absolute;width:100%;z-index:1;transform:translate3d(0, 0, 0)}
 body footer footer-background figure{bottom:0;left:0;height:15rem;margin:0;position:absolute;width:100%}
 body footer footer-background .foreground{background-repeat:repeat-x!important;background:url(../cryptolabs/img/footer/foreground.png) repeat-x;background-size:225em 15em;position:absolute;top:1rem;right:0;bottom:0;left:0}

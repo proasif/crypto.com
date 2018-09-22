@@ -22,7 +22,7 @@ function crypto_script_enqueue(){
 	
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('velocity', get_template_directory_uri().'/js/jquery.velocity.min.js', array('jquery'));
-	wp_enqueue_script('poke', get_template_directory_uri().'/js/poke.js', array('jquery', 'velocity'));
+	wp_enqueue_script('poke', get_template_directory_uri().'/poke.js', array('jquery', 'velocity'));
 }
 
 add_action('wp_enqueue_scripts', 'crypto_script_enqueue');
