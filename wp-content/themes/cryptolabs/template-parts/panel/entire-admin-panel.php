@@ -13,11 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No direct script access allowed' );
 }
 ?>
-hiii
-<?php get_template_part( 'template-parts/panel/url-image-upload.php' ); ?>
+
+<?php get_template_part( 'template-parts/panel/url-image-upload' ); ?>
 
 
-hiii
+
 
           
     

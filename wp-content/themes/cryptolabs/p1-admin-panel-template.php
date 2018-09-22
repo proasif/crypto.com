@@ -17,7 +17,7 @@ get_header();
  ?>
  <div id="primary" class="p1-primary-max">
 		<div id="content" role="main">
-			<?php get_template_part( 'template-parts/panel/entire-admin-panel.php' ); ?>
+			<?php get_template_part( 'template-parts/panel/entire-admin-panel' ); ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
  <?php get_footer(); 
