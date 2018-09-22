@@ -13,10 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No direct script access allowed' );
 }
 ?>
-    <form class="p1-imgupload" action="#">
+    <form class="p1-imgupload">
     <div class="idata">
     	<input type="text" id="iupload" name="iupload">
-        <input type="submit" id="sub" value="Submit" onClick="iupload()">
+		<button type="submit" form="form1" value="Submit" onclick="iupload()">Submit</button>
     </div>
     </form>
     

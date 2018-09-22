@@ -67,7 +67,7 @@ $(document).ready(function () {
 		$bg.css({"background-position-x": bgX + "px"});
 		$fg.css({"background-position-x": fgX + "px"});
 		
-		console.log("Time: " + cloudsX);
+		//console.log("Time: " + cloudsX);
 	}
 	
 	function getBgXPosition($object) {
@@ -111,7 +111,8 @@ function animateBackground() {
 // 2. BIND TO DO IMAGE UPLOAD CALLS
 
 // 2.0 Detect request for image upload
-		
-    function iupload(){
-		alert("Hello");
-	}
+function iupload(){
+	console.log("Hello");
+	
+    return false;
+}
