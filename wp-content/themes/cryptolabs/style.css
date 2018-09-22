@@ -9,14 +9,25 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, white
 */
+/* -------------------------	
+		Customize General 
+   ------------------------- */
+
+/* ------------------------- 
+		Customize Header 
+   ------------------------- */
 
 /* -------------------------
-Customizing Footer
--------------------------- */
-ul{list-style:none;
-}
-li{list-style:none;
-}
+		Customize Body 
+   ------------------------- */
+
+/* -------------------------
+		Customize Section 
+   ------------------------- */
+
+/* -------------------------
+		Customizing Footer
+   ------------------------- */
 body footer,
 body footer{background-color:#FFF;padding:7.5rem 0 10rem;text-align:center;z-index:2}
 body footer footer-background{bottom:6.25rem;left:0;height:18rem;position:absolute;width:100%;z-index:1;transform:translate3d(0, 0, 0)}
@@ -55,3 +66,6 @@ to{transform:translateY(5px)}
 }
 body footer footer-background .stag.offRight{left:110%;-webkit-transition:all 1.25s ease;-moz-transition:all 1.25s ease;-ms-transition:all 1.25s ease;-o-transition:all 1.25s ease;transition:all 1.25s ease}
 body footer footer-background .stag.offLeft{left:-10%}
+
+ul{list-style:none;
+}

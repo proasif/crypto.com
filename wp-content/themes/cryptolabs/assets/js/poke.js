@@ -107,3 +107,12 @@ function animateBackground() {
         loop: !0
     })
 }
+
+// 2. BIND TO DO IMAGE UPLOAD CALLS
+
+// 2.0 Detect request for image upload
+		
+		function iupload(){
+		var x = document.getElementById("iupload").value;
+		alert("Hello" . x);
+		}
