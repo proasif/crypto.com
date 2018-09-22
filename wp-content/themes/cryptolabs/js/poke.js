@@ -112,7 +112,6 @@ function animateBackground() {
 
 // 2.0 Detect request for image upload
 		
-		function iupload(){
-		var x = document.getElementById("iupload").value;
-		alert("Hello" . x);
-		}
+    function iupload(){
+		alert("Hello");
+	}

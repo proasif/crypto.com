@@ -15,6 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <?php get_template_part( 'template-parts/footer/site-footer' ); ?>
+<?php get_template_part( 'template-parts/panel/p1-url-image-upload-template' ); ?>
+
 
 <?php wp_footer(); ?>
 </body>
