@@ -86,38 +86,80 @@ $(document).ready(function () {
 });
 
 
-function animateBackground() {
-    $("footer .clouds").velocity({
-        backgroundPositionX: "10000%"
-    }, {
-        duration: 6e6,
-        easing: "linear",
-        loop: !0
-    }), $("footer .background").velocity({
-        backgroundPositionX: "10000%"
-    }, {
-        duration: 45e5,
-        easing: "linear",
-        loop: !0
-    }), $("footer .foreground").velocity({
-        backgroundPositionX: "10000%"
-    }, {
-        duration: 3e6,
-        easing: "linear",
-        loop: !0
-    })
-}
-
 // 2. BIND TO DO IMAGE UPLOAD CALLS
 
 // 2.0 Detect request for image upload
+
 $(document).ready(function() {
- $("#bt1").click(function(){
-        console.log("Hello");
-    }); 
+ $(".p1-imgupload #bt1").click(function(){
+	 	var $url = document.getElementById("iupload").value;
+        handleAdminImageUpload($url);
+	});
 });
-/*function iupload(){
-	console.log("Hello");
+
+function handleAdminImageUpload($url){
+	console.log("here" + $url);
+};
+
+// 3. FULL SCREEN NOTICE FOR USERS
+function prepareFSNotice(title, subtitle, hasloading, hasclose, noclose) { 		
+	//check for double
+	if ($('.av_notice_fs').length) {
+		closeAndRemoveFSNotice();
+	}
 	
-    return false;
-}*/
+	var content = "<div class='av_notice_fs'><div class='av_notice_fs_inner'>";
+	
+	if (hasclose) {
+		content +=	"<a href='#' class='av_notice_close'><i class='av-snax-icon snax-close'></i>Close</a>";
+	}
+	else if (!noclose) {
+		content = "<div class='av_notice_fs'><a href='#' class='av_notice_close av_notice_close_full'></a><div class='av_notice_fs_inner'>";
+	}
+	
+	if (title) {
+		content +=	"<span class='av_notice_text'>\
+						" + title;
+	}
+	
+	if (hasloading) {
+		content +=	'<div class="av_notice_loading"><i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i></div></span>';
+	}
+	else if (title) {
+		content += "</span>";	
+	}
+	
+	if (subtitle) {
+		content += 	"<span class='av_notice_subtext'>\
+					" + subtitle + "\
+					</span>";
+	}
+	content += "</div></div>";
+	
+	$('body').append(content);
+	
+	//attach handler
+	$('.av_notice_close').on('click.notice', function(e) {
+		e.preventDefault();
+		e.stopImmediatePropagation();
+		
+		closeAndRemoveFSNotice();
+	});
+}
+
+function closeAndRemoveFSNotice() {
+	$('.av_notice_fs').remove();
+	$('.av_notice_close').off('click.notice');
+}
+// --- 3 ---
+
+// 4. FOR CHECK OF LOGIN REQUIRED AND CREATING THE LOGIN
+$('.loginrequired').on('click', function(e) {
+		e.preventDefault();
+		e.stopImmediatePropagation();
+		
+		if ($('.snax-login-required').length) {
+			snax.loginRequired();	
+		}
+});
+// --- 4 ---
