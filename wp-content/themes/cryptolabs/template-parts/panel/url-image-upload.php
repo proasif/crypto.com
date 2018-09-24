@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <form class="p1-imgupload">
     <div class="idata">
     	<input type="text" id="iupload" name="iupload">
-		<button type="submit" form="form1" value="Submit" onclick="iupload()">Submit</button>
+		<button type="submit" id="bt1" form="form1" value="Submit">Submit</button>
     </div>
     </form>
     

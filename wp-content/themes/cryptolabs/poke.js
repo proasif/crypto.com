@@ -111,8 +111,13 @@ function animateBackground() {
 // 2. BIND TO DO IMAGE UPLOAD CALLS
 
 // 2.0 Detect request for image upload
-function iupload(){
+$(document).ready(function() {
+ $("#bt1").click(function(){
+        console.log("Hello");
+    }); 
+});
+/*function iupload(){
 	console.log("Hello");
 	
     return false;
-}
+}*/
