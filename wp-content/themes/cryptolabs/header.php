@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div id="page">
 	
-		<?php get_template_part( 'template-parts/header/site-header' ); ?>
+		<?php get_template_part( 'template-parts/site-header' ); ?>
 
 		
    

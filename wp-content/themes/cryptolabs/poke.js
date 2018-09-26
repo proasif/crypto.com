@@ -23,7 +23,7 @@ $(document).ready(function () {
 	
 	function p1TimeBasedCalls() {
 		// To animate Footer
-		animateFooter();
+		//animateFooter();
 		
 		// Change to new value
 		var datetime = new Date();
@@ -51,12 +51,24 @@ $(document).ready(function () {
 		// change the background accordingly
 		var $clouds = $("footer .clouds").first();
 		var cloudsX = parseFloat(getBgXPosition($clouds) - parseFloat(movement * parallax0));
+		var cloudsW = parseInt($clouds.width() * -1); 
+		if (cloudsX < cloudsW) {
+			cloudsX = (parseFloat(cloudsW) + parseFloat(cloudsX)) * -1;
+		}
 		
 		var $bg = $("footer .background").first();
 		var bgX = parseFloat(getBgXPosition($bg) - parseFloat(movement * parallax1));
+		var bgW = parseInt($clouds.width() * -1); 
+		if (bgX < bgW) {
+			bgX = (parseFloat(bgW) + parseFloat(bgX)) * -1;
+		}
 		
 		var $fg = $("footer .foreground").first();
-		var fgX = parseFloat(getBgXPosition($fg) - parseFloat(movement * parallax2));
+		var fgX = parseFloat(getBgXPosition($fg)) - parseFloat(movement * parallax2);
+		var fgW = parseInt($fg.width() * -1);
+		if (fgX < fgW) {
+			fgX = (parseFloat(fgW) + parseFloat(fgX)) * -1;
+		}
 		
 		// reset to position 0 first initially 
 		if (!p1TimeBasedInitialCallDone) {
@@ -71,7 +83,6 @@ $(document).ready(function () {
 	}
 	
 	function getBgXPosition($object) {
-		
 		var backgroundPosition = $object.css('background-position');
 		
 		// backgroundPosition = "0% 0%" for example

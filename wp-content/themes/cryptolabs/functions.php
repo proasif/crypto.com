@@ -3,30 +3,6 @@
 if ( !defined( 'ABSPATH' ) )
 	die ( 'No direct script access allowed' );
 
-function crypto_script_enqueue(){
-	//wp_enqueue_script('particles', get_template_directory_uri().'/js/particles.min.js');
-	
-	
-	wp_enqueue_style('style', get_template_directory_uri().'/style.css');
-	
-	
-	wp_enqueue_style('fa-style', get_template_directory_uri().'/css/all.min.css' );
-	//wp_enqueue_style('grid', get_template_directory_uri().'/css/grid.min.css');
-	
-	//wp_enqueue_style('bootstrapcss', get_template_directory_uri().'/css/bootstrap.min.css');
-	//wp_enqueue_script('bootstrapjs', get_template_directory_uri().'/js/bootstrap.min.js', array(), '', 'true');
-	
-	//wp_enqueue_script('slideshow', get_template_directory_uri().'/js/jquery.slideshow.min.js', array(), '', 'true');
-	//wp_enqueue_script('common', get_template_directory_uri().'/js/common.js', array(), '', 'true');
-	
-	
-	wp_enqueue_script('jquery');
-	wp_enqueue_script('velocity', get_template_directory_uri().'/js/jquery.velocity.min.js', array('jquery'));
-	wp_enqueue_script('poke', get_template_directory_uri().'/poke.js', array('jquery', 'velocity'));
-}
-
-add_action('wp_enqueue_scripts', 'crypto_script_enqueue');
-
 function crypto_theme_setup()
 {
 	add_theme_support('menus');
@@ -41,10 +17,6 @@ add_action('init', 'crypto_theme_setup');
 add_action('customize_register', 'ju_customize_register');
 add_action('wp_head', 'ju_head');
 add_action( 'customize_register', 'm1_customize_register' );
-
-
-
-// Functions From AintViral
 
 
 /**
@@ -338,43 +310,21 @@ add_filter('show_admin_bar', '__return_false');
 // --- 2 ---
 
 // 3. ENQUEUE THE SCRIPTS
-function enqueue_scripts() {	
-	//$version = init_get_theme_version();
-
-	//enqueue roboto condensed as well
-	wp_enqueue_style( 'AVCustomFont', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500,600', false );
+function enqueue_scripts() {
+	// enqueue google fonts
+	wp_enqueue_style( 'p1-google-fonts', '//fonts.googleapis.com/css?family=Lato|Quicksand', false );
 	
-	if (current_user_can('administrator')) {	
-		$parent_style = 'init-dynamic-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
- 
-		wp_enqueue_style( 'init-style',
-			get_stylesheet_directory_uri() . '/style.css',
-			array( 'init-dynamic-style', 'g1-main', 'init-snax-extra', 'init-buddypress' ),
-			filemtime( get_stylesheet_directory() . '/style.css' )
-		);
-	}
-	else {
-		$parent_style = 'init-dynamic-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
- 
-		wp_enqueue_style( 'init-style',
-			get_stylesheet_directory_uri() . '/style.css',
-			array( 'init-dynamic-style', 'g1-main', 'init-snax-extra', 'init-buddypress' )
-		);
-	}
-	//use only for testing
-	//wp_enqueue_style( 'AVTempStyle', get_stylesheet_directory_uri() . '/style2.css', array(), '4.5.4' );
-		
-	//for easing effects of jQuery UI
-	wp_enqueue_script('jquery-effects-core');
+	// reset and vanilla before loading styles
+	wp_enqueue_style('reset', get_template_directory_uri() . '/css/reset.min.css');
+	wp_enqueue_style('vanilla', get_template_directory_uri() . '/css/vanilla.min.css', array('reset'));
+	wp_enqueue_style('main-style', get_template_directory_uri() . '/style.css', array('vanilla'));
 	
-	 //to enable init version and get front.js, only useful for auto load which we are not doing
-	//wp_enqueue_script( 'init-front', get_stylesheet_directory_uri() . '/js/front.js', array( 'jquery', 'enquire' ), $version, true );
-
-	//to enable custom rgb style of libgif/libgif.js
-	wp_enqueue_script( 'libgif', get_stylesheet_directory_uri() . '/js/libgif/libgif.js', array( 'jquery', 'enquire' ), /*$version,*/ true ); // $version is undefined
+	// Load JQuery + Velocity + Poke
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('velocity', get_template_directory_uri().'/js/jquery.velocity.min.js', array('jquery'));
+	wp_enqueue_script('poke', get_template_directory_uri().'/poke.js', array('jquery', 'velocity'));
 }
-add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
-// --- 3 ---
+add_action( 'wp_enqueue_scripts', 'enqueue_scripts', 1 );
 
 // 3.1 DEFER THESE JS FILES
 function defer_js( $tag, $handle, $src ) {
@@ -390,7 +340,7 @@ function defer_js( $tag, $handle, $src ) {
 }
 
 add_filter( 'script_loader_tag', 'defer_js', 10, 3 );
-// --- 3.1 ---
+// --- 3 ---
 
 // 4. GS NAV ADD NEW MENU
 function register_custom_menus() {
@@ -430,11 +380,11 @@ function p1_custom_menu( $theme_location, $includenav, $navclasses, $includeul, 
 		
         $menu_list = '';
 		if ($includenav) {
-			$menu_list = '<nav class="av_nav ' . $navclasses . '">' . "\n";	
+			$menu_list = '<nav class="p1-nav ' . $navclasses . '">' . "\n";	
 		}
 		
 		if ($includeul) {
-       		$menu_list .= '<ul class="main-nav ' . $ulclasses . '">' . "\n";
+       		$menu_list .= '<ul class="p1-ul ' . $ulclasses . '">' . "\n";
 		}
  
         $count = 0;

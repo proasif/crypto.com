@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<?php get_template_part( 'template-parts/footer/site-footer' ); ?>
+<?php get_template_part( 'template-parts/site-footer' ); ?>
 
 <?php wp_footer(); ?>
 </body>
