@@ -36,6 +36,11 @@ body, html {
     /* IE6-9 fallback on horizontal gradient */
 }
 
+#page {
+    margin-top: 65px;
+    padding: 20px 0px;
+}
+
 /* ------------------------- 
 		Customize Header 
 ---------------------------- */

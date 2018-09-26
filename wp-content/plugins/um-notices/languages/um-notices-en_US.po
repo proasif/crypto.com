@@ -1,0 +1,331 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Ultimate Member - Notices\n"
+"POT-Creation-Date: 2018-01-28 15:10+0800\n"
+"PO-Revision-Date: 2018-01-28 15:10+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: um-notices.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: includes/admin/templates/cta.php:10
+msgid "Enable Call to Action button"
+msgstr ""
+
+#: includes/admin/templates/cta.php:16
+msgid "Button Text"
+msgstr ""
+
+#: includes/admin/templates/cta.php:23
+msgid "Button URL"
+msgstr ""
+
+#: includes/admin/templates/cta.php:31
+msgid "Button Background Color"
+msgstr ""
+
+#: includes/admin/templates/cta.php:38
+msgid "Button Text Color"
+msgstr ""
+
+#: includes/admin/templates/notice.php:3
+#: includes/core/class-notices-admin.php:58
+msgid "Shortcode"
+msgstr ""
+
+#: includes/admin/templates/notice.php:19
+#: includes/core/class-notices-admin.php:59
+msgid "Reach"
+msgstr ""
+
+#: includes/admin/templates/notice.php:24
+msgid "Flush"
+msgstr ""
+
+#: includes/admin/templates/notice.php:25
+msgid ""
+"Flushing a notice makes it appear as a new notice to users even those who "
+"have seen it already."
+msgstr ""
+
+#: includes/admin/templates/notice.php:26
+msgid "Flush this notice"
+msgstr ""
+
+#: includes/admin/templates/options.php:14
+msgid "Allow this notice to appear in footer"
+msgstr ""
+
+#: includes/admin/templates/options.php:15
+msgid "If turned off, this notice can only appear using shortcode method"
+msgstr ""
+
+#: includes/admin/templates/options.php:21
+msgid "Display this notice to logged out users"
+msgstr ""
+
+#: includes/admin/templates/options.php:27
+msgid "Display this notice to logged in users"
+msgstr ""
+
+#: includes/admin/templates/options.php:33
+msgid "Which user roles can see this notice"
+msgstr ""
+
+#: includes/admin/templates/options.php:34
+msgid "Leave blank to show to all user roles"
+msgstr ""
+
+#: includes/admin/templates/options.php:44
+msgid "Show If the user did not"
+msgstr ""
+
+#: includes/admin/templates/options.php:49
+msgid "Upload profile photo"
+msgstr ""
+
+#: includes/admin/templates/options.php:50
+msgid "Upload cover photo"
+msgstr ""
+
+#: includes/admin/templates/options.php:51
+msgid "Other"
+msgstr ""
+
+#: includes/admin/templates/options.php:58
+msgid "Show If the user did not fill that metakey"
+msgstr ""
+
+#: includes/admin/templates/options.php:65
+msgid "Show only to certain user(s)"
+msgstr ""
+
+#: includes/admin/templates/options.php:66
+msgid "A comma seperated list of user IDs or usernames to show this notice for"
+msgstr ""
+
+#: includes/admin/templates/options.php:75
+msgid "Show to shop users"
+msgstr ""
+
+#: includes/admin/templates/options.php:79
+msgid "All"
+msgstr ""
+
+#: includes/admin/templates/options.php:80
+msgid "Users who did not purchase anything"
+msgstr ""
+
+#: includes/admin/templates/options.php:81
+msgid "Users who made purchases"
+msgstr ""
+
+#: includes/admin/templates/options.php:88
+msgid "Spent at least (on purchases)"
+msgstr ""
+
+#: includes/admin/templates/rules.php:9
+msgid "Show on specific URLs only"
+msgstr ""
+
+#: includes/admin/templates/rules.php:15
+msgid "Enter allowed URLs one per line"
+msgstr ""
+
+#: includes/admin/templates/rules.php:22
+msgid "Show on Homepage"
+msgstr ""
+
+#: includes/admin/templates/rules.php:29
+msgid "Show on Posts"
+msgstr ""
+
+#: includes/admin/templates/rules.php:36
+msgid "Show on Pages"
+msgstr ""
+
+#: includes/admin/templates/rules.php:43
+msgid "Show on Custom Post Types"
+msgstr ""
+
+#: includes/admin/templates/styling.php:3
+msgid "If you do not provide custom styling here, defaults will be used."
+msgstr ""
+
+#: includes/admin/templates/styling.php:13
+msgid "Notice Minimum Width"
+msgstr ""
+
+#: includes/admin/templates/styling.php:14
+msgid "Set a minimum width for notice wrapper"
+msgstr ""
+
+#: includes/admin/templates/styling.php:20
+msgid "Notice background color"
+msgstr ""
+
+#: includes/admin/templates/styling.php:26
+msgid "Notice text color"
+msgstr ""
+
+#: includes/admin/templates/styling.php:33
+msgid "Notice font size"
+msgstr ""
+
+#: includes/admin/templates/styling.php:39
+msgid "Notice Icon"
+msgstr ""
+
+#: includes/admin/templates/styling.php:40
+msgid "You can optionally add an icon to this notice"
+msgstr ""
+
+#: includes/admin/templates/styling.php:46
+msgid "Notice Icon color"
+msgstr ""
+
+#: includes/admin/templates/styling.php:52
+msgid "Notice Close Icon color"
+msgstr ""
+
+#: includes/admin/templates/styling.php:59
+msgid "Border"
+msgstr ""
+
+#: includes/admin/templates/styling.php:60
+msgid "Enter border css here"
+msgstr ""
+
+#: includes/admin/templates/styling.php:67
+msgid "Border Radius"
+msgstr ""
+
+#: includes/admin/templates/styling.php:68
+msgid "Enter border radius here. e.g. 3px"
+msgstr ""
+
+#: includes/admin/templates/styling.php:75
+msgid "Box Shadow"
+msgstr ""
+
+#: includes/admin/templates/styling.php:76
+msgid "Change this If you want to apply a box-shadow to the notice box"
+msgstr ""
+
+#: includes/core/class-notices-admin.php:40
+msgid "Enter notice title here"
+msgstr ""
+
+#: includes/core/class-notices-admin.php:49
+#: includes/core/filters/um-notices-settings.php:23
+#: includes/core/um-notices-init.php:157
+msgid "Notices"
+msgstr ""
+
+#: includes/core/class-notices-admin.php:59
+msgid ""
+"How many people reached this notice? Count users who seen and closed the "
+"notice only"
+msgstr ""
+
+#: includes/core/class-notices-metabox.php:33
+msgid "Options"
+msgstr ""
+
+#: includes/core/class-notices-metabox.php:34
+msgid "Footer Rules"
+msgstr ""
+
+#: includes/core/class-notices-metabox.php:35
+msgid "Styling"
+msgstr ""
+
+#: includes/core/class-notices-metabox.php:36
+msgid "CTA (Call to Action)"
+msgstr ""
+
+#: includes/core/class-notices-metabox.php:38
+msgid "This Notice"
+msgstr ""
+
+#: includes/core/filters/um-notices-settings.php:14
+msgid "Notices License Key"
+msgstr ""
+
+#: includes/core/filters/um-notices-settings.php:28
+msgid "Notice Position in Footer"
+msgstr ""
+
+#: includes/core/filters/um-notices-settings.php:30
+msgid "Show to Right"
+msgstr ""
+
+#: includes/core/filters/um-notices-settings.php:31
+msgid "Show to Left"
+msgstr ""
+
+#: includes/core/filters/um-notices-settings.php:33
+msgid "Select..."
+msgstr ""
+
+#: includes/core/um-notices-init.php:158
+msgid "Notice"
+msgstr ""
+
+#: includes/core/um-notices-init.php:159 includes/core/um-notices-init.php:160
+msgid "Add New Notice"
+msgstr ""
+
+#: includes/core/um-notices-init.php:161
+msgid "Edit Notice"
+msgstr ""
+
+#: includes/core/um-notices-init.php:162
+msgid "You did not create any notices yet"
+msgstr ""
+
+#: includes/core/um-notices-init.php:163
+msgid "Nothing found in Trash"
+msgstr ""
+
+#: includes/core/um-notices-init.php:164
+msgid "Search Notices"
+msgstr ""
+
+#: um-notices.php:35 um-notices.php:51
+#, php-format
+msgid ""
+"The <strong>%s</strong> extension requires the Ultimate Member plugin to be "
+"activated to work properly. You can download it <a href=\"https://wordpress."
+"org/plugins/ultimate-member\">here</a>"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Ultimate Member - Notices"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://ultimatemember.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Show notices to your users when they visit your WordPress site."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Ultimate Member"
+msgstr ""
