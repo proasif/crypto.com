@@ -22,7 +22,7 @@ define('WP_USE_THEMES', false);
 require($_SERVER['DOCUMENT_ROOT'] . '/wp-load.php');
 
 //check security
-$result = check_ajax_referer( 'snax-add-image-item-nonce', $security, false );
+$result = check_ajax_referer( 'admin-image-upload', $security, false );
 if ($op == 'upload_and_process') {
 	$result = wp_verify_nonce( $security, 'upload_and_process' );
 }
@@ -95,8 +95,8 @@ function uploadRemoteImage($image_url, $process){
 			'post_status' => 'inherit'
          );
 		require_once( ABSPATH . 'wp-admin/includes/image.php' );
-
-    	$image_id = wp_insert_attachment($attachment, $path, $postid);
+		
+    	$image_id = wp_insert_attachment($attachment, $path, 0);
 		
 		// Generate the metadata for the attachment, and update the database record
 		$attach_data = wp_generate_attachment_metadata( $image_id, $path );

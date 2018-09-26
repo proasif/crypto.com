@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <form class="p1-imgupload">
     <div class="idata">
     	<input type="text" id="iupload" name="iupload">
+        <input type="hidden" id="admin-image-upload-nonce" value="<?php echo wp_create_nonce("admin-image-upload"); ?>">
 		<button type="submit" id="bt1" form="form1" value="Submit">Submit</button>
     </div>
     </form>

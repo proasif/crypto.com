@@ -89,7 +89,7 @@ $(document).ready(function () {
 // 2. BIND TO DO IMAGE UPLOAD CALLS
 
 // 2.0 Detect request for image upload
-
+/*
 $(document).ready(function() {
  $(".p1-imgupload #bt1").click(function(){
 	 	var $url = document.getElementById("iupload").value;
@@ -100,6 +100,94 @@ $(document).ready(function() {
 function handleAdminImageUpload($url){
 	console.log("here" + $url);
 };
+*/
+
+// 2.1 UPLOAD IMAGE VIA URL
+$(document).ready(function() {
+ $(".p1-imgupload #bt1").click(function(){
+        uploadImageViaURL($(this).closest('form').first());
+	});
+});
+ 
+function uploadImageViaURL($object) {
+	'use strict';
+	
+	event.preventDefault();
+	event.stopImmediatePropagation();
+	
+	//check if this is gif before upload
+	var url = $object.find('#iupload').val();
+	var nonce = $object.find('#admin-image-upload-nonce').val();
+	
+	var regex = new RegExp("(.*?)\.(jpg|jpeg|png|gif)$");
+	if((regex.test(url))) {
+		//this is a gif, fallback to theme processing
+		//$object.closest('.snax-media-upload-form').find('.snax-load-image-from-url').val($object.val()).trigger('paste');
+		//$object.val(''); 
+		//console.log("Invalid File");
+		//return;
+	}
+	/*else {
+		$object.closest('.snax-load-image-from-url').val('');
+	} */
+	
+	//check and initiate the upload
+	var formData = {
+		'security'			: nonce,
+		'url'             	: url,
+		'postid'				: 0,
+		'op'					: 'upload_and_process',
+	};
+	
+	$.ajax({
+		type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+		url         : '/coreapi/uploadviaurl.php', // the url where we want to POST
+		data        : formData, // our data object
+		dataType    : 'text', // what type of data do we expect back from the server
+		encode		: true,
+		beforeSend	: function(msg){
+			prepareFSNotice("Downloading...", false, true, false, true);
+		},
+		success		: function(data) {
+						console.log(data);
+			var metaresult = data.substring(0, 5);
+			if (metaresult == "Succ:") {
+				//remove the notice
+				closeAndRemoveFSNotice();
+				
+				//do the magic
+				var content = JSON.parse(data.substring(5));
+				
+				var url = content.url;
+				var name = content.name;
+				console.log(url);
+				
+			}
+			else {
+				if ($('.AVAdmin').length) {
+					console.log("[Uploading Image Via URL] Error After Ajax: \n" + data);
+				}
+				
+				var msg = data.substring(5);
+				
+				//display error
+				prepareFSNotice(msg, false, false, true, false);
+			}
+		},
+		error		: function(data) {
+			if ($('.AVAdmin').length) {
+				//loading returned no results
+				console.log("[Uploading Image Via URL] Error In Ajax: \n" + data); 
+			}
+			
+			//display error
+			prepareFSNotice("Whoops....", "Something went wrong... please retry, contact us if the problem persists", false, true, false);
+		},
+	});
+}
+
+
+// --- 2 ---
 
 // 3. FULL SCREEN NOTICE FOR USERS
 function prepareFSNotice(title, subtitle, hasloading, hasclose, noclose) { 		
@@ -152,14 +240,3 @@ function closeAndRemoveFSNotice() {
 	$('.av_notice_close').off('click.notice');
 }
 // --- 3 ---
-
-// 4. FOR CHECK OF LOGIN REQUIRED AND CREATING THE LOGIN
-$('.loginrequired').on('click', function(e) {
-		e.preventDefault();
-		e.stopImmediatePropagation();
-		
-		if ($('.snax-login-required').length) {
-			snax.loginRequired();	
-		}
-});
-// --- 4 ---
