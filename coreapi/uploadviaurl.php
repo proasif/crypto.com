@@ -114,12 +114,17 @@ function uploadRemoteImage($image_url, $process){
 	return "Succ:" . json_encode($content);
 }
 
+function attachment_url_to_postid($url){
+
+	
+	}
+
 function deleteUploadedImage($url){
 	//get path from the entire url
 	$arr = explode('wp-content/', $url);
-	if (count($arr) == 2) {
-		$main = $arr[1];
-		$path = $_SERVER['DOCUMENT_ROOT'] . '/wp-content/' . $main;
+	if (count($arr) >= 1) {
+		$main = $arr[0];
+		$path = $_SERVER['DOCUMENT_ROOT'] . '/wp-content/uploads/2018/09/' . $main;
 		unlink($path);
 		return "Succ:File Deleted - " . $path;
 	}

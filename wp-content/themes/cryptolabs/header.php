@@ -33,8 +33,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="p1-body-inner">
 
 	<div id="page">
-	
 		<?php get_template_part( 'template-parts/site-header' ); ?>
+       
 
 		
    

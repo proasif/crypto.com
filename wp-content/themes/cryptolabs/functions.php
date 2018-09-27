@@ -318,6 +318,7 @@ function enqueue_scripts() {
 	wp_enqueue_style('reset', get_template_directory_uri() . '/css/reset.min.css');
 	wp_enqueue_style('vanilla', get_template_directory_uri() . '/css/vanilla.min.css', array('reset'));
 	wp_enqueue_style('main-style', get_template_directory_uri() . '/style.css', array('vanilla'));
+	wp_enqueue_style('font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css');
 	
 	// Load JQuery + Velocity + Poke
 	wp_enqueue_script('jquery');
