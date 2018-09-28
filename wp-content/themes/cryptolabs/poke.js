@@ -115,37 +115,9 @@ function handleAdminImageUpload($url){
 
 // 2.1 UPLOAD IMAGE VIA URL
 
- $(".p1-imgupload #bt1").click(function(){
+$(".p1-imgupload #bt1").click(function(){
         uploadImageViaURL($(this).closest('form').first());
 	});
- $("body").on('click', ".p1-imgupload #bt2", function(){
-        deleteImageViaURL($(this).closest('form').first());
-	});
-	
-	function deleteImageViaURL($object) {
-		event.preventDefault();
-		event.stopImmediatePropagation();
-		var url = $object.find('#iupload').val();
-		var nonce = $object.find('#admin-image-upload-nonce').val();
-		var formData = {
-		'security'			: nonce,
-		'url'             	: url,
-		'op'					: 'delete',
-	};
-			
-			$.ajax({
-				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-				url         : '/coreapi/uploadviaurl.php', // the url where we want to POST
-				data        : formData, // our data object
-				dataType    : 'text', // what type of data do we expect back from the server
-				encode		: true,
-				success		: function(data) {
-						console.log(data);
-						}
-			})
-	
-		}
-
  
 function uploadImageViaURL($object) {
 	'use strict';
@@ -197,10 +169,11 @@ function uploadImageViaURL($object) {
 				var content = JSON.parse(data.substring(5));
 				
 				var url = content.url;
+				var dataurl = window.location.protocol + "//" + window.location.host + url;
 				var name = content.name;
 				console.log(url);
-				$('.p1-imgupload').append('<img src="'+url+'" width="120px"/>'); 
-				$('.p1-imgupload').append('<br><button type="submit" id="bt2" form="form1">Delete</button>');
+				$('.p1-imgupload').append('<img id="img" src="'+url+'" width="120px"/>'); 
+				$('.p1-imgupload').append('<br><button type="submit" id="bt2" form="form1" data-url="'+dataurl+'">Delete</button>');
 			}
 			else {
 				if ($('.AVAdmin').length) {
@@ -224,6 +197,43 @@ function uploadImageViaURL($object) {
 		},
 	});
 }
+
+// 2.2 DELETE IMAGE VIA URL
+
+$("body").on('click', ".p1-imgupload #bt2", function(){
+        deleteImageViaURL($(this).closest('form').first());
+		$("#img").remove();
+		$("#bt2").remove();
+		$(".p1-imgupload").trigger("reset");
+		alert("Pic Deleted :)");
+		});
+	
+	function deleteImageViaURL($object) {
+		event.preventDefault();
+		event.stopImmediatePropagation();
+		var url = $object.find('#bt2').attr('data-url');
+		var nonce = $object.find('#admin-image-upload-nonce').val();
+		var formData = {
+		'security'			: nonce,
+		'url'             	: url,
+		'op'					: 'delete',
+	};
+			
+			$.ajax({
+				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+				url         : '/coreapi/uploadviaurl.php', // the url where we want to POST
+				data        : formData, // our data object
+				dataType    : 'text', // what type of data do we expect back from the server
+				encode		: true,
+				beforeSend	: function(msg){
+								prepareFSNotice("Deleting...", false, true, false, true); },
+				success		: function(data) {
+								console.log(data);
+								closeAndRemoveFSNotice();
+				}
+			})
+			
+		}
 
 
 // --- 2 ---

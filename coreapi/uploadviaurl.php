@@ -112,23 +112,23 @@ function uploadRemoteImage($image_url, $process){
 		"image_id" => $image_id
 	);
 	return "Succ:" . json_encode($content);
-}
-
-function attachment_url_to_postid($url){
-
-	
-	}
+}  
 
 function deleteUploadedImage($url){
+	$result = attachment_url_to_postid($url); 
+	
+	//return "|" . $result . "|";
 	//get path from the entire url
-	$arr = explode('wp-content/', $url);
+	/*$arr = explode('wp-content/', $result);
 	if (count($arr) >= 1) {
 		$main = $arr[0];
 		$path = $_SERVER['DOCUMENT_ROOT'] . '/wp-content/uploads/2018/09/' . $main;
-		unlink($path);
-		return "Succ:File Deleted - " . $path;
+		unlink($path);*/
+		if ($result != ""){
+			wp_delete_attachment($result, true);
+		return "Succ:File Deleted - " . $result;
 	}
 	else {
-		return "Errr:File not found for delete - " . $path;	
+		return "Errr:File not found for delete - " . $result;	
 	}
 }
