@@ -115,7 +115,7 @@ function handleAdminImageUpload($url){
 
 // 2.1 UPLOAD IMAGE VIA URL
 
-$(".p1-imgupload #bt1").click(function(){
+$(".p1-imgupload #p1-image-upload-button").click(function(){
         uploadImageViaURL($(this).closest('form').first());
 	});
  
@@ -172,8 +172,8 @@ function uploadImageViaURL($object) {
 				var dataurl = window.location.protocol + "//" + window.location.host + url;
 				var name = content.name;
 				console.log(url);
-				$('.p1-imgupload').append('<img id="img" src="'+url+'" width="120px"/>'); 
-				$('.p1-imgupload').append('<br><button type="submit" id="bt2" form="form1" data-url="'+dataurl+'">Delete</button>');
+				$('.p1-imgupload').append('<img id="p1-image-display" src="'+url+'" width="120px"/>'); 
+				$('.p1-imgupload').append('<br><button type="submit" id="p1-image-delete-button" form="form1" data-url="'+dataurl+'">Delete</button>');
 			}
 			else {
 				if ($('.AVAdmin').length) {
@@ -200,10 +200,10 @@ function uploadImageViaURL($object) {
 
 // 2.2 DELETE IMAGE VIA URL
 
-$("body").on('click', ".p1-imgupload #bt2", function(){
+$("body").on('click', ".p1-imgupload #p1-image-delete-button", function(){
         deleteImageViaURL($(this).closest('form').first());
-		$("#img").remove();
-		$("#bt2").remove();
+		$("#p1-image-display").remove();
+		$("#p1-image-delete-button").remove();
 		$(".p1-imgupload").trigger("reset");
 		alert("Pic Deleted :)");
 		});
@@ -211,7 +211,7 @@ $("body").on('click', ".p1-imgupload #bt2", function(){
 	function deleteImageViaURL($object) {
 		event.preventDefault();
 		event.stopImmediatePropagation();
-		var url = $object.find('#bt2').attr('data-url');
+		var url = $object.find('#p1-image-delete-button').attr('data-url');
 		var nonce = $object.find('#admin-image-upload-nonce').val();
 		var formData = {
 		'security'			: nonce,
