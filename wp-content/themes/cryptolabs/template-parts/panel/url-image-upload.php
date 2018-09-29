@@ -22,6 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
     </form>
     
-    <div class="p1-section">
+    <section class="p1-section">
     
-    </div>
+    </section>

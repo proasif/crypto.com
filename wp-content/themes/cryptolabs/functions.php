@@ -4,15 +4,14 @@ if ( !defined( 'ABSPATH' ) )
 	die ( 'No direct script access allowed' );
 
 function crypto_theme_setup()
-{
-	add_theme_support('menus');
-	add_theme_support('custom-logo');
-	register_nav_menu('primary','Header Menu'); 
-}
+	{
+		add_theme_support('menus');
+		add_theme_support('custom-logo');
+		register_nav_menu('primary','Header Menu'); 
+	}
 
 include ( get_template_directory() . '/inc/customizer.php' );
-include ( get_template_directory() . '/inc/front/head.php' );
-
+include ( get_template_directory() . '/inc/front/head.php' );  
 add_action('init', 'crypto_theme_setup');
 add_action('customize_register', 'ju_customize_register');
 add_action('wp_head', 'ju_head');

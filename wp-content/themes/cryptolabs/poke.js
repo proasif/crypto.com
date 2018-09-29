@@ -172,8 +172,7 @@ function uploadImageViaURL($object) {
 				var dataurl = window.location.protocol + "//" + window.location.host + url;
 				var name = content.name;
 				console.log(url);
-				$('.p1-imgupload').append('<img id="p1-image-display" src="'+url+'" width="120px"/>'); 
-				$('.p1-imgupload').append('<br><button type="submit" id="p1-image-delete-button" form="form1" data-url="'+dataurl+'">Delete</button>');
+				generateDomObjects();
 			}
 			else {
 				if ($('.AVAdmin').length) {
@@ -197,6 +196,12 @@ function uploadImageViaURL($object) {
 		},
 	});
 }
+
+function generateDomObjects (){
+	$('.p1-imgupload').append('<img id="p1-image-display" src="'+url+'" width="120px"/>'); 
+	$('.p1-imgupload').append('<br><button type="submit" id="p1-image-delete-button" form="form1" data-url="'+dataurl+'">Delete</button>');
+}
+
 
 // 2.2 DELETE IMAGE VIA URL
 

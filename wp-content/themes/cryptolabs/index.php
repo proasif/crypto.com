@@ -15,7 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 ?>
-
+	<div class="icon-btc" data-icon="a">
+    Bitcoin
+    </div>
  	<div id="primary" class="p1-primary-max">
 		<div id="content" role="main">
 			
