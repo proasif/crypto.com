@@ -171,8 +171,8 @@ function uploadImageViaURL($object) {
 				var url = content.url;
 				var dataurl = window.location.protocol + "//" + window.location.host + url;
 				var name = content.name;
-				console.log(url);
-				generateDomObjects();
+				//console.log(url);
+				generateDomObjects(url, dataurl);
 			}
 			else {
 				if ($('.AVAdmin').length) {
@@ -197,7 +197,7 @@ function uploadImageViaURL($object) {
 	});
 }
 
-function generateDomObjects (){
+function generateDomObjects (url, dataurl){
 	$('.p1-imgupload').append('<img id="p1-image-display" src="'+url+'" width="120px"/>'); 
 	$('.p1-imgupload').append('<br><button type="submit" id="p1-image-delete-button" form="form1" data-url="'+dataurl+'">Delete</button>');
 }
