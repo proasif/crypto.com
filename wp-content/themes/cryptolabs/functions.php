@@ -6,6 +6,7 @@ if ( !defined( 'ABSPATH' ) )
 function crypto_theme_setup()
 	{
 		add_theme_support('menus');
+		add_theme_support( 'post-thumbnails' );
 		add_theme_support('custom-logo');
 		register_nav_menu('primary','Header Menu'); 
 	}
