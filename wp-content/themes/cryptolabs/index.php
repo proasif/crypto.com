@@ -18,10 +18,12 @@ get_header();
 	<div class="icon-btc" data-icon="a">
     Bitcoin
     </div>
- 	<div id="primary" class="p1-primary-max">
-		<div id="content" role="main">
-			
-		</div><!-- #content -->
-	</div><!-- #primary -->
+ 	
+		
+        
+		<?php get_template_part( 'template-parts/panel/featured-post-grid-display' ); ?>	
+        
+		
+	
 
 <?php get_footer();

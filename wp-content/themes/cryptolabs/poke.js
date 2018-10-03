@@ -102,8 +102,8 @@ $(document).ready(function () {
 // 2.0 Detect request for image upload
 /*
 $(document).ready(function() {
- $(".p1-imgupload #bt1").click(function(){
-	 	var $url = document.getElementById("iupload").value;
+ $(".p1-image-upload #bt1").click(function(){
+	 	var $url = document.getElementById("p1-image-upload-text").value;
         handleAdminImageUpload($url);
 	});
 });
@@ -115,7 +115,7 @@ function handleAdminImageUpload($url){
 
 // 2.1 UPLOAD IMAGE VIA URL
 
-$(".p1-imgupload #p1-image-upload-button").click(function(){
+$(".p1-section .p1-image-upload #p1-image-upload-button").click(function(){
         uploadImageViaURL($(this).closest('form').first());
 	});
  
@@ -126,7 +126,7 @@ function uploadImageViaURL($object) {
 	event.stopImmediatePropagation();
 	
 	//check if this is gif before upload
-	var url = $object.find('#iupload').val();
+	var url = $object.find('#p1-image-upload-text').val();
 	var nonce = $object.find('#admin-image-upload-nonce').val();
 	
 	var regex = new RegExp("(.*?)\.(jpg|jpeg|png|gif)$");
@@ -198,18 +198,18 @@ function uploadImageViaURL($object) {
 }
 
 function generateDomObjects (url, dataurl){
-	$('.p1-imgupload').append('<img id="p1-image-display" src="'+url+'" width="120px"/>'); 
-	$('.p1-imgupload').append('<br><button type="submit" id="p1-image-delete-button" form="form1" data-url="'+dataurl+'">Delete</button>');
+	$('.p1-section .p1-image-upload').append('<img id="p1-image-display" src="'+url+'" width="120px"/>'); 
+	$('.p1-section .p1-image-upload').append('<br><button type="submit" id="p1-image-delete-button" form="form1" data-url="'+dataurl+'">Delete</button>');
 }
 
 
 // 2.2 DELETE IMAGE VIA URL
 
-$("body").on('click', ".p1-imgupload #p1-image-delete-button", function(){
+$("body").on('click', ".p1-section .p1-image-upload #p1-image-delete-button", function(){
         deleteImageViaURL($(this).closest('form').first());
 		$("#p1-image-display").remove();
 		$("#p1-image-delete-button").remove();
-		$(".p1-imgupload").trigger("reset");
+		$(".p1-image-upload").trigger("reset");
 		alert("Pic Deleted :)");
 		});
 	
