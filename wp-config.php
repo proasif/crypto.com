@@ -78,9 +78,17 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', true);
+define('WP_DEBUG', false);
 
+// Tell WordPress to log everything to /wp-content/debug.log
+define('WP_DEBUG_LOG', false);
+
+// Turn off the display of error messages on your site
+define('WP_DEBUG_DISPLAY', false);
 /* That's all, stop editing! Happy blogging. */
+
+/* Harden Wordpress */
+define('DISALLOW_FILE_EDIT', true);
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )

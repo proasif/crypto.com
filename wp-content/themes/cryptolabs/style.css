@@ -12,14 +12,12 @@ Tags: black, white
 /* -------------------------	
 		Customize General 
 ---------------------------- */
-.p1-primary-max {
-    max-width: 1170px;
-    margin: 0 auto;
-    padding: 0px 20px;
-}
-
 body, html {
     box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
 }
 
 .p1-gradient {
@@ -38,7 +36,31 @@ body, html {
 
 #page {
     margin-top: 65px;
-    padding: 20px 0px;
+}
+
+.p1-primary-max {
+    max-width: 1170px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0px 20px;
+}
+
+.p1-body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.p1-section {
+  padding: 20px;
+}
+
+.p1-style-curves {
+  border-radius: 8px;
+  border: 1px solid #e4e6e9;
+}
+
+.p1-style-shadow {
+  box-shadow: 0 10px 20px 0px rgba(167,174,187,.33);
 }
 
 /* ------------------------- 
@@ -155,11 +177,12 @@ header li a:hover, header li a:focus {
 /* -------------------------
 		Customizing Footer
 ---------------------------- */
-body footer, body footer {
+body footer {
     background-color: #FFF;
     padding: 15rem 0 10rem;
     text-align: center;
-    z-index: 2
+    z-index: 2;
+    position: relative;
 }
 
 body footer footer-background {
@@ -385,14 +408,21 @@ body footer footer-background .stag.offLeft {
     left: -10%
 }
 
-ul {
-    list-style: none;
+/* ------------------------- 
+		Customize Homepage 
+---------------------------- */
+.p1-featured {
+  display: flex;
+  flex-direction: row;
+  border-radius: 8px;x
 }
 
+.p1-featured .items {
+  max-width: 300px;
+}
+
+
 /*--------------------xxxxx------------------------*/
-
-@charset "UTF-8";
-
 @font-face {
   font-family: "untitled-font-1";
   src:url("fonts/untitled-font-1.eot");

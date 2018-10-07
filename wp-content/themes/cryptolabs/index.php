@@ -13,17 +13,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No direct script access allowed' );
 }
 
+// Get Header
 get_header();
 ?>
-	<div class="icon-btc" data-icon="a">
-    Bitcoin
-    </div>
- 	
-		
-        
-		<?php get_template_part( 'template-parts/panel/featured-post-grid-display' ); ?>	
-        
-		
-	
 
-<?php get_footer();
+ <div id="primary" class="p1-primary-max p1-body">
+	<div id="content" role="main">
+		<?php get_template_part( 'logic-parts/p1-homepage-featured' ); ?>
+	</div><!-- #content -->
+</div><!-- #primary -->
+ 
+<?php 
+
+// Get Footer
+get_footer(); 
