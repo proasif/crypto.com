@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<h2>AirdropMonkey.com | Free Crypto Airdrops & More...</h2>
 		<?php
 		$custom_posts = new WP_Query( array(
+			'post_type'=> 'featured',
 			'order_by' => 'title',
 			'order'    => 'desc',
 			'posts_per_page' => 3,
