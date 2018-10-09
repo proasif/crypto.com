@@ -464,7 +464,20 @@ function p1_custom_menu( $theme_location, $includenav, $navclasses, $includeul, 
 }
 // --- 5 ---
 
+// Custom Dropdown
+
 $prefix = 'dbt_';
+
+$currencies = new WP_Query( array(
+			'post_type'=> 'currencies',
+			'order_by' => 'title',
+			'order'    => 'desc',
+		));
+		
+		
+		foreach($currencies as $value){
+    print_r($value). "<br>";
+}
 
 $meta_box = array(
     'id' => 'my-meta-box',
@@ -473,14 +486,17 @@ $meta_box = array(
     'context' => 'normal',
     'priority' => 'high',
     'fields' => array(
-		array(
+     
+        array(
             'name' => 'Select box',
             'id' => $prefix . 'select',
             'type' => 'select',
-            'options' => array('Option 1', 'Option 2', 'Option 3')
-        	)
-		)
-	);
+            'options' => array(  
+			)
+        ),
+        
+    )
+);
 	
 	add_action('admin_menu', 'mytheme_add_box');
 
@@ -490,6 +506,8 @@ function mytheme_add_box() {
 
     add_meta_box($meta_box['id'], $meta_box['title'], 'mytheme_show_box', $meta_box['page'], $meta_box['context'], $meta_box['priority']);
 }
+
+
 
 function mytheme_show_box() {
     global $meta_box, $post;
