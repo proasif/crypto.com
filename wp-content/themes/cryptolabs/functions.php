@@ -472,12 +472,20 @@ $currencies = new WP_Query( array(
 	'order_by' => 'title',
 	'order'    => 'desc',
 ));
+
+
 $signs = array();
 $names = array();
 if ( $currencies->have_posts() ) :
 	while ( $currencies->have_posts() ) : $currencies->the_post(); 
-		$signs[] = get_the_title();
-		$names[] = "testing" . get_the_title();
+	
+		$sign = get_the_title();
+		$signs[] = $sign;
+		
+		$pod = pods('currency', get_the_ID());
+		$name = $pod->field('coin_name') . "(" . $sign . ")";
+		$names[] = $name;
+		
 	endwhile;
 endif;
 	
@@ -495,6 +503,7 @@ $meta_box = array(
             'id' => 'currency-select',
             'type' => 'select',
             'options' => $signs,
+			
         ),
         
     )
