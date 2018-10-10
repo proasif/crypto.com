@@ -465,23 +465,26 @@ function p1_custom_menu( $theme_location, $includenav, $navclasses, $includeul, 
 // --- 5 ---
 
 // Custom Dropdown
-
-$prefix = 'dbt_';
-
+     
 $currencies = new WP_Query( array(
-			'post_type'=> 'currencies',
-			'order_by' => 'title',
-			'order'    => 'desc',
-		));
-		
-		
-		foreach($currencies as $value){
-    print_r($value). "<br>";
-}
-
+	'post_type' => 'currency',
+	'posts_per_page' => -1,
+	'order_by' => 'title',
+	'order'    => 'desc',
+));
+$signs = array();
+$names = array();
+if ( $currencies->have_posts() ) :
+	while ( $currencies->have_posts() ) : $currencies->the_post(); 
+		$signs[] = get_the_title();
+		$names[] = "testing" . get_the_title();
+	endwhile;
+endif;
+	
+	
 $meta_box = array(
-    'id' => 'my-meta-box',
-    'title' => 'Custom meta box',
+    'id' => 'airdrop-meta-box',
+    'title' => 'Airdrop meta box',
     'page' => 'post',
     'context' => 'normal',
     'priority' => 'high',
@@ -489,10 +492,9 @@ $meta_box = array(
      
         array(
             'name' => 'Select box',
-            'id' => $prefix . 'select',
+            'id' => 'currency-select',
             'type' => 'select',
-            'options' => array(  
-			)
+            'options' => $signs,
         ),
         
     )

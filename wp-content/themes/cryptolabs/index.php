@@ -18,20 +18,30 @@ get_header();
 ?>
 
  <div id="primary" class="p1-primary-max p1-body">
-	<div id="content" role="main">
+	<div id="content" role="main"> 
     <?php
-    $currencies = new WP_Query( array(
-			'post_type'=> 'currencies',
-			'order_by' => 'title',
-			'order'    => 'desc',
-		));
+	
+$signs = array();
+$names = array();
+if ( $currencies->have_posts() ) :
+	while ( $currencies->have_posts() ) : $currencies->the_post(); 
+	
+		$sign = get_the_title();
+		$signs[] = $sign;
 		
+		$pod = pods('currency', get_the_ID());
+		$name = $pod->field('coin_name') . "(" . $sign . ")";
+		$names[] = $name;
 		
-		foreach($currencies as $value){
-    print_r($value). "<br>";
-}		
-		?>
-		<?php get_template_part( 'logic-parts/p1-homepage-featured' ); ?>
+	endwhile;
+endif;
+	
+print_r($names);
+	
+	// Get and Display Featured Custom Posts
+	get_template_part( 'logic-parts/p1-homepage-featured' );
+	
+	?>
 	</div><!-- #content -->
 </div><!-- #primary -->
  
