@@ -483,7 +483,7 @@ if ( $currencies->have_posts() ) :
 		$signs[] = $sign;
 		
 		$pod = pods('currency', get_the_ID());
-		$name = $pod->field('coin_name') . "(" . $sign . ")";
+		$name = $pod->field('coin_name') . " " . "(" . $sign . ")";
 		$names[] = $name;
 		
 	endwhile;
@@ -502,7 +502,7 @@ $meta_box = array(
             'name' => 'Select box',
             'id' => 'currency-select',
             'type' => 'select',
-            'options' => $signs,
+            'options' => $names,
 			
         ),
         
