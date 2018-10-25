@@ -17,7 +17,7 @@ add_action('init', 'crypto_theme_setup');
 add_action('customize_register', 'ju_customize_register');
 add_action('wp_head', 'ju_head');
 add_action( 'customize_register', 'm1_customize_register' );
-
+include ( get_template_directory() . '/inc/ajax.php' );
 
 /**
 * Child Theme Setup
