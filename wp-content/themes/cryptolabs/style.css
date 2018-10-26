@@ -421,6 +421,12 @@ body footer footer-background .stag.offLeft {
   max-width: 300px;
 }
 
+.star-rating {
+  line-height:32px;
+  font-size:1.25em;
+}
+
+.star-rating .fa-star{color: orange;}
 
 /*--------------------xxxxx------------------------*/
 @charset "UTF-8";

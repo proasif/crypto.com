@@ -294,5 +294,67 @@ function closeAndRemoveFSNotice() {
 	$('.av_notice_close').off('click.notice');
 }
 
+// ------------------ LOAD MORE ------------------ //
+
+$(document).on('click','.load_more', function(){
+	var that = $(this);
+	var page = $(this).data('page');
+	var newPage = page+1; 
+	var ajaxurl = that.data('url');
+	
+	$.ajax({
+		url : ajaxurl,
+		type : 'post',
+		data : {
+			page : page,
+			action : 'load_more'
+			
+		},
+		error : function( response ){
+			console.log(response);
+			},
+			
+		success : function( response ){
+			that.data('page', newPage);
+			$('.load_more_container').append( response );
+			
+			}	
+		});
+});
+
+// ------------------ RATING ------------------ //
+
+var $star_rating = $('.star-rating .fa');
+
+var SetRatingStar = function() {
+  return $star_rating.each(function() {
+    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+      return $(this).removeClass('fa-star-o').addClass('fa-star');
+    } else {
+      return $(this).removeClass('fa-star').addClass('fa-star-o');
+    }
+  });
+};
+
+$star_rating.on('click', function() {
+  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+  return SetRatingStar();
+});
+
+SetRatingStar();
+$(document).ready(function() {
+
+});
+
+
+
+
+// ------------------ RATING ------------------ //
+
 }); // Document.ready end
 // --- 3 ---
+
+
+
+
+

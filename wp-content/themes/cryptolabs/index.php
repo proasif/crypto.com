@@ -22,15 +22,19 @@ get_header();
     <?php
     get_template_part( 'logic-parts/p1-homepage-featured' );
 	?>
+    
+    
+    <div class="load_more_container">
     <?php
 	 get_template_part( 'logic-parts/p1-homepage-airdrops' );
 	?>
+    </div> 
 	</div><!-- #content -->
 </div><!-- #primary -->
 
-
-	<input type="button" data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>"class="load_more" value="Load More">
- 
+	<div class="load_more_button">
+	<a><input type="button" data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>"class="load_more" value="Load More"></a>
+ </div> 
 <?php 
 
 // Get Footer
