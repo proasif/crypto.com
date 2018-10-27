@@ -324,32 +324,51 @@ $(document).on('click','.load_more', function(){
 
 // ------------------ RATING ------------------ //
 
-var $star_rating = $('.star-rating .fa');
+	$("label").click(function(){
+	  $(this).parent().find("label").css({"background-color": "#78e2fb"});
+	  $(this).css({"background-color": "red"});
+	  $(this).nextAll().css({"background-color": "red"});
+	});
+	$(".star label").click(function(){
+		event.preventDefault();
+		event.stopImmediatePropagation();
+	  $(this).parent().find("label").css({"color": "#78e2fb"});
+	  $(this).css({"color": "red"});
+	  $(this).nextAll().css({"color": "red"});
+	  $(this).css({"background-color": "transparent"});
+	  $(this).nextAll().css({"background-color": "transparent"});
+	  
+	  $.ajax({
+				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+				url         : '/coreapi/ratings.php', // the url where we want to POST
+				data        : formData, // our data object
+				dataType    : 'text', // what type of data do we expect back from the server
+				encode		: true,
+				beforeSend	: function(msg){
+								prepareFSNotice("Deleting...", false, true, false, true); },
+				success		: function(data) {
+								console.log(data);
+								closeAndRemoveFSNotice();
+				}
+			})
+	  
+	});
+// ------------------ RATING ENDS ------------------ //
 
-var SetRatingStar = function() {
-  return $star_rating.each(function() {
-    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
-      return $(this).removeClass('fa-star-o').addClass('fa-star');
+// ===========       Scroll to Top      ============ //
+$(window).scroll(function() {
+    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+        $('#return-to-top').fadeIn(200);    // Fade in the arrow
     } else {
-      return $(this).removeClass('fa-star').addClass('fa-star-o');
+        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
     }
-  });
-};
-
-$star_rating.on('click', function() {
-  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
-  return SetRatingStar();
+});
+$('#return-to-top').click(function() {      // When arrow is clicked
+    $('body,html').animate({
+        scrollTop : 0                       // Scroll to top of body
+    }, 500);
 });
 
-SetRatingStar();
-$(document).ready(function() {
-
-});
-
-
-
-
-// ------------------ RATING ------------------ //
 
 }); // Document.ready end
 // --- 3 ---

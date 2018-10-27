@@ -414,19 +414,129 @@ body footer footer-background .stag.offLeft {
 .p1-featured {
   display: flex;
   flex-direction: row;
-  border-radius: 8px;x
+  border-radius: 8px;
 }
 
 .p1-featured .items {
   max-width: 300px;
 }
 
-.star-rating {
-  line-height:32px;
-  font-size:1.25em;
+/* ------------------------- 
+		STAR RATING 
+---------------------------- */
+
+.rating > input { display: none; } 
+
+.rating.star > label {
+    color: #78e2fb;
+    margin: 1px 20px 0px 0px;
+    background-color: #ffffff;
+    border-radius: 0;
+    height: 48px;
+    float: right;
+    width: 44px;
+}
+fieldset.rating.star > label:before { 
+    margin-top: 0;
+    padding: 0px;
+    font-size: 47px;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\2605";
+    position: relative;
+    top: -9px;
+}
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+.rating.star > label{
+  background-color: transparent !important;
 }
 
-.star-rating .fa-star{color: orange;}
+.rating.star:not(:checked) > label:hover, /* hover current star */
+.rating.star:not(:checked) > label:hover ~ label { 
+  color:red!important;
+  background-color: transparent !important;
+  cursor:pointer;
+} /* hover previous stars in list */
+
+.rating.star > input:checked + label:hover, /* hover current star when changing rating.star */
+.rating.star > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating.star > input:checked ~ label:hover ~ label { 
+  color:red!important;
+  cursor:pointer;
+  background-color: transparent !important;
+} 
+.star_rating{
+        width: 500px;
+    margin: 0 auto;
+    padding: 3px 30px 72px 35px;
+    margin-top: 2%;
+}
+
+.rating.star {
+    margin-left: 16%;
+}
+@media screen and (max-width: 500px){
+  .star_rating {
+    width: 100%;
+    padding: 3px 8px 72px 6px;
+  }
+  .rating.star {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    float: none;
+  }
+  .rating.star > label {
+    margin: 1px;
+    width: 19%;
+  }
+}
+
+/*--------------------RETURN TO TOP------------------------*/
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+#return-to-top:hover i {
+    color: #fff;
+    top: 5px;
+}
+
 
 /*--------------------xxxxx------------------------*/
 @charset "UTF-8";

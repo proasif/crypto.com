@@ -4,7 +4,13 @@ add_action( 'wp_ajax_nopriv_load_more', 'load_more' );
 add_action( 'wp_ajax_load_more', 'load_more' );
 
 
+?>
+<!-------------- p1-section p1-style-curves p1-style-shadow STARTS -------------->
+<div class="p1-section p1-style-curves p1-style-shadow">
 
+<!-------------- p1-airdrop STARTS -------------->
+	<div class="p1-airdrop">
+<?php
 function load_more() {
 	
 	
@@ -20,6 +26,8 @@ function load_more() {
 		
 		if ( $custom_posts->have_posts() ) :
 			while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
+            
+            <!-------------- p1-airdrop-item STARTS --------------> 
             <div class="p1-airdrop-item">
             <?php
 			$thumb_id = get_post_thumbnail_id();
@@ -27,22 +35,27 @@ function load_more() {
 			$thumb_url[] =  $thumb_url_array;
 			$sign = get_the_title();
 			$pod = pods('airdrop', get_the_ID());
-			$name = wp_get_attachment_image ($thumb_id) . " " . 
-				    $pod->field('airdrop_name') . " " . 
-					"(" . $sign . ")" . " " . 
-					$pod->field('airdrop_value') . " " . 
-					'<div class="star-rating">
-						<span class="fa fa-star-o" data-rating="1"></span>
-						<span class="fa fa-star-o" data-rating="2"></span>
-						<span class="fa fa-star-o" data-rating="3"></span>
-						<span class="fa fa-star-o" data-rating="4"></span>
-						<span class="fa fa-star-o" data-rating="5"></span>
-						<input type="hidden" name="whatever1" class="rating-value" value="2.56">
-      				</div>
-	  				</br></br>' ; 
+			$logo = wp_get_attachment_image ($thumb_id);
+				   $name = $pod->field('airdrop_name') ;
+				$sign =	"(" . get_the_title() . ")" ;
+				
+				if($pod->field('estimated_value') != ""){
+				$value = "Value: " . $pod->field('estimated_value') . " " ;
+				}
+				//<!-------------- SETTING STARS -------------->
+					$star = '<div class="star_rating">
+							<fieldset class="rating star">
+								<input type="radio" id="field6_star5" name="rating2" value="5" /><label class = "full" for="field6_star5"></label>
+								<input type="radio" id="field6_star4" name="rating2" value="4" /><label class = "full" for="field6_star4"></label>
+								<input type="radio" id="field6_star3" name="rating2" value="3" /><label class = "full" for="field6_star3"></label>
+								<input type="radio" id="field6_star2" name="rating2" value="2" /><label class = "full" for="field6_star2"></label>
+								<input type="radio" id="field6_star1" name="rating2" value="1" /><label class = "full" for="field6_star1"></label>
+							</fieldset>
+							</div>
+							<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">		
+	  						' ; 
 			
-			
-			?> <h1> <?php echo $name; ?> </h1> <?php
+			//<!-------------- GETTING REQUIRED LOGOS -------------->
 			
 			$requires = "";
 			if ($pod->field('telegram_required') == true){
@@ -77,17 +90,29 @@ function load_more() {
 				}
 			if ($pod->field('discord_required') == true){
 				$requires = $requires . " " . '<div class="icon-flickr"></div></br>';
-				}
-				echo ("Requires: ");
-				echo $requires;
-			?></div><?php
-			endwhile; ?>
+				} 
+				?>
+                
+                <!-------------- PRINTING THE DATA -------------->
+            		<div class="logo"><?php echo $logo; ?></div>
+                    
+                    <h1><?php echo $name . " " . $sign . " " . $value; ?></h1>
+              
+                    <div class="requires"><?php echo ("Requires: "); echo $requires; ?></div>
+                    
+                    <div class="star"><?php echo $star; ?></div>
+                
+               </div>
+               <!-------------- p1-airdrop-item ENDS--------------> 
+				<?php endwhile; ?>
             
             
 		<?php endif;
 ?>
 	</div>
+    <!-------------- p1-airdrop STARTS -------------->
 </div>
+<!-------------- p1-section p1-style-curves p1-style-shadow ENDS -------------->
 	<?php
 	wp_reset_postdata();
 	 die();
@@ -96,26 +121,20 @@ function load_more() {
 
 ?>
 <script>
-var $star_rating = $('.star-rating .fa');
+// ------------------ RATING ------------------ //
 
-var SetRatingStar = function() {
-  return $star_rating.each(function() {
-    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
-      return $(this).removeClass('fa-star-o').addClass('fa-star');
-    } else {
-      return $(this).removeClass('fa-star').addClass('fa-star-o');
-    }
-  });
-};
-
-$star_rating.on('click', function() {
-  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
-  return SetRatingStar();
-});
-
-SetRatingStar();
-$(document).ready(function() {
-
-});
+	$("label").click(function(){
+	  $(this).parent().find("label").css({"background-color": "#78e2fb"});
+	  $(this).css({"background-color": "red"});
+	  $(this).nextAll().css({"background-color": "red"});
+	});
+	$(".star label").click(function(){
+	  $(this).parent().find("label").css({"color": "#78e2fb"});
+	  $(this).css({"color": "red"});
+	  $(this).nextAll().css({"color": "red"});
+	  $(this).css({"background-color": "transparent"});
+	  $(this).nextAll().css({"background-color": "transparent"});
+	});
+// ------------------ RATING ENDS ------------------ //
 
 </script>
