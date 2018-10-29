@@ -58,8 +58,16 @@ if ( ! defined( 'ABSPATH' ) ) {
                                         <input type="radio" id="field6_star1" name="rating2" value="1" /><label class = "full" value="1" for="field6_star1"></label>
                                     </fieldset>
                                     <input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">
-		
-                                </div>		
+								
+                                </div>
+								
+								<div class="new-stars">
+								<div class="icon-star-o" value="1"></div>
+								<div class="icon-star-o" value="2"></div>
+								<div class="icon-star-o" value="3"></div>
+								<div class="icon-star-o" value="4"></div>
+								<div class="icon-star-o" value="5"></div>
+								</div>	
                                 ' ; 
                 
                 //<!-------------- GETTING REQUIRED LOGOS -------------->

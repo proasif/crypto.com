@@ -615,6 +615,15 @@ fieldset.rating.star > label:before {
 .icon-flickr:before {
   content: "\e00b";
 }
+.icon-star:before {
+  content: "\e00c";
+}
+.icon-star-half-o:before {
+  content: "\e00d";
+}
+.icon-star-o:before {
+  content: "\e00e";
+}
 
 
 /*--------------------xxxxx------------------------*/

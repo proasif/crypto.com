@@ -52,7 +52,13 @@ function load_more() {
 								<input type="radio" id="field6_star1" name="rating2" value="1" /><label class = "full" value="1" for="field6_star1"></label>
 							</fieldset>
 							</div>
-							<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">		
+							<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">	
+							
+							
+								<div class="new-stars">
+								<div class="icon-star-o"></div><div class="icon-star-o"></div><div class="icon-star-o"></div><div class="icon-star-o"></div><div class="icon-star-o"></div>
+								</div>	
+                                	
 	  						' ; 
 			
 			//<!-------------- GETTING REQUIRED LOGOS -------------->

@@ -26,6 +26,7 @@ $data = array(
 );
 $pod->save($data);
 
-echo floatval($rate/$users);
+$average = floatval($rate/$users);
+echo $average;
 
 ?>
