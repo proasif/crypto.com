@@ -28,7 +28,7 @@ function load_more() {
 			while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
             
             <!-------------- p1-airdrop-item STARTS --------------> 
-            <div class="p1-airdrop-item">
+            <div class="p1-airdrop-item" data-postid="'<?php the_id() ?>'">
             <?php
 			$thumb_id = get_post_thumbnail_id();
 			$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
@@ -45,11 +45,11 @@ function load_more() {
 				//<!-------------- SETTING STARS -------------->
 					$star = '<div class="star_rating">
 							<fieldset class="rating star">
-								<input type="radio" id="field6_star5" name="rating2" value="5" /><label class = "full" for="field6_star5"></label>
-								<input type="radio" id="field6_star4" name="rating2" value="4" /><label class = "full" for="field6_star4"></label>
-								<input type="radio" id="field6_star3" name="rating2" value="3" /><label class = "full" for="field6_star3"></label>
-								<input type="radio" id="field6_star2" name="rating2" value="2" /><label class = "full" for="field6_star2"></label>
-								<input type="radio" id="field6_star1" name="rating2" value="1" /><label class = "full" for="field6_star1"></label>
+								<input type="radio" id="field6_star5" name="rating2" value="5" /><label class = "full" value="5" for="field6_star5"></label>
+								<input type="radio" id="field6_star4" name="rating2" value="4" /><label class = "full" value="4" for="field6_star4"></label>
+								<input type="radio" id="field6_star3" name="rating2" value="3" /><label class = "full" value="3" for="field6_star3"></label>
+								<input type="radio" id="field6_star2" name="rating2" value="2" /><label class = "full" value="2" for="field6_star2"></label>
+								<input type="radio" id="field6_star1" name="rating2" value="1" /><label class = "full" value="1" for="field6_star1"></label>
 							</fieldset>
 							</div>
 							<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">		
@@ -120,21 +120,3 @@ function load_more() {
 }
 
 ?>
-<script>
-// ------------------ RATING ------------------ //
-
-	$("label").click(function(){
-	  $(this).parent().find("label").css({"background-color": "#78e2fb"});
-	  $(this).css({"background-color": "red"});
-	  $(this).nextAll().css({"background-color": "red"});
-	});
-	$(".star label").click(function(){
-	  $(this).parent().find("label").css({"color": "#78e2fb"});
-	  $(this).css({"color": "red"});
-	  $(this).nextAll().css({"color": "red"});
-	  $(this).css({"background-color": "transparent"});
-	  $(this).nextAll().css({"background-color": "transparent"});
-	});
-// ------------------ RATING ENDS ------------------ //
-
-</script>

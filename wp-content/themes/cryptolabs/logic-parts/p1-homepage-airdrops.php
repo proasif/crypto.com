@@ -27,13 +27,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 			while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
             
             <!-------------- p1-airdrop-item STARTS --------------> 
-            <div class="p1-airdrop-item">
-				<?php
+           
+            <div class="p1-airdrop-item" data-postid="<?php the_id() ?>" data-url="<?php the_permalink() ?>">
+				 <?php
                     $thumb_id = get_post_thumbnail_id();
                     $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
                     $thumb_url[] =  $thumb_url_array;
-                    $pod = pods('airdrop', get_the_ID());
-                    $logo = wp_get_attachment_image ($thumb_id);
+					$pod = pods('airdrop', get_the_ID());
+					$rate = $pod->field('rating') ;
+					$users = $pod->field('no_of_users') ;
+					
+					echo $rate;
+					echo $users;
+                    
+					$logo = wp_get_attachment_image ($thumb_id);
                     
                     $name = $pod->field('airdrop_name') ;
                     $sign =	"(" . get_the_title() . ")" ;
@@ -44,13 +51,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 					//<!-------------- SETTING STARS -------------->
                         $star = '<div class="star_rating">
                                     <fieldset class="rating star">
-                                        <input type="radio" id="field6_star5" name="rating2" value="5" /><label class = "full" for="field6_star5"></label>
-                                        <input type="radio" id="field6_star4" name="rating2" value="4" /><label class = "full" for="field6_star4"></label>
-                                        <input type="radio" id="field6_star3" name="rating2" value="3" /><label class = "full" for="field6_star3"></label>
-                                        <input type="radio" id="field6_star2" name="rating2" value="2" /><label class = "full" for="field6_star2"></label>
-                                        <input type="radio" id="field6_star1" name="rating2" value="1" /><label class = "full" for="field6_star1"></label>
+                                        <input type="radio" id="field6_star5" name="rating2" value="5" /><label class = "full" value="5" for="field6_star5"></label>
+                                        <input type="radio" id="field6_star4" name="rating2" value="4" /><label class = "full" value="4" for="field6_star4"></label>
+                                        <input type="radio" id="field6_star3" name="rating2" value="3" /><label class = "full" value="3" for="field6_star3"></label>
+                                        <input type="radio" id="field6_star2" name="rating2" value="2" /><label class = "full" value="2" for="field6_star2"></label>
+                                        <input type="radio" id="field6_star1" name="rating2" value="1" /><label class = "full" value="1" for="field6_star1"></label>
                                     </fieldset>
                                     <input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">
+		
                                 </div>		
                                 ' ; 
                 
@@ -105,6 +113,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 
             </div>
             <!-------------- p1-airdrop-item ENDS--------------> 
+            
 			<?php endwhile; ?>
             
             

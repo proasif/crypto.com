@@ -324,19 +324,19 @@ $(document).on('click','.load_more', function(){
 
 // ------------------ RATING ------------------ //
 
-	$("label").click(function(){
+	$(document).on("click",".rating.star label",function(){
 	  $(this).parent().find("label").css({"background-color": "#78e2fb"});
 	  $(this).css({"background-color": "red"});
 	  $(this).nextAll().css({"background-color": "red"});
-	});
-	$(".star label").click(function(){
-		event.preventDefault();
-		event.stopImmediatePropagation();
-	  $(this).parent().find("label").css({"color": "#78e2fb"});
-	  $(this).css({"color": "red"});
-	  $(this).nextAll().css({"color": "red"});
-	  $(this).css({"background-color": "transparent"});
-	  $(this).nextAll().css({"background-color": "transparent"});
+	  
+	  var rating = $(this).attr('value');
+		var nonce = $('#ratings-nonce').attr('value');
+		var postid = $(this).closest(".p1-airdrop-item").attr('data-postid');
+	  var formData = {
+		'security'			: nonce,
+		'rating'            : rating,
+		'postid'				: postid,
+	};
 	  
 	  $.ajax({
 				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
@@ -345,13 +345,24 @@ $(document).on('click','.load_more', function(){
 				dataType    : 'text', // what type of data do we expect back from the server
 				encode		: true,
 				beforeSend	: function(msg){
-								prepareFSNotice("Deleting...", false, true, false, true); },
+								prepareFSNotice("Rating...", false, true, false, true); },
 				success		: function(data) {
 								console.log(data);
 								closeAndRemoveFSNotice();
 				}
 			})
 	  
+	});
+	$(document).on("click",".star_rating",function(){
+		event.preventDefault();
+		event.stopImmediatePropagation();
+	  $(this).parent().find("label").css({"color": "#78e2fb"});
+	  $(this).css({"color": "red"});
+	  $(this).nextAll().css({"color": "red"});
+	  $(this).css({"background-color": "transparent"});
+	  $(this).nextAll().css({"background-color": "transparent"});
+	  
+		
 	});
 // ------------------ RATING ENDS ------------------ //
 
