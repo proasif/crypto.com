@@ -344,18 +344,14 @@ $(document).on('click','.load_more', function(){
 				data        : formData, // our data object
 				dataType    : 'text', // what type of data do we expect back from the server
 				encode		: true,
-				beforeSend	: function(msg){
-								prepareFSNotice("Rating...", false, true, false, true); },
 				success		: function(data) {
-								console.log(data);
+								alert(data);
 								closeAndRemoveFSNotice();
 				}
 			})
 	  
 	});
 	$(document).on("click",".star_rating",function(){
-		event.preventDefault();
-		event.stopImmediatePropagation();
 	  $(this).parent().find("label").css({"color": "#78e2fb"});
 	  $(this).css({"color": "red"});
 	  $(this).nextAll().css({"color": "red"});

@@ -7,11 +7,10 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No direct script access allowed' );
 }
-?>	
-<!-------------- p1-section p1-style-curves p1-style-shadow STARTS -------------->
-<div class="p1-section p1-style-curves p1-style-shadow">
 
-<!-------------- p1-airdrop STARTS -------------->
+?>	
+
+<div class="p1-section p1-style-curves p1-style-shadow">
 	<div class="p1-airdrop">
 	<?php
 		$currentpage = get_query_var('paged');
@@ -24,9 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		));
 		
 		if ( $custom_posts->have_posts() ) :
-			while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
-            
-            <!-------------- p1-airdrop-item STARTS --------------> 
+			while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?> 
            
             <div class="p1-airdrop-item" data-postid="<?php the_id() ?>" data-url="<?php the_permalink() ?>">
 				 <?php
@@ -36,10 +33,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$pod = pods('airdrop', get_the_ID());
 					$rate = $pod->field('rating') ;
 					$users = $pod->field('no_of_users') ;
-					
-					echo $rate;
+					if( $rate || $user == 0){
+						$old_rating = 0;
+						}
+					echo $rate . " ";
 					echo $users;
-                    
+					
+                    $old_rating = $rate/$users;
+					echo "</br>" . $old_rating;
 					$logo = wp_get_attachment_image ($thumb_id);
                     
                     $name = $pod->field('airdrop_name') ;
@@ -60,16 +61,145 @@ if ( ! defined( 'ABSPATH' ) ) {
                                     <input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">
 								
                                 </div>
+								';
 								
-								<div class="new-stars">
-								<div class="icon-star-o" value="1"></div>
-								<div class="icon-star-o" value="2"></div>
-								<div class="icon-star-o" value="3"></div>
-								<div class="icon-star-o" value="4"></div>
-								<div class="icon-star-o" value="5"></div>
-								</div>	
-                                ' ; 
-                
+								if( $old_rating >= 4.75 ){ echo
+									'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star" value="3"></div>
+										<div class="icon-star" value="4"></div>
+										<div class="icon-star" value="5"></div>
+										</div>	
+                                	'; 
+										}
+									
+									else if( $old_rating >= 4.5 || $old_rating >= 4.25 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star" value="3"></div>
+										<div class="icon-star" value="4"></div>
+										<div class="icon-star-half-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+										
+									else if( $old_rating >= 4.0 || $old_rating >= 3.75 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star" value="3"></div>
+										<div class="icon-star" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+										
+									else if( $old_rating >= 3.5 || $old_rating >= 3.25 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star" value="3"></div>
+										<div class="icon-star-half-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+									else if( $old_rating >= 3.0 || $old_rating >= 2.75 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+										
+									else if( $old_rating >= 2.5 || $old_rating >= 2.25 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star-half-o" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+									else if( $old_rating >= 2.0 || $old_rating >= 1.75 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star-o" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+									
+									else if( $old_rating >= 1.5 || $old_rating >= 1.25 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star-half-o" value="2"></div>
+										<div class="icon-star-o" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+									else if( $old_rating >= 1.0 || $old_rating >= 0.75){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star-o" value="2"></div>
+										<div class="icon-star-o" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+									else if( $old_rating >= 0.5 || $old_rating >= 0.25 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star-half-o" value="1"></div>
+										<div class="icon-star-o" value="2"></div>
+										<div class="icon-star-o" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+									else if ($old_rating == 0){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star-o" value="1"></div>
+										<div class="icon-star-o" value="2"></div>
+										<div class="icon-star-o" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+								
+							
                 //<!-------------- GETTING REQUIRED LOGOS -------------->
 				
 					$requires = "";
@@ -118,6 +248,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <div class="requires"><?php echo ("Requires: "); echo $requires; ?></div>
                     
                     <div class="star"><?php echo $star; ?></div>
+                    
                 
             </div>
             <!-------------- p1-airdrop-item ENDS--------------> 

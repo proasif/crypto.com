@@ -18,8 +18,8 @@ $rate = $pod->field('rating') ;
 $users = $pod->field('no_of_users') ;
 
 
- $rate = $rate + $rating;
- $users = $users + 1;
+$rate = $rate + $rating;
+$users = $users + 1;
 $data = array(
 'rating' => $rate,
 'no_of_users' => $users

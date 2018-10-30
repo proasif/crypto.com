@@ -4,13 +4,12 @@ add_action( 'wp_ajax_nopriv_load_more', 'load_more' );
 add_action( 'wp_ajax_load_more', 'load_more' );
 
 
-?>
-<!-------------- p1-section p1-style-curves p1-style-shadow STARTS -------------->
-<div class="p1-section p1-style-curves p1-style-shadow">
 
-<!-------------- p1-airdrop STARTS -------------->
-	<div class="p1-airdrop">
+'<div class="p1-section p1-style-curves p1-style-shadow">
+<div class="p1-airdrop">'
+ ?>
 <?php
+
 function load_more() {
 	
 	
@@ -27,7 +26,6 @@ function load_more() {
 		if ( $custom_posts->have_posts() ) :
 			while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); ?>
             
-            <!-------------- p1-airdrop-item STARTS --------------> 
             <div class="p1-airdrop-item" data-postid="'<?php the_id() ?>'">
             <?php
 			$thumb_id = get_post_thumbnail_id();
@@ -35,6 +33,18 @@ function load_more() {
 			$thumb_url[] =  $thumb_url_array;
 			$sign = get_the_title();
 			$pod = pods('airdrop', get_the_ID());
+			
+			$rate = $pod->field('rating') ;
+			$users = $pod->field('no_of_users') ;
+					
+					if( $rate || $user == 0){
+						$old_rating = 0;
+						}
+					echo $rate . " ";
+					echo $users;
+                    $old_rating = $rate/$users;
+					echo "</br>" . $old_rating;
+			
 			$logo = wp_get_attachment_image ($thumb_id);
 				   $name = $pod->field('airdrop_name') ;
 				$sign =	"(" . get_the_title() . ")" ;
@@ -51,15 +61,145 @@ function load_more() {
 								<input type="radio" id="field6_star2" name="rating2" value="2" /><label class = "full" value="2" for="field6_star2"></label>
 								<input type="radio" id="field6_star1" name="rating2" value="1" /><label class = "full" value="1" for="field6_star1"></label>
 							</fieldset>
-							</div>
 							<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">	
-							
-							
-								<div class="new-stars">
-								<div class="icon-star-o"></div><div class="icon-star-o"></div><div class="icon-star-o"></div><div class="icon-star-o"></div><div class="icon-star-o"></div>
-								</div>	
-                                	
+                            </div> 	
 	  						' ; 
+							
+							if( $old_rating >= 4.75 ){ echo
+									'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star" value="3"></div>
+										<div class="icon-star" value="4"></div>
+										<div class="icon-star" value="5"></div>
+										</div>	
+                                	'; 
+										}
+									
+									else if( $old_rating >= 4.5 || $old_rating >= 4.25 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star" value="3"></div>
+										<div class="icon-star" value="4"></div>
+										<div class="icon-star-half-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+										
+									else if( $old_rating >= 4.0 || $old_rating >= 3.75 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star" value="3"></div>
+										<div class="icon-star" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+										
+									else if( $old_rating >= 3.5 || $old_rating >= 3.25 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star" value="3"></div>
+										<div class="icon-star-half-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+									else if( $old_rating >= 3.0 || $old_rating >= 2.75 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+										
+									else if( $old_rating >= 2.5 || $old_rating >= 2.25 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star-half-o" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+									else if( $old_rating >= 2.0 || $old_rating >= 1.75 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star" value="2"></div>
+										<div class="icon-star-o" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+									
+									else if( $old_rating >= 1.5 || $old_rating >= 1.25 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star-half-o" value="2"></div>
+										<div class="icon-star-o" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+									else if( $old_rating >= 1.0 || $old_rating >= 0.75){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star" value="1"></div>
+										<div class="icon-star-o" value="2"></div>
+										<div class="icon-star-o" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+									else if( $old_rating >= 0.5 || $old_rating >= 0.25 ){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star-half-o" value="1"></div>
+										<div class="icon-star-o" value="2"></div>
+										<div class="icon-star-o" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
+										
+									else if ($old_rating == 0){ echo
+										'
+										<div class="new-stars">
+										<div class="icon-star-o" value="1"></div>
+										<div class="icon-star-o" value="2"></div>
+										<div class="icon-star-o" value="3"></div>
+										<div class="icon-star-o" value="4"></div>
+										<div class="icon-star-o" value="5"></div>
+										</div>	
+                                	'; 
+										}
 			
 			//<!-------------- GETTING REQUIRED LOGOS -------------->
 			
