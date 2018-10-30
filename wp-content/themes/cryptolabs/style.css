@@ -425,6 +425,16 @@ body footer footer-background .stag.offLeft {
 		STAR RATING 
 ---------------------------- */
 
+.star-rating {
+    display: flex;
+    margin: 50px;
+    font-size: 20px;
+}
+
+.star-rating.rated {
+  color: #999;
+}
+
 .rating > input { display: none; } 
 
 .rating.star > label {

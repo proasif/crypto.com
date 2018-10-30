@@ -323,20 +323,56 @@ $(document).on('click','.load_more', function(){
 });
 
 // ------------------ RATING ------------------ //
-
-	$(document).on("click",".rating.star label",function(){
-	  $(this).parent().find("label").css({"background-color": "#78e2fb"});
-	  $(this).css({"background-color": "red"});
-	  $(this).nextAll().css({"background-color": "red"});
-	  
+	
+	$(document).on('mousemove', '.star-rating .star', function(e){
+		var $object = $(this).closest('.star-rating').first();
+		
+		// return if rated already
+		if ($object.hasClass("rated")) {
+			return;	
+		}
+		
+		var rating = $(this).attr("value");
+		
+		var $starWidth = $(this).innerWidth();
+		var $starXOffset = $(this).offset().left;
+		var $xPosition = e.pageX;
+		var $difference = $xPosition - $starXOffset;
+		
+		if ( $difference < $starWidth * 0.25 ) {
+			rating = rating - 1;	
+		}
+		else if ( $difference < $starWidth * 0.5 ) {
+			rating = rating - 0.5;	
+		}
+		
+		adjustStarRating( $object, rating, false);
+	});
+	
+	$(document).on('mouseout', '.star-rating .star', function(){
+		// return if rated already
+		if ($object.hasClass("rated")) {
+			return;	
+		}
+		
+		var $object = $(this).closest('.star-rating').first();
+		var $rating = parseFloat( $object.attr( 'data-original' ) );
+		
+		adjustStarRating( $object, $rating, false);
+	});
+	
+	
+	$(document).on("click", ".star-rating .star", function(){
+	  var $object = $(this).closest('.star-rating').first();
 	  var rating = $(this).attr('value');
-		var nonce = $('#ratings-nonce').attr('value');
-		var postid = $(this).closest(".p1-airdrop-item").attr('data-postid');
+	  var nonce = $('#ratings-nonce').attr('value');
+      var postid = $(this).closest(".p1-airdrop-item").attr('data-postid');
+	  
 	  var formData = {
 		'security'			: nonce,
 		'rating'            : rating,
 		'postid'				: postid,
-	};
+	  };
 	  
 	  $.ajax({
 				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
@@ -345,21 +381,53 @@ $(document).on('click','.load_more', function(){
 				dataType    : 'text', // what type of data do we expect back from the server
 				encode		: true,
 				success		: function(data) {
-								alert(data);
+								var rating = data;
+								
+								adjustStarRating( $object, rating, true);
 								closeAndRemoveFSNotice();
 				}
 			})
 	  
 	});
-	$(document).on("click",".star_rating",function(){
-	  $(this).parent().find("label").css({"color": "#78e2fb"});
-	  $(this).css({"color": "red"});
-	  $(this).nextAll().css({"color": "red"});
-	  $(this).css({"background-color": "transparent"});
-	  $(this).nextAll().css({"background-color": "transparent"});
-	  
+	
+	function adjustStarRating( $object, $rating, permanent) {
 		
-	});
+		$object.find( ".star" ).each(function( index ) {
+			
+			var $star = $(this);
+			var indexation = $rating - index;
+			
+			if (indexation > 1) {
+				indexation = 1;	
+			}
+			else if (indexation < 0) {
+				indexation = 0;	
+			}
+			
+			adjustIndividualStar ( $star, indexation );
+		});
+		
+		$object.attr( 'data-proposed', $rating);	
+		
+		if ( permanent == true ) {
+			$object.attr( 'data-original', $rating);
+			
+			$object.addClass("rated");
+		}
+	}
+	
+	function adjustIndividualStar( $star, indexation ) {
+		if ( indexation <= 0.25 ) {
+			$star.addClass("icon-star-o").removeClass("icon-star-half-o").removeClass("icon-star");
+		}
+		else if ( indexation <= 0.75 ) {
+			$star.addClass("icon-star-half-o").removeClass("icon-star").removeClass("icon-star-o");
+		}
+		else {
+			$star.addClass("icon-star").removeClass("icon-star-half-o").removeClass("icon-star-o");
+		}
+	}
+
 // ------------------ RATING ENDS ------------------ //
 
 // ===========       Scroll to Top      ============ //

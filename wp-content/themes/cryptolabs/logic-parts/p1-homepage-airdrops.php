@@ -33,172 +33,91 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$pod = pods('airdrop', get_the_ID());
 					$rate = $pod->field('rating') ;
 					$users = $pod->field('no_of_users') ;
-					if( $rate || $user == 0){
-						$old_rating = 0;
-						}
+					$old_rating = 0;
+					
+					if ($rate >= 0 && $users >= 1) {
+						 $old_rating = round( ( $rate / $users ), 2);
+					}
 					echo $rate . " ";
 					echo $users;
 					
-                    $old_rating = $rate/$users;
-					echo "</br>" . $old_rating;
 					$logo = wp_get_attachment_image ($thumb_id);
                     
                     $name = $pod->field('airdrop_name') ;
                     $sign =	"(" . get_the_title() . ")" ;
                     
                     if($pod->field('estimated_value') != ""){
-                    $value = "Value: " . $pod->field('estimated_value') . " " ;
+                    $star_valuealue = "Value: " . $pod->field('estimated_value') . " " ;
                     }
 					//<!-------------- SETTING STARS -------------->
-                        $star = '<div class="star_rating">
-                                    <fieldset class="rating star">
-                                        <input type="radio" id="field6_star5" name="rating2" value="5" /><label class = "full" value="5" for="field6_star5"></label>
-                                        <input type="radio" id="field6_star4" name="rating2" value="4" /><label class = "full" value="4" for="field6_star4"></label>
-                                        <input type="radio" id="field6_star3" name="rating2" value="3" /><label class = "full" value="3" for="field6_star3"></label>
-                                        <input type="radio" id="field6_star2" name="rating2" value="2" /><label class = "full" value="2" for="field6_star2"></label>
-                                        <input type="radio" id="field6_star1" name="rating2" value="1" /><label class = "full" value="1" for="field6_star1"></label>
-                                    </fieldset>
-                                    <input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">
-								
-                                </div>
-								';
-								
-								if( $old_rating >= 4.75 ){ echo
-									'
-										<div class="new-stars">
-										<div class="icon-star" value="1"></div>
-										<div class="icon-star" value="2"></div>
-										<div class="icon-star" value="3"></div>
-										<div class="icon-star" value="4"></div>
-										<div class="icon-star" value="5"></div>
-										</div>	
-                                	'; 
-										}
-									
-									else if( $old_rating >= 4.5 || $old_rating >= 4.25 ){ echo
-										'
-										<div class="new-stars">
-										<div class="icon-star" value="1"></div>
-										<div class="icon-star" value="2"></div>
-										<div class="icon-star" value="3"></div>
-										<div class="icon-star" value="4"></div>
-										<div class="icon-star-half-o" value="5"></div>
-										</div>	
-                                	'; 
-										}
-										
-										
-									else if( $old_rating >= 4.0 || $old_rating >= 3.75 ){ echo
-										'
-										<div class="new-stars">
-										<div class="icon-star" value="1"></div>
-										<div class="icon-star" value="2"></div>
-										<div class="icon-star" value="3"></div>
-										<div class="icon-star" value="4"></div>
-										<div class="icon-star-o" value="5"></div>
-										</div>	
-                                	'; 
-										}
-										
-										
-									else if( $old_rating >= 3.5 || $old_rating >= 3.25 ){ echo
-										'
-										<div class="new-stars">
-										<div class="icon-star" value="1"></div>
-										<div class="icon-star" value="2"></div>
-										<div class="icon-star" value="3"></div>
-										<div class="icon-star-half-o" value="4"></div>
-										<div class="icon-star-o" value="5"></div>
-										</div>	
-                                	'; 
-										}
-										
-									else if( $old_rating >= 3.0 || $old_rating >= 2.75 ){ echo
-										'
-										<div class="new-stars">
-										<div class="icon-star" value="1"></div>
-										<div class="icon-star" value="2"></div>
-										<div class="icon-star" value="3"></div>
-										<div class="icon-star-o" value="4"></div>
-										<div class="icon-star-o" value="5"></div>
-										</div>	
-                                	'; 
-										}
-										
-										
-									else if( $old_rating >= 2.5 || $old_rating >= 2.25 ){ echo
-										'
-										<div class="new-stars">
-										<div class="icon-star" value="1"></div>
-										<div class="icon-star" value="2"></div>
-										<div class="icon-star-half-o" value="3"></div>
-										<div class="icon-star-o" value="4"></div>
-										<div class="icon-star-o" value="5"></div>
-										</div>	
-                                	'; 
-										}
-										
-									else if( $old_rating >= 2.0 || $old_rating >= 1.75 ){ echo
-										'
-										<div class="new-stars">
-										<div class="icon-star" value="1"></div>
-										<div class="icon-star" value="2"></div>
-										<div class="icon-star-o" value="3"></div>
-										<div class="icon-star-o" value="4"></div>
-										<div class="icon-star-o" value="5"></div>
-										</div>	
-                                	'; 
-										}
-										
-									
-									else if( $old_rating >= 1.5 || $old_rating >= 1.25 ){ echo
-										'
-										<div class="new-stars">
-										<div class="icon-star" value="1"></div>
-										<div class="icon-star-half-o" value="2"></div>
-										<div class="icon-star-o" value="3"></div>
-										<div class="icon-star-o" value="4"></div>
-										<div class="icon-star-o" value="5"></div>
-										</div>	
-                                	'; 
-										}
-										
-									else if( $old_rating >= 1.0 || $old_rating >= 0.75){ echo
-										'
-										<div class="new-stars">
-										<div class="icon-star" value="1"></div>
-										<div class="icon-star-o" value="2"></div>
-										<div class="icon-star-o" value="3"></div>
-										<div class="icon-star-o" value="4"></div>
-										<div class="icon-star-o" value="5"></div>
-										</div>	
-                                	'; 
-										}
-										
-									else if( $old_rating >= 0.5 || $old_rating >= 0.25 ){ echo
-										'
-										<div class="new-stars">
-										<div class="icon-star-half-o" value="1"></div>
-										<div class="icon-star-o" value="2"></div>
-										<div class="icon-star-o" value="3"></div>
-										<div class="icon-star-o" value="4"></div>
-										<div class="icon-star-o" value="5"></div>
-										</div>	
-                                	'; 
-										}
-										
-									else if ($old_rating == 0){ echo
-										'
-										<div class="new-stars">
-										<div class="icon-star-o" value="1"></div>
-										<div class="icon-star-o" value="2"></div>
-										<div class="icon-star-o" value="3"></div>
-										<div class="icon-star-o" value="4"></div>
-										<div class="icon-star-o" value="5"></div>
-										</div>	
-                                	'; 
-										}
-								
+							
+					$temp_content = "";
+					$star_value = "";
+					$append_class = "star";
+					
+					if($old_rating > 4.75) {
+						$star_value = '<div class="icon-star ' . $append_class . '" value="5"></div>';
+						}
+					else if($old_rating > 4.25) {
+						$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="5"></div>';	
+						}
+					else {
+						$star_value = '<div class="icon-star-o ' . $append_class . '" value="5"></div>';
+						}
+						
+						$temp_content = $star_value . $temp_content ;
+						
+						if($old_rating > 3.75) {
+						$star_value = '<div class="icon-star ' . $append_class . '" value="4"></div>';
+						}
+					else if($old_rating > 3.25) {
+						$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="4"></div>';	
+						}
+					else {
+						$star_value = '<div class="icon-star-o ' . $append_class . '" value="4"></div>';
+						}
+						
+						$temp_content = $star_value . $temp_content ;
+						
+						if($old_rating > 2.75) {
+						$star_value = '<div class="icon-star ' . $append_class . '" value="3"></div>';
+						}
+					else if($old_rating > 2.25) {
+						$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="3"></div>';	
+						}
+					else {
+						$star_value = '<div class="icon-star-o ' . $append_class . '" value="3"></div>';
+						}
+						
+						$temp_content = $star_value . $temp_content ;
+						
+						if($old_rating > 1.75) {
+						$star_value = '<div class="icon-star ' . $append_class . '" value="2"></div>';
+						}
+					else if($old_rating > 1.25) {
+						$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="2"></div>';	
+						}
+					else {
+						$star_value = '<div class="icon-star-o ' . $append_class . '" value="2"></div>';
+						}
+						
+						$temp_content = $star_value . $temp_content ;
+						
+						if($old_rating > 0.75) {
+						$star_value = '<div class="icon-star ' . $append_class . '" value="1"></div>';
+						}
+					else if($old_rating > 0.25) {
+						$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="1"></div>';	
+						}
+					else {
+						$star_value = '<div class="icon-star-o ' . $append_class . '" value="1"></div>';
+						}
+						
+						$temp_content = $star_value . $temp_content ;
+						
+						$content = '<div class = "star-rating" data-original = "' . $old_rating .  '">' . $temp_content .'<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '"></div>';
+						echo $content;
+						
 							
                 //<!-------------- GETTING REQUIRED LOGOS -------------->
 				
@@ -243,7 +162,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 
                     <div class="logo"><?php echo $logo; ?></div>
                     
-                    <h1><?php echo $name . " " . $sign . " " . $value; ?></h1>
+                    <h1><?php echo $name . " " . $sign . " " . $star_valuealue; ?></h1>
               
                     <div class="requires"><?php echo ("Requires: "); echo $requires; ?></div>
                     
