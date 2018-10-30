@@ -38,8 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					if ($rate >= 0 && $users >= 1) {
 						 $old_rating = round( ( $rate / $users ), 2);
 					}
-					echo $rate . " ";
-					echo $users;
+					
 					
 					$logo = wp_get_attachment_image ($thumb_id);
                     
@@ -116,7 +115,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						$temp_content = $star_value . $temp_content ;
 						
 						$content = '<div class = "star-rating" data-original = "' . $old_rating .  '">' . $temp_content .'<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '"></div>';
-						echo $content;
+						
 						
 							
                 //<!-------------- GETTING REQUIRED LOGOS -------------->
@@ -166,7 +165,7 @@ if ( ! defined( 'ABSPATH' ) ) {
               
                     <div class="requires"><?php echo ("Requires: "); echo $requires; ?></div>
                     
-                    <div class="star"><?php echo $star; ?></div>
+                   <?php echo $content . " " .  "(" . $users .  " Votes)" ?>
                     
                 
             </div>

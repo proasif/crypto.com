@@ -350,12 +350,12 @@ $(document).on('click','.load_more', function(){
 	});
 	
 	$(document).on('mouseout', '.star-rating .star', function(){
+		var $object = $(this).closest('.star-rating').first();
 		// return if rated already
 		if ($object.hasClass("rated")) {
 			return;	
 		}
 		
-		var $object = $(this).closest('.star-rating').first();
 		var $rating = parseFloat( $object.attr( 'data-original' ) );
 		
 		adjustStarRating( $object, $rating, false);
