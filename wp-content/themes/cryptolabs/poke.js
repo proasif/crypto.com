@@ -324,7 +324,7 @@ $(document).on('click','.load_more', function(){
 
 // ------------------ RATING ------------------ //
 	
-	$(document).on('mousemove', '.star-rating .star', function(e){
+	$(document).on('mousemove', '.star-rating .star', function(e){   //Action on mouse-move over the stars
 		var $object = $(this).closest('.star-rating').first();
 		
 		// return if rated already
@@ -349,7 +349,7 @@ $(document).on('click','.load_more', function(){
 		adjustStarRating( $object, rating, false);
 	});
 	
-	$(document).on('mouseout', '.star-rating .star', function(){
+	$(document).on('mouseout', '.star-rating .star', function(){   //Action on mouse-out over the stars
 		var $object = $(this).closest('.star-rating').first();
 		// return if rated already
 		if ($object.hasClass("rated")) {
@@ -362,7 +362,7 @@ $(document).on('click','.load_more', function(){
 	});
 	
 	
-	$(document).on("click", ".star-rating .star", function(){
+	$(document).on("click", ".star-rating .star", function(){   //Action when clicked on the stars
 	  var $object = $(this).closest('.star-rating').first();
 	  var rating = $(this).attr('value');
 	  var nonce = $('#ratings-nonce').attr('value');
@@ -390,7 +390,7 @@ $(document).on('click','.load_more', function(){
 	  
 	});
 	
-	function adjustStarRating( $object, $rating, permanent) {
+	function adjustStarRating( $object, $rating, permanent) {	//Adjusting stars according to indexation
 		
 		$object.find( ".star" ).each(function( index ) {
 			
@@ -416,7 +416,7 @@ $(document).on('click','.load_more', function(){
 		}
 	}
 	
-	function adjustIndividualStar( $star, indexation ) {
+	function adjustIndividualStar( $star, indexation ) {		//Adjusting individual stars according to indexation
 		if ( indexation <= 0.25 ) {
 			$star.addClass("icon-star-o").removeClass("icon-star-half-o").removeClass("icon-star");
 		}
@@ -444,7 +444,20 @@ $('#return-to-top').click(function() {      // When arrow is clicked
     }, 500);
 });
 
-
+// ------------------ Show button ------------------ //
+$(document).ready(function(){
+    $('.show').hide();
+	$('.close').hide();
+});
+	
+$(document).on('click','.steps_button', function(){
+		$('.show').show('slow');
+		$('.close').show('slow');
+});
+$(document).on('click','.close', function(){
+			$('.show').hide('slow');
+			$('.close').hide('slow');
+});
 }); // Document.ready end
 // --- 3 ---
 

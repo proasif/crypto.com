@@ -421,13 +421,20 @@ body footer footer-background .stag.offLeft {
   max-width: 300px;
 }
 
+.p1-airdrop-item{
+	margin: 40px;
+}
+
+.steps{
+	margin: 10px;
+}
 /* ------------------------- 
 		STAR RATING 
 ---------------------------- */
 
 .star-rating {
     display: flex;
-    margin: 50px;
+    margin: 30px;
     font-size: 20px;
 }
 
@@ -435,83 +442,11 @@ body footer footer-background .stag.offLeft {
   color: #999;
 }
 
-.rating > input { display: none; } 
-
-.rating.star > label {
-    color: #78e2fb;
-    margin: 1px 20px 0px 0px;
-    background-color: #ffffff;
-    border-radius: 0;
-    height: 48px;
-    float: right;
-    width: 44px;
-}
-fieldset.rating.star > label:before { 
-    margin-top: 0;
-    padding: 0px;
-    font-size: 47px;
-    font-family: FontAwesome;
-    display: inline-block;
-    content: "\2605";
-    position: relative;
-    top: -9px;
-}
-.rating > .half:before { 
-  content: "\f089";
-  position: absolute;
-}
-.rating.star > label{
-  background-color: transparent !important;
-}
-
-.rating.star:not(:checked) > label:hover, /* hover current star */
-.rating.star:not(:checked) > label:hover ~ label { 
-  color:red!important;
-  background-color: transparent !important;
-  cursor:pointer;
-} /* hover previous stars in list */
-
-.rating.star > input:checked + label:hover, /* hover current star when changing rating.star */
-.rating.star > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating.star > input:checked ~ label:hover ~ label { 
-  color:red!important;
-  cursor:pointer;
-  background-color: transparent !important;
-} 
-.star_rating{
-        width: 500px;
-    margin: 0 auto;
-    padding: 3px 30px 72px 35px;
-    margin-top: 2%;
-}
-
-.rating.star {
-    margin-left: 16%;
-}
-@media screen and (max-width: 500px){
-  .star_rating {
-    width: 100%;
-    padding: 3px 8px 72px 6px;
-  }
-  .rating.star {
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-    float: none;
-  }
-  .rating.star > label {
-    margin: 1px;
-    width: 19%;
-  }
-}
-
 /*--------------------RETURN TO TOP------------------------*/
 #return-to-top {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.7);
     width: 50px;
     height: 50px;
     display: block;
@@ -527,7 +462,7 @@ fieldset.rating.star > label:before {
     transition: all 0.3s ease;
 }
 #return-to-top i {
-    color: #fff;
+   
     margin: 0;
     position: relative;
     left: 16px;
@@ -634,6 +569,14 @@ fieldset.rating.star > label:before {
 .icon-star-o:before {
   content: "\e00e";
 }
-
+.icon-chevron-circle-up:before {
+  content: "\e00f";
+}
+.icon-chevron-up:before {
+  content: "\e010";
+}
+.icon-arrow-circle-up:before {
+  content: "\e011";
+}
 
 /*--------------------xxxxx------------------------*/
