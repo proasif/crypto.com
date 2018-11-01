@@ -297,10 +297,10 @@ function closeAndRemoveFSNotice() {
 // ------------------ LOAD MORE ------------------ //
 
 $(document).on('click','.load_more', function(){
-	var that = $(this);
+	$('.load_more').hide('slow');
 	var page = $(this).data('page');
 	var newPage = page+1; 
-	var ajaxurl = that.data('url');
+	var ajaxurl = $(this).data('url');
 	
 	$.ajax({
 		url : ajaxurl,
@@ -315,11 +315,11 @@ $(document).on('click','.load_more', function(){
 			},
 			
 		success : function( response ){
-			that.data('page', newPage);
-			$('.load_more_container').append( response );
-			
+			$(this).data('page', newPage);
+			$('.p1-airdrop').append( response );
+			newPage = $(this).data('page');
 			}	
-		});
+		}); $('.load_more').show('slow');
 });
 
 // ------------------ RATING ------------------ //
@@ -445,24 +445,6 @@ $('#return-to-top').click(function() {      // When arrow is clicked
 });
 
 // ------------------ Show button ------------------ //
-/*
-$(document).ready(function(){
-    $('.show').hide();
-	$('.close').hide();
-});
-	
-$(document).on('click','.steps_button', function(){
-		$(this).hide('slow');
-		$(this).closest('.steps_format').find('.show').show('slow');
-		$(this).closest('.steps_format').find('.close').show('slow');
-		
-});
-$(document).on('click','.close', function(){
-			$('.show').hide('slow');
-			$('.close').hide('slow');
-			$('.steps_button').show('slow');
-});
-*/
 
 function OnloadFunction ()
 {

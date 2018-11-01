@@ -215,7 +215,6 @@ function load_more() {
     <?php //-------------- p1-airdrop ENDS --------------// ?>
 </div>
 <?php //-------------- p1-section p1-style-curves p1-style-shadow ENDS --------------// ?>
-
 <?php
 	wp_reset_postdata();
 	 die();	

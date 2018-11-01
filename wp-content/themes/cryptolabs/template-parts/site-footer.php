@@ -13,7 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No direct script access allowed' );
 }
 ?>
-
 <footer>
 	<footer-background>
 		<figure class="clouds velocity-animating" ></figure>

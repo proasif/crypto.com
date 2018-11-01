@@ -24,20 +24,18 @@ get_header();
 	?>
     
     
-    <div class="load_more_container">
+    
     <?php
 	 get_template_part( 'logic-parts/p1-homepage-airdrops' );
 	?>
-    </div> 
+        
 	</div><!-- #content -->
 </div><!-- #primary -->
 	<!-- Return to Top -->
-	<a href="javascript:" id="return-to-top"><div class="icon-chevron-up"></div></a>
-	<div class="load_more_button" align="center">
-	<a><input type="button" data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>"class="load_more" value="Load More"></a>
-    
- </div> 
- 
+	<a href="javascript:" id="return-to-top"><div class="icon-chevron-up"></div></a> 
+ 		<div class="load_more_button" align="center">
+        <a><input type="button" data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>"class="load_more" value="Load More"></a>
+        </div>
  
 <?php 
 

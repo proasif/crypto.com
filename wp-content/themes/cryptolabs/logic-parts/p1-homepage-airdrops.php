@@ -216,12 +216,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <div class="requires"><?php echo ("Requires: "); echo $requires; // Displaying required logos  ?></div> 
     
             </div>
-
 			<?php
-
 			 //-------------- p1-airdrop-item ENDS--------------//
 				endwhile; 
-				
 			?>
             
             
