@@ -50,13 +50,13 @@ if ( ! defined( 'ABSPATH' ) ) {
                     $name = $pod->field('airdrop_name') ;
                     $sign =	"(" . get_the_title() . ")" ;	
 					if($pod->field('estimated_value') != NULL){
-                    $star_valuealue = "Value: " . $pod->field('estimated_value') . " " ;
+                    $airdrop_value = "Value: " . $pod->field('estimated_value') . " " ;
                     }
-					else $star_valuealue = "Value: Not available";
+					else $airdrop_value = NULL;
 					
 				  ?>
 					
-				<h1><?php echo $name . " " . $sign . " " . $star_valuealue; // Printing Name, Sign and Value of Airdrop ?></h1>
+				<h1><?php echo $name . " " . $sign . " " . $airdrop_value; // Printing Name, Sign and Value of Airdrop ?></h1>
                     
                  <?php
 					//-------------- SETTING STARS --------------//
@@ -64,7 +64,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$temp_content = "";
 					$star_value = "";
 					$append_class = "star";
-					
 					if($old_rating > 4.75)
 						 {
 							$star_value = '<div class="icon-star ' . $append_class . '" value="5"></div>';
@@ -139,7 +138,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 						{	
 							$content = '<div class = "star-rating" data-original = "' . $old_rating .  '">' 
 							. $temp_content .'<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">'
-							.  "(" . $old_rating . " Stars )"
 							. " " . "(" . $users .  " Votes)" . '</div>';
 							echo $content ; // Displaying stars and no. of users rated
 						}
@@ -147,23 +145,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 						{	
 							$content = '<div class = "star-rating" data-original = "' . $old_rating .  '">' 
 							. $temp_content .'<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">
-							'.  " No ratings yet " . '</div>';
+							' . '</div>';
 							echo $content ; // Displaying stars and no. of users rated
 						}
 						
                     
                     $about = $pod->field('brief_description');
 					?>
-                    <form>
-                    	<div class="about"><?php echo $about ?></div>
-                    </form>
+                       <div class="about-format">
+                            <div class="about"><?php echo $about ?></div>
+                       </div>
                     
                    <?php $steps = $pod->field('step_by_step_guide'); ?>
-                    <form>
-                        <div class="steps"><input type="button" id="steps_button" class="steps_button" value="Step by step guide"></div>
-                        <div class="show"><?php echo $steps ?></div>
-                        <div class="steps"><input type="button" id="close" class="close" value="CLOSE"></div>
-                  	</form>
+                        <div class="steps_format">
+                            <div class="steps"><input type="button" class="steps_button" value="Step by step guide"></div>
+                            <div class="show"><?php echo "STEPS: " . "</br>" . $steps ?></div>
+                            <div class="steps"><input type="button" class="close" value="CLOSE"></div>
+                        </div>
 					<?php
                 //-------------- GETTING REQUIRED LOGOS --------------//
 				

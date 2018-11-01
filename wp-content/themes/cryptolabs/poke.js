@@ -445,18 +445,61 @@ $('#return-to-top').click(function() {      // When arrow is clicked
 });
 
 // ------------------ Show button ------------------ //
+/*
 $(document).ready(function(){
     $('.show').hide();
 	$('.close').hide();
 });
 	
 $(document).on('click','.steps_button', function(){
-		$('.show').show('slow');
-		$('.close').show('slow');
+		$(this).hide('slow');
+		$(this).closest('.steps_format').find('.show').show('slow');
+		$(this).closest('.steps_format').find('.close').show('slow');
+		
 });
 $(document).on('click','.close', function(){
 			$('.show').hide('slow');
 			$('.close').hide('slow');
+			$('.steps_button').show('slow');
+});
+*/
+
+function OnloadFunction ()
+{
+   $('.show').hide();
+	$('.close').hide();
+
+	
+$(document).on('click','.steps_button', function(){
+		$(this).hide('slow');
+		$(this).closest('.steps_format').find('.show').show('slow');
+		$(this).closest('.steps_format').find('.close').show('slow');
+		
+});
+$(document).on('click','.close', function(){
+			$('.show').hide('slow');
+			$('.close').hide('slow');
+			$('.steps_button').show('slow');
+}); 
+}
+$(document).ready(OnloadFunction);
+
+
+$( document ).ajaxComplete(function() {
+	$('.show').hide();
+	$('.close').hide();
+
+$(document).on('click','.steps_button', function(){
+		$(this).hide('slow');
+		$(this).closest('.steps_format').find('.show').show('slow');
+		$(this).closest('.steps_format').find('.close').show('slow');
+		
+});
+$(document).on('click','.close', function(){
+			$('.show').hide('slow');
+			$('.close').hide('slow');
+			$('.steps_button').show('slow');
+}); 	
 });
 }); // Document.ready end
 // --- 3 ---
