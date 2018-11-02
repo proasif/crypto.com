@@ -33,9 +33,7 @@ get_header();
 </div><!-- #primary -->
 	<!-- Return to Top -->
 	<a href="javascript:" id="return-to-top"><div class="icon-chevron-up"></div></a> 
- 		<div class="load_more_button" align="center">
-        <a><input type="button" data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>"class="load_more" value="Load More"></a>
-        </div>
+ 		
  
 <?php 
 

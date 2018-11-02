@@ -25,8 +25,8 @@ $data = array(
 'no_of_users' => $users
 );
 $pod->save($data);
+$average[] = array ('rate'=>$rate,'users'=>$users);
 
-$average = floatval($rate/$users);
-echo $average;
+echo $jsonformat = json_encode($average);
 
 ?>

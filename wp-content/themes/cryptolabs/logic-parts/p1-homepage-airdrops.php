@@ -225,5 +225,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php endif; ?>
 	</div>
     <?php //-------------- p1-airdrop ENDS --------------// ?>
+    
+    <div class="load_more_button" align="center">
+        	<a><input type="button" data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>"class="load_more" value="Load More"></a>
+    </div>
 </div>
 <?php //-------------- p1-section p1-style-curves p1-style-shadow ENDS --------------// ?>

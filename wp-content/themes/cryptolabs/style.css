@@ -578,5 +578,8 @@ body footer footer-background .stag.offLeft {
 .icon-arrow-circle-up:before {
   content: "\e011";
 }
+.icon-smile-o:before {
+  content: "\e012";
+}
 
 /*--------------------xxxxx------------------------*/

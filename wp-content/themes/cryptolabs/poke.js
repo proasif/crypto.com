@@ -315,11 +315,15 @@ $(document).on('click','.load_more', function(){
 			},
 			
 		success : function( response ){
+			if (response==null){$('.load_more').hide('slow');}
+			else{
 			$(this).data('page', newPage);
 			$('.p1-airdrop').append( response );
-			newPage = $(this).data('page');
+			$('.load_more').show('slow');
+			}
 			}	
-		}); $('.load_more').show('slow');
+		});
+		newPage = $(this).data('page',newPage);
 });
 
 // ------------------ RATING ------------------ //
@@ -378,11 +382,16 @@ $(document).on('click','.load_more', function(){
 				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
 				url         : '/coreapi/ratings.php', // the url where we want to POST
 				data        : formData, // our data object
-				dataType    : 'text', // what type of data do we expect back from the server
+				dataType    : 'json', // what type of data do we expect back from the server
 				encode		: true,
 				success		: function(data) {
 								var rating = data;
+								var rates = data.rate.val;
+								var users = data.users.val;
+								console.log(rates);
+								console.log(users);
 								
+								console.log(data);
 								adjustStarRating( $object, rating, true);
 								closeAndRemoveFSNotice();
 				}

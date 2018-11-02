@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			'post_type'=> 'featured',
 			'order_by' => 'title',
 			'order'    => 'desc',
-			'posts_per_page' => 3,
+			'posts_per_page' => 4,
 		));
 
 		if ( $custom_posts->have_posts() ) :
