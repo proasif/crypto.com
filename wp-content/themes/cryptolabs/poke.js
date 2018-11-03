@@ -371,7 +371,6 @@ $(document).on('click','.load_more', function(){
 	  var rating = $(this).attr('value');
 	  var nonce = $('#ratings-nonce').attr('value');
       var postid = $(this).closest(".p1-airdrop-item").attr('data-postid');
-	  
 	  var formData = {
 		'security'			: nonce,
 		'rating'            : rating,
@@ -385,22 +384,25 @@ $(document).on('click','.load_more', function(){
 				dataType    : 'json', // what type of data do we expect back from the server
 				encode		: true,
 				success		: function(data) {
-								var rating = data;
-								var rates = data.rate.val;
-								var users = data.users.val;
-								console.log(rates);
-								console.log(users);
-								
+								var ajaxData = data;
 								console.log(data);
-								adjustStarRating( $object, rating, true);
+								var nrate = data[0].rate;
+								console.log(nrate);
+								var nusers = data[0].users;
+								console.log(nusers);
+								var rating = (nrate/nusers);
+								adjustStarRating( $object, rating, true, $users);
 								closeAndRemoveFSNotice();
 				}
+				
 			})
+			
 	  
 	});
 	
-	function adjustStarRating( $object, $rating, permanent) {	//Adjusting stars according to indexation
-		
+	
+	function adjustStarRating( $object, $rating, permanent, $users) {	//Adjusting stars according to indexation
+	
 		$object.find( ".star" ).each(function( index ) {
 			
 			var $star = $(this);
