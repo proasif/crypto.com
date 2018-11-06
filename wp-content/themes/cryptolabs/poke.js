@@ -391,7 +391,7 @@ $(document).on('click','.load_more', function(){
 								var nusers = data[0].users;
 								console.log(nusers);
 								var rating = (nrate/nusers);
-								adjustStarRating( $object, rating, true, $users);
+								adjustStarRating( $object, rating, true);
 								closeAndRemoveFSNotice();
 				}
 				
@@ -401,7 +401,7 @@ $(document).on('click','.load_more', function(){
 	});
 	
 	
-	function adjustStarRating( $object, $rating, permanent, $users) {	//Adjusting stars according to indexation
+	function adjustStarRating( $object, $rating, permanent) {	//Adjusting stars according to indexation
 	
 		$object.find( ".star" ).each(function( index ) {
 			

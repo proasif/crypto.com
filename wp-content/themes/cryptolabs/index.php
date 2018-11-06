@@ -32,7 +32,7 @@ get_header();
 	</div><!-- #content -->
 </div><!-- #primary -->
 	<!-- Return to Top -->
-	<a href="javascript:" id="return-to-top"><div class="icon-chevron-up"></div></a> 
+	<a href="javascript:" id="return-to-top"><div class="icon-chevron-circle-up"></div></a> 
  		
  
 <?php 
