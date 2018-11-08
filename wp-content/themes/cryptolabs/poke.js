@@ -368,6 +368,8 @@ $(document).on('click','.load_more', function(){
 	
 	$(document).on("click", ".star-rating .star", function(){   //Action when clicked on the stars
 	  var $object = $(this).closest('.star-rating').first();
+	  var $nuser = $(this).closest('.old-users').first();
+	  var user = $('.old-users').attr('value');
 	  var rating = $(this).attr('value');
 	  var nonce = $('#ratings-nonce').attr('value');
       var postid = $(this).closest(".p1-airdrop-item").attr('data-postid');
@@ -375,6 +377,7 @@ $(document).on('click','.load_more', function(){
 		'security'			: nonce,
 		'rating'            : rating,
 		'postid'				: postid,
+		'user'				: user,
 	  };
 	  
 	  $.ajax({
@@ -391,7 +394,7 @@ $(document).on('click','.load_more', function(){
 								var nusers = data[0].users;
 								console.log(nusers);
 								var rating = (nrate/nusers);
-								adjustStarRating( $object, rating, true);
+								adjustStarRating( $object, rating, nusers, true);
 								closeAndRemoveFSNotice();
 				}
 				
@@ -401,7 +404,7 @@ $(document).on('click','.load_more', function(){
 	});
 	
 	
-	function adjustStarRating( $object, $rating, permanent) {	//Adjusting stars according to indexation
+	function adjustStarRating( $object, $rating, nusers, permanent) {	//Adjusting stars according to indexation
 	
 		$object.find( ".star" ).each(function( index ) {
 			
@@ -416,6 +419,7 @@ $(document).on('click','.load_more', function(){
 			}
 			
 			adjustIndividualStar ( $star, indexation );
+			adjustUsers (nusers);
 		});
 		
 		$object.attr( 'data-proposed', $rating);	
@@ -439,6 +443,10 @@ $(document).on('click','.load_more', function(){
 		}
 	}
 
+	function adjustUsers ($nuser){
+		$nuser.addClass("nusers").removeClass("old-users");
+		
+		}
 // ------------------ RATING ENDS ------------------ //
 
 // ===========       Scroll to Top      ============ //

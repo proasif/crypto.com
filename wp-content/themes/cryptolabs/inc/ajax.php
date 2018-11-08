@@ -138,7 +138,7 @@ function load_more() {
 						{	
 							$content = '<div class = "star-rating" data-original = "' . $old_rating .  '">' 
 							. $temp_content .'<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">'
-							. " " .  "(" . $users .  " Votes)" . '</div>';
+							. " " .  "(" . '<div class = "new-users" data-user = "' . $users . '"></div>' . $users . " Votes)" . '</div>';
 							echo $content ; // Displaying stars and no. of users rated
 						}
 						else 
@@ -156,10 +156,10 @@ function load_more() {
                             <div class="about"><?php echo $about ?></div>
                         </div>
                     
-                    <?php $steps = $pod->field('step_by_step_guide'); ?>
+                    <?php $steps = get_the_content(); ?>
                    		<div class="steps_format">
                             <div class="steps"><input type="button" class="steps_button" value="Step by step guide"></div>
-                            <div class="show"><?php echo "STEPS: " . "</br>" . $steps ?></div>
+                            <div class="show"><?php echo $steps ?></div>
                             <div class="steps"><input type="button" class="close" value="CLOSE"></div>
                   		</div>
 						

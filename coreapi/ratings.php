@@ -2,6 +2,7 @@
 $security = $_POST["security"];
 $rating = $_POST["rating"];
 $postid = $_POST["postid"]; //only for (this) airdrop 
+$user = $_POST["user"];
 define('WP_USE_THEMES', false);
 require($_SERVER['DOCUMENT_ROOT'] . '/wp-load.php');
 	$result = wp_verify_nonce( $security, 'ratings' );
