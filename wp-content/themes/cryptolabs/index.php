@@ -20,12 +20,8 @@ get_header();
  <div id="primary" class="p1-primary-max p1-body">
 	<div id="content" role="main"> 
     <?php
-    get_template_part( 'logic-parts/p1-homepage-featured' );
-	?>
-    
-    
-    
-    <?php
+     get_template_part( 'logic-parts/p1-homepage-featured' );
+	
 	 get_template_part( 'logic-parts/p1-homepage-airdrops' );
 	?>
         

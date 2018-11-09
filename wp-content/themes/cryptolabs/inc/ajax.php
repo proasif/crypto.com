@@ -134,15 +134,15 @@ function load_more() {
 						}
 							$temp_content = $star_value . $temp_content ; // storing value for first star
 							
-						if($old_rating != NULL)
-						{	
-							$content = '<div class = "star-rating" data-original = "' . $old_rating .  '">' 
-							. $temp_content .'<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">'
-							. " " .  "(" . '<div class = "new-users" data-user = "' . $users . '"></div>' . $users . " Votes)" . '</div>';
-							echo $content ; // Displaying stars and no. of users rated
+						if ( $users > 0 ) {	
+							$starContent = '<div class = "star-rating" data-original = "' . $old_rating .  '">' 
+							. $temp_content .'<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">';
+							$starUsers = '<div class = "star-users">(' . $users . ' Votes)</div></div>';
+							
+							$content = $starContent . $starUsers;
+							echo $content;
 						}
-						else 
-						{	
+						else {	
 							$content = '<div class = "star-rating" data-original = "' . $old_rating .  '">' 
 							. $temp_content .'<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">
 							' . '</div>';
@@ -157,13 +157,12 @@ function load_more() {
                         </div>
                     
                     <?php $steps = get_the_content(); ?>
-                   		<div class="steps_format">
-                            <div class="steps"><input type="button" class="steps_button" value="Step by step guide"></div>
+                        <div class="steps-format">
+                            <button class="primary p1-steps-btn">Step by step guide </button>
                             <div class="show"><?php echo $steps ?></div>
-                            <div class="steps"><input type="button" class="close" value="CLOSE"></div>
-                  		</div>
-						
-				<?php	
+                            <button class="primary p1-close-btn">CLOSE</button>
+                        </div>
+					<?php
 			//-------------- GETTING REQUIRED LOGOS --------------//
 			
 			$requires = "";

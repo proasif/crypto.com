@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No direct script access allowed' );
 }
 ?>	
-	<div class="p1-section">
+	<div class="p1-section p1-style-curves p1-style-shadow">
         <form class="p1-image-upload">
             	<div class="p1-image-display">
                 <input type="text" id="p1-image-upload-text" name="p1-image-upload-text">

@@ -296,8 +296,8 @@ function closeAndRemoveFSNotice() {
 
 // ------------------ LOAD MORE ------------------ //
 
-$(document).on('click','.load_more', function(){
-	$('.load_more').hide('slow');
+$(document).on('click','.primary.p1-airdrop-load-more', function(){
+	$('.primary.p1-airdrop-load-more').hide('slow');
 	var page = $(this).data('page');
 	var newPage = page+1; 
 	var ajaxurl = $(this).data('url');
@@ -315,11 +315,11 @@ $(document).on('click','.load_more', function(){
 			},
 			
 		success : function( response ){
-			if (response==null){$('.load_more').hide('slow');}
+			if (response==null){$('.primary.p1-airdrop-load-more').hide('slow');}
 			else{
 			$(this).data('page', newPage);
 			$('.p1-airdrop').append( response );
-			$('.load_more').show('slow');
+			$('.primary.p1-airdrop-load-more').show('slow');
 			}
 			}	
 		});
@@ -404,7 +404,7 @@ $(document).on('click','.load_more', function(){
 	});
 	
 	
-	function adjustStarRating( $object, $rating, nusers, permanent) {	//Adjusting stars according to indexation
+	function adjustStarRating( $object, $rating, users, permanent) {	//Adjusting stars according to indexation
 	
 		$object.find( ".star" ).each(function( index ) {
 			
@@ -419,7 +419,6 @@ $(document).on('click','.load_more', function(){
 			}
 			
 			adjustIndividualStar ( $star, indexation );
-			adjustUsers (nusers);
 		});
 		
 		$object.attr( 'data-proposed', $rating);	
@@ -428,6 +427,8 @@ $(document).on('click','.load_more', function(){
 			$object.attr( 'data-original', $rating);
 			
 			$object.addClass("rated");
+			
+			$object.find('.star-users').html("(" + users + " Votes)");
 		}
 	}
 	
@@ -442,11 +443,6 @@ $(document).on('click','.load_more', function(){
 			$star.addClass("icon-star").removeClass("icon-star-half-o").removeClass("icon-star-o");
 		}
 	}
-
-	function adjustUsers ($nuser){
-		$nuser.addClass("nusers").removeClass("old-users");
-		
-		}
 // ------------------ RATING ENDS ------------------ //
 
 // ===========       Scroll to Top      ============ //
@@ -467,45 +463,40 @@ $('#return-to-top').click(function() {      // When arrow is clicked
 
 function OnloadFunction ()
 {
-   $('.show').hide();
-	$('.close').hide();
+   $(".show").hide();
+	$(".primary.p1-close-btn").hide();
 
 	
-$(document).on('click','.steps_button', function(){
+$(document).on('click',".primary.p1-steps-btn", function(){
 		$(this).hide('slow');
-		$(this).closest('.steps_format').find('.show').show('slow');
-		$(this).closest('.steps_format').find('.close').show('slow');
+		$(this).closest(".steps-format").find(".show").show('slow');
+		$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
 		
 });
-$(document).on('click','.close', function(){
-			$('.show').hide('slow');
-			$('.close').hide('slow');
-			$('.steps_button').show('slow');
+$(document).on('click',".primary.p1-close-btn", function(){
+			$(".show").hide('slow');
+			$(".primary.p1-close-btn").hide('slow');
+			$(".primary.p1-steps-btn").show('slow');
 }); 
 }
 $(document).ready(OnloadFunction);
 
 
 $( document ).ajaxComplete(function() {
-	$('.show').hide();
-	$('.close').hide();
+	$(".show").hide();
+	$(".primary.p1-close-btn").hide();
 
-$(document).on('click','.steps_button', function(){
+$(document).on('click',".primary.p1-steps-btn", function(){
 		$(this).hide('slow');
-		$(this).closest('.steps_format').find('.show').show('slow');
-		$(this).closest('.steps_format').find('.close').show('slow');
+		$(this).closest(".steps-format").find(".show").show('slow');
+		$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
 		
 });
-$(document).on('click','.close', function(){
-			$('.show').hide('slow');
-			$('.close').hide('slow');
-			$('.steps_button').show('slow');
+$(document).on('click',".primary.p1-close-btn", function(){
+			$(".show").hide('slow');
+			$(".primary.p1-close-btn").hide('slow');
+			$(".primary.p1-steps-btn").show('slow');
 }); 	
 });
 }); // Document.ready end
 // --- 3 ---
-
-
-
-
-

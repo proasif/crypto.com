@@ -134,16 +134,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 							$star_value = '<div class="icon-star-o ' . $append_class . '" value="1"></div>';
 						}
 							$temp_content = $star_value . $temp_content ; // storing value for first star
+						
+						if ( $users > 0 ) {	
+							$starContent = '<div class = "star-rating" data-original = "' . $old_rating .  '">' 
+							. $temp_content .'<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">';
+							$starUsers = '<div class = "star-users">(' . $users . ' Votes)</div></div>';
 							
-						if($old_rating != NULL)
-						{	
-							$content = '<div class = "star-rating" data-original = "' . $old_rating .  '">' 
-							. $temp_content .'<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">'
-							. " " .  "(" . '<div class = "old-users" value = "' . $users . '" data-user = "' . $users . '">' . $users . '</div>' . " " . " Votes)" . '</div>';
-							echo $content ; // Displaying stars and no. of users rated
+							$content = $starContent . $starUsers;
+							echo $content;
 						}
-						else 
-						{	
+						else {	
 							$content = '<div class = "star-rating" data-original = "' . $old_rating .  '">' 
 							. $temp_content .'<input type="hidden" id="ratings-nonce" value="'. wp_create_nonce("ratings") . '">
 							' . '</div>';
@@ -158,10 +158,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                        </div>
                     
                    <?php $steps = get_the_content(); ?>
-                        <div class="steps_format">
-                            <div class="steps"><input type="button" class="steps_button" value="Step by step guide"></div>
+                        <div class="steps-format">
+                            <button class="primary p1-steps-btn">Step by step guide </button>
                             <div class="show"><?php echo $steps ?></div>
-                            <div class="steps"><input type="button" class="close" value="CLOSE"></div>
+                            <button class="primary p1-close-btn">CLOSE</button>
                         </div>
 					<?php
                 //-------------- GETTING REQUIRED LOGOS --------------//
@@ -227,8 +227,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
     <?php //-------------- p1-airdrop ENDS --------------// ?>
     
-    <div class="load_more_button" align="center">
-        	<a><input type="button" data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>"class="load_more" value="Load More"></a>
+    <div class="load-more-button" align="center">
+        	<a><button data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>"class="primary p1-airdrop-load-more">Load More</button></a>
     </div>
 </div>
 <?php //-------------- p1-section p1-style-curves p1-style-shadow ENDS --------------// ?>
