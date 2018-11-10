@@ -169,11 +169,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$requires = "";
 					if ($pod->field('telegram_required') == true)
 						{
-							 $requires = $requires . " " . '<div class="icon icon-paper-plane"></div>';
+							 $requires = $requires . " " . '<div class="icon-paper-plane"></div>';
 						}
 					if ($pod->field('twitter_required') == true)
 						{
-							$requires = $requires . " " . '<div class="class="icon-twitter"></div></br>';
+							$requires = $requires . " " . '<div class="icon-twitter"></div></br>';
 						}
 					if ($pod->field('facebook_required') == true) 
 						{

@@ -170,7 +170,7 @@ function load_more() {
 				 $requires = $requires . " " . '<div class="icon icon-paper-plane"></div>';
 				}
 			if ($pod->field('twitter_required') == true){
-				$requires = $requires . " " . '<div class="class="icon-twitter"></div></br>';
+				$requires = $requires . " " . '<div class="icon-twitter"></div></br>';
 				}
 			if ($pod->field('facebook_required') == true){
 				$requires = $requires . " " . '<div class="icon-facebook"></div></br>';
