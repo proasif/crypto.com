@@ -51,6 +51,11 @@ if($address == true && $donatable != true){
 </div>
 
 <footer>
+<?php 
+		p1_custom_menu( "social-icons", true, "foot-icons", true, "", "", "");
+		p1_custom_menu( "footer-menu", true, "foot-main-nav", true, "", "", "");
+		?>
+
 	<footer-background>
 		<figure class="clouds velocity-animating" ></figure>
 		<figure class="background velocity-animating" ></figure>
@@ -61,8 +66,5 @@ if($address == true && $donatable != true){
 		<img src="https://bluestag.co.uk/templates/blue_stag/img/footer/quote-2.png" class="quote visible" id="q-2"></div>
 	</footer-background>
 
-		<?php 
-		p1_custom_menu( "social-icons", true, "foot-icons", true, "", "", "");
-		p1_custom_menu( "footer-menu", true, "foot-main-nav", true, "", "", "");
-		?>
+		
 </footer>
