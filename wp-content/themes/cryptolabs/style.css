@@ -581,5 +581,8 @@ body footer footer-background .stag.offLeft {
 .icon-smile-o:before {
   content: "\e012";
 }
+.icon-user:before {
+  content: "\e013";
+}
 
 /*--------------------xxxxx------------------------*/

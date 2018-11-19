@@ -211,6 +211,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 						{
 							$requires = $requires . " " . '<div class="icon-flickr"></div></br>';
 						}
+					if ($pod->field('kyc_required') == true)
+						{
+							$requires = $requires . " " . '<div class="icon-user"></div></br>';
+						}
+					if ($pod->field('bitcointalk_required') == true)
+						{
+							$requires = $requires . " " . '<div class="icon-btc"></div></br>';
+						}
 						
 				?>
 			

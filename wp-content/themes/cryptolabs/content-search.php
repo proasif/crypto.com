@@ -27,9 +27,10 @@ get_header();
             the_post_thumbnail(); 
             $pod = pods('airdrop', get_the_ID());
             $name = $pod->field('airdrop_name') ;
-            
+            $brief = $pod->field('brief_description') ;
             $title = get_the_title();
-			echo $title . " " . $name ;
+			$content = get_the_content();
+			echo $title . " " . $name . "</br>" . $brief . "</br>" . $content ;
 			
 			
 			$requires = "";
@@ -76,6 +77,14 @@ get_header();
 					if ($pod->field('discord_required') == true)
 						{
 							$requires = $requires . " " . '<div class="icon-flickr"></div></br>';
+						}
+					if ($pod->field('kyc_required') == true)
+						{
+							$requires = $requires . " " . '<div class="icon-user"></div></br>';
+						}
+					if ($pod->field('bitcointalk_required') == true)
+						{
+							$requires = $requires . " " . '<div class="icon-btc"></div></br>';
 						}
 						
 				?>

@@ -199,6 +199,14 @@ function load_more() {
 			if ($pod->field('discord_required') == true){
 				$requires = $requires . " " . '<div class="icon-flickr"></div></br>';
 				} 
+			if ($pod->field('kyc_required') == true)
+						{
+							$requires = $requires . " " . '<div class="icon-user"></div></br>';
+						}
+			if ($pod->field('bitcointalk_required') == true)
+						{
+							$requires = $requires . " " . '<div class="icon-btc"></div></br>';
+						}
 		    ?>
                 
                 <div class="requires"><?php echo ("Requires: "); echo $requires; // Displaying required logos  ?></div> 
