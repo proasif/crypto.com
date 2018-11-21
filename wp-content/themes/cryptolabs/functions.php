@@ -592,3 +592,43 @@ function mytheme_save_data($post_id) {
 }
 
 /* -------------------------------------------------------------*/
+
+// --- 6 ---
+
+/*$link = admin_url('admin-ajax.php?action=load_more');
+    echo '<div class="load-more-button" data-url="' ?> <?php echo admin_url('admin-ajax.php');'"></div>'; ?>
+	<a><button data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>"class="primary p1-airdrop-load-more">Load More</button></a>
+<?php 
+add_action("wp_ajax_load_more", "load_more");
+add_action("wp_ajax_nopriv_load_more", "load_more_login");
+*/
+add_action('wp_ajax_load_more', 'ajax_load_more');
+
+function ajax_load_more(){
+	if ( !wp_verify_nonce( $_REQUEST['nonce'], "load_more")) {
+		exit("No naughty business please");
+	}  
+
+	$currentpage = $_REQUEST['paging'];
+	$custom_posts = new WP_Query( 
+							array(
+									'post_type'			=> 'airdrop',
+									'order_by' 			=> 'title',
+									'order'    			=> 'desc',
+									'posts_per_page' 	=> 10,
+									'paged' 				=> $currentpage + 1
+								)
+							);
+	
+
+	$content = "";
+	if ( $custom_posts->have_posts() ) :
+		while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); 
+			$content = $content . get_template_part( 'template-parts/display/airdrop-post', 'display' );
+		endwhile;
+	endif;
+	
+	echo $content;
+	die();
+}
+

@@ -296,34 +296,42 @@ function closeAndRemoveFSNotice() {
 
 // ------------------ LOAD MORE ------------------ //
 
-$(document).on('click','.primary.p1-airdrop-load-more', function(){
+$(document).on('click','.p1-airdrop-load-more', function(){
 	$('.primary.p1-airdrop-load-more').hide('slow');
-	var page = $(this).data('page');
-	var newPage = page+1; 
+	var page = $(this).attr('data-paging');
+	var action = $(this).data('action');
+	var nonce = $(this).data('nonce'); 
 	var ajaxurl = $(this).data('url');
 	
 	$.ajax({
-		url : ajaxurl,
-		type : 'post',
-		data : {
-			page : page,
-			action : 'load_more'
-			
+		url 			: ajaxurl,
+		type 		: 'post',
+		dataType 	: 'text',
+		data 		: {
+						paging	: page,
+						action	: action,
+						nonce	: nonce
+		},
+		beforeSend: function() {
+			$('.primary.p1-airdrop-load-more').hide('slow');
 		},
 		error : function( response ){
 			console.log(response);
-			},
-			
+		},
 		success : function( response ){
-			if (response==null){$('.primary.p1-airdrop-load-more').hide('slow');}
-			else{
-			$(this).data('page', newPage);
-			$('.p1-airdrop').append( response );
-			$('.primary.p1-airdrop-load-more').show('slow');
+			//var output = JSON.parse(response);
+			//console.log(output.content);
+			if (response==null){
 			}
-			}	
-		});
-		newPage = $(this).data('page',newPage);
+			else{
+				
+				$('.p1-airdrop').append( response );
+				$('.p1-airdrop-load-more').show('slow');
+				
+				$(".p1-airdrop-load-more").attr("data-paging", parseInt(page) + 1);
+			}
+		}
+	});
 });
 
 // ------------------ RATING ------------------ //
@@ -368,6 +376,9 @@ $(document).on('click','.primary.p1-airdrop-load-more', function(){
 	
 	$(document).on("click", ".star-rating .star", function(){   //Action when clicked on the stars
 	  var $object = $(this).closest('.star-rating').first();
+	  if ($object.hasClass("rated")) {
+			return;	
+		}
 	  var $nuser = $(this).closest('.old-users').first();
 	  var user = $('.old-users').attr('value');
 	  var rating = $(this).attr('value');
@@ -379,6 +390,7 @@ $(document).on('click','.primary.p1-airdrop-load-more', function(){
 		'postid'				: postid,
 		'user'				: user,
 	  };
+	  
 	  
 	  $.ajax({
 				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
@@ -399,6 +411,7 @@ $(document).on('click','.primary.p1-airdrop-load-more', function(){
 				}
 				
 			})
+			
 			
 	  
 	});
