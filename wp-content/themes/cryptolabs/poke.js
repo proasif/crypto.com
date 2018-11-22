@@ -374,8 +374,9 @@ $(document).on('click','.p1-airdrop-load-more', function(){
 	});
 	
 	
-	$(document).on("click", ".star-rating .star", function(){   //Action when clicked on the stars
+	$(document).on("click", ".star-rating .star", function(e){   //Action when clicked on the stars
 	  var $object = $(this).closest('.star-rating').first();
+	  $object.click(false);
 	  if ($object.hasClass("rated")) {
 			return;	
 		}
@@ -408,12 +409,14 @@ $(document).on('click','.p1-airdrop-load-more', function(){
 								var rating = (nrate/nusers);
 								adjustStarRating( $object, rating, nusers, true);
 								closeAndRemoveFSNotice();
+								$object.click(true);
 				}
 				
 			})
-			
-			
-	  
+			$object.click(true);
+			e.preventDefault();
+			e.stopImmediatePropagation();
+    		return false;  
 	});
 	
 	
