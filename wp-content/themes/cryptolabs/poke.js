@@ -115,7 +115,7 @@ function handleAdminImageUpload($url){
 
 // 2.1 UPLOAD IMAGE VIA URL
 
-$(".p1-section .p1-image-upload #p1-image-upload-button").click(function(){
+$(".p1-section .p1-image-upload #p1-image-upload-button").click(function(event){
         uploadImageViaURL($(this).closest('form').first());
 	});
  
@@ -205,7 +205,7 @@ function generateDomObjects (url, dataurl){
 
 // 2.2 DELETE IMAGE VIA URL
 
-$("body").on('click', ".p1-section .p1-image-upload #p1-image-delete-button", function(){
+$("body").on('click', ".p1-section .p1-image-upload #p1-image-delete-button", function(event){
         deleteImageViaURL($(this).closest('form').first());
 		$("#p1-image-display").remove();
 		$("#p1-image-delete-button").remove();
@@ -413,7 +413,6 @@ $(document).on('click','.p1-airdrop-load-more', function(){
 				}
 				
 			})
-			$object.click(true);
 			e.preventDefault();
 			e.stopImmediatePropagation();
     		return false;  
