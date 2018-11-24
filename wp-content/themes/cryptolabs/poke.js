@@ -375,6 +375,7 @@ $(document).on('click','.p1-airdrop-load-more', function(){
 	
 	
 	$(document).on("click", ".star-rating .star", function(e){   //Action when clicked on the stars
+	
 	  var $object = $(this).closest('.star-rating').first();
 	  $object.click(false);
 	  if ($object.hasClass("rated")) {
@@ -383,19 +384,22 @@ $(document).on('click','.p1-airdrop-load-more', function(){
 	  var $nuser = $(this).closest('.old-users').first();
 	  var user = $('.old-users').attr('value');
 	  var rating = $(this).attr('value');
-	  var nonce = $('#ratings-nonce').attr('value');
       var postid = $(this).closest(".p1-airdrop-item").attr('data-postid');
+	  var action = $(this).data('action');
+	  var nonce = $(this).data('nonce'); 
+	  var ajaxurl = $(this).data('url');
 	  var formData = {
-		'security'			: nonce,
+		'nonce'				: nonce,
 		'rating'            : rating,
 		'postid'				: postid,
 		'user'				: user,
+		'action'				: action,
 	  };
 	  
 	  
 	  $.ajax({
 				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-				url         : '/coreapi/ratings.php', // the url where we want to POST
+				url         : ajaxurl, // the url where we want to POST
 				data        : formData, // our data object
 				dataType    : 'json', // what type of data do we expect back from the server
 				encode		: true,

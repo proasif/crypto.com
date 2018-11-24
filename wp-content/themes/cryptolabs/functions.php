@@ -632,3 +632,34 @@ function ajax_load_more(){
 	die();
 }
 
+// --------- 7. Star Rating ----------
+add_action('wp_ajax_star_rating','ajax_star_rating');
+function ajax_star_rating(){
+	echo ('i am here');
+	if ( !wp_verify_nonce( $_REQUEST["nonce"], "star_rating")) {
+		exit("No naughty business please");
+	} 
+	
+	$rating = $_REQUEST["rating"];
+	$postid = $_REQUEST["postid"]; //only for (this) airdrop 
+	$user = $_REQUEST["user"];
+	
+	
+	$pod = pods('airdrop', intval($postid) );
+	
+	$rate = $pod->field('rating') ;
+	$users = $pod->field('no_of_users') ;
+	
+	
+	$rate = $rate + $rating;
+	$users = $users + 1;
+	$data = array(
+	'rating' => $rate,
+	'no_of_users' => $users
+	);
+	$pod->save($data);
+	$average[] = array ('rate'=>$rate,'users'=>$users);
+	
+	echo $jsonformat = json_encode($average);
+	die();
+}

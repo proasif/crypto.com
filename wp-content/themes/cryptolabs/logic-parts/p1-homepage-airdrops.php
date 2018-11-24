@@ -9,36 +9,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>	
 <div class="p1-section p1-style-curves p1-style-shadow">
-<?php //-------------------- p1-section p1-style-curves p1-style-shadow STARTS -----------------------// ?>
-	<div class="p1-airdrop">
-     <?php 
-	 	//-------------- p1-airdrop STARTS --------------//
-		$currentpage = get_query_var('paged');
-		$custom_posts = new WP_Query( array(
-			'post_type'			=> 'airdrop',
-			'order_by' 			=> 'title',
-			'order'    			=> 'desc',
-			'posts_per_page' 	=> 10,
-			'paged' 				=> $currentpage
-		));
-		
-		if ( $custom_posts->have_posts() ) :
-			while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); 
-				get_template_part( 'template-parts/display/airdrop-post', 'display' );
-			endwhile;
-		endif;
-	?>
-	</div>
-    <?php //-------------- p1-airdrop ENDS --------------// ?>
-    
-    <div class="load-more-button" align="center">
-		<?php 
-			$action = "load_more";
-			$nonce = wp_create_nonce($action);
-			$page = 1;
-			$url = "admin-ajax.php";
+	<?php //-------------------- p1-section p1-style-curves p1-style-shadow STARTS -----------------------// ?>
+        <div class="p1-airdrop">
+         <?php 
+            //-------------- p1-airdrop STARTS --------------//
+            $currentpage = get_query_var('paged');
+            $custom_posts = new WP_Query( array(
+                'post_type'			=> 'airdrop',
+                'order_by' 			=> 'title',
+                'order'    			=> 'desc',
+                'posts_per_page' 	=> 10,
+                'paged' 				=> $currentpage
+            ));
+            
+            if ( $custom_posts->have_posts() ) :
+                while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); 
+                    get_template_part( 'template-parts/display/airdrop-post', 'display' );
+                endwhile;
+            endif;
         ?>
-        <button data-paging="<?php echo $page ?>" data-nonce="<?php echo $nonce ?>" data-action="<?php echo $action ?>" data-url="<?php echo admin_url($url); ?>"class="primary p1-airdrop-load-more">Load More</button>
-    </div>
+        </div>
+        <?php //-------------- p1-airdrop ENDS --------------// ?>
+        
+        <div class="load-more-button" align="center">
+            <?php 
+                $action = "load_more";
+                $nonce = wp_create_nonce($action);
+                $page = 1;
+                $url = "admin-ajax.php";
+            ?>
+            <button data-paging="<?php echo $page ?>" data-nonce="<?php echo $nonce ?>" data-action="<?php echo $action ?>" data-url="<?php echo admin_url($url); ?>"class="primary p1-airdrop-load-more">Load More</button>
+        </div>
 </div>
 <?php //-------------- p1-section p1-style-curves p1-style-shadow ENDS --------------// ?>
