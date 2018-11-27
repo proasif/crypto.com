@@ -126,14 +126,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$temp_content = $star_value . $temp_content ; // storing value for first star
 			
 		if ( $users == 1 ) {	
-			$starContent = '<div class = "star-rating" data-original = "' . $old_rating .  '"data-nonce= "' . $nonce . '" data-action="' . $action . '" data-url="' . $admin_url . '">'. $temp_content ;
+			$starContent = '<div class = "star-rating" data-original = "' . $old_rating . '" data-nonce= "' . $nonce . '" data-action="' . $action . '" data-url="' . $admin_url . '">'. $temp_content ;
 			$starUsers = '<div class = "star-users">(' . $users . ' Vote) </div></div>';
 			$content = $starContent . $starUsers;
 			echo $content;
 		}
 		
 		else if ( $users > 1 ) {	
-			$starContent = '<div class = "star-rating" data-original = "' . $old_rating .  '"data-nonce= "' . $nonce . '" data-action="' . $action . '" data-url="' .  $admin_url . '">'. $temp_content ;
+			$starContent = '<div class = "star-rating" data-original = "' . $old_rating .  '" data-nonce= "' . $nonce . '" data-action="' . $action . '" data-url="' .  $admin_url . '">'. $temp_content ;
 			$starUsers = '<div class = "star-users">(' . $users . ' Votes)</div></div>';
 			$content = $starContent . $starUsers;
 			echo $content;

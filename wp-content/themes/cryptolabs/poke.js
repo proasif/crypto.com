@@ -115,7 +115,7 @@ function handleAdminImageUpload($url){
 
 // 2.1 UPLOAD IMAGE VIA URL
 
-$(".p1-section .p1-image-upload #p1-image-upload-button").click(function(event){
+$(".p1-section .p1-image-upload .p1-image-upload-button").click(function(event){
         uploadImageViaURL($(this).closest('form').first());
 	});
  
@@ -126,8 +126,14 @@ function uploadImageViaURL($object) {
 	event.stopImmediatePropagation();
 	
 	//check if this is gif before upload
-	var url = $object.find('#p1-image-upload-text').val();
-	var nonce = $object.find('#admin-image-upload-nonce').val();
+	var url = $object.find('.p1-image-upload-text').val();
+	console.log(url);
+	var action = $object.find('.p1-image-upload-button').attr('data-action');
+	console.log(action);
+	var nonce = $object.find('.p1-image-upload-button').attr('data-nonce');
+	console.log(nonce);
+	var ajaxurl = $object.find('.p1-image-upload-button').attr('data-url');
+	console.log(ajaxurl);
 	
 	var regex = new RegExp("(.*?)\.(jpg|jpeg|png|gif)$");
 	if((regex.test(url))) {
@@ -143,7 +149,7 @@ function uploadImageViaURL($object) {
 	
 	//check and initiate the upload
 	var formData = {
-		'security'			: nonce,
+		nonce				: nonce,
 		'url'             	: url,
 		'postid'				: 0,
 		'op'					: 'upload_and_process',
@@ -151,7 +157,7 @@ function uploadImageViaURL($object) {
 	
 	$.ajax({
 		type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-		url         : '/coreapi/uploadviaurl.php', // the url where we want to POST
+		url         : ajaxurl, // the url where we want to POST
 		data        : formData, // our data object
 		dataType    : 'text', // what type of data do we expect back from the server
 		encode		: true,
@@ -214,19 +220,17 @@ $("body").on('click', ".p1-section .p1-image-upload #p1-image-delete-button", fu
 		});
 	
 	function deleteImageViaURL($object) {
-		event.preventDefault();
-		event.stopImmediatePropagation();
 		var url = $object.find('#p1-image-delete-button').attr('data-url');
 		var nonce = $object.find('#admin-image-upload-nonce').val();
 		var formData = {
-		'security'			: nonce,
+		nonce				: nonce,
 		'url'             	: url,
 		'op'					: 'delete',
 	};
 			
 			$.ajax({
 				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-				url         : '/coreapi/uploadviaurl.php', // the url where we want to POST
+				url         : ajaxurl, // the url where we want to POST
 				data        : formData, // our data object
 				dataType    : 'text', // what type of data do we expect back from the server
 				encode		: true,
@@ -385,9 +389,9 @@ $(document).on('click','.p1-airdrop-load-more', function(){
 	  var user = $('.old-users').attr('value');
 	  var rating = $(this).attr('value');
       var postid = $(this).closest(".p1-airdrop-item").attr('data-postid');
-	  var action = $(this).data('action');
-	  var nonce = $(this).data('nonce'); 
-	  var ajaxurl = $(this).data('url');
+	  var action = $(this).closest(".star-rating").attr('data-action');
+	  var nonce = $(this).closest(".star-rating").attr('data-nonce');
+	  var ajaxurl = $(this).closest(".star-rating").attr('data-url');
 	  var formData = {
 		'nonce'				: nonce,
 		'rating'            : rating,
@@ -416,10 +420,7 @@ $(document).on('click','.p1-airdrop-load-more', function(){
 								$object.click(true);
 				}
 				
-			})
-			e.preventDefault();
-			e.stopImmediatePropagation();
-    		return false;  
+			}) 
 	});
 	
 	

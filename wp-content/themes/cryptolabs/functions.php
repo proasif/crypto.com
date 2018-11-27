@@ -635,7 +635,6 @@ function ajax_load_more(){
 // --------- 7. Star Rating ----------
 add_action('wp_ajax_star_rating','ajax_star_rating');
 function ajax_star_rating(){
-	echo ('i am here');
 	if ( !wp_verify_nonce( $_REQUEST["nonce"], "star_rating")) {
 		exit("No naughty business please");
 	} 
@@ -662,4 +661,143 @@ function ajax_star_rating(){
 	
 	echo $jsonformat = json_encode($average);
 	die();
+}
+
+// --------- 7. Image Upload ----------
+
+add_action('wp_ajax_img_upload','ajax_img_upload');
+function ajax_img_upload(){
+	if ( !wp_verify_nonce( $_REQUEST["nonce"], "img_upload")) {
+		exit("No naughty business please");
+	} 
+	
+$security = $_REQUEST["nonce"];
+$url = $_REQUEST["url"];
+$op = $_REQUEST["op"];
+$postid = $_REQUEST["postid"]; //only for process image
+
+$dmode = $_REQUEST["dmode"];
+if ($dmode) {
+	$op = $_REQUEST["op"];
+	$url = urldecode($_REQUEST["url"]);
+}
+
+//check if url is valid
+if(!filter_var($url, FILTER_VALIDATE_URL)) {
+	echo "Errr:Invalid URL";
+	die();
+}
+
+//check security
+$result = check_ajax_referer( 'admin-image-upload', $security, false );
+if ($op == 'upload_and_process') {
+	$result = wp_verify_nonce( $security, 'upload_and_process' );
+}
+
+if ($result == -1 && !$dmode) {
+	echo "Errr:Security Error";
+	die();
+}
+else {
+	if ($op == 'upload') {
+		$upload_url = uploadRemoteImage($url, false);
+		echo $upload_url;
+	}
+	else if ($op == 'upload_and_process') {
+		$upload_url = uploadRemoteImage($url, true);
+		echo $upload_url;
+	}
+	else if ($op == 'delete') {
+		$delete_url = deleteUploadedImage($url);
+		echo $delete_url;
+	}
+	die();
+}
+
+function uploadRemoteImage($image_url, $process){
+    $image = $image_url;
+    $get = wp_remote_get( $image );
+    $type = wp_remote_retrieve_header( $get, 'content-type' );
+    
+	$ext = ".jpg";
+	$shouldProceed = false;
+	
+	if ($type == "image/jpeg" || $type == "image/jpg") {
+		$ext = ".jpg";
+		$shouldProceed = true;
+	}
+	else if ($type == "image/png") {
+		$ext = ".png";
+		$shouldProceed = true;
+	}
+	else if ($type == "image/gif") {
+		$ext = ".gif";
+		$shouldProceed = true;
+		
+		//till i can get this to work
+		//return "Errr:Use Upload Files For GIF Files";
+	}
+	
+	if (!$shouldProceed) {
+        return "Errr:Invalid Filetype";
+	}
+	
+   	$mirror = wp_upload_bits( basename( pathinfo($image, PATHINFO_FILENAME) ) . $ext , '', wp_remote_retrieve_body( $get ) );
+	
+	$path = $mirror["file"];
+	$filename = basename($mirror["file"]);
+	$image_id = '';
+	
+	$url = $mirror["url"];
+	$url = parse_url($url, PHP_URL_PATH);
+	
+	if ($process && !$mirror['error']) {
+		$wp_filetype = wp_check_filetype($filename, null );
+		
+		$attachment = array(
+			'guid'=> $path, 
+			'post_mime_type' => $type,
+			'post_title'     => preg_replace( '/\.[^.]+$/', '', $filename ),
+   			'post_content'   => '',
+			'post_status' => 'inherit'
+         );
+		require_once( ABSPATH . 'wp-admin/includes/image.php' );
+		
+    	$image_id = wp_insert_attachment($attachment, $path, 0);
+		
+		// Generate the metadata for the attachment, and update the database record
+		$attach_data = wp_generate_attachment_metadata( $image_id, $path );
+		wp_update_attachment_metadata( $image_id, $attach_data );
+		
+		$image_id = $image_id;
+	}
+	
+	$content = array(
+		"url" => $url,
+		"atpath" => $path,
+		"name" => $filename,
+		"image_id" => $image_id
+	);
+	return "Succ:" . json_encode($content);
+}  
+
+function deleteUploadedImage($url){
+	$result = attachment_url_to_postid($url); 
+	
+	//return "|" . $result . "|";
+	//get path from the entire url
+	/*$arr = explode('wp-content/', $result);
+	if (count($arr) >= 1) {
+		$main = $arr[0];
+		$path = $_SERVER['DOCUMENT_ROOT'] . '/wp-content/uploads/2018/09/' . $main;
+		unlink($path);*/
+		if ($result != ""){
+			wp_delete_attachment($result, true);
+		return "Succ:File Deleted - " . $result;
+	}
+	else {
+		return "Errr:File not found for delete - " . $result;	
+	}
+}
+die();
 }
