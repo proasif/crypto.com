@@ -671,14 +671,14 @@ function ajax_img_upload(){
 		exit("No naughty business please");
 	} 
 	
-$security = $_REQUEST["nonce"];
+$security = $_REQUEST["security"];
 $url = $_REQUEST["url"];
 $op = $_REQUEST["op"];
 $postid = $_REQUEST["postid"]; //only for process image
 
 $dmode = $_REQUEST["dmode"];
 if ($dmode) {
-	$op = $_REQUEST["op"];
+	$op = $_GET["op"];
 	$url = urldecode($_REQUEST["url"]);
 }
 
@@ -687,6 +687,10 @@ if(!filter_var($url, FILTER_VALIDATE_URL)) {
 	echo "Errr:Invalid URL";
 	die();
 }
+
+//get wordpress things
+define('WP_USE_THEMES', false);
+require($_SERVER['DOCUMENT_ROOT'] . '/wp-load.php');
 
 //check security
 $result = check_ajax_referer( 'admin-image-upload', $security, false );
