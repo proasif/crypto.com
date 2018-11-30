@@ -81,13 +81,13 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
 
 // Tell WordPress to log everything to /wp-content/debug.log
 define('WP_DEBUG_LOG', false);
 
 // Turn off the display of error messages on your site
-define('WP_DEBUG_DISPLAY', false);
+define('WP_DEBUG_DISPLAY', true);
 /* That's all, stop editing! Happy blogging. */
 
 /* Harden Wordpress */

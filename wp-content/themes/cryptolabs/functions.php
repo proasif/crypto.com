@@ -18,7 +18,6 @@ add_action('init', 'crypto_theme_setup');
 add_action('customize_register', 'ju_customize_register');
 add_action('wp_head', 'ju_head');
 add_action( 'customize_register', 'm1_customize_register' );
-include ( get_template_directory() . '/inc/ajax.php' );
 
 /**
 * Child Theme Setup
@@ -671,41 +670,20 @@ function ajax_img_upload(){
 		exit("No naughty business please");
 	} 
 	
-$security = $_REQUEST["security"];
 $url = $_REQUEST["url"];
 $op = $_REQUEST["op"];
 $postid = $_REQUEST["postid"]; //only for process image
 
 $dmode = $_REQUEST["dmode"];
-if ($dmode) {
-	$op = $_GET["op"];
-	$url = urldecode($_REQUEST["url"]);
-}
+	if ($dmode) {
+		$op = $_REQUEST["op"];
+		$url = urldecode($_REQUEST["url"]);
+	}
 
 //check if url is valid
-if(!filter_var($url, FILTER_VALIDATE_URL)) {
-	echo "Errr:Invalid URL";
-	die();
-}
-
-//get wordpress things
-define('WP_USE_THEMES', false);
-require($_SERVER['DOCUMENT_ROOT'] . '/wp-load.php');
-
-//check security
-$result = check_ajax_referer( 'admin-image-upload', $security, false );
-if ($op == 'upload_and_process') {
-	$result = wp_verify_nonce( $security, 'upload_and_process' );
-}
-
-if ($result == -1 && !$dmode) {
-	echo "Errr:Security Error";
-	die();
-}
-else {
-	if ($op == 'upload') {
-		$upload_url = uploadRemoteImage($url, false);
-		echo $upload_url;
+	if(!filter_var($url, FILTER_VALIDATE_URL)) {
+		echo "Errr:Invalid URL";
+		die();
 	}
 	else if ($op == 'upload_and_process') {
 		$upload_url = uploadRemoteImage($url, true);
@@ -715,8 +693,6 @@ else {
 		$delete_url = deleteUploadedImage($url);
 		echo $delete_url;
 	}
-	die();
-}
 
 function uploadRemoteImage($image_url, $process){
     $image = $image_url;
@@ -746,7 +722,8 @@ function uploadRemoteImage($image_url, $process){
         return "Errr:Invalid Filetype";
 	}
 	
-   	$mirror = wp_upload_bits( basename( pathinfo($image, PATHINFO_FILENAME) ) . $ext , '', wp_remote_retrieve_body( $get ) );
+   	$mirror = wp_upload_bits( basename( pathinfo($image, PATHINFO_FILENAME) ) 
+	. $ext , '', wp_remote_retrieve_body( $get ) );
 	
 	$path = $mirror["file"];
 	$filename = basename($mirror["file"]);
@@ -783,25 +760,17 @@ function uploadRemoteImage($image_url, $process){
 		"image_id" => $image_id
 	);
 	return "Succ:" . json_encode($content);
-}  
-
-function deleteUploadedImage($url){
-	$result = attachment_url_to_postid($url); 
-	
-	//return "|" . $result . "|";
-	//get path from the entire url
-	/*$arr = explode('wp-content/', $result);
-	if (count($arr) >= 1) {
-		$main = $arr[0];
-		$path = $_SERVER['DOCUMENT_ROOT'] . '/wp-content/uploads/2018/09/' . $main;
-		unlink($path);*/
-		if ($result != ""){
-			wp_delete_attachment($result, true);
-		return "Succ:File Deleted - " . $result;
-	}
-	else {
-		return "Errr:File not found for delete - " . $result;	
-	}
-}
-die();
+} 
+	function deleteUploadedImage($url){
+		$result = attachment_url_to_postid($url); 
+		
+		
+			if ($result != ""){
+				wp_delete_attachment($result, true);
+			return "Succ:File Deleted - " . $result;
+			}
+			else {
+				return "Errr:File not found for delete - " . $result;	
+			}
+	 }
 }

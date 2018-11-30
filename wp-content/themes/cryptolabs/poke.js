@@ -115,27 +115,25 @@ function handleAdminImageUpload($url){
 
 // 2.1 UPLOAD IMAGE VIA URL
 
-$(".p1-section .p1-image-upload .p1-image-upload-button").click(function(event){
-        uploadImageViaURL($(this).closest('form').first());
+$(".p1-section .p1-image-display .p1-image-upload-button").click(function(){
+        uploadImageViaURL($(this).closest('input').first());
 	});
  
 function uploadImageViaURL($object) {
 	'use strict';
 	
-	event.preventDefault();
-	event.stopImmediatePropagation();
 	
 	//check if this is gif before upload
-	var url = $object.find('.p1-image-upload-text').val();
+	var url = $('.p1-section .p1-image-display .p1-image-upload-text').val();
 	console.log(url);
-	var action = $object.find('.p1-image-upload-button').attr('data-action');
+	var action = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-action');
 	console.log(action);
-	var nonce = $object.find('.p1-image-upload-button').attr('data-nonce');
+	var nonce = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-nonce');
 	console.log(nonce);
-	var ajaxurl = $object.find('.p1-image-upload-button').attr('data-url');
+	var ajaxurl = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-url');
 	console.log(ajaxurl);
 	
-	var regex = new RegExp("(.*?)\.(jpg|jpeg|png|gif)$");
+	/*var regex = new RegExp("(.*?)\.(jpg|jpeg|png|gif)$");
 	if((regex.test(url))) {
 		//this is a gif, fallback to theme processing
 		//$object.closest('.snax-media-upload-form').find('.snax-load-image-from-url').val($object.val()).trigger('paste');
@@ -204,8 +202,8 @@ function uploadImageViaURL($object) {
 }
 
 function generateDomObjects (url, dataurl){
-	$('.p1-section .p1-image-upload').append('<img id="p1-image-display" src="'+url+'" width="120px"/>'); 
-	$('.p1-section .p1-image-upload').append('<br><button type="submit" id="p1-image-delete-button" form="form1" data-url="'+dataurl+'">Delete</button>');
+	$('.p1-section .p1-style-curves .p1-style-shadow').append('<img id="p1-image-display" src="'+url+'" width="120px"/>'); 
+	$('.p1-section p1-style-curves p1-style-shadow').append('<br><button type="submit" id="p1-image-delete-button" data-url="'+dataurl+'">Delete</button>');
 }
 
 
@@ -224,7 +222,7 @@ $("body").on('click', ".p1-section .p1-image-upload #p1-image-delete-button", fu
 		var nonce = $object.find('#admin-image-upload-nonce').val();
 		var formData = {
 		nonce				: nonce,
-		'url'             	: url,
+		'urlf'             	: url,
 		'op'					: 'delete',
 	};
 			
