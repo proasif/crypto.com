@@ -124,8 +124,8 @@ function uploadImageViaURL($object) {
 	
 	
 	//check if this is gif before upload
-	var url = $('.p1-section .p1-image-display .p1-image-upload-text').val();
-	console.log(url);
+	var iurl = $('.p1-section .p1-image-display .p1-image-upload-text').val();
+	console.log(iurl);
 	var action = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-action');
 	console.log(action);
 	var nonce = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-nonce');
@@ -148,7 +148,7 @@ function uploadImageViaURL($object) {
 	//check and initiate the upload
 	var formData = {
 		nonce				: nonce,
-		'url'             	: url,
+		'iurl'             	: iurl,
 		'postid'				: 0,
 		'op'					: 'upload_and_process',
 	};
@@ -173,6 +173,7 @@ function uploadImageViaURL($object) {
 				var content = JSON.parse(data.substring(5));
 				
 				var url = content.url;
+				console.log(url);
 				var dataurl = window.location.protocol + "//" + window.location.host + url;
 				var name = content.name;
 				//console.log(url);

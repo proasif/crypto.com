@@ -665,15 +665,18 @@ function ajax_star_rating(){
 // --------- 7. Image Upload ----------
 
 add_action('wp_ajax_img_upload','ajax_img_upload');
+	
 function ajax_img_upload(){
 	if ( !wp_verify_nonce( $_REQUEST["nonce"], "img_upload")) {
 		exit("No naughty business please");
 	} 
 	
-$url = $_REQUEST["url"];
+$url = $_REQUEST["iurl"];
+echo $url;
 $op = $_REQUEST["op"];
+echo $op;
 $postid = $_REQUEST["postid"]; //only for process image
-
+echo $postid;
 $dmode = $_REQUEST["dmode"];
 	if ($dmode) {
 		$op = $_REQUEST["op"];
