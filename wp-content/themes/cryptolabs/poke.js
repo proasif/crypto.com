@@ -325,6 +325,7 @@ $(document).on('click','.p1-airdrop-load-more', function(){
 			//var output = JSON.parse(response);
 			//console.log(output.content);
 			if (response==null){
+				alert('Err: No response from the server');
 			}
 			else{
 				
