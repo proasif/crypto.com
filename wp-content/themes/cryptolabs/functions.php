@@ -680,7 +680,7 @@ echo $postid;
 $dmode = $_REQUEST["dmode"];
 	if ($dmode) {
 		$op = $_REQUEST["op"];
-		$url = urldecode($_REQUEST["url"]);
+		$ajax_url = $_REQUEST["url"];
 	}
 
 //check if url is valid
@@ -732,19 +732,7 @@ function uploadRemoteImage($image_url, $process){
 	$filename = basename($mirror["file"]);
 	$image_id = '';
 	
-	$url = $mirror["url"];
-	$url = parse_url($url, PHP_URL_PATH);
-	
-	if ($process && !$mirror['error']) {
-		$wp_filetype = wp_check_filetype($filename, null );
-		
-		$attachment = array(
-			'guid'=> $path, 
-			'post_mime_type' => $type,
-			'post_title'     => preg_replace( '/\.[^.]+$/', '', $filename ),
-   			'post_content'   => '',
-			'post_status' => 'inherit'
-         );
+
 		require_once( ABSPATH . 'wp-admin/includes/image.php' );
 		
     	$image_id = wp_insert_attachment($attachment, $path, 0);
@@ -754,7 +742,7 @@ function uploadRemoteImage($image_url, $process){
 		wp_update_attachment_metadata( $image_id, $attach_data );
 		
 		$image_id = $image_id;
-	}
+	
 	
 	$content = array(
 		"url" => $url,

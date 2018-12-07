@@ -180,9 +180,7 @@ function uploadImageViaURL($object) {
 				generateDomObjects(url, dataurl);
 			}
 			else {
-				if ($('.AVAdmin').length) {
-					console.log("[Uploading Image Via URL] Error After Ajax: \n" + data);
-				}
+				
 				
 				var msg = data.substring(5);
 				
@@ -210,7 +208,7 @@ function generateDomObjects (url, dataurl){
 
 // 2.2 DELETE IMAGE VIA URL
 
-$("body").on('click', ".p1-section .p1-image-upload #p1-image-delete-button", function(event){
+$("body").on('click', ".p1-section #p1-image-delete-button", function(event){
         deleteImageViaURL($(this).closest('form').first());
 		$("#p1-image-display").remove();
 		$("#p1-image-delete-button").remove();

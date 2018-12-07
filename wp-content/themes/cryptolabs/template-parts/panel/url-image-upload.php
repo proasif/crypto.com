@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php 
                     $action = "img_upload";
                     $nonce = wp_create_nonce($action);
-                    $url = "admin-ajax.php";
+                    $url = admin_url("admin-ajax.php");
                     ?>
                     
                     <input type="text" class="p1-image-upload-text">
@@ -26,8 +26,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                         class="p1-image-upload-button" 
                         data-nonce="<?php echo $nonce ?>" 
                         data-action="<?php echo $action ?>" 
-                        data-url="<?php echo admin_url($url); ?>" 
-                        value="Submit">Submit
+                        data-url="<?php echo $url ?>" 
+                        >Submit
                     </button>
             	</div>
     </div>
