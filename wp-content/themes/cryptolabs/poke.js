@@ -115,13 +115,12 @@ function handleAdminImageUpload($url){
 
 // 2.1 UPLOAD IMAGE VIA URL
 
-$(".p1-section .p1-image-display .p1-image-upload-button").click(function(){
+$(".p1-section .p1-image-display .p1-image-upload-button").click(function()
+{
         uploadImageViaURL($(this).closest('input').first());
 	});
  
 function uploadImageViaURL($object) {
-	'use strict';
-	
 	
 	//check if this is gif before upload
 	var iurl = $('.p1-section .p1-image-display .p1-image-upload-text').val();
@@ -146,57 +145,63 @@ function uploadImageViaURL($object) {
 	} */
 	
 	//check and initiate the upload
-	var formData = {
-		nonce				: nonce,
+	var formData = 
+	{
+		'nonce'				: nonce,
 		'iurl'             	: iurl,
 		'postid'				: 0,
 		'op'					: 'upload_and_process',
+		'action'				: action,
 	};
 	
 	$.ajax({
-		type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-		url         : ajaxurl, // the url where we want to POST
-		data        : formData, // our data object
-		dataType    : 'text', // what type of data do we expect back from the server
-		encode		: true,
-		beforeSend	: function(msg){
-			prepareFSNotice("Downloading...", false, true, false, true);
-		},
-		success		: function(data) {
-						console.log(data);
-			var metaresult = data.substring(0, 5);
-			if (metaresult == "Succ:") {
-				//remove the notice
-				closeAndRemoveFSNotice();
-				
-				//do the magic
-				var content = JSON.parse(data.substring(5));
-				
-				var url = content.url;
-				console.log(url);
-				var dataurl = window.location.protocol + "//" + window.location.host + url;
-				var name = content.name;
-				//console.log(url);
-				generateDomObjects(url, dataurl);
-			}
-			else {
-				
-				
-				var msg = data.substring(5);
-				
-				//display error
-				prepareFSNotice(msg, false, false, true, false);
-			}
-		},
-		error		: function(data) {
-			if ($('.AVAdmin').length) {
-				//loading returned no results
-				console.log("[Uploading Image Via URL] Error In Ajax: \n" + data); 
-			}
-			
-			//display error
-			prepareFSNotice("Whoops....", "Something went wrong... please retry, contact us if the problem persists", false, true, false);
-		},
+			type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+			url         : ajaxurl, // the url where we want to POST
+			data        : formData, // our data object
+			dataType    : 'text', // what type of data do we expect back from the server
+			encode		: true,
+			beforeSend	: function(msg)
+							{
+								prepareFSNotice("Downloading...", false, true, false, true);
+							},
+			success		: function(data) 
+				{
+					console.log(data);
+					var metaresult = data.substring(0, 5);
+					if (metaresult == "Succ:") 
+						{
+							//remove the notice
+							closeAndRemoveFSNotice();
+							
+							//do the magic
+							var content = JSON.parse(data.substring(5));
+							
+							var url = content.url;
+							console.log(url);
+							var dataurl = window.location.protocol + "//" + window.location.host + url;
+							var name = content.name;
+							//console.log(url);
+							generateDomObjects(url, dataurl);
+						}
+					else 
+						{	
+							var msg = data.substring(5);
+							
+							//display error
+							prepareFSNotice(msg, false, false, true, false);
+						}
+				},
+			error		: function(data) 
+				{
+					if ($('.AVAdmin').length) 
+					{
+						//loading returned no results
+						console.log("[Uploading Image Via URL] Error In Ajax: \n" + data); 
+					}
+					
+					//display error
+					prepareFSNotice("Whoops....", "Something went wrong... please retry, contact us if the problem persists", false, true, false);
+				},
 	});
 }
 
@@ -225,18 +230,22 @@ $("body").on('click', ".p1-section #p1-image-delete-button", function(event){
 		'op'					: 'delete',
 	};
 			
-			$.ajax({
+			$.ajax
+			({
 				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
 				url         : ajaxurl, // the url where we want to POST
 				data        : formData, // our data object
 				dataType    : 'text', // what type of data do we expect back from the server
 				encode		: true,
-				beforeSend	: function(msg){
-								prepareFSNotice("Deleting...", false, true, false, true); },
-				success		: function(data) {
-								console.log(data);
-								closeAndRemoveFSNotice();
-				}
+				beforeSend	: function(msg)
+								{
+									prepareFSNotice("Deleting...", false, true, false, true); 
+								},
+				success		: function(data) 
+								{
+									console.log(data);
+									closeAndRemoveFSNotice();
+								}
 			})
 			
 		}

@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="p1-section p1-style-curves p1-style-shadow">
             	<div class="p1-image-display">
 					<?php 
-                    $action = "img_upload";
+                    $action = "upload_and_process";
                     $nonce = wp_create_nonce($action);
                     $url = admin_url("admin-ajax.php");
                     ?>
