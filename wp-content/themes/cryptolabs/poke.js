@@ -132,19 +132,6 @@ function uploadImageViaURL($object) {
 	var ajaxurl = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-url');
 	console.log(ajaxurl);
 	
-	/*var regex = new RegExp("(.*?)\.(jpg|jpeg|png|gif)$");
-	if((regex.test(url))) {
-		//this is a gif, fallback to theme processing
-		//$object.closest('.snax-media-upload-form').find('.snax-load-image-from-url').val($object.val()).trigger('paste');
-		//$object.val(''); 
-		//console.log("Invalid File");
-		//return;
-	}
-	/*else {
-		$object.closest('.snax-load-image-from-url').val('');
-	} */
-	
-	//check and initiate the upload
 	var formData = 
 	{
 		'nonce'				: nonce,
@@ -193,12 +180,7 @@ function uploadImageViaURL($object) {
 				},
 			error		: function(data) 
 				{
-					if ($('.AVAdmin').length) 
-					{
-						//loading returned no results
-						console.log("[Uploading Image Via URL] Error In Ajax: \n" + data); 
-					}
-					
+										
 					//display error
 					prepareFSNotice("Whoops....", "Something went wrong... please retry, contact us if the problem persists", false, true, false);
 				},
@@ -297,11 +279,6 @@ function prepareFSNotice(title, subtitle, hasloading, hasclose, noclose) {
 		
 		closeAndRemoveFSNotice();
 	});
-}
-
-function closeAndRemoveFSNotice() {
-	$('.av_notice_fs').remove();
-	$('.av_notice_close').off('click.notice');
 }
 
 // ------------------ LOAD MORE ------------------ //
