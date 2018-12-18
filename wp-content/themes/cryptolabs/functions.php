@@ -666,7 +666,7 @@ function ajax_star_rating(){
 
 add_action('wp_ajax_upload_and_process','ajax_upload_and_process');
 	
-function ajax_img_upload()
+function ajax_upload_and_process()
 {
 	if ( !wp_verify_nonce( $_REQUEST["nonce"], "upload_and_process")) 
 	{
