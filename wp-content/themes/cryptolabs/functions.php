@@ -675,18 +675,10 @@ function ajax_upload_and_process()
 	
 		$url = $_REQUEST["iurl"];
 		echo $url;
-		$op = $_REQUEST["op"];
-		echo $op;
 		$action = $_REQUEST["action"];
 		echo $action;
 		$postid = $_REQUEST["postid"]; //only for process image
 		echo $postid;
-		$dmode = $_REQUEST["dmode"];
-			if ($dmode) 
-			{
-				$op = $_REQUEST["op"];
-				$ajax_url = $_REQUEST["url"];
-			}
 
 		//check if url is valid
 		if(!filter_var($url, FILTER_VALIDATE_URL)) 
