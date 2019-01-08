@@ -195,6 +195,10 @@ function generateDomObjects (url, dataurl){
 // --- 2 ---
 
 // 3. FULL SCREEN NOTICE FOR USERS
+function closeAndRemoveFSNotice()
+	{
+	
+	}
 function prepareFSNotice(title, subtitle, hasloading, hasclose, noclose) { 		
 	//check for double
 	if ($('.av_notice_fs').length) {
