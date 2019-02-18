@@ -115,23 +115,21 @@ function handleAdminImageUpload($url){
 
 // 2.1 UPLOAD IMAGE VIA URL
 
-$(".p1-section .p1-image-display .p1-image-upload-button").click(function()
-{
+$(".p1-section .p1-image-display .p1-image-upload-button").click(function() {
         uploadImageViaURL($(this).closest('input').first());
 		
-	});
+});
  
 function uploadImageViaURL($object) {
 	
 	//check if this is gif before upload
 	var iurl = $('.p1-section .p1-image-display .p1-image-upload-text').val();
-	console.log(iurl);
+	
 	var action = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-action');
-	console.log(action);
+	
 	var nonce = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-nonce');
-	console.log(nonce);
+	
 	var ajaxurl = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-url');
-	console.log(ajaxurl);
 	
 	var formData = 
 	{
@@ -155,23 +153,18 @@ function uploadImageViaURL($object) {
 				{
 					console.log(data);
 					var metaresult = data.substring(0, 5);
-					if (metaresult == "Succ:") 
-						{
+					if (metaresult == "Succ:") {
 							//remove the notice
 							closeAndRemoveFSNotice();
 							
 							//do the magic
 							var content = JSON.parse(data.substring(5));
-							
-							var url = content.url;
-							console.log(url);
+							var url = content.url;							
 							var dataurl = window.location.protocol + "//" + window.location.host + url;
-							var name = content.name;
-							//console.log(url);
+							var name = content.name;	
 							generateDomObjects(url, dataurl);
 						}
-					else 
-						{	
+					else {	
 							var msg = data.substring(5);
 							
 							//display error
@@ -187,10 +180,50 @@ function uploadImageViaURL($object) {
 	});
 }
 
-function generateDomObjects (url, dataurl){
-	$('.p1-section .p1-style-curves .p1-style-shadow').append('<img id="p1-image-display" src="'+url+'" width="120px"/>'); 
-	$('.p1-section p1-style-curves p1-style-shadow').append('<br><button type="submit" id="p1-image-delete-button" data-url="'+dataurl+'">Delete</button>');
+function generateDomObjects(url, dataurl){
+	$('.p1-section').append('<img id="p1-image-display" src="'+url+'" width="150px"/>'); 
+	$('.p1-section').append('<br><button type="submit" id="p1-image-delete-button" data-url="'+dataurl+'">Delete</button>');
 }
+
+// 2.2 DELETE IMAGE VIA URL
+
+$("body").on('click', ".p1-section #p1-image-delete-button", function(event){
+        deleteImageViaURL($(this).closest('form').first());
+		$("#p1-image-display").remove();
+		$("#p1-image-delete-button").remove();
+		$(".p1-image-upload").trigger("reset");
+		alert("Pic Deleted :)");
+		});
+
+	function deleteImageViaURL($object) {	
+		var ajaxurl = $object.find('#p1-image-delete-button').attr('data-ajaxurl');
+		var url = $object.find('#p1-image-delete-button').attr('data-url');
+		var nonce = $object.find('#admin-image-upload-nonce').val();
+		var formData = {
+		nonce				: nonce,
+		'urlf'             	: url,
+		'action'				: 'delete',
+	};
+
+			$.ajax ({
+				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+				url         : ajaxurl, // the url where we want to POST
+				data        : formData, // our data object
+				dataType    : 'text', // what type of data do we expect back from the server
+				encode		: true,
+				beforeSend	: function(msg)
+								{
+									prepareFSNotice("Deleting...", false, true, false, true); 
+								},
+				success		: function(data) 
+								{
+									console.log(data);
+									closeAndRemoveFSNotice();
+								}
+			})
+
+		}
+
 
 // --- 2 ---
 
