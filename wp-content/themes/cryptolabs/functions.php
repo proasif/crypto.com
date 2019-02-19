@@ -684,7 +684,8 @@ function ajax_upload_and_process() {
 		echo $upload_url;
 	}
 	else if ($action == 'delete') {
-		$delete_url = deleteUploadedImage($url);
+		echo ("in functions");
+		$delete_url = deleteUploadedImage($url, true);
 		echo $delete_url;
 	}
 	
@@ -760,8 +761,9 @@ function uploadRemoteImage($image_url, $process) {
 } 
 	
 function deleteUploadedImage($url) {
-	echo $url;
-	$result = attachment_url_to_postid($url); 
+	echo ("in functions");
+	$result = attachment_url_to_postid($url);
+	echo $result; 
 	if ($result != "") {
 		wp_delete_attachment($result, true);
 		return "Succ:File Deleted - " . $result;

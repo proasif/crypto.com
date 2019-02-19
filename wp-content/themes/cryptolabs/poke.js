@@ -115,7 +115,8 @@ function handleAdminImageUpload($url){
 
 // 2.1 UPLOAD IMAGE VIA URL
 
-$(".p1-section .p1-image-display .p1-image-upload-button").click(function() {
+$(".p1-section .p1-image-display .p1-image-upload-button").click(function(event) {
+		$(".p1-section .p1-image-display .p1-image-upload-button").hide('fast');
         uploadImageViaURL($(this).closest('input').first());
 		
 });
@@ -162,7 +163,7 @@ function uploadImageViaURL($object) {
 							var url = content.url;							
 							var dataurl = window.location.protocol + "//" + window.location.host + url;
 							var name = content.name;	
-							generateDomObjects(url, dataurl);
+							generateDomObjects(url, dataurl, ajaxurl, nonce);
 						}
 					else {	
 							var msg = data.substring(5);
@@ -180,32 +181,40 @@ function uploadImageViaURL($object) {
 	});
 }
 
-function generateDomObjects(url, dataurl){
+function generateDomObjects(url, dataurl, ajaxurl, nonce){
 	$('.p1-section').append('<img id="p1-image-display" src="'+url+'" width="150px"/>'); 
-	$('.p1-section').append('<br><button type="submit" id="p1-image-delete-button" data-url="'+dataurl+'">Delete</button>');
+	$('.p1-section').append('<br><button type="submit" id="p1-image-delete-button" data-url="'+dataurl+'" data-ajaxurl="'+ajaxurl+'" data-nonce="'+nonce+'" data-action="delete">Delete</button>');
 }
 
 // 2.2 DELETE IMAGE VIA URL
 
-$("body").on('click', ".p1-section #p1-image-delete-button", function(event){
-        deleteImageViaURL($(this).closest('form').first());
+$("body").on('click', ".p1-section #p1-image-delete-button", function(event) {
+		$(".p1-section .p1-image-display .p1-image-upload-button").show('fast');
+		event.preventDefault();
+		event.stopImmediatePropagation();
+        deleteImageViaURL();
 		$("#p1-image-display").remove();
 		$("#p1-image-delete-button").remove();
 		$(".p1-image-upload").trigger("reset");
 		alert("Pic Deleted :)");
 		});
 
-	function deleteImageViaURL($object) {	
-		var ajaxurl = $object.find('#p1-image-delete-button').attr('data-ajaxurl');
-		var url = $object.find('#p1-image-delete-button').attr('data-url');
-		var nonce = $object.find('#admin-image-upload-nonce').val();
+	function deleteImageViaURL() {	
+		var ajaxurl = $('.p1-section #p1-image-delete-button').attr('data-ajaxurl');
+		console.log(ajaxurl);
+		var iurl = $('.p1-section #p1-image-delete-button').attr('data-url');
+		console.log(iurl);
+		var nonce = $('.p1-section #p1-image-delete-button').attr('data-nonce');
+		console.log(nonce);
+		var action = $('.p1-section #p1-image-delete-button').attr('data-action');
+		console.log(action);
 		var formData = {
-		nonce				: nonce,
-		'urlf'             	: url,
-		'action'				: 'delete',
+		'nonce'				: nonce,
+		'iurl'             	: iurl,
+		'action'				: action,
 	};
 
-			$.ajax ({
+			$.ajax({
 				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
 				url         : ajaxurl, // the url where we want to POST
 				data        : formData, // our data object
@@ -214,9 +223,10 @@ $("body").on('click', ".p1-section #p1-image-delete-button", function(event){
 				beforeSend	: function(msg)
 								{
 									prepareFSNotice("Deleting...", false, true, false, true); 
+									console.log('in ajax');
 								},
-				success		: function(data) 
-								{
+								
+				success		: function(data) {
 									console.log(data);
 									closeAndRemoveFSNotice();
 								}
