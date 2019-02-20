@@ -127,11 +127,9 @@ function uploadImageViaURL($object) {
 	var iurl = $('.p1-section .p1-image-display .p1-image-upload-text').val();
 	
 	var action = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-action');
-	
 	var nonce = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-nonce');
-	
 	var ajaxurl = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-url');
-	
+
 	var formData = 
 	{
 		'nonce'				: nonce,
@@ -144,36 +142,32 @@ function uploadImageViaURL($object) {
 			type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
 			url         : ajaxurl, // the url where we want to POST
 			data        : formData, // our data object
-			dataType    : 'text', // what type of data do we expect back from the server
+			dataType    : 'json', // what type of data do we expect back from the server
 			encode		: true,
-			beforeSend	: function(msg)
-							{
+			beforeSend	: function(msg) {
 								prepareFSNotice("Downloading...", false, true, false, true);
 							},
-			success		: function(data) 
-				{
-					console.log(data);
-					var metaresult = data.substring(0, 5);
-					if (metaresult == "Succ:") {
-							//remove the notice
-							closeAndRemoveFSNotice();
-							
-							//do the magic
-							var content = JSON.parse(data.substring(5));
-							var url = content.url;							
-							var dataurl = window.location.protocol + "//" + window.location.host + url;
-							var name = content.name;	
-							generateDomObjects(url, dataurl, ajaxurl, nonce);
-						}
-					else {	
-							var msg = data.substring(5);
-							
-							//display error
-							prepareFSNotice(msg, false, false, true, false);
-						}
+			success		: function(data) {
+							console.log(data);
+					
+						//remove the notice
+						closeAndRemoveFSNotice();
+						
+						//do the magic
+						var content = data;
+						var url = content.url;							
+						var dataurl = window.location.protocol + "//" + window.location.host + url;
+						
+						var name = content.name;	
+						
+						
+						action = $('.p1-section .p1-dom-objects').attr('data-delete-action');
+						nonce = $('.p1-section .p1-dom-objects').attr('data-delete-nonce');
+						ajaxurl = $('.p1-section .p1-dom-objects').attr('data-delete-url');
+						
+						generateDomObjects(url, dataurl, ajaxurl, nonce);
 				},
-			error		: function(data) 
-				{
+			error		: function(data) {
 										
 					//display error
 					prepareFSNotice("Whoops....", "Something went wrong... please retry, contact us if the problem persists", false, true, false);
@@ -181,67 +175,69 @@ function uploadImageViaURL($object) {
 	});
 }
 
-function generateDomObjects(url, dataurl, ajaxurl, nonce){
-	$('.p1-section').append('<img id="p1-image-display" src="'+url+'" width="150px"/>'); 
-	$('.p1-section').append('<br><button type="submit" id="p1-image-delete-button" data-url="'+dataurl+'" data-ajaxurl="'+ajaxurl+'" data-nonce="'+nonce+'" data-action="delete">Delete</button>');
+function generateDomObjects(url, dataurl, ajaxurl, nonce) {
+	$('.p1-section .p1-dom-objects').append('<img id="p1-image-display" src="'+url+'" width="150px"/>'); 
+	$('.p1-section .p1-dom-objects').append('<br><button type="submit" id="p1-image-delete-button" data-delete-url="'+dataurl+'" data-delete-ajaxurl="'+ajaxurl+'" data-delete-nonce="'+nonce+'" data-delete-action="delete">Delete</button>');
 }
 
 // 2.2 DELETE IMAGE VIA URL
 
-$("body").on('click', ".p1-section #p1-image-delete-button", function(event) {
-		$(".p1-section .p1-image-display .p1-image-upload-button").show('fast');
-		event.preventDefault();
-		event.stopImmediatePropagation();
-        deleteImageViaURL();
-		$("#p1-image-display").remove();
-		$("#p1-image-delete-button").remove();
-		$(".p1-image-upload").trigger("reset");
-		alert("Pic Deleted :)");
-		});
+$("body").on('click', ".p1-section #p1-image-delete-button", function() {
+		deleteImageViaURL();
+});
 
-	function deleteImageViaURL() {	
-		var ajaxurl = $('.p1-section #p1-image-delete-button').attr('data-ajaxurl');
-		console.log(ajaxurl);
-		var iurl = $('.p1-section #p1-image-delete-button').attr('data-url');
-		console.log(iurl);
-		var nonce = $('.p1-section #p1-image-delete-button').attr('data-nonce');
-		console.log(nonce);
-		var action = $('.p1-section #p1-image-delete-button').attr('data-action');
-		console.log(action);
-		var formData = {
-		'nonce'				: nonce,
+function deleteImageViaURL() {
+	var action = $('#p1-image-delete-button').attr('data-delete-action');
+	//console.log(action);
+	var nonce = $('#p1-image-delete-button').attr('data-delete-nonce');
+	//console.log(nonce);
+	var ajaxurl = $('#p1-image-delete-button').attr('data-delete-ajaxurl');	
+	//console.log(ajaxurl);
+	var iurl = $('#p1-image-delete-button').attr('data-delete-url');	
+	//console.log(iurl);
+	
+	
+	var formData = {
 		'iurl'             	: iurl,
 		'action'				: action,
+		'nonce'				: nonce,
 	};
 
-			$.ajax({
-				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-				url         : ajaxurl, // the url where we want to POST
-				data        : formData, // our data object
-				dataType    : 'text', // what type of data do we expect back from the server
-				encode		: true,
-				beforeSend	: function(msg)
-								{
-									prepareFSNotice("Deleting...", false, true, false, true); 
-									console.log('in ajax');
-								},
-								
-				success		: function(data) {
-									console.log(data);
-									closeAndRemoveFSNotice();
-								}
-			})
+		$.ajax({
+			type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+			url         : ajaxurl, // the url where we want to POST
+			data        : formData, // our data object
+			dataType    : 'json', // what type of data do we expect back from the server
+			encode		: true,
+			beforeSend	: function(msg) {
+							prepareFSNotice("Deleting...", false, true, false, true); 
+						},
+							
+			success		: function(data) {
+							console.log(data);
+							
+							$(".p1-section .p1-image-display .p1-image-upload-button").show('fast');
+							$("#p1-image-display").remove();
+							$("#p1-image-delete-button").remove();
+							$(".p1-section .p1-image-display .p1-image-upload-text").trigger("reset");
+							$(".p1-image-upload").trigger("reset");	
+						},
+						
+			error		: function(data) {
+							prepareFSNotice("Whoops....", "Something went wrong... please retry, contact us if the problem persists", false, true, false);
+						},
+		});
 
-		}
+}
 
 
 // --- 2 ---
 
 // 3. FULL SCREEN NOTICE FOR USERS
-function closeAndRemoveFSNotice()
-	{
+function closeAndRemoveFSNotice() {
 	
-	}
+}
+
 function prepareFSNotice(title, subtitle, hasloading, hasclose, noclose) { 		
 	//check for double
 	if ($('.av_notice_fs').length) {
@@ -289,7 +285,7 @@ function prepareFSNotice(title, subtitle, hasloading, hasclose, noclose) {
 
 // ------------------ LOAD MORE ------------------ //
 
-$(document).on('click','.p1-airdrop-load-more', function(){
+$(document).on('click','.p1-airdrop-load-more', function() {
 	$('.primary.p1-airdrop-load-more').hide('slow');
 	var page = $(this).attr('data-paging');
 	var action = $(this).data('action');
@@ -308,16 +304,16 @@ $(document).on('click','.p1-airdrop-load-more', function(){
 		beforeSend: function() {
 			$('.primary.p1-airdrop-load-more').hide('slow');
 		},
-		error : function( response ){
+		error : function( response ) {
 			console.log(response);
 		},
-		success : function( response ){
+		success : function( response ) {
 			//var output = JSON.parse(response);
 			//console.log(output.content);
-			if (response==null){
+			if (response==null) {
 				alert('Err: No response from the server');
 			}
-			else{
+			else {
 				
 				$('.p1-airdrop').append( response );
 				$('.p1-airdrop-load-more').show('slow');
@@ -330,7 +326,7 @@ $(document).on('click','.p1-airdrop-load-more', function(){
 
 // ------------------ RATING ------------------ //
 	
-	$(document).on('mousemove', '.star-rating .star', function(e){   //Action on mouse-move over the stars
+	$(document).on('mousemove', '.star-rating .star', function(e) {   //Action on mouse-move over the stars
 		var $object = $(this).closest('.star-rating').first();
 		
 		// return if rated already
@@ -355,7 +351,7 @@ $(document).on('click','.p1-airdrop-load-more', function(){
 		adjustStarRating( $object, rating, false);
 	});
 	
-	$(document).on('mouseout', '.star-rating .star', function(){   //Action on mouse-out over the stars
+	$(document).on('mouseout', '.star-rating .star', function() {   //Action on mouse-out over the stars
 		var $object = $(this).closest('.star-rating').first();
 		// return if rated already
 		if ($object.hasClass("rated")) {
@@ -368,7 +364,7 @@ $(document).on('click','.p1-airdrop-load-more', function(){
 	});
 	
 	
-	$(document).on("click", ".star-rating .star", function(e){   //Action when clicked on the stars
+	$(document).on("click", ".star-rating .star", function(e) {   //Action when clicked on the stars
 	
 	  var $object = $(this).closest('.star-rating').first();
 	  $object.click(false);
@@ -471,19 +467,18 @@ $('#return-to-top').click(function() {      // When arrow is clicked
 
 // ------------------ Show button ------------------ //
 
-function OnloadFunction ()
-{
+function OnloadFunction () {
    $(".show").hide();
 	$(".primary.p1-close-btn").hide();
 
 	
-$(document).on('click',".primary.p1-steps-btn", function(){
+$(document).on('click',".primary.p1-steps-btn", function() {
 		$(this).hide('slow');
 		$(this).closest(".steps-format").find(".show").show('slow');
 		$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
 		
 });
-$(document).on('click',".primary.p1-close-btn", function(){
+$(document).on('click',".primary.p1-close-btn", function() {
 			$(".show").hide('slow');
 			$(".primary.p1-close-btn").hide('slow');
 			$(".primary.p1-steps-btn").show('slow');
@@ -496,17 +491,17 @@ $( document ).ajaxComplete(function() {
 	$(".show").hide();
 	$(".primary.p1-close-btn").hide();
 
-$(document).on('click',".primary.p1-steps-btn", function(){
+$(document).on('click',".primary.p1-steps-btn", function() {
 		$(this).hide('slow');
 		$(this).closest(".steps-format").find(".show").show('slow');
 		$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
 		
 });
-$(document).on('click',".primary.p1-close-btn", function(){
+$(document).on('click',".primary.p1-close-btn", function() {
 			$(".show").hide('slow');
 			$(".primary.p1-close-btn").hide('slow');
 			$(".primary.p1-steps-btn").show('slow');
-}); 	
-});
+		}); 	
+	});
 }); // Document.ready end
 // --- 3 ---

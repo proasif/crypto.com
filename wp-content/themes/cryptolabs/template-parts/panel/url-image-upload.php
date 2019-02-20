@@ -30,4 +30,14 @@ if ( ! defined( 'ABSPATH' ) ) {
                         >Submit
                     </button>
             	</div>
+                <?php 
+				$action = "delete";
+				$nonce = wp_create_nonce($action);
+				$url = admin_url("admin-ajax.php");
+				?>
+                <div class="p1-dom-objects" 
+                data-delete-nonce="<?php echo $nonce ?>" 
+                data-delete-action="<?php echo $action ?>" 
+                data-delete-url="<?php echo $url ?>" >                       
+                </div>
     </div>

@@ -674,7 +674,7 @@ function ajax_upload_and_process() {
 	$url = $_REQUEST["iurl"];
 	$action = $_REQUEST["action"];
 	$postid = $_REQUEST["postid"]; //only for process image
-	
+	//echo ("in functions");
 	//check if url is valid
 	if(!filter_var($url, FILTER_VALIDATE_URL))  {
 		echo "Errr:Invalid URL";
@@ -683,21 +683,13 @@ function ajax_upload_and_process() {
 		$upload_url = uploadRemoteImage($url, true);
 		echo $upload_url;
 	}
-	else if ($action == 'delete') {
-		echo ("in functions");
-		$delete_url = deleteUploadedImage($url, true);
-		echo $delete_url;
-	}
-	
 	die();
 }
 
 function uploadRemoteImage($image_url, $process) {
 	$image = $image_url;
-	
 	$get = wp_remote_get( $image );
-	$type = wp_remote_retrieve_header( $get, 'content-type' );
-				
+	$type = wp_remote_retrieve_header( $get, 'content-type' );				
 	$ext = ".jpg";
 	$shouldProceed = false;
 				
@@ -718,7 +710,7 @@ function uploadRemoteImage($image_url, $process) {
 	}
 						
 	if (!$shouldProceed) {
-		return "Errr:Invalid Filetype";
+		return json_encode("Errr:Invalid Filetype");
 	}
 				
 	$mirror = wp_upload_bits( basename( pathinfo($image, PATHINFO_FILENAME) ) . $ext , '', wp_remote_retrieve_body( $get ) );
@@ -757,18 +749,37 @@ function uploadRemoteImage($image_url, $process) {
 				"image_id" => $image_id
 				);
 	
-	return "Succ:" . json_encode($content);
+	return json_encode ($content);
 } 
+
+add_action('wp_ajax_delete', 'ajax_delete');
+
+function ajax_delete() {
+	if ( !wp_verify_nonce( $_REQUEST["nonce"], "delete")) {
+		exit("No naughty business please");
+	} 
+	
+	$url = $_REQUEST["iurl"];
+	
+	$action = $_REQUEST["action"];
+	
+ 	if ($action === 'delete') {
+		$delete_url = deleteUploadedImage($url);
+		echo $delete_url;
+	}
+	
+	die();
+}
+	
 	
 function deleteUploadedImage($url) {
-	echo ("in functions");
 	$result = attachment_url_to_postid($url);
-	echo $result; 
 	if ($result != "") {
 		wp_delete_attachment($result, true);
-		return "Succ:File Deleted - " . $result;
+		json_encode($result);
+		return json_encode("Succ:File Deleted - " . ($result));
 	}
 	else {
-		return "Errr:File not found for delete - " . $result;	
+		return json_encode("Errr:File not found for delete - " . ($result));	
 	}
 }
