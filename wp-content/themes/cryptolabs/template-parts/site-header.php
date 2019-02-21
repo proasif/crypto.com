@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php 
 		p1_custom_menu( "primary", true, "p1-nav-main", true, "", "", "");
-		get_search_form();
+		//get_search_form();
 	?>
 	</div>
 </header>

@@ -156,15 +156,11 @@ function uploadImageViaURL($object) {
 						//do the magic
 						var content = data;
 						var url = content.url;							
-						var dataurl = window.location.protocol + "//" + window.location.host + url;
-						
-						var name = content.name;	
-						
-						
+						var dataurl = window.location.protocol + "//" + window.location.host + url;						
+						var name = content.name;							
 						action = $('.p1-section .p1-dom-objects').attr('data-delete-action');
 						nonce = $('.p1-section .p1-dom-objects').attr('data-delete-nonce');
-						ajaxurl = $('.p1-section .p1-dom-objects').attr('data-delete-url');
-						
+						ajaxurl = $('.p1-section .p1-dom-objects').attr('data-delete-url');						
 						generateDomObjects(url, dataurl, ajaxurl, nonce);
 				},
 			error		: function(data) {
@@ -188,15 +184,10 @@ $("body").on('click', ".p1-section #p1-image-delete-button", function() {
 
 function deleteImageViaURL() {
 	var action = $('#p1-image-delete-button').attr('data-delete-action');
-	//console.log(action);
 	var nonce = $('#p1-image-delete-button').attr('data-delete-nonce');
-	//console.log(nonce);
 	var ajaxurl = $('#p1-image-delete-button').attr('data-delete-ajaxurl');	
-	//console.log(ajaxurl);
 	var iurl = $('#p1-image-delete-button').attr('data-delete-url');	
-	//console.log(iurl);
-	
-	
+		
 	var formData = {
 		'iurl'             	: iurl,
 		'action'				: action,
@@ -295,7 +286,7 @@ $(document).on('click','.p1-airdrop-load-more', function() {
 	$.ajax({
 		url 			: ajaxurl,
 		type 		: 'post',
-		dataType 	: 'text',
+		dataType 	: 'json',
 		data 		: {
 						paging	: page,
 						action	: action,
@@ -304,22 +295,20 @@ $(document).on('click','.p1-airdrop-load-more', function() {
 		beforeSend: function() {
 			$('.primary.p1-airdrop-load-more').hide('slow');
 		},
-		error : function( response ) {
-			console.log(response);
-		},
+		
 		success : function( response ) {
-			//var output = JSON.parse(response);
-			//console.log(output.content);
 			if (response==null) {
-				alert('Err: No response from the server');
+				
 			}
 			else {
-				
-				$('.p1-airdrop').append( response );
+				$('.p1-airdrop').append(response.content);
 				$('.p1-airdrop-load-more').show('slow');
 				
 				$(".p1-airdrop-load-more").attr("data-paging", parseInt(page) + 1);
 			}
+		},
+		error : function( response ) {
+			console.log("error" + response);
 		}
 	});
 });

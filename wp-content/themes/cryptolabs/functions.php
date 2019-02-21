@@ -621,13 +621,24 @@ function ajax_load_more(){
 	
 
 	$content = "";
-	if ( $custom_posts->have_posts() ) :
-		while ( $custom_posts->have_posts() ) : $custom_posts->the_post(); 
-			$content = $content . get_template_part( 'template-parts/display/airdrop-post', 'display' );
-		endwhile;
-	endif;
+	if ( $custom_posts->have_posts() ) {
+		while ( $custom_posts->have_posts() ) {
+			$custom_posts->the_post(); 
+			
+			ob_start();
+			get_template_part( 'template-parts/display/airdrop-post', 'display' );
+			$output = ob_get_contents();
+			ob_end_clean();
+			
+			$content .= $output;
+		}
+	}
 	
-	echo $content;
+	$result = array (
+				'content'	=>	$content
+			);
+	
+	echo $jsonformat = json_encode($result);
 	die();
 }
 
@@ -777,9 +788,9 @@ function deleteUploadedImage($url) {
 	if ($result != "") {
 		wp_delete_attachment($result, true);
 		json_encode($result);
-		return json_encode("Succ:File Deleted - " . ($result));
+		return json_encode("Success: File Deleted - " . ($result));
 	}
 	else {
-		return json_encode("Errr:File not found for delete - " . ($result));	
+		return json_encode("Error: File not found for delete - " . ($result));	
 	}
 }

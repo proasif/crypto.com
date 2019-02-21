@@ -123,8 +123,6 @@ Unordered bullet list:
     <li>CSS</li>
     <li>JS</li>
 </ul>
-
-
 <head>
     <link rel="stylesheet" type="text/css" href="tags.css">
     <link rel="icon" type="image/png" href="/favicon.ico" />
@@ -189,6 +187,9 @@ to trigger a JS event.
 
 
 <p>Let's test this!</p>
+
+
+
 <style>
     p { 
         font-size: 30px;    
@@ -315,7 +316,7 @@ to trigger a JS event.
     <li>JS</li>
 </ul>
 <!------------Main Module------------> 
- <div id="primary" class="p1-primary-max p1-body">
+<div id="primary" class="p1-primary-max p1-body">
 	<div id="content" role="main">
     
     
