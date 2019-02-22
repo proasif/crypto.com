@@ -13,8 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No direct script access allowed' );
 }
 ?>	
-
-<div class="p1-airdrop-item" data-postid="<?php the_id() ?>" data-url="<?php the_permalink() ?>">
+<article class="p1-airdrop-item" data-postid="<?php the_id() ?>" data-url="<?php the_permalink() ?>">
 	<?php  
     //------------------------p1-airdrop-item STARTS------------------------------//
         $thumb_id = get_post_thumbnail_id();
@@ -32,7 +31,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         $logo = wp_get_attachment_image ($thumb_id); 
     ?>
 	
+	<header class="p1-airdrop-logo-container">
 	<div class="logo"><?php echo $logo; // Printing Logo ?></div> 
+    </header> 
 	
 	 <?php      
         $name = $pod->field('airdrop_name') ;
@@ -43,9 +44,11 @@ if ( ! defined( 'ABSPATH' ) ) {
         else $airdrop_value = NULL;
         
       ?>
-	
-	<h1><?php echo $name . " " . $sign . " " . $airdrop_value; // Printing Name, Sign and Value of Airdrop ?></h1>
-	
+    <div class="content-container">
+    	<div class="content-container-part1">
+            <div class="p1-airdrop-title-container">
+            <?php echo $name . " " . $sign . " " . $airdrop_value; // Printing Name, Sign and Value of Airdrop ?>
+            </div>
  <?php
 	//-------------- SETTING STARS --------------//
 			
@@ -125,37 +128,68 @@ if ( ! defined( 'ABSPATH' ) ) {
 		}
 			$temp_content = $star_value . $temp_content ; // storing value for first star
 			
-		if ( $users == 1 ) {	
+		
+		if ( $users == 0 ) {	
 			$starContent = '<div class = "star-rating" data-original = "' . $old_rating . '" data-nonce= "' . $nonce . '" data-action="' . $action . '" data-url="' . $admin_url . '">'. $temp_content ;
-			$starUsers = '<div class = "star-users">(' . $users . ' Vote) </div></div>';
+			$starUsers = '<div class = "star-users">(0 Vote)</div></div>';
 			$content = $starContent . $starUsers;
-			echo $content;
+			?>
+            <div class="p1-airdrop-rating-container">
+			<?php echo $content; ?>
+            </div>
+            
+            <?php
+		}
+		
+		else if ( $users == 1 ) {	
+			$starContent = '<div class = "star-rating" data-original = "' . $old_rating . '" data-nonce= "' . $nonce . '" data-action="' . $action . '" data-url="' . $admin_url . '">'. $temp_content ;
+			$starUsers = '<div class = "star-users">(' . $users . ' Vote)</div></div>';
+			$content = $starContent . $starUsers;
+			?>
+            <div class="p1-airdrop-rating">
+			<?php echo $content; ?>
+            </div>
+            
+            <?php
 		}
 		
 		else if ( $users > 1 ) {	
 			$starContent = '<div class = "star-rating" data-original = "' . $old_rating .  '" data-nonce= "' . $nonce . '" data-action="' . $action . '" data-url="' .  $admin_url . '">'. $temp_content ;
 			$starUsers = '<div class = "star-users">(' . $users . ' Votes)</div></div>';
 			$content = $starContent . $starUsers;
-			echo $content;
+			?>
+            <div class="p1-airdrop-rating-container">
+			<?php echo $content; ?>
+            </div>
+            
+            <?php
 		}
 		else {	
 			$content = '<div class = "star-rating" data-original = "' . $old_rating .  '" data-nonce= "' .  $nonce . '" data-action="' .  $action . '" data-url="'. $admin_url . '">'. $temp_content . '</div>';
-			echo $content ; // Displaying stars and no. of users rated
+			?>
+            <div class="p1-airdrop-rating">
+			<?php echo $content; ?>
+            </div>
+            
+            <?php // Displaying stars and no. of users rated
 		}
 		
 	
 	$about = $pod->field('brief_description');
 	?>
-	   <div class="about-format">
-			<div class="about"><?php echo $about ?></div>
-	   </div>
-	
-   <?php $steps = get_the_content(); ?>
-		<div class="steps-format">
-			<button class="primary p1-steps-btn">Step by step guide </button>
-			<div class="show"><?php echo $steps ?></div>
-			<button class="primary p1-close-btn">CLOSE</button>
-		</div>
+            <div class="p1-airdrop-content-container">
+               <div class="about-format">
+                    <div class="about"><?php echo $about ?></div>
+               </div>
+        
+       <?php $steps = get_the_content(); ?>
+                <div class="steps-format">
+                    <button class="primary p1-steps-btn">Step by step guide </button>
+                    <div class="show"><?php echo $steps ?></div>
+                    <button class="primary p1-close-btn">CLOSE</button>
+                </div>
+            </div>
+        </div>
 	<?php
 //-------------- GETTING REQUIRED LOGOS --------------//
 
@@ -214,6 +248,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		}
 		
 	?>
-
-	<div class="requires"><?php echo ("Requires: "); echo $requires; // Displaying required logos  ?></div> 
-</div>
+    	<div class="content-container-part2">         
+                <div class="requires"><?php echo ("Requires: "); echo $requires; // Displaying required logos  ?></div> 
+        </div>
+    </div>
+</article>

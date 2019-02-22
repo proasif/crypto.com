@@ -8,9 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No direct script access allowed' );
 }
 ?>	
-<div class="p1-section p1-style-curves p1-style-shadow">
+<section class="p1-section p1-style-curves p1-style-shadow">
 	<?php //-------------------- p1-section p1-style-curves p1-style-shadow STARTS -----------------------// ?>
-        <div class="p1-airdrop">
+        <section class="p1-airdrop">
          <?php 
             //-------------- p1-airdrop STARTS --------------//
             $currentpage = get_query_var('paged');
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 endwhile;
             endif;
         ?>
-        </div>
+        </section>
         <?php //-------------- p1-airdrop ENDS --------------// ?>
         
         <div class="load-more-button" align="center">
@@ -40,5 +40,5 @@ if ( ! defined( 'ABSPATH' ) ) {
             ?>
             <button data-paging="<?php echo $page ?>" data-nonce="<?php echo $nonce ?>" data-action="<?php echo $action ?>" data-url="<?php echo admin_url($url); ?>"class="primary p1-airdrop-load-more">Load More</button>
         </div>
-</div>
+</section>
 <?php //-------------- p1-section p1-style-curves p1-style-shadow ENDS --------------// ?>

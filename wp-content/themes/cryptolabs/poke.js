@@ -361,7 +361,7 @@ $(document).on('click','.p1-airdrop-load-more', function() {
 			return;	
 		}
 	  var $nuser = $(this).closest('.old-users').first();
-	  var user = $('.old-users').attr('value');
+	  var users = $('.old-users').attr('value');
 	  var rating = $(this).attr('value');
       var postid = $(this).closest(".p1-airdrop-item").attr('data-postid');
 	  var action = $(this).closest(".star-rating").attr('data-action');
@@ -371,7 +371,7 @@ $(document).on('click','.p1-airdrop-load-more', function() {
 		'nonce'				: nonce,
 		'rating'            : rating,
 		'postid'				: postid,
-		'user'				: user,
+		'users'				: users,
 		'action'				: action,
 	  };
 	  
@@ -422,7 +422,10 @@ $(document).on('click','.p1-airdrop-load-more', function() {
 			$object.attr( 'data-original', $rating);
 			
 			$object.addClass("rated");
-			
+			if (users == 1){
+			$object.find('.star-users').html("(" + users + " Vote)");
+			}
+			else
 			$object.find('.star-users').html("(" + users + " Votes)");
 		}
 	}

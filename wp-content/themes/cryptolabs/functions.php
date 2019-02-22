@@ -651,7 +651,7 @@ function ajax_star_rating(){
 	
 	$rating = $_REQUEST["rating"];
 	$postid = $_REQUEST["postid"]; //only for (this) airdrop 
-	$user = $_REQUEST["user"];
+	$users = $_REQUEST["users"];
 	
 	
 	$pod = pods('airdrop', intval($postid) );
