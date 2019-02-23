@@ -276,6 +276,11 @@ function prepareFSNotice(title, subtitle, hasloading, hasclose, noclose) {
 
 // ------------------ LOAD MORE ------------------ //
 
+$(window).scroll(function(){
+	if ($(window).scrollTop() == $(document).height() - $(window).height())
+	$('.p1-airdrop-load-more').trigger("click");
+});
+
 $(document).on('click','.p1-airdrop-load-more', function() {
 	$('.primary.p1-airdrop-load-more').hide('slow');
 	var page = $(this).attr('data-paging');
@@ -302,7 +307,7 @@ $(document).on('click','.p1-airdrop-load-more', function() {
 			}
 			else {
 				$('.p1-airdrop').append(response.content);
-				$('.p1-airdrop-load-more').show('slow');
+				//$('.p1-airdrop-load-more').show('slow');
 				
 				$(".p1-airdrop-load-more").attr("data-paging", parseInt(page) + 1);
 			}
@@ -497,3 +502,31 @@ $(document).on('click',".primary.p1-close-btn", function() {
 	});
 }); // Document.ready end
 // --- 3 ---
+
+//---------AJAX SEARCH BAR-------//
+
+$(document).keyup(".p1-primary-max .p1-header-content .form-control",function() {
+	console.log('hi');
+	var value = $(".p1-primary-max .p1-header-content .form-control").attr('data-value');
+	var ajaxurl = $(".p1-primary-max .p1-header-content .form-control").attr('data-ajaxurl');
+	var formData = {
+		'value' : value,
+	  };
+	
+	
+	 $.ajax({
+				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+				url         : ajaxurl, // the url where we want to POST
+				data        : formData, // our data object
+				dataType    : 'text', // what type of data do we expect back from the server
+				encode		: true,
+				success		: function(data) {
+								var ajaxData = data;
+								console.log(data);
+								
+				}
+				
+			}) 
+});
+
+	

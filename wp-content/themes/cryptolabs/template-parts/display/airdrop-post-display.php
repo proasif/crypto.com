@@ -31,9 +31,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         $logo = wp_get_attachment_image ($thumb_id); 
     ?>
 	
-	<header class="p1-airdrop-logo-container">
+	<div class="p1-airdrop-logo-container">
 	<div class="logo"><?php echo $logo; // Printing Logo ?></div> 
-    </header> 
+    </div> 
 	
 	 <?php      
         $name = $pod->field('airdrop_name') ;

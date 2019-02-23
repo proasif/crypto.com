@@ -794,3 +794,10 @@ function deleteUploadedImage($url) {
 		return json_encode("Error: File not found for delete - " . ($result));	
 	}
 }
+
+add_action('wp_ajax_search', 'ajax_search');
+function ajax_search(){
+	$value = $_REQUEST["value"]; //checking
+	echo $value;
+	die();
+}

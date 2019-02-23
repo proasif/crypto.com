@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <?php
 /**
  * The Template for displaying archive pages.
