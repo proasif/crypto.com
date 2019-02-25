@@ -97,228 +97,226 @@ $(document).ready(function () {
 
 
 
-// 2. BIND TO DO IMAGE UPLOAD CALLS
-
-// 2.0 Detect request for image upload
-/*
-$(document).ready(function() {
- $(".p1-image-upload #bt1").click(function(){
-	 	var $url = document.getElementById("p1-image-upload-text").value;
-        handleAdminImageUpload($url);
-	});
-});
-
-function handleAdminImageUpload($url){
-	console.log("here" + $url);
-};
-*/
-
-// 2.1 UPLOAD IMAGE VIA URL
-
-$(".p1-section .p1-image-display .p1-image-upload-button").click(function(event) {
-		$(".p1-section .p1-image-display .p1-image-upload-button").hide('fast');
-        uploadImageViaURL($(this).closest('input').first());
-		
-});
- 
-function uploadImageViaURL($object) {
+	// 2. BIND TO DO IMAGE UPLOAD CALLS
 	
-	//check if this is gif before upload
-	var iurl = $('.p1-section .p1-image-display .p1-image-upload-text').val();
-	
-	var action = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-action');
-	var nonce = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-nonce');
-	var ajaxurl = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-url');
-
-	var formData = 
-	{
-		'nonce'				: nonce,
-		'iurl'             	: iurl,
-		'postid'				: 0,
-		'action'				: action,
-	};
-	
-	$.ajax({
-			type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-			url         : ajaxurl, // the url where we want to POST
-			data        : formData, // our data object
-			dataType    : 'json', // what type of data do we expect back from the server
-			encode		: true,
-			beforeSend	: function(msg) {
-								prepareFSNotice("Downloading...", false, true, false, true);
-							},
-			success		: function(data) {
-							console.log(data);
-					
-						//remove the notice
-						closeAndRemoveFSNotice();
-						
-						//do the magic
-						var content = data;
-						var url = content.url;							
-						var dataurl = window.location.protocol + "//" + window.location.host + url;						
-						var name = content.name;							
-						action = $('.p1-section .p1-dom-objects').attr('data-delete-action');
-						nonce = $('.p1-section .p1-dom-objects').attr('data-delete-nonce');
-						ajaxurl = $('.p1-section .p1-dom-objects').attr('data-delete-url');						
-						generateDomObjects(url, dataurl, ajaxurl, nonce);
-				},
-			error		: function(data) {
-										
-					//display error
-					prepareFSNotice("Whoops....", "Something went wrong... please retry, contact us if the problem persists", false, true, false);
-				},
-	});
-}
-
-function generateDomObjects(url, dataurl, ajaxurl, nonce) {
-	$('.p1-section .p1-dom-objects').append('<img id="p1-image-display" src="'+url+'" width="150px"/>'); 
-	$('.p1-section .p1-dom-objects').append('<br><button type="submit" id="p1-image-delete-button" data-delete-url="'+dataurl+'" data-delete-ajaxurl="'+ajaxurl+'" data-delete-nonce="'+nonce+'" data-delete-action="delete">Delete</button>');
-}
-
-// 2.2 DELETE IMAGE VIA URL
-
-$("body").on('click', ".p1-section #p1-image-delete-button", function() {
-		deleteImageViaURL();
-});
-
-function deleteImageViaURL() {
-	var action = $('#p1-image-delete-button').attr('data-delete-action');
-	var nonce = $('#p1-image-delete-button').attr('data-delete-nonce');
-	var ajaxurl = $('#p1-image-delete-button').attr('data-delete-ajaxurl');	
-	var iurl = $('#p1-image-delete-button').attr('data-delete-url');	
-		
-	var formData = {
-		'iurl'             	: iurl,
-		'action'				: action,
-		'nonce'				: nonce,
-	};
-
-		$.ajax({
-			type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-			url         : ajaxurl, // the url where we want to POST
-			data        : formData, // our data object
-			dataType    : 'json', // what type of data do we expect back from the server
-			encode		: true,
-			beforeSend	: function(msg) {
-							prepareFSNotice("Deleting...", false, true, false, true); 
-						},
-							
-			success		: function(data) {
-							console.log(data);
-							
-							$(".p1-section .p1-image-display .p1-image-upload-button").show('fast');
-							$("#p1-image-display").remove();
-							$("#p1-image-delete-button").remove();
-							$(".p1-section .p1-image-display .p1-image-upload-text").trigger("reset");
-							$(".p1-image-upload").trigger("reset");	
-						},
-						
-			error		: function(data) {
-							prepareFSNotice("Whoops....", "Something went wrong... please retry, contact us if the problem persists", false, true, false);
-						},
+	// 2.0 Detect request for image upload
+	/*
+	$(document).ready(function() {
+	 $(".p1-image-upload #bt1").click(function(){
+			var $url = document.getElementById("p1-image-upload-text").value;
+			handleAdminImageUpload($url);
 		});
-
-}
-
-
-// --- 2 ---
-
-// 3. FULL SCREEN NOTICE FOR USERS
-function closeAndRemoveFSNotice() {
-	
-}
-
-function prepareFSNotice(title, subtitle, hasloading, hasclose, noclose) { 		
-	//check for double
-	if ($('.av_notice_fs').length) {
-		closeAndRemoveFSNotice();
-	}
-	
-	var content = "<div class='av_notice_fs'><div class='av_notice_fs_inner'>";
-	
-	if (hasclose) {
-		content +=	"<a href='#' class='av_notice_close'><i class='av-snax-icon snax-close'></i>Close</a>";
-	}
-	else if (!noclose) {
-		content = "<div class='av_notice_fs'><a href='#' class='av_notice_close av_notice_close_full'></a><div class='av_notice_fs_inner'>";
-	}
-	
-	if (title) {
-		content +=	"<span class='av_notice_text'>\
-						" + title;
-	}
-	
-	if (hasloading) {
-		content +=	'<div class="av_notice_loading"><i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i></div></span>';
-	}
-	else if (title) {
-		content += "</span>";	
-	}
-	
-	if (subtitle) {
-		content += 	"<span class='av_notice_subtext'>\
-					" + subtitle + "\
-					</span>";
-	}
-	content += "</div></div>";
-	
-	$('body').append(content);
-	
-	//attach handler
-	$('.av_notice_close').on('click.notice', function(e) {
-		e.preventDefault();
-		e.stopImmediatePropagation();
-		
-		closeAndRemoveFSNotice();
 	});
-}
-
-// ------------------ LOAD MORE ------------------ //
-
-$(window).scroll(function(){
-	if ($(window).scrollTop() == $(document).height() - $(window).height())
-	$('.p1-airdrop-load-more').trigger("click");
-});
-
-$(document).on('click','.p1-airdrop-load-more', function() {
-	$('.primary.p1-airdrop-load-more').hide('slow');
-	var page = $(this).attr('data-paging');
-	var action = $(this).data('action');
-	var nonce = $(this).data('nonce'); 
-	var ajaxurl = $(this).data('url');
 	
-	$.ajax({
-		url 			: ajaxurl,
-		type 		: 'post',
-		dataType 	: 'json',
-		data 		: {
-						paging	: page,
-						action	: action,
-						nonce	: nonce
-		},
-		beforeSend: function() {
-			$('.primary.p1-airdrop-load-more').hide('slow');
-		},
+	function handleAdminImageUpload($url){
+		console.log("here" + $url);
+	};
+	*/
+	
+	// 2.1 UPLOAD IMAGE VIA URL
+
+	$(".p1-section .p1-image-display .p1-image-upload-button").click(function(event) {
+		$(".p1-section .p1-image-display .p1-image-upload-button").hide('fast');
+        uploadImageViaURL($(this).closest('input').first());		
+	});
+ 
+	function uploadImageViaURL($object) {
+	
+		//check if this is gif before upload
+		var iurl = $('.p1-section .p1-image-display .p1-image-upload-text').val();
+		var action = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-action');
+		var nonce = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-nonce');
+		var ajaxurl = $('.p1-section .p1-image-display .p1-image-upload-button').attr('data-url');
+		var formData = 
+		{
+			'nonce'				: nonce,
+			'iurl'             	: iurl,
+			'postid'				: 0,
+			'action'				: action,
+		};
+	
+		$.ajax({
+				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+				url         : ajaxurl, // the url where we want to POST
+				data        : formData, // our data object
+				dataType    : 'json', // what type of data do we expect back from the server
+				encode		: true,
+				beforeSend	: function(msg) {
+									prepareFSNotice("Downloading...", false, true, false, true);
+								},
+				success		: function(data) {
+								console.log(data);
+						
+							//remove the notice
+							closeAndRemoveFSNotice();
+							
+							//do the magic
+							var content = data;
+							var url = content.url;							
+							var dataurl = window.location.protocol + "//" + window.location.host + url;						
+							var name = content.name;							
+							action = $('.p1-section .p1-dom-objects').attr('data-delete-action');
+							nonce = $('.p1-section .p1-dom-objects').attr('data-delete-nonce');
+							ajaxurl = $('.p1-section .p1-dom-objects').attr('data-delete-url');						
+							generateDomObjects(url, dataurl, ajaxurl, nonce);
+					},
+				error		: function(data) {
+											
+						//display error
+						prepareFSNotice("Whoops....", "Something went wrong... please retry, contact us if the problem persists", false, true, false);
+					},
+		});
+	}
+
+	function generateDomObjects(url, dataurl, ajaxurl, nonce) {
+		$('.p1-section .p1-dom-objects').append('<img id="p1-image-display" src="'+url+'" width="150px"/>'); 
+		$('.p1-section .p1-dom-objects').append('<br><button type="submit" id="p1-image-delete-button" data-delete-url="'+dataurl+'" data-delete-ajaxurl="'+ajaxurl+'" data-delete-nonce="'+nonce+'" data-delete-action="delete">Delete</button>');
+	}
+
+	// 2.2 DELETE IMAGE VIA URL
+
+	$("body").on('click', ".p1-section #p1-image-delete-button", function() {
+		deleteImageViaURL();
+	});
+
+	function deleteImageViaURL() {
+		var action = $('#p1-image-delete-button').attr('data-delete-action');
+		var nonce = $('#p1-image-delete-button').attr('data-delete-nonce');
+		var ajaxurl = $('#p1-image-delete-button').attr('data-delete-ajaxurl');	
+		var iurl = $('#p1-image-delete-button').attr('data-delete-url');	
+			
+		var formData = {
+			'iurl'             	: iurl,
+			'action'				: action,
+			'nonce'				: nonce,
+		};
+	
+			$.ajax({
+				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+				url         : ajaxurl, // the url where we want to POST
+				data        : formData, // our data object
+				dataType    : 'json', // what type of data do we expect back from the server
+				encode		: true,
+				beforeSend	: function(msg) {
+								prepareFSNotice("Deleting...", false, true, false, true); 
+							},
+								
+				success		: function(data) {
+								console.log(data);
+								
+								$(".p1-section .p1-image-display .p1-image-upload-button").show('fast');
+								$("#p1-image-display").remove();
+								$("#p1-image-delete-button").remove();
+								$(".p1-section .p1-image-display .p1-image-upload-text").trigger("reset");
+								$(".p1-image-upload").trigger("reset");	
+							},
+							
+				error		: function(data) {
+								prepareFSNotice("Whoops....", "Something went wrong... please retry, contact us if the problem persists", false, true, false);
+							},
+			});
+		}
+
+
+	// --- 2 ---
+
+	// 3. FULL SCREEN NOTICE FOR USERS
+	function closeAndRemoveFSNotice() {
+	
+	}
+
+	function prepareFSNotice(title, subtitle, hasloading, hasclose, noclose) { 		
+		//check for double
+		if ($('.av_notice_fs').length) {
+			closeAndRemoveFSNotice();
+		}
 		
-		success : function( response ) {
-			if (response==null) {
+		var content = "<div class='av_notice_fs'><div class='av_notice_fs_inner'>";
+		
+		if (hasclose) {
+			content +=	"<a href='#' class='av_notice_close'><i class='av-snax-icon snax-close'></i>Close</a>";
+		}
+		else if (!noclose) {
+			content = "<div class='av_notice_fs'><a href='#' class='av_notice_close av_notice_close_full'></a><div class='av_notice_fs_inner'>";
+		}
+		
+		if (title) {
+			content +=	"<span class='av_notice_text'>\
+							" + title;
+		}
+		
+		if (hasloading) {
+			content +=	'<div class="av_notice_loading"><i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i></div></span>';
+		}
+		else if (title) {
+			content += "</span>";	
+		}
+		
+		if (subtitle) {
+			content += 	"<span class='av_notice_subtext'>\
+						" + subtitle + "\
+						</span>";
+		}
+		content += "</div></div>";
+		
+		$('body').append(content);
+		
+		//attach handler
+		$('.av_notice_close').on('click.notice', function(e) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			
+			closeAndRemoveFSNotice();
+		});
+	}
+
+	// ------------------ LOAD MORE ------------------ //
+	
+	$(document).on('click','.p1-airdrop-load-more', function() {
+		if ($('.p1-airdrop-load-more').data('processing', '1') == true){
+		return;
+		}
+		else{
+			$('.p1-airdrop-load-more').attr('data-processing', '1');
+			$('.primary.p1-airdrop-load-more').hide('slow');
+			var page = $(this).attr('data-paging');
+			var action = $(this).data('action');
+			var nonce = $(this).data('nonce'); 
+			var ajaxurl = $(this).data('url');
+			
+			$.ajax({
+				url 			: ajaxurl,
+				type 		: 'post',
+				dataType 	: 'json',
+				data 		: {
+								paging	: page,
+								action	: action,
+								nonce	: nonce
+				},
+				beforeSend: function() {
+					$('.primary.p1-airdrop-load-more').hide('slow');
+				},
 				
-			}
-			else {
-				$('.p1-airdrop').append(response.content);
-				//$('.p1-airdrop-load-more').show('slow');
-				
-				$(".p1-airdrop-load-more").attr("data-paging", parseInt(page) + 1);
-			}
-		},
-		error : function( response ) {
-			console.log("error" + response);
+				success : function( response ) {
+					if (response==null) {
+						
+					}
+					else {
+						$('.p1-airdrop-load-more').attr('data-processing', '0');				
+						$('.p1-airdrop').append(response.content);
+						$('.p1-airdrop-load-more').show('slow');
+						
+						$(".p1-airdrop-load-more").attr("data-paging", parseInt(page) + 1);
+					}
+				},
+				error : function( response ) {
+					console.log("error" + response);
+				}
+			});
 		}
 	});
-});
 
-// ------------------ RATING ------------------ //
+	// ------------------ RATING ------------------ //
 	
 	$(document).on('mousemove', '.star-rating .star', function(e) {   //Action on mouse-move over the stars
 		var $object = $(this).closest('.star-rating').first();
@@ -360,48 +358,48 @@ $(document).on('click','.p1-airdrop-load-more', function() {
 	
 	$(document).on("click", ".star-rating .star", function(e) {   //Action when clicked on the stars
 	
-	  var $object = $(this).closest('.star-rating').first();
-	  $object.click(false);
-	  if ($object.hasClass("rated")) {
-			return;	
-		}
-	  var $nuser = $(this).closest('.old-users').first();
-	  var users = $('.old-users').attr('value');
-	  var rating = $(this).attr('value');
-      var postid = $(this).closest(".p1-airdrop-item").attr('data-postid');
-	  var action = $(this).closest(".star-rating").attr('data-action');
-	  var nonce = $(this).closest(".star-rating").attr('data-nonce');
-	  var ajaxurl = $(this).closest(".star-rating").attr('data-url');
-	  var formData = {
-		'nonce'				: nonce,
-		'rating'            : rating,
-		'postid'				: postid,
-		'users'				: users,
-		'action'				: action,
-	  };
-	  
-	  
-	  $.ajax({
-				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-				url         : ajaxurl, // the url where we want to POST
-				data        : formData, // our data object
-				dataType    : 'json', // what type of data do we expect back from the server
-				encode		: true,
-				success		: function(data) {
-								var ajaxData = data;
-								console.log(data);
-								var nrate = data[0].rate;
-								console.log(nrate);
-								var nusers = data[0].users;
-								console.log(nusers);
-								var rating = (nrate/nusers);
-								adjustStarRating( $object, rating, nusers, true);
-								closeAndRemoveFSNotice();
-								$object.click(true);
-				}
-				
-			}) 
-	});
+		  var $object = $(this).closest('.star-rating').first();
+		  $object.click(false);
+		  if ($object.hasClass("rated")) {
+				return;	
+			}
+		  var $nuser = $(this).closest('.old-users').first();
+		  var users = $('.old-users').attr('value');
+		  var rating = $(this).attr('value');
+		  var postid = $(this).closest(".p1-airdrop-item").attr('data-postid');
+		  var action = $(this).closest(".star-rating").attr('data-action');
+		  var nonce = $(this).closest(".star-rating").attr('data-nonce');
+		  var ajaxurl = $(this).closest(".star-rating").attr('data-url');
+		  var formData = {
+			'nonce'				: nonce,
+			'rating'            : rating,
+			'postid'				: postid,
+			'users'				: users,
+			'action'				: action,
+		  };
+		  
+		  
+		  $.ajax({
+					type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+					url         : ajaxurl, // the url where we want to POST
+					data        : formData, // our data object
+					dataType    : 'json', // what type of data do we expect back from the server
+					encode		: true,
+					success		: function(data) {
+									var ajaxData = data;
+									console.log(data);
+									var nrate = data[0].rate;
+									console.log(nrate);
+									var nusers = data[0].users;
+									console.log(nusers);
+									var rating = (nrate/nusers);
+									adjustStarRating( $object, rating, nusers, true);
+									closeAndRemoveFSNotice();
+									$object.click(true);
+					}
+					
+				}) 
+		});
 	
 	
 	function adjustStarRating( $object, $rating, users, permanent) {	//Adjusting stars according to indexation
@@ -427,7 +425,7 @@ $(document).on('click','.p1-airdrop-load-more', function() {
 			$object.attr( 'data-original', $rating);
 			
 			$object.addClass("rated");
-			if (users == 1){
+			if (users == 1) {
 			$object.find('.star-users').html("(" + users + " Vote)");
 			}
 			else
@@ -446,87 +444,99 @@ $(document).on('click','.p1-airdrop-load-more', function() {
 			$star.addClass("icon-star").removeClass("icon-star-half-o").removeClass("icon-star-o");
 		}
 	}
-// ------------------ RATING ENDS ------------------ //
+	// ------------------ RATING ENDS ------------------ //
 
-// ===========       Scroll to Top      ============ //
-$(window).scroll(function() {
-    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
-        $('#return-to-top').fadeIn(200);    // Fade in the arrow
-    } else {
-        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
-    }
-});
-$('#return-to-top').click(function() {      // When arrow is clicked
-    $('body,html').animate({
-        scrollTop : 0                       // Scroll to top of body
-    }, 500);
-});
-
-// ------------------ Show button ------------------ //
-
-function OnloadFunction () {
-   $(".show").hide();
-	$(".primary.p1-close-btn").hide();
-
-	
-$(document).on('click',".primary.p1-steps-btn", function() {
-		$(this).hide('slow');
-		$(this).closest(".steps-format").find(".show").show('slow');
-		$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
-		
-});
-$(document).on('click',".primary.p1-close-btn", function() {
-			$(".show").hide('slow');
-			$(".primary.p1-close-btn").hide('slow');
-			$(".primary.p1-steps-btn").show('slow');
-}); 
-}
-$(document).ready(OnloadFunction);
-
-
-$( document ).ajaxComplete(function() {
-	$(".show").hide();
-	$(".primary.p1-close-btn").hide();
-
-$(document).on('click',".primary.p1-steps-btn", function() {
-		$(this).hide('slow');
-		$(this).closest(".steps-format").find(".show").show('slow');
-		$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
-		
-});
-$(document).on('click',".primary.p1-close-btn", function() {
-			$(".show").hide('slow');
-			$(".primary.p1-close-btn").hide('slow');
-			$(".primary.p1-steps-btn").show('slow');
-		}); 	
+	// ===========       Scroll to Top      ============ //
+	$(window).scroll(function() {
+		if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+			$('#return-to-top').fadeIn(200);    // Fade in the arrow
+		} else {
+			$('#return-to-top').fadeOut(200);   // Else fade out the arrow
+		}
 	});
-}); // Document.ready end
-// --- 3 ---
+	$('#return-to-top').click(function() {      // When arrow is clicked
+		$('body,html').animate({
+			scrollTop : 0                       // Scroll to top of body
+		}, 500);
+	});
 
-//---------AJAX SEARCH BAR-------//
+	// ------------------ Show button ------------------ //
 
-$(document).keyup(".p1-primary-max .p1-header-content .form-control",function() {
-	console.log('hi');
-	var value = $(".p1-primary-max .p1-header-content .form-control").attr('data-value');
-	var ajaxurl = $(".p1-primary-max .p1-header-content .form-control").attr('data-ajaxurl');
-	var formData = {
-		'value' : value,
-	  };
+	function OnloadFunction () {
+		$(".show").hide();
+		$(".primary.p1-close-btn").hide();
+
+	
+	$(document).on('click',".primary.p1-steps-btn", function() {
+			$(this).hide('slow');
+			$(this).closest(".steps-format").find(".show").show('slow');
+			$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
+			
+	});
+	$(document).on('click',".primary.p1-close-btn", function() {
+				$(".show").hide('slow');
+				$(".primary.p1-close-btn").hide('slow');
+				$(".primary.p1-steps-btn").show('slow');
+	}); 
+	}
+	$(document).ready(OnloadFunction);
 	
 	
-	 $.ajax({
-				type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-				url         : ajaxurl, // the url where we want to POST
-				data        : formData, // our data object
-				dataType    : 'text', // what type of data do we expect back from the server
-				encode		: true,
-				success		: function(data) {
-								var ajaxData = data;
-								console.log(data);
-								
-				}
-				
-			}) 
+	$( document ).ajaxComplete(function() {
+		$(".show").hide();
+		$(".primary.p1-close-btn").hide();
+	
+	$(document).on('click',".primary.p1-steps-btn", function() {
+			$(this).hide('slow');
+			$(this).closest(".steps-format").find(".show").show('slow');
+			$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
+			
+	});
+	$(document).on('click',".primary.p1-close-btn", function() {
+				$(".show").hide('slow');
+				$(".primary.p1-close-btn").hide('slow');
+				$(".primary.p1-steps-btn").show('slow');
+			}); 	
+		});
+}); 
+// Document.ready ends
+	
+	// --- 3 ---
+	
+	//---------AJAX SEARCH BAR-------//
+	/*
+	$(document).keyup(".p1-primary-max .p1-header-content .form-control",function() {
+		console.log('hi');
+		var value = $(".p1-primary-max .p1-header-content .form-control").attr('data-value');
+		var ajaxurl = $(".p1-primary-max .p1-header-content .form-control").attr('data-ajaxurl');
+		var formData = {
+			'value' : value,
+		  };
+		
+		
+		 $.ajax({
+					type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+					url         : ajaxurl, // the url where we want to POST
+					data        : formData, // our data object
+					dataType    : 'text', // what type of data do we expect back from the server
+					encode		: true,
+					success		: function(data) {
+									var ajaxData = data;
+									console.log(data);
+									
+					}
+					
+				}) 
+	});
+	
+	*/
+
+$(window).scroll(function() {
+	if( $('.p1-airdrop-load-more').visible()) {
+		$('.p1-airdrop-load-more').trigger("click");	
+	};
 });
 
-	
+
+// JQuery Visible, Courtesy: https://github.com/customd/jquery-visible
+!function(t){var i=t(window);t.fn.visible=function(t,e,o){if(!(this.length<1)){var r=this.length>1?this.eq(0):this,n=r.get(0),f=i.width(),h=i.height(),o=o?o:"both",l=e===!0?n.offsetWidth*n.offsetHeight:!0;if("function"==typeof n.getBoundingClientRect){var g=n.getBoundingClientRect(),u=g.top>=0&&g.top<h,s=g.bottom>0&&g.bottom<=h,c=g.left>=0&&g.left<f,a=g.right>0&&g.right<=f,v=t?u||s:u&&s,b=t?c||a:c&&a;if("both"===o)return l&&v&&b;if("vertical"===o)return l&&v;if("horizontal"===o)return l&&b}else{var d=i.scrollTop(),p=d+h,w=i.scrollLeft(),m=w+f,y=r.offset(),z=y.top,B=z+r.height(),C=y.left,R=C+r.width(),j=t===!0?B:z,q=t===!0?z:B,H=t===!0?R:C,L=t===!0?C:R;if("both"===o)return!!l&&p>=q&&j>=d&&m>=L&&H>=w;if("vertical"===o)return!!l&&p>=q&&j>=d;if("horizontal"===o)return!!l&&m>=L&&H>=w}}}}(jQuery);

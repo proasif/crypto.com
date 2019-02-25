@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         </section>
         <?php //-------------- p1-airdrop ENDS --------------// ?>
         
-        <div class="load-more-button" align="center">
+        <div class="p1-load-more-button" align="center">
             <?php 
                 $action = "load_more";
                 $nonce = wp_create_nonce($action);

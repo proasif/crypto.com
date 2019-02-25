@@ -131,7 +131,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		
 		if ( $users == 0 ) {	
 			$starContent = '<div class = "star-rating" data-original = "' . $old_rating . '" data-nonce= "' . $nonce . '" data-action="' . $action . '" data-url="' . $admin_url . '">'. $temp_content ;
-			$starUsers = '<div class = "star-users">(0 Vote)</div></div>';
+			$starUsers = '<div class = "star-users"></div></div>';
 			$content = $starContent . $starUsers;
 			?>
             <div class="p1-airdrop-rating-container">
@@ -146,7 +146,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$starUsers = '<div class = "star-users">(' . $users . ' Vote)</div></div>';
 			$content = $starContent . $starUsers;
 			?>
-            <div class="p1-airdrop-rating">
+            <div class="p1-airdrop-rating-container">
 			<?php echo $content; ?>
             </div>
             
@@ -167,7 +167,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		else {	
 			$content = '<div class = "star-rating" data-original = "' . $old_rating .  '" data-nonce= "' .  $nonce . '" data-action="' .  $action . '" data-url="'. $admin_url . '">'. $temp_content . '</div>';
 			?>
-            <div class="p1-airdrop-rating">
+            <div class="p1-airdrop-rating-container">
 			<?php echo $content; ?>
             </div>
             
