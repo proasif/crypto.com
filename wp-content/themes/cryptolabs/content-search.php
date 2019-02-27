@@ -23,7 +23,8 @@ get_header();
     <?php the_title();?>
     <?php 
 		if(has_post_thumbnail()): ?>
-            <div class="p1-section p1-style-curves p1-style-shadow"><?php 
+            <div class="p1-section p1-style-curves p1-style-shadow">
+			<?php 
             the_post_thumbnail(); 
             $pod = pods('airdrop', get_the_ID());
             $name = $pod->field('airdrop_name') ;

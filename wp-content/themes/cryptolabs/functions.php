@@ -795,9 +795,40 @@ function deleteUploadedImage($url) {
 	}
 }
 
+// --------- 8. Search Result ----------
+
 add_action('wp_ajax_search', 'ajax_search');
 function ajax_search(){
-	$value = $_REQUEST["value"]; //checking
-	echo $value;
+	echo ("hello from functions");
+	/*
+	$value = $_REQUEST["value"]; 
+	
+	$custom_posts = new WP_Query( 
+							array(
+									'post_type'			=> 'airdrop',
+									'order_by' 			=> 'title',
+									'order'    			=> 'desc',
+									'posts_per_page' 	=> 10,
+								)
+							);
+	foreach ($custom_posts as $post){
+	if (strpos( $post, $value) == true ) {
+
+	$content = "";
+	if ( $custom_posts->have_posts() ) {
+		while ( $custom_posts->have_posts() ) {
+			$custom_posts->the_post(); 
+			
+			ob_start();
+			get_template_part('ajax','search'); 
+			$output = ob_get_contents();
+			ob_end_clean();
+			
+			echo $content .= $output;
+		}
+	}
+	}
+	}
 	die();
+	*/
 }
