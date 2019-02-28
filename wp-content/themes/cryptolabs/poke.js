@@ -506,16 +506,25 @@ $(document).ready(function () {
 	//---------AJAX SEARCH BAR-------//
 	
 	$(document).keyup(".p1-primary-max .p1-header-content .form-control",function() {
-		//console.log('hi');
+		/*
+		$("input[type='search'][name='s']").focus(function() {
+    	var e = jQuery.Event("keydown");
+		e.which = 13; // Enter
+		$("input[type='search'][name='s']").trigger(e);
+	});
+	*/
+		
 		var value = $(".form-control").val();
 		//console.log (value);
 		var ajaxurl = $(".form-control").attr('data-ajaxurl');
 		//console.log(ajaxurl);
+		var action = $(".form-control").attr('data-action');
+		//console.log(action);
 		var formData = {
 			'value' : value,
+			'action': action,
 		  };
-		
-		
+		  
 		 $.ajax({
 					type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
 					url         : ajaxurl, // the url where we want to POST
@@ -523,13 +532,15 @@ $(document).ready(function () {
 					dataType    : 'text', // what type of data do we expect back from the server
 					encode		: true,
 					success		: function(data) {
-									var ajaxData = data;
+									 console.log(data);
+									$('.p1-primary-max .p1-header-content .form-control').append(data);				
+					},
+					error		: function(data) {
 									console.log(data);
-									$('.p1-primary-max .p1-header-content .form-control').append(data);
-									
 					}
 					
 				}) 
+	
 	});
 	
 

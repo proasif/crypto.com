@@ -799,36 +799,29 @@ function deleteUploadedImage($url) {
 
 add_action('wp_ajax_search', 'ajax_search');
 function ajax_search(){
-	echo ("hello from functions");
-	/*
 	$value = $_REQUEST["value"]; 
-	
-	$custom_posts = new WP_Query( 
-							array(
-									'post_type'			=> 'airdrop',
-									'order_by' 			=> 'title',
-									'order'    			=> 'desc',
-									'posts_per_page' 	=> 10,
-								)
-							);
-	foreach ($custom_posts as $post){
-	if (strpos( $post, $value) == true ) {
-
 	$content = "";
-	if ( $custom_posts->have_posts() ) {
-		while ( $custom_posts->have_posts() ) {
-			$custom_posts->the_post(); 
-			
-			ob_start();
-			get_template_part('ajax','search'); 
-			$output = ob_get_contents();
-			ob_end_clean();
-			
-			echo $content .= $output;
-		}
-	}
-	}
-	}
-	die();
-	*/
+	$args = array(
+			'post_type'			=> 'airdrop',
+			's'					=> $value,
+			'order_by' 			=> 'title',
+			'order'    			=> 'desc',
+			'posts_per_page' 	=> 10,
+		);
+		$query = new WP_Query($args);
+			if ( $query->have_posts() ) {
+				while ( $query->have_posts() ) {
+					$query->the_post();
+					$output = the_title();
+					$content .= $output;
+				}
+			}
+
+	$result = array (
+	 			array(
+				'content'	=>	$content
+				)
+			);
+			echo $jsonformat = json_encode($result);
+		die();
 }
