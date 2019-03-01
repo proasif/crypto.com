@@ -807,20 +807,19 @@ function ajax_search(){
 			'order_by' 			=> 'title',
 			'order'    			=> 'desc',
 			'posts_per_page' 	=> 10,
+			'compare'			=> 'like'
 		);
 		$query = new WP_Query($args);
 			if ( $query->have_posts() ) {
 				while ( $query->have_posts() ) {
 					$query->the_post();
-					$output = the_title();
-					$content .= $output;
+					$output = get_the_post_thumbnail() . get_the_title();
+					$content .= $output ?>  <?php ;
 				}
 			}
 
 	$result = array (
-	 			array(
 				'content'	=>	$content
-				)
 			);
 			echo $jsonformat = json_encode($result);
 		die();

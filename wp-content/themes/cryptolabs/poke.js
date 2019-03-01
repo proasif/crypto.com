@@ -529,11 +529,11 @@ $(document).ready(function () {
 					type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
 					url         : ajaxurl, // the url where we want to POST
 					data        : formData, // our data object
-					dataType    : 'text', // what type of data do we expect back from the server
+					dataType    : 'json', // what type of data do we expect back from the server
 					encode		: true,
 					success		: function(data) {
-									 console.log(data);
-									$('.p1-primary-max .p1-header-content .form-control').append(data);				
+									console.log(data);
+									$('.form-control').append('<div class="p1-ajax-display">"'+data.content+'"</div>');				
 					},
 					error		: function(data) {
 									console.log(data);
