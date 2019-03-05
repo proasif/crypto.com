@@ -387,11 +387,11 @@ $(document).ready(function () {
 					encode		: true,
 					success		: function(data) {
 									var ajaxData = data;
-									console.log(data);
+									//console.log(data);
 									var nrate = data[0].rate;
-									console.log(nrate);
+									//console.log(nrate);
 									var nusers = data[0].users;
-									console.log(nusers);
+									//console.log(nusers);
 									var rating = (nrate/nusers);
 									adjustStarRating( $object, rating, nusers, true);
 									closeAndRemoveFSNotice();
@@ -506,13 +506,6 @@ $(document).ready(function () {
 	//---------AJAX SEARCH BAR-------//
 	
 	$(document).keyup(".p1-primary-max .p1-header-content .form-control",function() {
-		/*
-		$("input[type='search'][name='s']").focus(function() {
-    	var e = jQuery.Event("keydown");
-		e.which = 13; // Enter
-		$("input[type='search'][name='s']").trigger(e);
-	});
-	*/
 		
 		var value = $(".form-control").val();
 		//console.log (value);
@@ -533,7 +526,7 @@ $(document).ready(function () {
 					encode		: true,
 					success		: function(data) {
 									console.log(data);
-									$('.form-control').append('<div class="p1-ajax-display">"'+data.content+'"</div>');				
+									$('.form-control').append('<div class="p1-search-result">"'+data.content+'"</div>');				
 					},
 					error		: function(data) {
 									console.log(data);
@@ -552,6 +545,39 @@ $(document).ready(function () {
 			return false;
 		};
 	});
+	
+	//--------- Filter Logic -------//
+	
+	$(document).on('change','.p1-filter-dropdown', function() { 
+		var value = $(this).val();
+		//console.log(value);
+		var ajaxurl = $(this).attr('data-ajaxurl');
+		//console.log(ajaxurl);
+		var action = $(this).attr('data-action');
+		//console.log(action);
+		var formData = {
+			'value' : value,
+			'action': action,
+		  };
+	
+	$.ajax({
+					type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+					url         : ajaxurl, // the url where we want to POST
+					data        : formData, // our data object
+					dataType    : 'json', // what type of data do we expect back from the server
+					encode		: true,
+					success		: function(data) {
+									console.log(data);
+									//$('.form-control').append('<div class="p1-search-result">"'+data.content+'"</div>');				
+					},
+					error		: function(data) {
+									console.log(data);
+					}
+					
+				}) 
+	
+	});
+	
 
 
 // JQuery Visible, Courtesy: https://github.com/customd/jquery-visible

@@ -656,8 +656,8 @@ function ajax_star_rating(){
 	
 	$pod = pods('airdrop', intval($postid) );
 	
-	$rate = $pod->field('rating') ;
-	$users = $pod->field('no_of_users') ;
+	$rate = $pod->field('rating');
+	$users = $pod->field('no_of_users');
 	
 	
 	$rate = $rate + $rating;
@@ -685,7 +685,6 @@ function ajax_upload_and_process() {
 	$url = $_REQUEST["iurl"];
 	$action = $_REQUEST["action"];
 	$postid = $_REQUEST["postid"]; //only for process image
-	//echo ("in functions");
 	//check if url is valid
 	if(!filter_var($url, FILTER_VALIDATE_URL))  {
 		echo "Errr:Invalid URL";
@@ -822,5 +821,34 @@ function ajax_search(){
 				'content'	=>	$content
 			);
 			echo $jsonformat = json_encode($result);
+		die();
+}
+
+// --------- 9. Filter Result ----------
+add_action('wp_ajax_select', 'ajax_select');
+function ajax_select(){
+	$pod = pods('airdrop', intval($postid) );
+	$rate = $pod->field('rating');
+	$value = $_REQUEST["value"]; 
+	$content = "";
+	$args = array(
+			'post_type'			=> 'airdrop',
+			'rate'				=> $rate,
+			'order_by' 			=> 'title',
+			'order'    			=> 'desc',
+			'posts_per_page' 	=> 10,
+		);
+		$query = new WP_Query($args);
+			if ( $query->have_posts() && $rate >= '1' ) {
+				while ( $query->have_posts() ) {
+					$query->the_post();
+					ob_start();
+					get_template_part( 'template-parts/display/airdrop-post', 'display' );
+					$output = ob_get_contents();
+					ob_end_clean();
+					$content .= $output;
+				}
+			}
+			echo $jsonformat = json_encode($content);
 		die();
 }
