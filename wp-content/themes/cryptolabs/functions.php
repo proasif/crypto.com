@@ -827,23 +827,26 @@ function ajax_search(){
 // --------- 9. Filter Result ----------
 add_action('wp_ajax_select', 'ajax_select');
 function ajax_select(){
-	$pod = pods('airdrop', intval($postid) );
+	$pod = pods('airdrop');
 	$rate = $pod->field('rating');
-	$value = $_REQUEST["value"]; 
+	/*
+	for($i = 1; $i <= strlen((string)$pod); $i++){
+	if ($rate != NULL){
+	*/
+		$value = $_REQUEST["value"]; 
 	$content = "";
 	$args = array(
 			'post_type'			=> 'airdrop',
-			'rate'				=> $rate,
-			'order_by' 			=> 'title',
+			'order_by' 			=>  $rate,
 			'order'    			=> 'desc',
 			'posts_per_page' 	=> 10,
 		);
 		$query = new WP_Query($args);
-			if ( $query->have_posts() && $rate >= '1' ) {
+			if ( $query->have_posts()) {
 				while ( $query->have_posts() ) {
 					$query->the_post();
 					ob_start();
-					get_template_part( 'template-parts/display/airdrop-post', 'display' );
+					get_template_part( 'template-parts/display/airdrop-post', 'rating' );
 					$output = ob_get_contents();
 					ob_end_clean();
 					$content .= $output;
@@ -851,4 +854,4 @@ function ajax_select(){
 			}
 			echo $jsonformat = json_encode($content);
 		die();
-}
+	}
