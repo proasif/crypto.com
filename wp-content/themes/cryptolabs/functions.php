@@ -827,13 +827,16 @@ function ajax_search(){
 // --------- 9. Filter Result ----------
 add_action('wp_ajax_select', 'ajax_select');
 function ajax_select(){
+	$value = $_REQUEST["value"]; 
+	
+	if(isset($value) == "rating"){
 	$pod = pods('airdrop');
 	$rate = $pod->field('rating');
 	/*
 	for($i = 1; $i <= strlen((string)$pod); $i++){
 	if ($rate != NULL){
 	*/
-		$value = $_REQUEST["value"]; 
+		
 	$content = "";
 	$args = array(
 			'post_type'			=> 'airdrop',
@@ -855,3 +858,7 @@ function ajax_select(){
 			echo $jsonformat = json_encode($content);
 		die();
 	}
+	else{
+		echo "pus";
+		}
+}
