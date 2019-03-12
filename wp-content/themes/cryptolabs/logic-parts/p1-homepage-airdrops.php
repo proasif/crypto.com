@@ -15,8 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
             <select class="p1-filter-dropdown" data-ajaxurl="<?php echo admin_url("admin-ajax.php"); ?>" data-action="select">
                 <option value="">Sort By..</option>
                 <option value="rating">Rating</option>
+                <option value="trend">Trending</option>
                 <option value="eth">ETH</option>
-                <option value="own">OWN CHAIN</option>
                 <option value="neo">NEO</option>
             </select>
          <?php 

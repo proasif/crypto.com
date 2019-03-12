@@ -325,6 +325,7 @@ function enqueue_scripts() {
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('velocity', get_template_directory_uri().'/js/jquery.velocity.min.js', array('jquery'));
 	wp_enqueue_script('poke', get_template_directory_uri().'/poke.js', array('jquery', 'velocity'));
+	wp_enqueue_script('isotope', get_template_directory_uri().'/js/isotope.min.js', array('jquery'));
 	
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts', 1 );
@@ -829,36 +830,39 @@ add_action('wp_ajax_select', 'ajax_select');
 function ajax_select(){
 	$value = $_REQUEST["value"]; 
 	
-	if(isset($value) == "rating"){
-	$pod = pods('airdrop');
-	$rate = $pod->field('rating');
-	/*
-	for($i = 1; $i <= strlen((string)$pod); $i++){
-	if ($rate != NULL){
-	*/
+	if(isset($value) == "rating") {
+		$content = "";
 		
-	$content = "";
-	$args = array(
-			'post_type'			=> 'airdrop',
-			'order_by' 			=>  $rate,
-			'order'    			=> 'desc',
-			'posts_per_page' 	=> 10,
-		);
-		$query = new WP_Query($args);
-			if ( $query->have_posts()) {
-				while ( $query->have_posts() ) {
-					$query->the_post();
-					ob_start();
-					get_template_part( 'template-parts/display/airdrop-post', 'rating' );
-					$output = ob_get_contents();
-					ob_end_clean();
-					$content .= $output;
+		$args = array(
+				'post_type'			=> 'airdrop',
+				'order_by'			=> 'title',
+				'order'    			=> 'desc',
+				'posts_per_page' 	=> 10,
+				'meta_query' => array(
+						array(
+							'key' => 'rating',
+							'value' => array(1, 5),
+							'compare' => 'BETWEEN',
+						)
+					)
+			);
+			$query = new WP_Query($args);
+			
+				if ( $query->have_posts()) {
+					while ( $query->have_posts() ) {
+						$query->the_post();
+						$sign = get_the_title();
+						//$signs[] = $sign;
+						
+						$pod = pods('airdrop', get_the_ID());
+						$rate = $pod->field('rating');
+						$users = $pod->field('no_of_users');
+						$output = ($rate/$users) . $sign . " ";
+						$content .= $output;
+					}
 				}
-			}
-			echo $jsonformat = json_encode($content);
-		die();
-	}
-	else{
-		echo "pus";
+				echo $jsonformat = json_encode($content);
+			die();
 		}
+		else echo "in else";
 }
