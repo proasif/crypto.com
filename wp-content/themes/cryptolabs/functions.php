@@ -324,8 +324,9 @@ function enqueue_scripts() {
 	// Load JQuery + Velocity + Poke
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('velocity', get_template_directory_uri().'/js/jquery.velocity.min.js', array('jquery'));
-	wp_enqueue_script('poke', get_template_directory_uri().'/poke.js', array('jquery', 'velocity'));
-	wp_enqueue_script('isotope', get_template_directory_uri().'/js/isotope.min.js', array('jquery'));
+	wp_enqueue_script('isotope', get_template_directory_uri().'/js/isotope.min.js');
+	wp_enqueue_script('poke', get_template_directory_uri().'/poke.js', array('jquery', 'velocity', 'isotope'));
+	
 	
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts', 1 );
