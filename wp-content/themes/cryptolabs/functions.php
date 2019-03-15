@@ -325,6 +325,7 @@ function enqueue_scripts() {
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('velocity', get_template_directory_uri().'/js/jquery.velocity.min.js', array('jquery'));
 	wp_enqueue_script('poke', get_template_directory_uri().'/poke.js', array('jquery', 'velocity'));
+	wp_enqueue_script('isotope', get_template_directory_uri().'/js/isotope.min.js', array('jquery'));
 	
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts', 1 );
@@ -651,13 +652,13 @@ function ajax_star_rating(){
 	
 	$rating = $_REQUEST["rating"];
 	$postid = $_REQUEST["postid"]; //only for (this) airdrop 
-	$user = $_REQUEST["user"];
+	$users = $_REQUEST["users"];
 	
 	
 	$pod = pods('airdrop', intval($postid) );
 	
-	$rate = $pod->field('rating') ;
-	$users = $pod->field('no_of_users') ;
+	$rate = $pod->field('rating');
+	$users = $pod->field('no_of_users');
 	
 	
 	$rate = $rate + $rating;
@@ -685,7 +686,6 @@ function ajax_upload_and_process() {
 	$url = $_REQUEST["iurl"];
 	$action = $_REQUEST["action"];
 	$postid = $_REQUEST["postid"]; //only for process image
-	//echo ("in functions");
 	//check if url is valid
 	if(!filter_var($url, FILTER_VALIDATE_URL))  {
 		echo "Errr:Invalid URL";
@@ -793,4 +793,76 @@ function deleteUploadedImage($url) {
 	else {
 		return json_encode("Error: File not found for delete - " . ($result));	
 	}
+}
+
+// --------- 8. Search Result ----------
+
+add_action('wp_ajax_search', 'ajax_search');
+function ajax_search(){
+	$value = $_REQUEST["value"]; 
+	$content = "";
+	$args = array(
+			'post_type'			=> 'airdrop',
+			's'					=> $value,
+			'order_by' 			=> 'title',
+			'order'    			=> 'desc',
+			'posts_per_page' 	=> 10,
+			'compare'			=> 'like'
+		);
+		$query = new WP_Query($args);
+			if ( $query->have_posts() ) {
+				while ( $query->have_posts() ) {
+					$query->the_post();
+					$output = get_the_post_thumbnail() . get_the_title();
+					$content .= $output ?>  <?php ;
+				}
+			}
+
+	$result = array (
+				'content'	=>	$content
+			);
+			echo $jsonformat = json_encode($result);
+		die();
+}
+
+// --------- 9. Filter Result ----------
+add_action('wp_ajax_select', 'ajax_select');
+function ajax_select(){
+	$value = $_REQUEST["value"]; 
+	
+	if(isset($value) == "rating") {
+		$content = "";
+		
+		$args = array(
+				'post_type'			=> 'airdrop',
+				'order_by'			=> 'title',
+				'order'    			=> 'desc',
+				'posts_per_page' 	=> 10,
+				'meta_query' => array(
+						array(
+							'key' => 'rating',
+							'value' => array(1, 5),
+							'compare' => 'BETWEEN',
+						)
+					)
+			);
+			$query = new WP_Query($args);
+			
+				if ( $query->have_posts()) {
+					while ( $query->have_posts() ) {
+						$query->the_post();
+						$sign = get_the_title();
+						//$signs[] = $sign;
+						
+						$pod = pods('airdrop', get_the_ID());
+						$rate = $pod->field('rating');
+						$users = $pod->field('no_of_users');
+						$output = ($rate/$users) . $sign . " ";
+						$content .= $output;
+					}
+				}
+				echo $jsonformat = json_encode($content);
+			die();
+		}
+		else echo "in else";
 }

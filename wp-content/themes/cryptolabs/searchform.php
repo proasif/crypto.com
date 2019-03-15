@@ -15,5 +15,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <form role="search" method="get" action="<?php echo home_url('/'); ?>">
-<input type="search" class="form-control" placeholder="Search" value="<?php echo get_search_query() ?>" name="s" title="Search" />
+<input type="search" class="form-control" placeholder="Search" data-action="search" data-ajaxurl="<?php echo admin_url("admin-ajax.php"); ?>" data-value="<?php echo get_search_query() ?>" name="s" title="Search" />
 </form>	

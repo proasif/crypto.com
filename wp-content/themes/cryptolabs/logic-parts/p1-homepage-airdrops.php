@@ -8,9 +8,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No direct script access allowed' );
 }
 ?>	
-<div class="p1-section p1-style-curves p1-style-shadow">
+<section class="p1-section p1-style-curves p1-style-shadow">
+	
 	<?php //-------------------- p1-section p1-style-curves p1-style-shadow STARTS -----------------------// ?>
-        <div class="p1-airdrop">
+        <section class="p1-airdrop">
+            <select class="p1-filter-dropdown" data-ajaxurl="<?php echo admin_url("admin-ajax.php"); ?>" data-action="select">
+                <option value="">Sort By..</option>
+                <option value="rating">Rating</option>
+                <option value="trend">Trending</option>
+                <option value="eth">ETH</option>
+                <option value="neo">NEO</option>
+            </select>
          <?php 
             //-------------- p1-airdrop STARTS --------------//
             $currentpage = get_query_var('paged');
@@ -28,10 +36,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                 endwhile;
             endif;
         ?>
-        </div>
+        </section>
         <?php //-------------- p1-airdrop ENDS --------------// ?>
         
-        <div class="load-more-button" align="center">
+        <div class="p1-load-more-button" align="center">
             <?php 
                 $action = "load_more";
                 $nonce = wp_create_nonce($action);
@@ -40,5 +48,5 @@ if ( ! defined( 'ABSPATH' ) ) {
             ?>
             <button data-paging="<?php echo $page ?>" data-nonce="<?php echo $nonce ?>" data-action="<?php echo $action ?>" data-url="<?php echo admin_url($url); ?>"class="primary p1-airdrop-load-more">Load More</button>
         </div>
-</div>
+</section>
 <?php //-------------- p1-section p1-style-curves p1-style-shadow ENDS --------------// ?>
