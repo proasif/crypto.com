@@ -50,8 +50,13 @@ ul {
   padding-bottom: 20px;
 }
 
+.p1-section:first-child {
+  margin-top: 20px;
+}
+
 .p1-section {
   padding: 20px;
+  margin: 40px 0px;
 }
 
 .p1-style-curves {
@@ -422,7 +427,8 @@ body footer footer-background .stag.offLeft {
 }
 
 .p1-airdrop-item{
-	margin: 40px;
+	margin: 20px 0px;
+	display: flex;
 }
 
 .steps{
