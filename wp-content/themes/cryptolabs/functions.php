@@ -318,6 +318,7 @@ function enqueue_scripts() {
 	wp_enqueue_style('reset', get_template_directory_uri() . '/css/reset.min.css');
 	wp_enqueue_style('vanilla', get_template_directory_uri() . '/css/vanilla.min.css', array('reset'));
 	wp_enqueue_style('main-style', get_template_directory_uri() . '/style.css', array('vanilla'));
+	wp_enqueue_style('temp-style', get_template_directory_uri() . '/temp.css');
 	
 	
 	
@@ -325,8 +326,8 @@ function enqueue_scripts() {
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('velocity', get_template_directory_uri().'/js/jquery.velocity.min.js', array('jquery'));
 	wp_enqueue_script('isotope', get_template_directory_uri().'/js/isotope.min.js');
-	wp_enqueue_script('poke', get_template_directory_uri().'/poke.js', array('jquery', 'velocity', 'isotope'));
-	
+	wp_enqueue_script('poke', get_template_directory_uri().'/poke.js', array('jquery', 'velocity'));
+	wp_enqueue_script('temp', get_template_directory_uri().'/temp.js', array('jquery', 'poke'));
 	
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts', 1 );
