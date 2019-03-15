@@ -604,6 +604,7 @@ function mytheme_save_data($post_id) {
 add_action("wp_ajax_load_more", "load_more");
 add_action("wp_ajax_nopriv_load_more", "load_more_login");
 */
+add_action( 'wp_ajax_nopriv_load_more', 'ajax_load_more' );
 add_action('wp_ajax_load_more', 'ajax_load_more');
 
 function ajax_load_more(){
@@ -646,6 +647,7 @@ function ajax_load_more(){
 }
 
 // --------- 7. Star Rating ----------
+add_action( 'wp_ajax_nopriv_star_rating', 'ajax_star_rating' );
 add_action('wp_ajax_star_rating','ajax_star_rating');
 function ajax_star_rating(){
 	if ( !wp_verify_nonce( $_REQUEST["nonce"], "star_rating")) {
@@ -677,7 +679,7 @@ function ajax_star_rating(){
 }
 
 // --------- 7. Image Upload ----------
-
+add_action( 'wp_ajax_nopriv_upload_and_process', 'ajax_upload_and_process' );
 add_action('wp_ajax_upload_and_process','ajax_upload_and_process');
 	
 function ajax_upload_and_process() {
@@ -765,6 +767,7 @@ function uploadRemoteImage($image_url, $process) {
 	return json_encode ($content);
 } 
 
+add_action( 'wp_ajax_nopriv_delete', 'ajax_delete' );
 add_action('wp_ajax_delete', 'ajax_delete');
 
 function ajax_delete() {
@@ -798,7 +801,7 @@ function deleteUploadedImage($url) {
 }
 
 // --------- 8. Search Result ----------
-
+add_action( 'wp_ajax_nopriv_search', 'ajax_search' );
 add_action('wp_ajax_search', 'ajax_search');
 function ajax_search(){
 	$value = $_REQUEST["value"]; 
@@ -828,6 +831,7 @@ function ajax_search(){
 }
 
 // --------- 9. Filter Result ----------
+add_action( 'wp_ajax_nopriv_select', 'ajax_select' );
 add_action('wp_ajax_select', 'ajax_select');
 function ajax_select(){
 	$value = $_REQUEST["value"]; 
