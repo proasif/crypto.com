@@ -12,38 +12,41 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No direct script access allowed' );
 }
-?>	
+?>
+
 <article class="p1-airdrop-item" data-postid="<?php the_id() ?>" data-url="<?php the_permalink() ?>">
 	<?php  
-    //------------------------p1-airdrop-item STARTS------------------------------//
-        $thumb_id = get_post_thumbnail_id();
-        $thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
-        $thumb_url[] =  $thumb_url_array;
-        
-        $pod = pods('airdrop', get_the_ID());
-        $rate = $pod->field('rating') ;
-        $users = $pod->field('no_of_users') ;
-        $old_rating = 0;
-        
-        if ($rate >= 0 && $users >= 1) {
-             $old_rating = round( ( $rate / $users ), 2);
-        }
-        $logo = wp_get_attachment_image ($thumb_id); 
+    // Get Thumbnail
+	$thumb_id = get_post_thumbnail_id();
+	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
+	$thumb_url[] =  $thumb_url_array;
+
+	// Get R
+	$pod = pods('airdrop', get_the_ID());
+	$rate = $pod->field('rating') ;
+	$users = $pod->field('no_of_users') ;
+	$old_rating = 0;
+
+	if ($rate >= 0 && $users >= 1) {
+		 $old_rating = round( ( $rate / $users ), 2);
+	}
+	$logo = wp_get_attachment_image ($thumb_id); 
     ?>
 	
 	<div class="p1-airdrop-logo-container">
-	<div class="logo"><?php echo $logo; // Printing Logo ?></div> 
+		<div class="logo"><?php echo $logo; ?></div> 
     </div> 
 	
-	 <?php      
-        $name = $pod->field('airdrop_name') ;
-        $sign =	"(" . get_the_title() . ")" ;	
-        if($pod->field('estimated_value') != NULL){
-        $airdrop_value = "Value: " . $pod->field('estimated_value') . " " ;
-        }
-        else $airdrop_value = NULL;
-        
-      ?>
+	<?php      
+	$name = $pod->field('airdrop_name') ;
+	$sign =	"(" . get_the_title() . ")" ;	
+	if($pod->field('estimated_value') != NULL){
+		$airdrop_value = "Value: " . $pod->field('estimated_value') . " " ;
+	}
+	else $airdrop_value = NULL;
+
+	?>
+	
     <div class="content-container">
     	<div class="content-container-part1">
             <div class="p1-airdrop-title-container">
