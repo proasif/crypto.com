@@ -1,6 +1,7 @@
 /* Place all your JavaScript modifications below */
 $=jQuery.noConflict();
-
+$(document).ready(function () {
+	
 var $grid = $('.grid').isotope({
   itemSelector: '.element-item',
   layoutMode: 'fitRows',
@@ -17,8 +18,10 @@ var $grid = $('.grid').isotope({
 });
 
 // bind sort button click
-$('.sort-by-button-group').on( 'click', 'button', function() {
+$(document).on('click',".sort-by-button-group", function() { 
+  //console.log("in isotope");
   var sortValue = $(this).attr('data-sort-value');
+  //console.log(sortValue);
   $grid.isotope({ sortBy: sortValue });
 });
 
@@ -30,3 +33,4 @@ $('.button-group').each( function( i, buttonGroup ) {
     $( this ).addClass('is-checked');
   });
 });
+}); //Document .ready ENDS

@@ -12,13 +12,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	
 	<?php //-------------------- p1-section p1-style-curves p1-style-shadow STARTS -----------------------// ?>
         <section class="p1-airdrop">
+        <!--
             <select class="p1-filter-dropdown" data-ajaxurl="<?php echo admin_url("admin-ajax.php"); ?>" data-action="select">
                 <option value="">Sort By..</option>
-                <option value="rating">Rating</option>
-                <option value="trend">Trending</option>
-                <option value="eth">ETH</option>
-                <option value="neo">NEO</option>
+                <option value=".rating">Rating</option>
             </select>
+         -->
          <?php 
             //-------------- p1-airdrop STARTS --------------//
             $currentpage = get_query_var('paged');

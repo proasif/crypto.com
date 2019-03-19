@@ -787,6 +787,8 @@ function deleteUploadedImage($url) {
 	}
 }
 
+/*
+
 // --------- 8. Search Result ----------
 add_action( 'wp_ajax_nopriv_search', 'ajax_search' );
 add_action('wp_ajax_search', 'ajax_search');
@@ -859,3 +861,5 @@ function ajax_select(){
 		}
 		else echo "in else";
 }
+
+*/

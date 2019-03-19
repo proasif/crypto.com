@@ -1,12 +1,12 @@
 <h1>Isotope - sorting</h1>
 
-<div class="button-group sort-by-button-group">
-  <button class="button is-checked" data-sort-value="original-order">original order</button>
-  <button class="button" data-sort-value="name">name</button>
-  <button class="button" data-sort-value="symbol">symbol</button>
-  <button class="button" data-sort-value="number">number</button>
-  <button class="button" data-sort-value="weight">weight</button>
-  <button class="button" data-sort-value="category">category</button>
+<div class="button-group">
+  <button class="sort-by-button-group is-checked" data-sort-value="original-order">original order</button>
+  <button class="sort-by-button-group" data-sort-value="name">name</button>
+  <button class="sort-by-button-group" data-sort-value="symbol">symbol</button>
+  <button class="sort-by-button-group" data-sort-value="number">number</button>
+  <button class="sort-by-button-group" data-sort-value="weight">weight</button>
+  <button class="sort-by-button-group" data-sort-value="category">category</button>
 </div>
 
 <div class="grid">
