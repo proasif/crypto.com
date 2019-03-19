@@ -7,7 +7,7 @@ function crypto_theme_setup()
 	{
 		add_theme_support('menus');
 		add_theme_support( 'post-thumbnails' );
-		add_theme_support('custom-logo');
+		add_theme_support( 'custom-logo' );
 		register_nav_menu('primary','Header Menu'); 
 		add_theme_support('html5',array('search-form'));
 	}
@@ -272,35 +272,11 @@ function init_child_setup() {  //CHANGED FROM init TO INIT
 }
 
 function dequeu_scripts() {
-	//wp_dequeue_script('init-front');
-	
-	// disable libgif of init and enbale ours for styling
-	wp_dequeue_script('libgif');
+
 }
 
-function overwrite_image_sizes() { /*
-	add_theme_support( 'post-thumbnails' );
+function overwrite_image_sizes() { 
 	
-	add_image_size( 'init-grid-standard',     364,        round( 364 * 0.4 ), true );
-	add_image_size( 'init-grid-standard-2x',  364 * 2,    round( 364 * 2 * 0.4 ), true );
-		
-	add_image_size( 'init-grid-fancy',        364,		round( 364 * 0.4 ), true );
-	add_image_size( 'init-grid-fancy-2x',     364 * 2,	round( 364 * 2 * 0.4 ), true );
-	
-	add_image_size( 'init-list-standard',     364,        round( 364 * 9 / 16 ), true );
-	add_image_size( 'init-list-standard-2x',  364 * 2,    round( 364 * 2 * 9 / 16 ), true );
-
-	add_image_size( 'init-list-fancy',        364,        round( 364 * 9 / 16 ), true );
-	add_image_size( 'init-list-fancy-2x',		364 * 2,    round( 364 * 2 * 9 / 16 ), true );
-	
-	add_image_size( 'av-grid-fancy',        	364,        round( 364 * 0.7 ), true );
-	add_image_size( 'av-grid-fancy-2x',			364 * 2,    round( 364 * 2 * 0.7 ), true );
-	
-	add_image_size( 'av-featured',       	 	720,			240, true );
-	add_image_size( 'av-featured-2x',       	1440,			480, true );
-	
-	add_image_size( 'av-post-image',       	 	550,			184);
-	add_image_size( 'av-post-image-2x',			550 * 2,		184 * 2);   */  // Commented Image Sizes
 } 
 add_action( 'after_setup_theme', 'init_child_setup', 999);
 // --- 1 ---
@@ -326,9 +302,20 @@ function enqueue_scripts() {
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('velocity', get_template_directory_uri().'/js/jquery.velocity.min.js', array('jquery'));
 	wp_enqueue_script('isotope', get_template_directory_uri().'/js/isotope.min.js');
+	
+	
+	// Load Isotope
+	
+	
+	// TweenMax + Scroll Magic + Plugins
+	wp_enqueue_script( 'tween-max', get_stylesheet_directory_uri() . '/js/TweenMax.min.js', array( 'jquery' ) );
+	wp_enqueue_script( 'scroll-magic', get_stylesheet_directory_uri() . '/js/ScrollMagic.min.js', array( 'jquery', 'tween-max' ) );
+	wp_enqueue_script( 'animation-scroll-magic', get_stylesheet_directory_uri() . '/js/plugins/animation.gsap.min.js', array( 'jquery', 'tween-max', 'scroll-magic' ) );
+	wp_enqueue_script( 'animation-morph-svg', get_stylesheet_directory_uri() . '/js/plugins/MorphSVGPlugin.min.js', array( 'jquery', 'tween-max', 'scroll-magic' ) );
+	
+	// Load Poke JS
 	wp_enqueue_script('poke', get_template_directory_uri().'/poke.js', array('jquery', 'velocity'));
 	wp_enqueue_script('temp', get_template_directory_uri().'/temp.js', array('jquery', 'poke'));
-	
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts', 1 );
 
