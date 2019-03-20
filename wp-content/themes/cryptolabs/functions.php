@@ -648,8 +648,8 @@ function ajax_star_rating(){
 	
 	$pod = pods('airdrop', intval($postid) );
 	
-	$rate = $pod->field('rating');
-	$users = $pod->field('no_of_users');
+	$rate = the_sub_field('rating');
+	$users = the_sub_field('no_of_users');
 	
 	
 	$rate = $rate + $rating;
@@ -658,7 +658,8 @@ function ajax_star_rating(){
 	'rating' => $rate,
 	'no_of_users' => $users
 	);
-	$pod->save($data);
+	update_sub_field('rating', $rate,'');
+	update_sub_field('no_of_users', $users,'');
 	$average[] = array ('rate'=>$rate,'users'=>$users);
 	
 	echo $jsonformat = json_encode($average);

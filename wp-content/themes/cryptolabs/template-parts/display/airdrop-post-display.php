@@ -23,8 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	// Get R
 	$pod = pods('airdrop', get_the_ID());
-	$rate = $pod->field('rating') ;
-	$users = $pod->field('no_of_users') ;
+	$rate = the_field('rating') ;
+	$users = the_field('no_of_users') ;
 	$old_rating = 0;
 
 	if ($rate >= 0 && $users >= 1) {
@@ -38,10 +38,10 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div> 
 	
 	<?php      
-	$name = $pod->field('airdrop_name') ;
+	$name = the_field('airdrop_name') ;
 	$sign =	"(" . get_the_title() . ")" ;	
-	if($pod->field('estimated_value') != NULL){
-		$airdrop_value = "Value: " . $pod->field('estimated_value') . " " ;
+	if(the_field('estimated_value') != NULL){
+		$airdrop_value = "Value: " . the_field('estimated_value') . " " ;
 	}
 	else $airdrop_value = NULL;
 
