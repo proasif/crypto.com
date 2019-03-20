@@ -178,7 +178,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		}
 		
 	
-	$about = $pod->field('brief_description');
+	$about = the_field('brief_description');
 	?>
             <div class="p1-airdrop-content-container">
                <div class="about-format">
@@ -186,9 +186,32 @@ if ( ! defined( 'ABSPATH' ) ) {
                </div>
         
        <?php $steps = get_the_content(); ?>
+       
+       
                 <div class="steps-format">
                     <button class="primary p1-steps-btn">Step by step guide </button>
-                    <div class="show"><?php echo $steps ?></div>
+                    <div class="show">
+						<?php
+    
+                        // check if the repeater field has rows of data
+                        if( have_rows('airdrop_steps') ):
+                        
+                            // loop through the rows of data
+                            while ( have_rows('airdrop_steps') ) : the_row();
+                        
+                                // display a sub field value
+                                the_sub_field('steps');
+                        
+                            endwhile;
+                        
+                        else :
+                        
+                            // no rows found
+                        
+                        endif;
+                
+                        ?>
+            		</div>
                     <button class="primary p1-close-btn">CLOSE</button>
                 </div>
             </div>
@@ -197,55 +220,55 @@ if ( ! defined( 'ABSPATH' ) ) {
 //-------------- GETTING REQUIRED LOGOS --------------//
 
 	$requires = "";
-	if ($pod->field('telegram_required') == true)
+	if (the_field('telegram_required') == true)
 		{
 			 $requires = $requires . " " . '<div class="icon-paper-plane"></div>';
 		}
-	if ($pod->field('twitter_required') == true)
+	if (the_field('twitter_required') == true)
 		{
 			$requires = $requires . " " . '<div class="icon-twitter"></div></br>';
 		}
-	if ($pod->field('facebook_required') == true) 
+	if (the_field('facebook_required') == true) 
 		{
 			$requires = $requires . " " . '<div class="icon-facebook"></div></br>';
 		}
-	if ($pod->field('e-mail_required') == true)
+	if (the_field('e-mail_required') == true)
 		{
 			$requires = $requires . " " . '<div class="icon-envelope"></div></br>';
 		}
-	if ($pod->field('reddit_required') == true)
+	if (the_field('reddit_required') == true)
 		{
 			$requires = $requires . " " . '<div class="icon-reddit"></div></br>';
 		}
-	if ($pod->field('instagram_required') == true)
+	if (the_field('instagram_required') == true)
 		{
 			$requires = $requires . " " . '<div class="icon-instagrem"></div></br>';
 		}
-	if ($pod->field('youtube_required') == true)
+	if (the_field('youtube_required') == true)
 		{
 			$requires = $requires . " " . '<div class="icon-youtube"></div></br>';
 		}
-	if ($pod->field('medium_required') == true)
+	if (the_field('medium_required') == true)
 		{
 			$requires = $requires . " " . '<div class="icon-medium"></div></br>';
 		}
-	if ($pod->field('phone_required') == true)
+	if (the_field('phone_required') == true)
 		{
 			$requires = $requires . " " . '<div class="icon-phone"></div></br>';
 		}
-	if ($pod->field('linkedin_required') == true)
+	if (the_field('linkedin_required') == true)
 		{
 			$requires = $requires . " " . '<div class="icon-linkedin"></div></br>';
 		}
-	if ($pod->field('discord_required') == true)
+	if (the_field('discord_required') == true)
 		{
 			$requires = $requires . " " . '<div class="icon-flickr"></div></br>';
 		}
-	if ($pod->field('kyc_required') == true)
+	if (the_field('kyc_required') == true)
 		{
 			$requires = $requires . " " . '<div class="icon-user"></div></br>';
 		}
-	if ($pod->field('bitcointalk_required') == true)
+	if (the_field('bitcointalk_required') == true)
 		{
 			$requires = $requires . " " . '<div class="icon-btc"></div></br>';
 		}
