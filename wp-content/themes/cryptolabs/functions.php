@@ -645,22 +645,20 @@ function ajax_star_rating(){
 	$postid = $_REQUEST["postid"]; //only for (this) airdrop 
 	$users = $_REQUEST["users"];
 	
+	$airdropMeta = get_field( 'airdrop_ratings', $postid );
 	
-	$pod = pods('airdrop', intval($postid) );
-	
-	$rate = the_sub_field('rating');
-	$users = the_sub_field('no_of_users');
-	
+	$rate = $airdropMeta["ratings"];
+	$users = $airdropMeta["no_of_users"];
 	
 	$rate = $rate + $rating;
 	$users = $users + 1;
-	$data = array(
-	'rating' => $rate,
-	'no_of_users' => $users
-	);
-	update_sub_field('rating', $rate,'');
-	update_sub_field('no_of_users', $users,'');
-	$average[] = array ('rate'=>$rate,'users'=>$users);
+	
+	$airdropMeta["ratings"] = $rate;
+	$airdropMeta["no_of_users"] = $users;
+	
+	update_field('airdrop_ratings', $airdropMeta, $postid);
+	
+	$average[] = array ('rate'=>$rate, 'users'=>$users);
 	
 	echo $jsonformat = json_encode($average);
 	die();

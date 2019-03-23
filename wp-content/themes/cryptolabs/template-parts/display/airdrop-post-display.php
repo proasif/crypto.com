@@ -22,9 +22,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$thumb_url[] =  $thumb_url_array;
 
 	// Get R
-	$pod = pods('airdrop', get_the_ID());
-	$rate = the_field('rating') ;
-	$users = the_field('no_of_users') ;
+	//$pod = pods('airdrop', get_the_ID());
+	$airdropMeta = get_field( 'airdrop_ratings', $postid );
+	
+	$rate = $airdropMeta["ratings"];
+	$users = $airdropMeta["no_of_users"];
 	$old_rating = 0;
 
 	if ($rate >= 0 && $users >= 1) {
@@ -61,30 +63,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$action = "star_rating";
 	$nonce = wp_create_nonce($action);
 	$admin_url = admin_url("admin-ajax.php");
-	if($old_rating > 4.75)
-		 {
+	if($old_rating > 4.75){
 			$star_value = '<div class="icon-star ' . $append_class . '" value="5"></div>';
 		 }
-	else if($old_rating > 4.25)
-		 {
+	else if($old_rating > 4.25){
 			$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="5"></div>';	
 		 }
-	else 
-		{
+	else {
 			$star_value = '<div class="icon-star-o ' . $append_class . '" value="5"></div>';
 		}
 			$temp_content = $star_value . $temp_content ; // storing value for fifth star
 		
-	if($old_rating > 3.75)
-		{
+	if($old_rating > 3.75){
 			$star_value = '<div class="icon-star ' . $append_class . '" value="4"></div>';
 		}
-	else if($old_rating > 3.25)
-		{
+	else if($old_rating > 3.25){
 			$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="4"></div>';	
 		}
-	else 
-		{
+	else {
 			$star_value = '<div class="icon-star-o ' . $append_class . '" value="4"></div>';
 		}
 			$temp_content = $star_value . $temp_content ; // storing value for fourth star
@@ -93,40 +89,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 		{
 			$star_value = '<div class="icon-star ' . $append_class . '" value="3"></div>';
 		}
-	else if($old_rating > 2.25) 
-		{
+	else if($old_rating > 2.25) {
 			$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="3"></div>';	
 		}
-	else 
-		{
+	else {
 			$star_value = '<div class="icon-star-o ' . $append_class . '" value="3"></div>';
 		}
 			$temp_content = $star_value . $temp_content ; // storing value for third star
 		
-	if($old_rating > 1.75) 
-		{
+	if($old_rating > 1.75) {
 			$star_value = '<div class="icon-star ' . $append_class . '" value="2"></div>';
 		}
-	else if($old_rating > 1.25) 
-		{
+	else if($old_rating > 1.25) {
 			$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="2"></div>';	
 		}
-	else 
-		{
+	else {
 			$star_value = '<div class="icon-star-o ' . $append_class . '" value="2"></div>';
 		}
 			$temp_content = $star_value . $temp_content ; // storing value for second star
 		
-	if($old_rating > 0.75) 
-		{
+	if($old_rating > 0.75) {
 			$star_value = '<div class="icon-star ' . $append_class . '" value="1"></div>';
 		}
-	else if($old_rating > 0.25) 
-		{
+	else if($old_rating > 0.25) {
 			$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="1"></div>';	
 		}
-	else 
-		{
+	else {
 			$star_value = '<div class="icon-star-o ' . $append_class . '" value="1"></div>';
 		}
 			$temp_content = $star_value . $temp_content ; // storing value for first star
@@ -220,56 +208,43 @@ if ( ! defined( 'ABSPATH' ) ) {
 //-------------- GETTING REQUIRED LOGOS --------------//
 
 	$requires = "";
-	if (the_field('telegram_required') == true)
-		{
+	if (the_field('telegram_required') == true){
 			 $requires = $requires . " " . '<div class="icon-paper-plane"></div>';
 		}
-	if (the_field('twitter_required') == true)
-		{
+	if (the_field('twitter_required') == true){
 			$requires = $requires . " " . '<div class="icon-twitter"></div></br>';
 		}
-	if (the_field('facebook_required') == true) 
-		{
+	if (the_field('facebook_required') == true){
 			$requires = $requires . " " . '<div class="icon-facebook"></div></br>';
 		}
-	if (the_field('e-mail_required') == true)
-		{
+	if (the_field('e-mail_required') == true){
 			$requires = $requires . " " . '<div class="icon-envelope"></div></br>';
 		}
-	if (the_field('reddit_required') == true)
-		{
+	if (the_field('reddit_required') == true){
 			$requires = $requires . " " . '<div class="icon-reddit"></div></br>';
 		}
-	if (the_field('instagram_required') == true)
-		{
+	if (the_field('instagram_required') == true){
 			$requires = $requires . " " . '<div class="icon-instagrem"></div></br>';
 		}
-	if (the_field('youtube_required') == true)
-		{
+	if (the_field('youtube_required') == true){
 			$requires = $requires . " " . '<div class="icon-youtube"></div></br>';
 		}
-	if (the_field('medium_required') == true)
-		{
+	if (the_field('medium_required') == true){
 			$requires = $requires . " " . '<div class="icon-medium"></div></br>';
 		}
-	if (the_field('phone_required') == true)
-		{
+	if (the_field('phone_required') == true){
 			$requires = $requires . " " . '<div class="icon-phone"></div></br>';
 		}
-	if (the_field('linkedin_required') == true)
-		{
+	if (the_field('linkedin_required') == true){
 			$requires = $requires . " " . '<div class="icon-linkedin"></div></br>';
 		}
-	if (the_field('discord_required') == true)
-		{
+	if (the_field('discord_required') == true){
 			$requires = $requires . " " . '<div class="icon-flickr"></div></br>';
 		}
-	if (the_field('kyc_required') == true)
-		{
+	if (the_field('kyc_required') == true){
 			$requires = $requires . " " . '<div class="icon-user"></div></br>';
 		}
-	if (the_field('bitcointalk_required') == true)
-		{
+	if (the_field('bitcointalk_required') == true){
 			$requires = $requires . " " . '<div class="icon-btc"></div></br>';
 		}
 		

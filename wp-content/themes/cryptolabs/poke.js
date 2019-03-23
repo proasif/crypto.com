@@ -503,7 +503,9 @@ $(document).ready(function () {
 	
 	// --- 3 ---
 	
-	//---------AJAX SEARCH BAR-------//
+	//---------AJAX SEARCH BAR-------// 
+	
+	/*
 	
 	$(document).keyup(".p1-primary-max .p1-header-content .form-control",function() {
 		
@@ -536,7 +538,7 @@ $(document).ready(function () {
 	
 	});
 	
-
+	*/
 	//---------Load More on scroll logic -------//
 
 	$(window).scroll(function() {
