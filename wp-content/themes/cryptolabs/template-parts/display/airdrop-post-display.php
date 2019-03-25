@@ -208,49 +208,49 @@ if ( ! defined( 'ABSPATH' ) ) {
 //-------------- GETTING REQUIRED LOGOS --------------//
 
 	$requires = "";
-	if (the_field('telegram_required') == true){
+	if (get_field('telegram_required') == true){
 			 $requires = $requires . " " . '<div class="icon-paper-plane"></div>';
 		}
-	if (the_field('twitter_required') == true){
+	if (get_field('twitter_required') == true){
 			$requires = $requires . " " . '<div class="icon-twitter"></div></br>';
 		}
-	if (the_field('facebook_required') == true){
+	if (get_field('facebook_required') == true){
 			$requires = $requires . " " . '<div class="icon-facebook"></div></br>';
 		}
-	if (the_field('e-mail_required') == true){
+	if (get_field('e-mail_required') == true){
 			$requires = $requires . " " . '<div class="icon-envelope"></div></br>';
 		}
-	if (the_field('reddit_required') == true){
+	if (get_field('reddit_required') == true){
 			$requires = $requires . " " . '<div class="icon-reddit"></div></br>';
 		}
-	if (the_field('instagram_required') == true){
+	if (get_field('instagram_required') == true){
 			$requires = $requires . " " . '<div class="icon-instagrem"></div></br>';
 		}
-	if (the_field('youtube_required') == true){
+	if (get_field('youtube_required') == true){
 			$requires = $requires . " " . '<div class="icon-youtube"></div></br>';
 		}
-	if (the_field('medium_required') == true){
+	if (get_field('medium_required') == true){
 			$requires = $requires . " " . '<div class="icon-medium"></div></br>';
 		}
-	if (the_field('phone_required') == true){
+	if (get_field('phone_required') == true){
 			$requires = $requires . " " . '<div class="icon-phone"></div></br>';
 		}
-	if (the_field('linkedin_required') == true){
+	if (get_field('linkedin_required') == true){
 			$requires = $requires . " " . '<div class="icon-linkedin"></div></br>';
 		}
-	if (the_field('discord_required') == true){
+	if (get_field('discord_required') == true){
 			$requires = $requires . " " . '<div class="icon-flickr"></div></br>';
 		}
-	if (the_field('kyc_required') == true){
+	if (get_field('kyc_required') == true){
 			$requires = $requires . " " . '<div class="icon-user"></div></br>';
 		}
-	if (the_field('bitcointalk_required') == true){
+	if (get_field('bitcointalk_required') == true){
 			$requires = $requires . " " . '<div class="icon-btc"></div></br>';
 		}
 		
 	?>
     	<div class="content-container-part2">         
-                <div class="requires"><?php echo ("Requires: "); echo $requires; // Displaying required logos  ?></div> 
+                <div class="requires"><?php echo ("Requires:" . $requires); // Displaying required logos  ?></div> 
         </div>
     </div>
 </article>
