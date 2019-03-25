@@ -463,18 +463,18 @@ $(document).ready(function () {
 	// ------------------ Show button ------------------ //
 
 	function OnloadFunction () {
-		$(".show").hide();
+		$(".p1-step").hide();
 		$(".primary.p1-close-btn").hide();
 
 	
 	$(document).on('click',".primary.p1-steps-btn", function() {
 			$(this).hide('slow');
-			$(this).closest(".steps-format").find(".show").show('slow');
+			$(this).closest(".steps-format").find(".p1-step").show('slow');
 			$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
 			
 	});
 	$(document).on('click',".primary.p1-close-btn", function() {
-				$(".show").hide('slow');
+				$(".p1-step").hide('slow');
 				$(".primary.p1-close-btn").hide('slow');
 				$(".primary.p1-steps-btn").show('slow');
 	}); 
@@ -483,17 +483,17 @@ $(document).ready(function () {
 	
 	
 	$( document ).ajaxComplete(function() {
-		$(".show").hide();
+		$(".p1-step").hide();
 		$(".primary.p1-close-btn").hide();
 	
 	$(document).on('click',".primary.p1-steps-btn", function() {
 			$(this).hide('slow');
-			$(this).closest(".steps-format").find(".show").show('slow');
+			$(this).closest(".steps-format").find(".p1-step").show('slow');
 			$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
 			
 	});
 	$(document).on('click',".primary.p1-close-btn", function() {
-				$(".show").hide('slow');
+				$(".p1-step").hide('slow');
 				$(".primary.p1-close-btn").hide('slow');
 				$(".primary.p1-steps-btn").show('slow');
 			}); 	

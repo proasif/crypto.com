@@ -173,12 +173,12 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <div class="about"><?php echo $about ?></div>
                </div>
         
-       <?php $steps = get_the_content(); ?>
+       <?php //$steps = get_the_content(); ?>
        
        
                 <div class="steps-format">
                     <button class="primary p1-steps-btn">Step by step guide </button>
-                    <div class="show">
+                    <div class="p1-steps">
 						<?php
     
                         // check if the repeater field has rows of data
@@ -188,7 +188,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                             while ( have_rows('airdrop_steps') ) : the_row();
                         
                                 // display a sub field value
-                                the_sub_field('steps');
+                               ?> <div class="p1-step"> <?php the_sub_field('steps'); ?> </div> 
+                               <?php
                         
                             endwhile;
                         
