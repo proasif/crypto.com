@@ -460,6 +460,39 @@ $(document).ready(function () {
 		}, 500);
 	});
 
+	
+	// ------------------ Airdrop Meta Display ------------------ //
+	$(document).on("click", ".p1-airdrop .p1-airdrop-item", function() { 
+	var pid = $(this).data('postid');
+	var action = $(this).data('action');
+	var ajaxurl = $(this).data('ajaxurl');
+	var nonce = $(this).data('nonce');
+	var formData = {
+			'nonce'		: nonce,
+			'action'		: action,
+			'pid'		: pid,
+		  };
+	
+	$.ajax({
+					type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+					url         : ajaxurl, // the url where we want to POST
+					data        : formData, // our data object
+					dataType    : 'json', // what type of data do we expect back from the server
+					encode		: true,
+					success		: function(data) {
+									console.log(data);
+									var ajaxdata = data.content;
+									var url = ajaxurl["data-url"].val();
+									var win = window.open(url);
+  									win.focus();
+									//$('.p1-airdrop').append(data.content);				
+					}
+					
+				}) 
+	
+	});
+	
+	
 	// ------------------ Show button ------------------ //
 
 	function OnloadFunction () {
@@ -500,6 +533,7 @@ $(document).ready(function () {
 		});
 }); 
 // Document.ready ends
+	
 	
 	// --- 3 ---
 	

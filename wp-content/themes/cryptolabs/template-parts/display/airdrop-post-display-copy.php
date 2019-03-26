@@ -14,9 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<article class="p1-airdrop-item" data-postid="<?php the_id() ?>" data-url="<?php the_permalink() ?>" 
-    data-action="airdrop_display" data-nonce="<?php echo wp_create_nonce("airdrop_display"); ?>" 
-    data-ajaxurl="<?php echo admin_url("admin-ajax.php"); ?>">
+<article class="p1-airdrop-item" data-postid="<?php the_id() ?>" data-url="<?php the_permalink() ?>">
 	<?php  
     // Get Thumbnail
 	$thumb_id = get_post_thumbnail_id();
@@ -44,17 +42,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php      
 	$name = the_field('airdrop_name') ;
 	$sign =	"(" . get_the_title() . ")" ;	
-	/*if(the_field('estimated_value') != NULL){
-		//$airdrop_value = "Value: " . the_field('estimated_value') . " " ;
+	if(the_field('estimated_value') != NULL){
+		$airdrop_value = "Value: " . the_field('estimated_value') . " " ;
 	}
 	else $airdrop_value = NULL;
-	*/
 	?>
 
     <div class="content-container">
     	<div class="content-container-part1">
             <div class="p1-airdrop-title-container">
-            <?php echo $name; //. " " . $sign // . " " . $airdrop_value; // Printing Name, Sign and Value of Airdrop ?>
+            <?php echo $name . " " . $sign . " " . $airdrop_value; // Printing Name, Sign and Value of Airdrop ?>
             </div>
  <?php
 	//-------------- SETTING STARS --------------//
@@ -168,16 +165,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 		}
 		
 	
-	//$about = the_field('brief_description');
+	$about = the_field('brief_description');
 	?>
             <div class="p1-airdrop-content-container">
                <div class="about-format">
-                    <div class="about"><?php //echo $about ?></div>
+                    <div class="about"><?php echo $about ?></div>
                </div>
         
-       <?php //$steps = get_the_content(); ?>
-       
-       <!--
+       <?php $steps = get_the_content(); ?>
                 <div class="steps-format">
                     <button class="primary p1-steps-btn">Step by step guide </button>
                     <div class="p1-steps">
@@ -190,7 +185,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             while ( have_rows('airdrop_steps') ) : the_row();
                         
                                 // display a sub field value
-                               ?> <div class="p1-step"> <?php //the_sub_field('steps'); ?> </div> 
+                               ?> <div class="p1-step"> <?php the_sub_field('steps'); ?> </div> 
                                <?php
                         
                             endwhile;
@@ -205,7 +200,6 @@ if ( ! defined( 'ABSPATH' ) ) {
             		</div>
                     <button class="primary p1-close-btn">CLOSE</button>
                 </div>
-           -->
             </div>
         </div>
 	<?php
@@ -254,7 +248,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		
 	?>
     	<div class="content-container-part2">         
-                <div class="requires"><?php //echo ("Requires:" . $requires); // Displaying required logos  ?></div> 
+                <div class="requires"><?php echo ("Requires:" . $requires); // Displaying required logos  ?></div> 
         </div>
     </div>
 </article>

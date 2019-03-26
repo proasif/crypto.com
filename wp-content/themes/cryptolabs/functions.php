@@ -786,9 +786,33 @@ function deleteUploadedImage($url) {
 	}
 }
 
-/*
+// --------- 8. P1 Airdrop Result ----------
 
-// --------- 8. Search Result ----------
+add_action( 'wp_ajax_nopriv_airdrop_display', 'ajax_airdrop_display' );
+add_action('wp_ajax_airdrop_display', 'ajax_airdrop_display');
+function ajax_airdrop_display() {
+	if ( !wp_verify_nonce( $_REQUEST["nonce"], "airdrop_display")) {
+		exit("No naughty business please");
+	} 
+	global $post; 
+	$post = get_post($_REQUEST["pid"]); 
+	setup_postdata($post);
+	$content = "";
+			ob_start();
+			get_template_part( 'template-parts/display/airdrop-post', 'display copy' );
+			$output = ob_get_contents();
+			ob_end_clean();
+			
+			$content .= $output;
+	$result = array (
+				'content'	=>	$content
+			);
+	
+	echo $jsonformat = json_encode($result);
+	die();
+}
+/*
+// --------- 9. Search Result ----------
 add_action( 'wp_ajax_nopriv_search', 'ajax_search' );
 add_action('wp_ajax_search', 'ajax_search');
 function ajax_search(){
