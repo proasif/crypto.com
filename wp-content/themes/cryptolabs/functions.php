@@ -799,7 +799,7 @@ function ajax_airdrop_display() {
 	setup_postdata($post);
 	$content = "";
 			ob_start();
-			get_template_part( 'template-parts/display/airdrop-post', 'display copy' );
+			get_template_part( 'template-parts/display/airdrop-post', 'display-copy' );
 			$output = ob_get_contents();
 			ob_end_clean();
 			
