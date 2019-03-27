@@ -462,6 +462,14 @@ $(document).ready(function () {
 
 	
 	// ------------------ Airdrop Meta Display ------------------ //
+	/*
+	$(document).on("click", ".p1-airdrop .p1-airdrop-item", function() { 
+	var url = $(this).data('url');
+	window.open(url);
+	});
+	*/
+	/*
+	
 	$(document).on("click", ".p1-airdrop .p1-airdrop-item", function() { 
 	var pid = $(this).data('postid');
 	var action = $(this).data('action');
@@ -482,17 +490,17 @@ $(document).ready(function () {
 					success		: function(data) {
 									console.log(data);
 									var ajaxdata = data.content;
-									var url = ajaxurl["data-url"].val();
-									var win = window.open(url);
-  									win.focus();
-									//$('.p1-airdrop').append(data.content);				
+									console.log(ajaxdata);
+									//var url = ajaxurl["data-url"];
+									window.open(window.location.protocol + "//" + window.location.host, '_blank').document.write(ajaxdata);	
+												
 					}
 					
 				}) 
 	
 	});
 	
-	
+	*/
 	// ------------------ Show button ------------------ //
 
 	function OnloadFunction () {

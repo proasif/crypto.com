@@ -42,8 +42,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div> 
 	
 	<?php      
-	$name = the_field('airdrop_name') ;
-	$sign =	"(" . get_the_title() . ")" ;	
+	$name = get_field('airdrop_name') ;
+	//$sign =	"(" . get_the_title() . ")" ;	
 	/*if(the_field('estimated_value') != NULL){
 		//$airdrop_value = "Value: " . the_field('estimated_value') . " " ;
 	}
@@ -54,7 +54,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="content-container">
     	<div class="content-container-part1">
             <div class="p1-airdrop-title-container">
-            <?php echo $name; //. " " . $sign // . " " . $airdrop_value; // Printing Name, Sign and Value of Airdrop ?>
+            <a href="<?php echo the_permalink(); ?>"><?php echo $name;//. " " . $sign // . " " . $airdrop_value; // Printing Name, Sign and Value of Airdrop ?></a>
             </div>
  <?php
 	//-------------- SETTING STARS --------------//
