@@ -786,6 +786,62 @@ function deleteUploadedImage($url) {
 	}
 }
 
+// --------- 11. GETTING REQUIRED LOGOS ----------
+function p1_required_logo($requires){
+	$required = get_field('airdrop_requirements');
+    $airdrop = pods('airdrop');     
+            if ( $airdrop->have_posts() ) :
+                while ( $airdrop->have_posts() ) : $airdrop->the_post(); 
+                    get_the_ID();
+					$requires = "";
+	if (get_field('telegram_required') == true){
+			 $requires = $requires . " " . '<div class="icon-paper-plane"></div>';
+		}
+	if (get_field('twitter_required') == true){
+			$requires = $requires . " " . '<div class="icon-twitter"></div></br>';
+		}
+	if (get_field('facebook_required') == true){
+			$requires = $requires . " " . '<div class="icon-facebook"></div></br>';
+		}
+	if (get_field('e-mail_required') == true){
+			$requires = $requires . " " . '<div class="icon-envelope"></div></br>';
+		}
+	if (get_field('reddit_required') == true){
+			$requires = $requires . " " . '<div class="icon-reddit"></div></br>';
+		}
+	if (get_field('instagram_required') == true){
+			$requires = $requires . " " . '<div class="icon-instagrem"></div></br>';
+		}
+	if (get_field('youtube_required') == true){
+			$requires = $requires . " " . '<div class="icon-youtube"></div></br>';
+		}
+	if (get_field('medium_required') == true){
+			$requires = $requires . " " . '<div class="icon-medium"></div></br>';
+		}
+	if (get_field('phone_required') == true){
+			$requires = $requires . " " . '<div class="icon-phone"></div></br>';
+		}
+	if (get_field('linkedin_required') == true){
+			$requires = $requires . " " . '<div class="icon-linkedin"></div></br>';
+		}
+	if (get_field('discord_required') == true){
+			$requires = $requires . " " . '<div class="icon-flickr"></div></br>';
+		}
+	if (get_field('kyc_required') == true){
+			$requires = $requires . " " . '<div class="icon-user"></div></br>';
+		}
+	if (get_field('bitcointalk_required') == true){
+			$requires = $requires . " " . '<div class="icon-btc"></div></br>';
+		}
+		
+	?>       
+               <?php echo ("Requires:" . $requires); // Displaying required logos  
+                endwhile;
+            endif;
+	
+	}
+add_action( '','p1_required_logo' );
+	
 // --------- 8. P1 Airdrop Result ----------
 /*
 add_action( 'wp_ajax_nopriv_airdrop_display', 'ajax_airdrop_display' );
@@ -844,7 +900,7 @@ function ajax_search(){
 		die();
 }
 
-// --------- 9. Filter Result ----------
+// --------- 10. Filter Result ----------
 add_action( 'wp_ajax_nopriv_select', 'ajax_select' );
 add_action('wp_ajax_select', 'ajax_select');
 function ajax_select(){

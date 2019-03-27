@@ -43,6 +43,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	
 	<?php      
 	$name = get_field('airdrop_name') ;
+	$edate = get_field('end_date');
+	$cdate = date('Y-m-d');
 	//$sign =	"(" . get_the_title() . ")" ;	
 	/*if(the_field('estimated_value') != NULL){
 		//$airdrop_value = "Value: " . the_field('estimated_value') . " " ;
@@ -54,7 +56,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="content-container">
     	<div class="content-container-part1">
             <div class="p1-airdrop-title-container">
-            <a href="<?php echo the_permalink(); ?>"><?php echo $name;//. " " . $sign // . " " . $airdrop_value; // Printing Name, Sign and Value of Airdrop ?></a>
+            <a href="<?php echo the_permalink(); ?>"><?php echo $name; //. " " . $edate // . " " . $airdrop_value; // Printing Name, Sign and Value of Airdrop ?></a>
+            <?php if ($cdate > $edate){
+				?>
+                <div>EXPIRED</div>
+                <?php
+				} ?>
             </div>
  <?php
 	//-------------- SETTING STARS --------------//
@@ -210,7 +217,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
 	<?php
 //-------------- GETTING REQUIRED LOGOS --------------//
-
+/*
 	$requires = "";
 	if (get_field('telegram_required') == true){
 			 $requires = $requires . " " . '<div class="icon-paper-plane"></div>';
@@ -251,10 +258,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	if (get_field('bitcointalk_required') == true){
 			$requires = $requires . " " . '<div class="icon-btc"></div></br>';
 		}
+*/
 		
 	?>
     	<div class="content-container-part2">         
-                <div class="requires"><?php //echo ("Requires:" . $requires); // Displaying required logos  ?></div> 
+                <div class="requires"><?php echo ("Requires:" . $requires); // Displaying required logos  ?></div> 
         </div>
+
     </div>
 </article>

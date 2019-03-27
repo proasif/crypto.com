@@ -41,9 +41,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	
 	<?php      
 	$name = the_field('airdrop_name') ;
+	
+	$today = date('Y-m-d');
+	$website = get_field('official_website');
+	$tokenclaim = get_field('tokens_per_claim'); 
+	$airdropval = get_field('airdrop_value'); 
+	$platform = get_field('platform');
+	$startdate = get_field('start_date');
+	$enddate = get_field('end_date');
+	$icoprice = get_field('ico_price');
+	$estimatedval = get_field('estimated_value');
 	$sign =	"(" . get_the_title() . ")" ;	
-	if(the_field('estimated_value') != NULL){
-		$airdrop_value = "Value: " . the_field('estimated_value') . " " ;
+	if(get_field('estimated_value') != NULL){
+		$airdrop_value = "Value: " . get_field('estimated_value') . " " ;
 	}
 	else $airdrop_value = NULL;
 	?>
@@ -52,6 +62,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     	<div class="content-container-part1">
             <div class="p1-airdrop-title-container">
             <?php echo $name . " " . $sign . " " . $airdrop_value; // Printing Name, Sign and Value of Airdrop ?>
+            <?php if ($today > $enddate){
+				?>
+                <div>EXPIRED</div>
+                <?php
+				} ?>
             </div>
  <?php
 	//-------------- SETTING STARS --------------//
@@ -170,6 +185,17 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="p1-airdrop-content-container">
                <div class="about-format">
                     <div class="about"><?php echo $about ?></div>
+                      <div class="meta information">
+                        <h3>Airdrop Meta Information</h3>
+                        <div>Official Website: <?php echo $website; ?></div>
+                        <div>Tokens pre claim: <?php echo $tokenclaim; ?></div>
+                        <div>Airdrop value: <?php echo $airdropval; ?></div>
+                        <div>Platform: <?php echo $platform; ?></div>
+                        <div>Start date: <?php echo $startdate; ?></div>
+                        <div>End dtae: <?php  echo $enddate; ?></div>
+                        <div>ICO Price: <?php echo $icoprice; ?></div> 
+                        <div>Estimated Value: <?php echo $estimated_value; ?></div>
+                      </div>
                </div>
         
        <?php $steps = get_the_content(); ?>
@@ -198,13 +224,13 @@ if ( ! defined( 'ABSPATH' ) ) {
                 
                         ?>
             		</div>
-                    <button class="primary p1-close-btn">CLOSE</button>
+                    <!--<button class="primary p1-close-btn">CLOSE</button>-->
                 </div>
             </div>
         </div>
 	<?php
 //-------------- GETTING REQUIRED LOGOS --------------//
-
+/*
 	$requires = "";
 	if (get_field('telegram_required') == true){
 			 $requires = $requires . " " . '<div class="icon-paper-plane"></div>';
@@ -245,7 +271,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	if (get_field('bitcointalk_required') == true){
 			$requires = $requires . " " . '<div class="icon-btc"></div></br>';
 		}
-		
+*/
 	?>
     	<div class="content-container-part2">         
                 <div class="requires"><?php echo ("Requires:" . $requires); // Displaying required logos  ?></div> 
