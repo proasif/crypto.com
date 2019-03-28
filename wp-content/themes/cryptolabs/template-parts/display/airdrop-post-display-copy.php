@@ -188,13 +188,13 @@ if ( ! defined( 'ABSPATH' ) ) {
                       <div class="meta information">
                         <h3>Airdrop Meta Information</h3>
                         <div>Official Website: <?php echo $website; ?></div>
-                        <div>Tokens pre claim: <?php echo $tokenclaim; ?></div>
-                        <div>Airdrop value: <?php echo $airdropval; ?></div>
+                        <div>Tokens pre claim: <?php echo ($tokenclaim != NULL) ? $tokenclaim : 'n/a' ; ?></div>
+                        <div>Airdrop value: <?php echo ($airdropval != NULL) ? $airdropval : 'n/a'; ?></div>
                         <div>Platform: <?php echo $platform; ?></div>
-                        <div>Start date: <?php echo $startdate; ?></div>
-                        <div>End dtae: <?php  echo $enddate; ?></div>
-                        <div>ICO Price: <?php echo $icoprice; ?></div> 
-                        <div>Estimated Value: <?php echo $estimated_value; ?></div>
+                        <div>Start date: <?php echo ($startdate = 0) ? 'n/a' : $startdate; ?></div>
+                        <div>End dtae: <?php  echo ($enddate = 0) ? 'n/a' : $enddate; ?></div>
+                        <div>ICO Price: <?php echo ($icoprice != NULL) ? $icoprice : 'n/a'; ?></div> 
+                        <div>Estimated Value: <?php echo ($estimated_value != NULL) ? $estimated_value : 'n/a' ; ?></div>
                       </div>
                </div>
         
@@ -274,7 +274,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 */
 	?>
     	<div class="content-container-part2">         
-                <div class="requires"><?php echo ("Requires:" . $requires); // Displaying required logos  ?></div> 
+                <?php p1_required_logo($requires); ?>  
         </div>
     </div>
 </article>

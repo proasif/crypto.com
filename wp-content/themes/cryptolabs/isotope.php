@@ -1,4 +1,4 @@
-<h1>Isotope - sorting</h1>
+<!--<h1>Isotope - sorting</h1>
 
 <div class="button-group">
   <button class="sort-by-button-group is-checked" data-sort-value="original-order">original order</button>
@@ -119,3 +119,4 @@
     <p class="weight">(244)</p>
   </div>
 </div>
+-->

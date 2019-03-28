@@ -261,8 +261,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 */
 		
 	?>
-    	<div class="content-container-part2">         
-                <div class="requires"><?php echo ("Requires:" . $requires); // Displaying required logos  ?></div> 
+    	<div class="content-container-part2">  
+        <?php p1_required_logo($requires); ?>               
         </div>
 
     </div>

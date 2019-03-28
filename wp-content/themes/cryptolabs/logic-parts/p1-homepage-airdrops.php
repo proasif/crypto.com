@@ -11,13 +11,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 <section class="p1-section p1-style-curves p1-style-shadow">
 	
 	<?php //-------------------- p1-section p1-style-curves p1-style-shadow STARTS -----------------------// ?>
+    	<div class="button-group">
+            	<h3>Sort by..</h3>
+              <button class="sort-by-button-group is-checked" data-sort-value="original-order">original order</button>
+              <button class="sort-by-button" data-sort-value="rating">Rating</button>
+              <button class="sort-by-button" data-sort-value="votes">Votes</button>
+         </div>
         <section class="p1-airdrop">
-        <!--
-            <select class="p1-filter-dropdown" data-ajaxurl="<?php //echo admin_url("admin-ajax.php"); ?>" data-action="select">
-                <option value="">Sort By..</option>
-                <option value=".rating">Rating</option>
-            </select>
-         -->
          <?php 
             //-------------- p1-airdrop STARTS --------------//
             $currentpage = get_query_var('paged');

@@ -3,8 +3,7 @@
 if ( !defined( 'ABSPATH' ) )
 	die ( 'No direct script access allowed' );
 
-function crypto_theme_setup()
-	{
+function crypto_theme_setup() {
 		add_theme_support('menus');
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'custom-logo' );
@@ -787,38 +786,34 @@ function deleteUploadedImage($url) {
 }
 
 // --------- 11. GETTING REQUIRED LOGOS ----------
-function p1_required_logo($requires){
-	$required = get_field('airdrop_requirements');
-    $airdrop = pods('airdrop');     
-            if ( $airdrop->have_posts() ) :
-                while ( $airdrop->have_posts() ) : $airdrop->the_post(); 
-                    get_the_ID();
+function p1_required_logo($requires){   
 					$requires = "";
 	if (get_field('telegram_required') == true){
-			 $requires = $requires . " " . '<div class="icon-paper-plane"></div>';
+			 $requires = $requires . " " . '<div class="icon-paper-plane">';
 		}
 	if (get_field('twitter_required') == true){
-			$requires = $requires . " " . '<div class="icon-twitter"></div></br>';
+			$requires = $requires . " " . '<div class="icon-twitter"></div>';
 		}
 	if (get_field('facebook_required') == true){
-			$requires = $requires . " " . '<div class="icon-facebook"></div></br>';
+			$requires = $requires . " " . '<div class="icon-facebook"></div>';
 		}
 	if (get_field('e-mail_required') == true){
-			$requires = $requires . " " . '<div class="icon-envelope"></div></br>';
+			$requires = $requires . " " . '<div class="icon-envelope"></div>';
 		}
-	if (get_field('reddit_required') == true){
+	/*if (get_field('reddit_required') == true){
 			$requires = $requires . " " . '<div class="icon-reddit"></div></br>';
 		}
+	*/
 	if (get_field('instagram_required') == true){
-			$requires = $requires . " " . '<div class="icon-instagrem"></div></br>';
+			$requires = $requires . " " . '<div class="icon-instagrem"></div>';
 		}
 	if (get_field('youtube_required') == true){
-			$requires = $requires . " " . '<div class="icon-youtube"></div></br>';
+			$requires = $requires . " " . '<div class="icon-youtube"></div>';
 		}
 	if (get_field('medium_required') == true){
-			$requires = $requires . " " . '<div class="icon-medium"></div></br>';
+			$requires = $requires . " " . '<div class="icon-medium"></div>';
 		}
-	if (get_field('phone_required') == true){
+	/*if (get_field('phone_required') == true){
 			$requires = $requires . " " . '<div class="icon-phone"></div></br>';
 		}
 	if (get_field('linkedin_required') == true){
@@ -827,20 +822,17 @@ function p1_required_logo($requires){
 	if (get_field('discord_required') == true){
 			$requires = $requires . " " . '<div class="icon-flickr"></div></br>';
 		}
+	*/
 	if (get_field('kyc_required') == true){
-			$requires = $requires . " " . '<div class="icon-user"></div></br>';
+			$requires = $requires . " " . '<div class="icon-user"></div>';
 		}
-	if (get_field('bitcointalk_required') == true){
+	/*if (get_field('bitcointalk_required') == true){
 			$requires = $requires . " " . '<div class="icon-btc"></div></br>';
 		}
-		
-	?>       
-               <?php echo ("Requires:" . $requires); // Displaying required logos  
-                endwhile;
-            endif;
+	*/
+	 echo "Requires:" . $requires; // Displaying required logos
 	
 	}
-add_action( '','p1_required_logo' );
 	
 // --------- 8. P1 Airdrop Result ----------
 /*

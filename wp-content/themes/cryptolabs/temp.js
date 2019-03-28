@@ -1,7 +1,22 @@
 /* Place all your JavaScript modifications below */
 $=jQuery.noConflict();
 $(document).ready(function () {
+var $grid = $('.p1-airdrop').isotope({
+  itemSelector: '.p1-airdrop-item',	
+  getSortData: {
+	  votes: '.star-users',
+	  rating: '.star-rating [data-orignal]',
+	  }
+});
+
+$(document).on('click',".sort-by-button", function() { 
+  //console.log("in isotope");
+  var sortValue = $(this).attr('data-sort-value');
+  //console.log(sortValue);
+  $grid.isotope({ sortBy: sortValue });
+});
 	
+/*	
 var $grid = $('.grid').isotope({
   itemSelector: '.element-item',
   layoutMode: 'fitRows',
@@ -33,4 +48,6 @@ $('.button-group').each( function( i, buttonGroup ) {
     $( this ).addClass('is-checked');
   });
 });
+*/
+
 }); //Document .ready ENDS
