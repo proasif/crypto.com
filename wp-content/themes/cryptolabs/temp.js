@@ -3,6 +3,7 @@ $=jQuery.noConflict();
 $(document).ready(function () {
 var $grid = $('.p1-airdrop').isotope({
   itemSelector: '.p1-airdrop-item',	
+  layoutMode: 'fitRows',
   getSortData: {
 	  votes: '.star-users',
 	  rating: '.star-rating [data-orignal]',
@@ -14,6 +15,13 @@ $(document).on('click',".sort-by-button", function() {
   var sortValue = $(this).attr('data-sort-value');
   //console.log(sortValue);
   $grid.isotope({ sortBy: sortValue });
+});
+
+$(document).on('click',".filter-by-button", function() { 
+  //console.log("in isotope");
+  var filterValue = $(this).attr('data-filter-value');
+  //console.log(filterValue);
+  $grid.isotope({ filter: filterValue });
 });
 	
 /*	

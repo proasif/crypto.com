@@ -17,6 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) {
               <button class="sort-by-button" data-sort-value="rating">Rating</button>
               <button class="sort-by-button" data-sort-value="votes">Votes</button>
          </div>
+         </br>
+         <div class="button-group">
+            	<h3>Filter by..</h3>
+              <button class="filter-by-button-group is-checked" data-filter-value="original-order">original order</button>
+              <button class="filter-by-button" data-filter-value="eth">ETH</button>
+              <button class="filter-by-button" data-filter-value="neo">NEO</button>
+         </div>
         <section class="p1-airdrop">
          <?php 
             //-------------- p1-airdrop STARTS --------------//

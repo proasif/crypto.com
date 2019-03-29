@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <article class="p1-airdrop-item" data-postid="<?php the_id() ?>" data-url="<?php the_permalink() ?>" 
-    data-action="airdrop_display" data-nonce="<?php echo wp_create_nonce("airdrop_display"); ?>" 
+    data-action="airdrop_display" data-platform="<?php echo get_field('platform'); ?>" data-nonce="<?php echo wp_create_nonce("airdrop_display"); ?>" 
     data-ajaxurl="<?php echo admin_url("admin-ajax.php"); ?>">
 	<?php  
     // Get Thumbnail
