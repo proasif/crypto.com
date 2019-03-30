@@ -47,7 +47,7 @@ $(document).on('click',".sort-by-button-group", function() {
   //console.log(sortValue);
   $grid.isotope({ sortBy: sortValue });
 });
-
+*/
 // change is-checked class on buttons
 $('.button-group').each( function( i, buttonGroup ) {
   var $buttonGroup = $( buttonGroup );
@@ -56,6 +56,5 @@ $('.button-group').each( function( i, buttonGroup ) {
     $( this ).addClass('is-checked');
   });
 });
-*/
 
 }); //Document .ready ENDS
