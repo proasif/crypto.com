@@ -269,10 +269,49 @@ $(document).ready(function () {
 			closeAndRemoveFSNotice();
 		});
 	}
+	
+	
+	
+	//--------------------- ISOTOPE ---------------------//
+	
+	
+$(document).ready(function () {
+	var $grid = $('.p1-airdrop').isotope({
+	  itemSelector: '.p1-airdrop-item',	
+	  layoutMode: 'fitRows',
+	  getFilterData: {
+		  platform: '.p1-airdrop-item [data-platform]'  
+		  },
+	  getSortData: {
+		  votes: '.star-users',
+		  rating: '.star-rating [data-orignal]',
+		  }
+	});
+
+	$(document).on('click',".sort-by-button", function() { 
+	  //console.log("in isotope");
+	  var sortValue = $(this).attr('data-sort-value');
+	  //console.log(sortValue);
+	  $grid.isotope({ 
+	  sortBy: sortValue ,
+	  sortAscending: false
+	  });
+	});
+
+	$(document).on('click',".filter-by-button", function() { 
+	  //console.log("in isotope");
+	  var filterValue = $(this).attr('data-filter-value');
+	  console.log(filterValue);
+	  $grid.isotope({ filter: filterValue });
+	
+	});
+});
+	
 
 	// ------------------ LOAD MORE ------------------ //
 	
 	$(document).on('click','.p1-airdrop-load-more', function() {
+		var $grid = $('.p1-airdrop');
 		if ($('.p1-airdrop-load-more').data('processing', '1') == true){
 		return;
 		}
@@ -294,17 +333,23 @@ $(document).ready(function () {
 								nonce	: nonce
 				},
 				beforeSend: function() {
-					$('.primary.p1-airdrop-load-more').hide('slow');
+					//$('.primary.p1-airdrop-load-more').hide('slow');
 				},
 				
 				success : function( response ) {
+					var items = $(response.content);
+					console.log(response);
 					if (response==null) {
 						
 					}
 					else {
-						$('.p1-airdrop-load-more').attr('data-processing', '0');				
-						$('.p1-airdrop').append(response.content);
-						$('.p1-airdrop-load-more').show('slow');
+						$('.primary.p1-airdrop-load-more').show('slow');
+						$('.p1-airdrop-load-more').attr('data-processing', '0');
+										
+						$grid.isotope()
+						  .append( items )
+						  .isotope( 'appended', items )
+						  .isotope('layout');
 						
 						$(".p1-airdrop-load-more").attr("data-paging", parseInt(page) + 1);
 					}

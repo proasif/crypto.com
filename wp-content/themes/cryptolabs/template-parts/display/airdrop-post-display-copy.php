@@ -15,7 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <article class="p1-airdrop-item" data-postid="<?php the_id() ?>" data-url="<?php the_permalink() ?>">
-	<?php  
+	<?php 
+	$airdropMeta = get_field( 'airdrop_meta', $postid ); 
     // Get Thumbnail
 	$thumb_id = get_post_thumbnail_id();
 	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
@@ -23,10 +24,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	// Get R
 	//$pod = pods('airdrop', get_the_ID());
-	$airdropMeta = get_field( 'airdrop_ratings', $postid );
+	$airdropRating = get_field( 'airdrop_ratings', $postid );
 	
-	$rate = $airdropMeta["ratings"];
-	$users = $airdropMeta["no_of_users"];
+	$rate = $airdropRating["ratings"];
+	$users = $airdropRating["no_of_users"];
 	$old_rating = 0;
 
 	if ($rate >= 0 && $users >= 1) {
@@ -39,21 +40,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="logo"><?php echo $logo; ?></div> 
     </div> 
 	
-	<?php      
-	$name = the_field('airdrop_name') ;
-	
-	$today = date('Y-m-d');
-	$website = get_field('official_website');
-	$tokenclaim = get_field('tokens_per_claim'); 
-	$airdropval = get_field('airdrop_value'); 
-	$platform = get_field('platform');
-	$startdate = get_field('start_date');
-	$enddate = get_field('end_date');
-	$icoprice = get_field('ico_price');
-	$estimatedval = get_field('estimated_value');
+	<?php 
 	$sign =	"(" . get_the_title() . ")" ;	
-	if(get_field('estimated_value') != NULL){
-		$airdrop_value = "Value: " . get_field('estimated_value') . " " ;
+	if($airdropMeta['estimated_value'] != NULL){
+		$airdrop_value = "Value: " . $airdropMeta['estimated_value'] . " " ;
 	}
 	else $airdrop_value = NULL;
 	?>
@@ -180,35 +170,48 @@ if ( ! defined( 'ABSPATH' ) ) {
 		}
 		
 	
-	$about = the_field('brief_description');
+	$about = $airdropMeta['brief_description'];
 	?>
             <div class="p1-airdrop-content-container">
                <div class="about-format">
+               <?php 
+			   $airdropMeta = get_field( 'airdrop_meta', $postid );     
+				$name = $airdropMeta['airdrop_name'];
+				$today = date('Y-m-d');
+				$website = $airdropMeta['official_website'];
+				$tokenclaim = $airdropMeta['tokens_per_claim']; 
+				$airdropval = $airdropMeta['airdrop_value']; 
+				$platform = $airdropMeta['platform'];
+				$startdate = $airdropMeta['start_date'];
+				$enddate = $airdropMeta['end_date'];
+				$icoprice = $airdropMeta['ico_price'];
+				$estimatedval = $airdropMeta['estimated_value'];		   
+			   ?>               
                     <div class="about"><?php echo $about ?></div>
                       <div class="meta information">
                         <h3>Airdrop Meta Information</h3>
                         <div>Official Website: <?php echo $website; ?></div>
                         <div>Tokens pre claim: <?php echo ($tokenclaim != NULL) ? $tokenclaim : 'n/a' ; ?></div>
                         <div>Airdrop value: <?php echo ($airdropval != NULL) ? $airdropval : 'n/a'; ?></div>
-                        <div>Platform: <?php echo $platform; ?></div>
+                        <div>Platform: <?php print_r( get_field('platform')  );//echo $platform ;  ?></div>
                         <div>Start date: <?php echo ($startdate = 0) ? 'n/a' : $startdate; ?></div>
                         <div>End dtae: <?php  echo ($enddate = 0) ? 'n/a' : $enddate; ?></div>
                         <div>ICO Price: <?php echo ($icoprice != NULL) ? $icoprice : 'n/a'; ?></div> 
                         <div>Estimated Value: <?php echo ($estimated_value != NULL) ? $estimated_value : 'n/a' ; ?></div>
                       </div>
-               </div>
+               		</div>
         
-       <?php $steps = get_the_content(); ?>
+       <?php //$airdropSteps = get_field( 'airdrop_steps', $postid );  ?>
                 <div class="steps-format">
                     <button class="primary p1-steps-btn">Step by step guide </button>
                     <div class="p1-steps">
 						<?php
     
                         // check if the repeater field has rows of data
-                        if( have_rows('airdrop_steps') ):
+                        if(have_rows('airdrop_steps') ):
                         
                             // loop through the rows of data
-                            while ( have_rows('airdrop_steps') ) : the_row();
+                            while (have_rows('airdrop_steps') ) : the_row();
                         
                                 // display a sub field value
                                ?> <div class="p1-step"> <?php the_sub_field('steps'); ?> </div> 
@@ -230,51 +233,10 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
 	<?php
 //-------------- GETTING REQUIRED LOGOS --------------//
-/*
-	$requires = "";
-	if (get_field('telegram_required') == true){
-			 $requires = $requires . " " . '<div class="icon-paper-plane"></div>';
-		}
-	if (get_field('twitter_required') == true){
-			$requires = $requires . " " . '<div class="icon-twitter"></div></br>';
-		}
-	if (get_field('facebook_required') == true){
-			$requires = $requires . " " . '<div class="icon-facebook"></div></br>';
-		}
-	if (get_field('e-mail_required') == true){
-			$requires = $requires . " " . '<div class="icon-envelope"></div></br>';
-		}
-	if (get_field('reddit_required') == true){
-			$requires = $requires . " " . '<div class="icon-reddit"></div></br>';
-		}
-	if (get_field('instagram_required') == true){
-			$requires = $requires . " " . '<div class="icon-instagrem"></div></br>';
-		}
-	if (get_field('youtube_required') == true){
-			$requires = $requires . " " . '<div class="icon-youtube"></div></br>';
-		}
-	if (get_field('medium_required') == true){
-			$requires = $requires . " " . '<div class="icon-medium"></div></br>';
-		}
-	if (get_field('phone_required') == true){
-			$requires = $requires . " " . '<div class="icon-phone"></div></br>';
-		}
-	if (get_field('linkedin_required') == true){
-			$requires = $requires . " " . '<div class="icon-linkedin"></div></br>';
-		}
-	if (get_field('discord_required') == true){
-			$requires = $requires . " " . '<div class="icon-flickr"></div></br>';
-		}
-	if (get_field('kyc_required') == true){
-			$requires = $requires . " " . '<div class="icon-user"></div></br>';
-		}
-	if (get_field('bitcointalk_required') == true){
-			$requires = $requires . " " . '<div class="icon-btc"></div></br>';
-		}
-*/
+
 	?>
     	<div class="content-container-part2">         
-                <?php p1_required_logo($requires); ?>  
+                <?php p1_required_logo(); ?>  
         </div>
     </div>
 </article>

@@ -25,10 +25,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	// Get R
 	//$pod = pods('airdrop', get_the_ID());
-	$airdropMeta = get_field( 'airdrop_ratings', $postid );
+	$airdropRating = get_field( 'airdrop_ratings', $postid );
 	
-	$rate = $airdropMeta["ratings"];
-	$users = $airdropMeta["no_of_users"];
+	$rate = $airdropRating["ratings"];
+	$users = $airdropRating["no_of_users"];
 	$old_rating = 0;
 
 	if ($rate >= 0 && $users >= 1) {
@@ -41,9 +41,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="logo"><?php echo $logo; ?></div> 
     </div> 
 	
-	<?php      
-	$name = get_field('airdrop_name') ;
-	$edate = get_field('end_date');
+	<?php 
+	$airdropMeta = get_field( 'airdrop_meta', $postid );     
+	$name = $airdropMeta['airdrop_name'] ;
+	$edate = $airdropMeta['end_date'];
 	$cdate = date('Y-m-d');
 	//$sign =	"(" . get_the_title() . ")" ;	
 	/*if(the_field('estimated_value') != NULL){
@@ -262,7 +263,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		
 	?>
     	<div class="content-container-part2">  
-        <?php p1_required_logo($requires); ?>               
+        <?php p1_required_logo(); ?>               
         </div>
 
     </div>
