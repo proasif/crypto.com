@@ -279,9 +279,6 @@ $(document).ready(function () {
 	var $grid = $('.p1-airdrop').isotope({
 	  itemSelector: '.p1-airdrop-item',	
 	  layoutMode: 'fitRows',
-	  getFilterData: {
-		  platform: '.p1-airdrop-item [data-platform]'  
-		  },
 	  getSortData: {
 		  votes: '.star-users',
 		  rating: '.star-rating [data-orignal]',
@@ -297,16 +294,22 @@ $(document).ready(function () {
 	  sortAscending: false
 	  });
 	});
-
-	$(document).on('click',".filter-by-button", function() { 
-	  //console.log("in isotope");
-	  var filterValue = $(this).attr('data-filter-value');
-	  console.log(filterValue);
-	  $grid.isotope({ filter: filterValue });
-	
-	});
 });
 	
+	
+	$(document).ready(function () {
+	var $gridd = $('.p1-airdrop').isotope({
+	  itemSelector: '.p1-airdrop-item [data-platform]',	
+	  layoutMode: 'fitRows',
+	});
+	
+	$(document).on('click',".filter-by-button", function() { 
+	var filterValue = $(this).attr('data-platform');
+	if(filterValue){
+	   $gridd.isotope({ filter: filterValue });
+	}
+	});
+});
 
 	// ------------------ LOAD MORE ------------------ //
 	

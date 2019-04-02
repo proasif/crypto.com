@@ -787,7 +787,8 @@ function deleteUploadedImage($url) {
 
 // --------- 11. GETTING REQUIRED LOGOS ----------
 function p1_required_logo(){ 
-  $airdropRequires = get_field( 'airdrop_requirements', $postid );
+  $airdropRequires = get_field( 'airdrop_require', $postid );
+ 		var_dump($airdropRequires);
 	  $airdropRequire = "";
 	  foreach ($airdropRequires as $airdropRequire){
 	if ($airdropRequires['telegram'])
@@ -813,9 +814,8 @@ function p1_required_logo(){
 		
 	if ($airdropRequires['kyc'])
 			$airdropRequire = $airdropRequire . " " . '<div class="icon-user"></div>';
-		
 	
-	 echo "Requires: " . $airdropRequire . '</br>'; // Displaying required logos
+	 //echo  $airdropRequire . '</br>'; // Displaying required logos
 	  
   }
 }

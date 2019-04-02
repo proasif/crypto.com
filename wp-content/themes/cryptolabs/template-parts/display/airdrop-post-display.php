@@ -13,9 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'No direct script access allowed' );
 }
 ?>
-
+<?php 
+$airdropMeta = get_field( 'airdrop_meta', $postid ); 
+$platform = $airdropMeta['platform'];
+//$platformTitle = $platform -> post_title;
+?>
 <article class="p1-airdrop-item" data-postid="<?php echo get_the_id() ?>" data-url="<?php the_permalink() ?>" 
-    data-action="airdrop_display" data-platform="<?php the_field('platform'); ?>" data-nonce="<?php echo wp_create_nonce("airdrop_display"); ?>" 
+    data-action="airdrop_display" data-platform="<?php echo $platform->post_title; ?>" data-nonce="<?php echo wp_create_nonce("airdrop_display"); ?>" 
     data-ajaxurl="<?php echo admin_url("admin-ajax.php"); ?>">
 	<?php  
     // Get Thumbnail
@@ -262,7 +266,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 */
 		
 	?>
-    	<div class="content-container-part2">  
+    	<div class="content-container-part2"> 
+        <h3>Requires: </h3> 
         <?php p1_required_logo(); ?>               
         </div>
 

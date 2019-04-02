@@ -235,7 +235,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 //-------------- GETTING REQUIRED LOGOS --------------//
 
 	?>
-    	<div class="content-container-part2">         
+    	<div class="content-container-part2"> 
+        		<h3>Requires: </h3>         
                 <?php p1_required_logo(); ?>  
         </div>
     </div>
