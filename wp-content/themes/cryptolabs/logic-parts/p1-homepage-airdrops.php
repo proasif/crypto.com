@@ -13,14 +13,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php //-------------------- p1-section p1-style-curves p1-style-shadow STARTS -----------------------// ?>
     	<div class="button-group">
             	<h3>Sort by..</h3>
-              <button class="sort-by-button-group is-checked" data-sort-value="original-order">original order</button>
+              <button class="sort-by-button-orignal" data-sort-value="original-order">original order</button>
               <button class="sort-by-button" data-sort-value="rating">Rating</button>
               <button class="sort-by-button" data-sort-value="votes">Votes</button>
          </div>
          </br>
          <div class="button-group">
             	<h3>Filter by..</h3>
-              <button class="filter-by-button-group is-checked" data-filter-value="original-order">original order</button>
+              <button class="filter-by-button-orignal" data-filter-value="p1-airdrop-item">Show All</button>
               <button class="filter-by-button" data-filter-value="ETH">ETH</button>
               <button class="filter-by-button" data-filter-value="NEO">NEO</button>
          </div>

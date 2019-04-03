@@ -786,38 +786,41 @@ function deleteUploadedImage($url) {
 }
 
 // --------- 11. GETTING REQUIRED LOGOS ----------
-function p1_required_logo(){ 
-  $airdropRequires = get_field( 'airdrop_require', $postid );
- 		var_dump($airdropRequires);
-	  $airdropRequire = "";
-	  foreach ($airdropRequires as $airdropRequire){
-	if ($airdropRequires['telegram'])
-			 $airdropRequire = $airdropRequire . " " . '<div class="icon-paper-plane">';
-		
-	if ($airdropRequires['twitter'])
-			$airdropRequire = $airdropRequire . " " . '<div class="icon-twitter"></div>';
-		
-	if ($airdropRequires['facebook'])
-			$airdropRequire = $airdropRequire . " " . '<div class="icon-facebook"></div>';
-		
-	if ($airdropRequires['e-mail'])
-			$airdropRequire = $airdropRequire . " " . '<div class="icon-envelope"></div>';
-		
-	if ($airdropRequires['instagram'])
-			$airdropRequire = $airdropRequire . " " . '<div class="icon-instagrem"></div>';
-		
-	if ($airdropRequires['youtube'])
-			$airdropRequire = $airdropRequire . " " . '<div class="icon-youtube"></div>';
-		
-	if ($airdropRequires['medium'])
-			$airdropRequire = $airdropRequire . " " . '<div class="icon-medium"></div>';
-		
-	if ($airdropRequires['kyc'])
-			$airdropRequire = $airdropRequire . " " . '<div class="icon-user"></div>';
+function p1_airdrop_requirements($requirements){ 
 	
-	 //echo  $airdropRequire . '</br>'; // Displaying required logos
-	  
-  }
+	$formattedHTML = "";
+	
+	foreach ($requirements as $req){
+		if ($req === "telegram") {
+			$formattedHTML .= '<div class="icon-paper-plane">';
+		}
+		else if ($req === "twitter") {
+			$formattedHTML .= '<div class="icon-twitter">';
+		}
+		else if ($req === "email") {
+			$formattedHTML .= '<div class="icon-envelope">';
+		}
+		else if ($req === "facebook") {
+			$formattedHTML .= '<div class="icon-facebook">';
+		}
+		else if ($req === "e-mail") {
+			$formattedHTML .= '<div class="icon-envelope">';
+		}
+		else if ($req === "instagrem") {
+			$formattedHTML .= '<div class="icon-instagrem">';
+		}
+		else if ($req === "youtube") {
+			$formattedHTML .= '<div class="icon-youtube">';
+		}
+		else if ($req === "medium") {
+			$formattedHTML .= '<div class="icon-medium">';
+		}
+		else if ($req === "user") {
+			$formattedHTML .= '<div class="icon-user">';
+		}
+  	}
+	
+	return $formattedHTML;
 }
 	
 // --------- 8. P1 Airdrop Result ----------

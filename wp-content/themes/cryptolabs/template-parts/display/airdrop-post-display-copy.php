@@ -234,10 +234,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php
 //-------------- GETTING REQUIRED LOGOS --------------//
 
-	?>
-    	<div class="content-container-part2"> 
-        		<h3>Requires: </h3>         
-                <?php p1_required_logo(); ?>  
-        </div>
+
+    	// Get Requisites
+		$requisites = get_field( 'airdrop_requires' );
+		
+		// Get HTML
+		$content = p1_airdrop_requirements($requisites); 
+		
+		// Define outer container 
+		?>
+		<div class="p1-airdrop-requisites">
+			<?php
+			if (!empty($content)) {
+			?>
+            	<h3>Requires: </h3>
+				<div class="p1-airdrop-req-items">
+				<?php echo $content; ?>
+				</div> 
+			<?php	
+			}
+			?>
+		</div>
     </div>
 </article>

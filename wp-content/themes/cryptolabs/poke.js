@@ -286,30 +286,51 @@ $(document).ready(function () {
 	});
 
 	$(document).on('click',".sort-by-button", function() { 
-	  //console.log("in isotope");
 	  var sortValue = $(this).attr('data-sort-value');
-	  //console.log(sortValue);
 	  $grid.isotope({ 
 	  sortBy: sortValue ,
 	  sortAscending: false
 	  });
 	});
-});
 	
-	
-	$(document).ready(function () {
-	var $gridd = $('.p1-airdrop').isotope({
-	  itemSelector: '.p1-airdrop-item [data-platform]',	
-	  layoutMode: 'fitRows',
+	$(document).on('click',".sort-by-button-orignal", function() { 
+	  var sortValue = $(this).attr('data-sort-value');
+	  $grid.isotope({ 
+	  sortBy: sortValue ,
+	  sortAscending: true
+	  });
 	});
+	
 	
 	$(document).on('click',".filter-by-button", function() { 
-	var filterValue = $(this).attr('data-platform');
-	if(filterValue){
-	   $gridd.isotope({ filter: filterValue });
-	}
+	var filterValue = ".p1-platform-" + $(this).attr('data-filter-value');
+	   $grid.isotope({ filter: filterValue });
 	});
-});
+
+	
+	$(document).on('click',".filter-by-button-orignal", function() { 
+	var filterValue = $('.p1-airdrop-item');
+	   $grid.isotope({ filter: filterValue });
+	});
+	
+});	
+// ------------------ Adding class to filter airdrop items ------------------ //
+/*$(document).ready(function () {
+	//var dat = $('*.p1-airdrop-item').attr('data-platform');
+		//console.log (dat);
+		$('.p1-airdrop-item').each(function(){
+			//console.log($(this).attr('data-platform'));
+			
+		if($(this).attr('data-platform') == "ETH"){
+		$(this).addClass("ETH");
+		}
+		else if ($(this).attr('data-platform') == "NEO")
+		$(this).addClass("NEO");
+			});
+	});
+
+*/
+
 
 	// ------------------ LOAD MORE ------------------ //
 	
