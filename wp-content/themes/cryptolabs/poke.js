@@ -313,6 +313,15 @@ $(document).ready(function () {
 	   $grid.isotope({ filter: filterValue });
 	});
 	
+	
+	$('.button-group').each( function( i, buttonGroup ) {
+  var $buttonGroup = $( buttonGroup );
+  $buttonGroup.on( 'click', 'button', function() {
+    $buttonGroup.find('.is-checked').removeClass('is-checked');
+    $( this ).addClass('is-checked');
+  });
+});
+	
 });	
 // ------------------ Adding class to filter airdrop items ------------------ //
 /*$(document).ready(function () {
@@ -369,12 +378,12 @@ $(document).ready(function () {
 					else {
 						$('.primary.p1-airdrop-load-more').show('slow');
 						$('.p1-airdrop-load-more').attr('data-processing', '0');
-										
-						$grid.isotope()
-						  .append( items )
-						  .isotope( 'appended', items )
-						  .isotope('layout');
-						
+							if(items){		
+								$grid.isotope()
+								  .append( items )
+								  .isotope( 'appended', items )
+								  .isotope('layout');
+							}
 						$(".p1-airdrop-load-more").attr("data-paging", parseInt(page) + 1);
 					}
 				},

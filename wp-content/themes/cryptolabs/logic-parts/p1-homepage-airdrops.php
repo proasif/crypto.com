@@ -52,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 $page = 1;
                 $url = "admin-ajax.php";
             ?>
-            <button data-paging="<?php echo $page ?>" data-nonce="<?php echo $nonce ?>" data-action="<?php echo $action ?>" data-url="<?php echo admin_url($url); ?>"class="primary p1-airdrop-load-more">Load More</button>
+            <button data-paging="<?php echo $page ?>" data-nonce="<?php echo $nonce ?>" data-action="<?php echo $action ?>" data-url="<?php echo admin_url($url); ?>" data-processing="0" class="primary p1-airdrop-load-more">No More</button>
         </div>
 </section>
 <?php //-------------- p1-section p1-style-curves p1-style-shadow ENDS --------------// ?>
