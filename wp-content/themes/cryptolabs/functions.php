@@ -850,12 +850,13 @@ function ajax_airdrop_display() {
 }
 */
 
-/*
+
 // --------- 9. Search Result ----------
 add_action( 'wp_ajax_nopriv_search', 'ajax_search' );
 add_action('wp_ajax_search', 'ajax_search');
 function ajax_search(){
 	$value = $_REQUEST["value"]; 
+	if($value != NULL){
 	$content = "";
 	$args = array(
 			'post_type'			=> 'airdrop',
@@ -869,7 +870,7 @@ function ajax_search(){
 			if ( $query->have_posts() ) {
 				while ( $query->have_posts() ) {
 					$query->the_post();
-					$output = get_the_post_thumbnail() . get_the_title();
+					$output = get_the_post_thumbnail('', array(50,50)) . get_the_title() . '</br>' . " " . get_permalink() . " " . '</br>';
 					$content .= $output ?>  <?php ;
 				}
 			}
@@ -879,8 +880,9 @@ function ajax_search(){
 			);
 			echo $jsonformat = json_encode($result);
 		die();
+	}
 }
-
+/*
 // --------- 10. Filter Result ----------
 add_action( 'wp_ajax_nopriv_select', 'ajax_select' );
 add_action('wp_ajax_select', 'ajax_select');

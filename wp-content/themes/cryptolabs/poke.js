@@ -625,9 +625,13 @@ $(document).ready(function () {
 	
 	//---------AJAX SEARCH BAR-------// 
 	
-	/*
 	
-	$(document).keyup(".p1-primary-max .p1-header-content .form-control",function() {
+	
+	$(document).keyup(".airdrop-search .form-control",function() {
+		
+		if($('.p1-primary-max .p1-header-content .airdrop-search').val() == null){
+			$('div.p1-search-result').empty();
+			}
 		
 		var value = $(".form-control").val();
 		//console.log (value);
@@ -647,18 +651,29 @@ $(document).ready(function () {
 					dataType    : 'json', // what type of data do we expect back from the server
 					encode		: true,
 					success		: function(data) {
-									console.log(data);
-									$('.form-control').append('<div class="p1-search-result">"'+data.content+'"</div>');				
+									console.log(data.content);
+									if($('.p1-primary-max .p1-header-content .airdrop-search').has('.p1-search-result')){
+										$('div.p1-search-result').empty();
+										$('.airdrop-search').append('<div class="p1-search-result">"'+data.content+'"</div>');
+										}
+
+
+								else{
+									$('.airdrop-search').append('<div class="p1-search-result">"'+data.content+'"</div>');	
+								}
+										
+									
+													
 					},
 					error		: function(data) {
-									console.log(data);
+									console.log(data.content);
 					}
 					
 				}) 
 	
 	});
 	
-	*/
+	
 	//---------Load More on scroll logic -------//
 
 	$(window).scroll(function() {

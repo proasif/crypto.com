@@ -414,6 +414,14 @@ body footer footer-background .stag.offLeft {
 }
 
 /* ------------------------- 
+		Customize Search bar 
+---------------------------- */
+.airdrop-search{
+	margin: auto;
+}
+
+
+/* ------------------------- 
 		Customize Homepage 
 ---------------------------- */
 .p1-featured {
