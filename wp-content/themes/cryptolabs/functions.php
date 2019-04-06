@@ -792,31 +792,31 @@ function p1_airdrop_requirements($requirements){
 	
 	foreach ($requirements as $req){
 		if ($req === "telegram") {
-			$formattedHTML .= '<div class="icon-paper-plane">';
+			$formattedHTML .= '<div class="icon-paper-plane"></div>';
 		}
 		else if ($req === "twitter") {
-			$formattedHTML .= '<div class="icon-twitter">';
+			$formattedHTML .= '<div class="icon-twitter"></div>';
 		}
 		else if ($req === "email") {
-			$formattedHTML .= '<div class="icon-envelope">';
+			$formattedHTML .= '<div class="icon-envelope"></div>';
 		}
 		else if ($req === "facebook") {
-			$formattedHTML .= '<div class="icon-facebook">';
+			$formattedHTML .= '<div class="icon-facebook"></div>';
 		}
 		else if ($req === "e-mail") {
-			$formattedHTML .= '<div class="icon-envelope">';
+			$formattedHTML .= '<div class="icon-envelope"></div>';
 		}
 		else if ($req === "instagrem") {
-			$formattedHTML .= '<div class="icon-instagrem">';
+			$formattedHTML .= '<div class="icon-instagrem"></div>';
 		}
 		else if ($req === "youtube") {
-			$formattedHTML .= '<div class="icon-youtube">';
+			$formattedHTML .= '<div class="icon-youtube"></div>';
 		}
 		else if ($req === "medium") {
-			$formattedHTML .= '<div class="icon-medium">';
+			$formattedHTML .= '<div class="icon-medium"></div>';
 		}
 		else if ($req === "user") {
-			$formattedHTML .= '<div class="icon-user">';
+			$formattedHTML .= '<div class="icon-user"></div>';
 		}
   	}
 	
@@ -855,7 +855,7 @@ function ajax_airdrop_display() {
 add_action( 'wp_ajax_nopriv_search', 'ajax_search' );
 add_action('wp_ajax_search', 'ajax_search');
 function ajax_search(){
-	$value = $_REQUEST["value"]; 
+	$value = $_REQUEST["value"];
 	if($value != NULL){
 	$content = "";
 	$args = array(
@@ -863,15 +863,25 @@ function ajax_search(){
 			's'					=> $value,
 			'order_by' 			=> 'title',
 			'order'    			=> 'desc',
-			'posts_per_page' 	=> 10,
+			'posts_per_page' 	=> 5,
 			'compare'			=> 'like'
 		);
 		$query = new WP_Query($args);
 			if ( $query->have_posts() ) {
 				while ( $query->have_posts() ) {
 					$query->the_post();
-					$output = get_the_post_thumbnail('', array(50,50)) . get_the_title() . '</br>' . " " . get_permalink() . " " . '</br>';
-					$content .= $output ?>  <?php ;
+					ob_start();
+					$airdropMeta = get_field( 'airdrop_meta', get_the_ID());
+					$airdrop_value = " " . $airdropMeta['estimated_value'] . " " ;
+					echo '<a href="' ?><?php echo get_permalink(); ?><?php echo '">' 
+					. '<div class="search-data">' ?> <?php 
+					echo get_the_post_thumbnail('', array(50,50)) . " "; ?><?php 
+					echo get_the_title(); ?><?php 
+					echo $airdrop_value; ?><?php 
+					echo '</div>' . '</a>';
+					$output = ob_get_contents();
+					ob_end_clean();
+					$content .= $output ;
 				}
 			}
 

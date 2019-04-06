@@ -64,7 +64,7 @@ $platform = $airdropMeta['platform'];
             <a href="<?php echo the_permalink(); ?>"><?php echo $name; //. " " . $edate // . " " . $airdrop_value; // Printing Name, Sign and Value of Airdrop ?></a>
             <?php if ($cdate > $edate){
 				?>
-                <div>EXPIRED</div>
+                <div class="p1-expired">EXPIRED</div>
                 <?php
 				} ?>
             </div>
@@ -223,48 +223,6 @@ $platform = $airdropMeta['platform'];
 	<?php
 	
 //-------------- GETTING REQUIRED LOGOS --------------//
-/*
-	$requires = "";
-	if (get_field('telegram_required') == true){
-			 $requires = $requires . " " . '<div class="icon-paper-plane"></div>';
-		}
-	if (get_field('twitter_required') == true){
-			$requires = $requires . " " . '<div class="icon-twitter"></div></br>';
-		}
-	if (get_field('facebook_required') == true){
-			$requires = $requires . " " . '<div class="icon-facebook"></div></br>';
-		}
-	if (get_field('e-mail_required') == true){
-			$requires = $requires . " " . '<div class="icon-envelope"></div></br>';
-		}
-	if (get_field('reddit_required') == true){
-			$requires = $requires . " " . '<div class="icon-reddit"></div></br>';
-		}
-	if (get_field('instagram_required') == true){
-			$requires = $requires . " " . '<div class="icon-instagrem"></div></br>';
-		}
-	if (get_field('youtube_required') == true){
-			$requires = $requires . " " . '<div class="icon-youtube"></div></br>';
-		}
-	if (get_field('medium_required') == true){
-			$requires = $requires . " " . '<div class="icon-medium"></div></br>';
-		}
-	if (get_field('phone_required') == true){
-			$requires = $requires . " " . '<div class="icon-phone"></div></br>';
-		}
-	if (get_field('linkedin_required') == true){
-			$requires = $requires . " " . '<div class="icon-linkedin"></div></br>';
-		}
-	if (get_field('discord_required') == true){
-			$requires = $requires . " " . '<div class="icon-flickr"></div></br>';
-		}
-	if (get_field('kyc_required') == true){
-			$requires = $requires . " " . '<div class="icon-user"></div></br>';
-		}
-	if (get_field('bitcointalk_required') == true){
-			$requires = $requires . " " . '<div class="icon-btc"></div></br>';
-		}
-*/
 		
 		// Get Requisites
 		$requisites = get_field( 'airdrop_requires' );

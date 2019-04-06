@@ -624,16 +624,26 @@ $(document).ready(function () {
 	// --- 3 ---
 	
 	//---------AJAX SEARCH BAR-------// 
-	
-	
-	
+	$(document).ready(function () {
+	$("input").blur(function(){
+  		$('div.p1-search-result').empty();
+	});
+});
 	$(document).keyup(".airdrop-search .form-control",function() {
 		
-		if($('.p1-primary-max .p1-header-content .airdrop-search').val() == null){
-			$('div.p1-search-result').empty();
+		var value = $(".form-control").val();
+		if((value).length < 2){
+				$('div.p1-search-result').empty();
+				$('.airdrop-search').append('<div class="p1-search-result">"'+'Plz enter 2 or more letters'+'"</div>');
+				return;
+				//$('div.p1-search-result').empty();
 			}
 		
-		var value = $(".form-control").val();
+		else if((value).length >= 2 ){
+				$('div.p1-search-result').empty();
+				$('.airdrop-search').append('<div class="p1-search-result">"'+'Loading..'+'"</div>');
+				//$('div.p1-search-result').empty();
+		
 		//console.log (value);
 		var ajaxurl = $(".form-control").attr('data-ajaxurl');
 		//console.log(ajaxurl);
@@ -651,6 +661,12 @@ $(document).ready(function () {
 					dataType    : 'json', // what type of data do we expect back from the server
 					encode		: true,
 					success		: function(data) {
+									if((data.content) == ''){
+										
+										$('div.p1-search-result').empty();
+										$('.airdrop-search').append('<div class="p1-search-result">"'+'Sorry, no matching information.'+'"</div>');
+										return;
+										}
 									console.log(data.content);
 									if($('.p1-primary-max .p1-header-content .airdrop-search').has('.p1-search-result')){
 										$('div.p1-search-result').empty();
@@ -670,7 +686,7 @@ $(document).ready(function () {
 					}
 					
 				}) 
-	
+		}
 	});
 	
 	

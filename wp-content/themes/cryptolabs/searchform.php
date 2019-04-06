@@ -15,6 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="airdrop-search">
 <form role="search" method="get" action="<?php echo home_url('/'); ?>">
-<input type="search" class="form-control" placeholder="Search" data-action="search" data-ajaxurl="<?php echo admin_url("admin-ajax.php"); ?>" data-value="<?php echo get_search_query() ?>" name="s" title="Search" />
+<input type="search" class="form-control" placeholder="Search" autocomplete="off" data-action="search" data-ajaxurl="<?php echo admin_url("admin-ajax.php"); ?>" data-value="<?php echo get_search_query() ?>" name="s" title="Search" />
 </form>	
 </div>

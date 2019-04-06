@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<header>
+<header id="p1-header">
 	<div class="p1-primary-max p1-header-content">
 		<div class="p1-header-logo">
 		<?php if ( get_theme_mod( 'm1_logo' ) ) { ?>

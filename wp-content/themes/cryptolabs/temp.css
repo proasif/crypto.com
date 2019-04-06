@@ -148,3 +148,68 @@ body {
 
 
 /*--------------------xxxxx------------------------*/
+#p1-header{
+	background:linear-gradient(141deg, #f0ffff 0%, #add8e6 95%);
+}
+
+#page{
+	background: white;
+}
+.p1-search-result{
+	background: white;
+}
+
+.p1-search-result a{
+	text-decoration: none;
+}
+
+.p1-airdrop{
+	background: white;
+	 align-content: flex-start;
+}
+.button-group{
+	display: flex;
+	color:black;
+}
+.button-group button{
+	width:100px;
+	height: 25px;
+	background: #5bc0de;
+	color:white;
+	border-radius: 25px;
+}
+.button-group button:hover { 
+  background-color: #337ab7;
+}
+.p1-airdrop-item {
+	display: flex;
+	flex-wrap:wrap;
+	align-self: auto;
+	background: linear-gradient(141deg, #f0ffff 0%, #add8e6 99%);
+	padding: 1em;
+	margin: 1em;
+	border-style:ridge;
+	border-width:1px;
+	border-radius: 25px;
+	box-shadow: 3px 6px #888888;
+}
+.p1-airdrop-item .content-container a:hover{
+	background-color: lightblue;
+}
+
+.p1-airdrop-item .content-container .p1-airdrop-requisites{
+	
+	display:flex;
+}
+.p1-airdrop-item .content-container .p1-airdrop-requisites .p1-airdrop-req-items{
+	margin-left: 5px;
+	display:inline-flex;
+}
+.p1-airdrop-item .content-container .p1-airdrop-title-container a{
+	color: blue;
+	text-decoration: none;
+}
+.p1-airdrop-item .content-container .p1-airdrop-title-container .p1-expired{
+	color:white;
+	background:linear-gradient(141deg, #ffa07a 0%, #fa8072 99%);
+}
