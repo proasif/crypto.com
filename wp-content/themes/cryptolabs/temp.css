@@ -160,7 +160,7 @@ body {
 .p1-search-result{
 	background: white;
 	box-shadow: 3px 6px #888888;
-	display: flex;
+	display: inline-flex;
 	flex-wrap:wrap;
 	justify-content: center;
 	
@@ -177,6 +177,66 @@ body {
 .p1-airdrop{
 	background: white;
 	justify-content: flex-start;
+}
+
+.button-group{
+	display: flex;
+	color:black;
+}
+.button-group button{
+	width:100px;
+	height: 25px;
+	background: ;
+	color:black;
+	border-radius: 25px;
+}
+.button-group button:hover { 
+  background-color: ;
+}
+.p1-airdrop-item {
+	display: inline-flex;
+	flex-wrap:wrap;
+	justify-content: center;
+	width: 47.3%;
+	background: ;
+	padding: 1em;
+	margin: 1em;
+	border-style:ridge;
+	border-width:1px;
+	border-radius: 25px;
+	box-shadow: 3px 6px #888888;
+}
+
+.p1-airdrop-item .content-container-part1{
+	display: inline-flex;
+	flex-wrap:wrap;
+	align-items:center;
+	justify-content: center;
+	overflow:hidden;
+}
+.p1-airdrop-item .content-container-part1 .p1-airdrop-title-container{
+	align:center;
+}
+
+.p1-airdrop-item .content-container .star-rating{
+	display:inline-flex;
+}
+
+.p1-airdrop-item .content-container .p1-airdrop-requisites{
+	
+	display:flex;
+}
+.p1-airdrop-item .content-container .p1-airdrop-requisites .p1-airdrop-req-items{
+	margin-left: 5px;
+	display:inline-flex;
+}
+.p1-airdrop-item .content-container .p1-airdrop-title-container a{
+	color: blue;
+	text-decoration: none;
+}
+.p1-airdrop-item .content-container .p1-airdrop-title-container .p1-expired{
+	color:white;
+	background:linear-gradient(141deg, #ffa07a 0%, #fa8072 99%);
 }
 
 .ribbon {
@@ -221,52 +281,4 @@ body {
   border-right: 3px solid #8F0808;
   border-bottom: 3px solid transparent;
   border-top: 3px solid #8F0808;
-}
-
-.button-group{
-	display: flex;
-	color:black;
-}
-.button-group button{
-	width:100px;
-	height: 25px;
-	background: ;
-	color:black;
-	border-radius: 25px;
-}
-.button-group button:hover { 
-  background-color: ;
-}
-.p1-airdrop-item {
-	display: inline-flex;
-	align-items: center;
-	width: 100%;
-	background: ;
-	padding: 1em;
-	margin: 1em;
-	border-style:ridge;
-	border-width:1px;
-	border-radius: 25px;
-	box-shadow: 3px 6px #888888;
-}
-
-.p1-airdrop-item .content-container .star-rating{
-	display:inline-flex;
-}
-
-.p1-airdrop-item .content-container .p1-airdrop-requisites{
-	
-	display:flex;
-}
-.p1-airdrop-item .content-container .p1-airdrop-requisites .p1-airdrop-req-items{
-	margin-left: 5px;
-	display:inline-flex;
-}
-.p1-airdrop-item .content-container .p1-airdrop-title-container a{
-	color: blue;
-	text-decoration: none;
-}
-.p1-airdrop-item .content-container .p1-airdrop-title-container .p1-expired{
-	color:white;
-	background:linear-gradient(141deg, #ffa07a 0%, #fa8072 99%);
 }
