@@ -634,14 +634,14 @@ $(document).ready(function () {
 		var value = $(".form-control").val();
 		if((value).length < 2){
 				$('div.p1-search-result').empty();
-				$('.airdrop-search').append('<div class="p1-search-result">"'+'Plz enter 2 or more letters'+'"</div>');
+				$('.airdrop-search').append('<div class="p1-search-result">'+'Plz enter 2 or more letters'+'</div>');
 				return;
 				//$('div.p1-search-result').empty();
 			}
 		
 		else if((value).length >= 2 ){
 				$('div.p1-search-result').empty();
-				$('.airdrop-search').append('<div class="p1-search-result">"'+'Loading..'+'"</div>');
+				$('.airdrop-search').append('<div class="p1-search-result">'+'Loading..'+'</div>');
 				//$('div.p1-search-result').empty();
 		
 		//console.log (value);
@@ -664,18 +664,18 @@ $(document).ready(function () {
 									if((data.content) == ''){
 										
 										$('div.p1-search-result').empty();
-										$('.airdrop-search').append('<div class="p1-search-result">"'+'Sorry, no matching information.'+'"</div>');
+										$('.airdrop-search').append('<div class="p1-search-result">'+'Sorry, no matching information.'+'</div>');
 										return;
 										}
 									console.log(data.content);
 									if($('.p1-primary-max .p1-header-content .airdrop-search').has('.p1-search-result')){
 										$('div.p1-search-result').empty();
-										$('.airdrop-search').append('<div class="p1-search-result">"'+data.content+'"</div>');
+										$('.airdrop-search').append('<div class="p1-search-result">'+data.content+'</div>');
 										}
 
 
 								else{
-									$('.airdrop-search').append('<div class="p1-search-result">"'+data.content+'"</div>');	
+									$('.airdrop-search').append('<div class="p1-search-result">'+data.content+'</div>');	
 								}
 										
 									

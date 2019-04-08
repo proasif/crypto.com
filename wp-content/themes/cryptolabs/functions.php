@@ -871,6 +871,74 @@ function ajax_search(){
 				while ( $query->have_posts() ) {
 					$query->the_post();
 					ob_start();
+					$airdropMeta = get_field( 'airdrop_ratings', get_the_ID());
+					$rate = $airdropMeta["ratings"];
+					$users = $airdropMeta["no_of_users"];
+					$old_rating = $rate/$users;
+					$temp_content = "";
+					$star_value = "";
+					$append_class = "rated";
+					
+					if($old_rating > 4.75){
+							$star_value = '<div class="icon-star ' . $append_class . '" value="5"></div>';
+						 }
+					else if($old_rating > 4.25){
+							$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="5"></div>';	
+						 }
+					else {
+							$star_value = '<div class="icon-star-o ' . $append_class . '" value="5"></div>';
+						}
+							$temp_content = $star_value . $temp_content ; // storing value for fifth star
+						
+					if($old_rating > 3.75){
+							$star_value = '<div class="icon-star ' . $append_class . '" value="4"></div>';
+						}
+					else if($old_rating > 3.25){
+							$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="4"></div>';	
+						}
+					else {
+							$star_value = '<div class="icon-star-o ' . $append_class . '" value="4"></div>';
+						}
+							$temp_content = $star_value . $temp_content ; // storing value for fourth star
+						
+					if($old_rating > 2.75)
+						{
+							$star_value = '<div class="icon-star ' . $append_class . '" value="3"></div>';
+						}
+					else if($old_rating > 2.25) {
+							$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="3"></div>';	
+						}
+					else {
+							$star_value = '<div class="icon-star-o ' . $append_class . '" value="3"></div>';
+						}
+							$temp_content = $star_value . $temp_content ; // storing value for third star
+						
+					if($old_rating > 1.75) {
+							$star_value = '<div class="icon-star ' . $append_class . '" value="2"></div>';
+						}
+					else if($old_rating > 1.25) {
+							$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="2"></div>';	
+						}
+					else {
+							$star_value = '<div class="icon-star-o ' . $append_class . '" value="2"></div>';
+						}
+							$temp_content = $star_value . $temp_content ; // storing value for second star
+						
+					if($old_rating > 0.75) {
+							$star_value = '<div class="icon-star ' . $append_class . '" value="1"></div>';
+						}
+					else if($old_rating > 0.25) {
+							$star_value = '<div class="icon-star-half-o ' . $append_class . '" value="1"></div>';	
+						}
+					else {
+							$star_value = '<div class="icon-star-o ' . $append_class . '" value="1"></div>';
+						}
+							$temp_content = $star_value . $temp_content ; // storing value for first star
+							
+					$starContent = '<div class = "star-rating" data-original = "' . $old_rating . '">'. $temp_content . '</div>' ;
+					
+					
+					
 					$airdropMeta = get_field( 'airdrop_meta', get_the_ID());
 					$airdrop_value = " " . $airdropMeta['estimated_value'] . " " ;
 					echo '<a href="' ?><?php echo get_permalink(); ?><?php echo '">' 
@@ -881,7 +949,7 @@ function ajax_search(){
 					echo '</div>' . '</a>';
 					$output = ob_get_contents();
 					ob_end_clean();
-					$content .= $output ;
+					$content .= $output . $starContent ;
 				}
 			}
 
