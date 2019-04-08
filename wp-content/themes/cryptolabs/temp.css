@@ -149,24 +149,80 @@ body {
 
 /*--------------------xxxxx------------------------*/
 #p1-header{
-	background:linear-gradient(141deg, #f0ffff 0%, #add8e6 95%);
+	background:;
 }
-
+#p1-header .p1-nav .item:hover{
+	color:white !important;
+}
 #page{
 	background: white;
 }
 .p1-search-result{
 	background: white;
+	box-shadow: 3px 6px #888888;
+	display: flex;
+	flex-wrap:wrap;
+	justify-content: center;
+	
+}
+.p1-search-result .search-data{
+	
 }
 
 .p1-search-result a{
 	text-decoration: none;
+	justify-content:center;
 }
 
 .p1-airdrop{
 	background: white;
-	 align-content: flex-start;
+	justify-content: flex-start;
 }
+
+.ribbon {
+  position: absolute;
+  right: -5px; top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#F70505 0%, #8F0808 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; right: -21px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #8F0808;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #8F0808;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #8F0808;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #8F0808;
+}
+
 .button-group{
 	display: flex;
 	color:black;
@@ -174,18 +230,18 @@ body {
 .button-group button{
 	width:100px;
 	height: 25px;
-	background: #5bc0de;
-	color:white;
+	background: ;
+	color:black;
 	border-radius: 25px;
 }
 .button-group button:hover { 
-  background-color: #337ab7;
+  background-color: ;
 }
 .p1-airdrop-item {
 	display: flex;
 	flex-wrap:wrap;
-	align-self: auto;
-	background: linear-gradient(141deg, #f0ffff 0%, #add8e6 99%);
+	align-items: center;
+	background: ;
 	padding: 1em;
 	margin: 1em;
 	border-style:ridge;

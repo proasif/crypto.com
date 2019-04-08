@@ -301,6 +301,11 @@ $(document).ready(function () {
 	  });
 	});
 	
+	$(document).on('click',".p1-airdrop-item .content-container .p1-airdrop-content-container .steps-format", function() { 
+	//setTimeout(function (){ $grid.isotope('layout'); },800);
+	$grid.isotope('layout')  
+	});
+	
 	
 	$(document).on('click',".filter-by-button", function() { 
 	var filterValue = ".p1-platform-" + $(this).attr('data-filter-value');

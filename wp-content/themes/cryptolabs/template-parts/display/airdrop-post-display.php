@@ -64,7 +64,9 @@ $platform = $airdropMeta['platform'];
             <a href="<?php echo the_permalink(); ?>"><?php echo $name; //. " " . $edate // . " " . $airdrop_value; // Printing Name, Sign and Value of Airdrop ?></a>
             <?php if ($cdate > $edate){
 				?>
-                <div class="p1-expired">EXPIRED</div>
+                
+                   <div class="ribbon"><span>EXPIRED</span></div>
+                
                 <?php
 				} ?>
             </div>
@@ -188,6 +190,32 @@ $platform = $airdropMeta['platform'];
                </div>
         
        <?php //$steps = get_the_content(); ?>
+       
+       <div class="steps-format">
+                    <button class="primary p1-steps-btn">Show steps</button>
+                    <div class="p1-steps">
+						<?php
+    
+                        // check if the repeater field has rows of data
+                        if(have_rows('airdrop_steps') ):
+                        
+                            // loop through the rows of data
+                            while (have_rows('airdrop_steps') ) : the_row();
+                        
+                                // display a sub field value
+                               ?> <div class="p1-step"> <?php the_sub_field('steps'); ?> </div> 
+                               <?php
+                        
+                            endwhile;
+                        
+                        else :
+                        
+                            // no rows found
+                        
+                        endif;
+                
+                        ?>
+            		</div>
        
        <!--
                 <div class="steps-format">
