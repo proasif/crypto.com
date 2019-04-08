@@ -302,7 +302,7 @@ $(document).ready(function () {
 	});
 	
 	$(document).on('click',".p1-airdrop-item .content-container .p1-airdrop-content-container .steps-format", function() { 
-	setTimeout(function (){ $grid.isotope('layout'); },500);
+	setTimeout(function (){ $grid.isotope('layout'); },700);
 	$grid.isotope('layout')  
 	});
 	
