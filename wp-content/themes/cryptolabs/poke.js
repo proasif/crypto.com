@@ -371,7 +371,7 @@ $(document).ready(function () {
 				
 				success : function( response ) {
 					var items = $(response.content);
-					console.log(response);
+					console.log(items);
 					if (response==null) {
 						
 					}

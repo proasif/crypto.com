@@ -447,18 +447,23 @@ body footer footer-background .stag.offLeft {
     display: flex;
     flex-direction: row;
     margin: 20px;
-	align-items: center;
+	justify-content:flex-start;
+	align-items: stretch;
 }
 
 .p1-airdrop-logo-container .logo {
     max-width: 150px;
     min-width: 100px;
+	justify-content:flex-start;
+	align-items: stretch;
 }
 
 .p1-airdrop-logo-container .logo img {
     height: auto;
     border-radius: 100%;
     overflow: hidden;
+	justify-content:flex-start;
+	align-items: stretch;
 }
 
 .star-rating {
