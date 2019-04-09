@@ -149,10 +149,6 @@ body {
 
 /*--------------------xxxxx------------------------*/
 
-#p1-header .p1-nav .item:hover{
-	color:white !important;
-}
-
 .p1-search-result{
 	background: white;
 	box-shadow: 3px 6px #888888;
@@ -194,6 +190,7 @@ body {
 .p1-airdrop-item {
 	display:flex;
 	flex-wrap:wrap;
+	width:97%;
 	flex-direction: row;
 	justify-content: center;
 	align-items:center;
@@ -202,7 +199,7 @@ body {
 	border-style:ridge;
 	border-width:1px;
 	border-radius: 25px;
-	box-shadow: 3px 6px #888888;
+	 box-shadow: 0 10px 20px 0px rgba(167,174,187,.33);
 }
 
 .p1-airdrop-item .content-container-part1{
