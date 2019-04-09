@@ -302,8 +302,8 @@ $(document).ready(function () {
 	});
 	
 	$(document).on('click',".p1-airdrop-item .content-container .p1-airdrop-content-container .steps-format", function() { 
-	setTimeout(function (){ $grid.isotope('layout'); },700);
-	$grid.isotope('layout')  
+	setTimeout(function (){ $grid.isotope('layout'); },600);
+	//$grid.isotope('layout'); 
 	});
 	
 	
@@ -326,26 +326,21 @@ $(document).ready(function () {
     $( this ).addClass('is-checked');
   });
 });
+
+setTimeout(function (){ $grid.isotope('layout'); },10);
 	
 });	
-// ------------------ Adding class to filter airdrop items ------------------ //
-/*$(document).ready(function () {
-	//var dat = $('*.p1-airdrop-item').attr('data-platform');
-		//console.log (dat);
-		$('.p1-airdrop-item').each(function(){
-			//console.log($(this).attr('data-platform'));
-			
-		if($(this).attr('data-platform') == "ETH"){
-		$(this).addClass("ETH");
-		}
-		else if ($(this).attr('data-platform') == "NEO")
-		$(this).addClass("NEO");
-			});
+
+/*
+$(document).ready(function () {
+	var $grid = $('.p1-airdrop').isotope({
+	  itemSelector: '.p1-airdrop-item',	
+	  
 	});
-
+	setTimeout(function (){ $grid.isotope('layout'); },500);
+	  
+});
 */
-
-
 	// ------------------ LOAD MORE ------------------ //
 	
 	$(document).on('click','.p1-airdrop-load-more', function() {

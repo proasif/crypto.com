@@ -148,6 +148,7 @@ body {
 
 
 /*--------------------xxxxx------------------------*/
+html {overflow-y: scroll;}
 
 .p1-search-result{
 	background: white;
@@ -209,6 +210,42 @@ body {
 	justify-content: center;
 	overflow:hidden;
 }
+
+.p1-airdrop-item .content-container-part1 .p1-airdrop-content-container .p1-steps{
+	padding-left:10px;
+}
+
+.p1-airdrop-item .content-container-part1 .p1-airdrop-content-container .p1-steps .p1-step {
+ border:none;
+  border-left:3px solid #0052c2;
+  box-sizing:border-box;
+  border-radius:0;
+  counter-increment: step-counter;
+  padding-left:20px;
+  padding-right:0px;
+  padding-bottom:20px;  
+  padding-top:0px;
+}
+
+.p1-airdrop-item .content-container-part1 .p1-airdrop-content-container .p1-steps .p1-step::before{
+	 border-radius: 50%;
+  background-color:#0052c2;
+  color:#fff;
+  content: counter(step-counter);
+  display:inline-block;
+  float:left;
+  height:25px;
+  line-height:25px;
+  margin-left:-35px;
+  text-align:center;  
+  width:25px;  
+}
+
+.p1-airdrop-item .content-container-part1 .p1-airdrop-content-container .p1-steps .p1-step:last-child{
+  border-left:3px solid transparent;
+  padding-bottom:0;
+}
+
 .p1-airdrop-item .content-container-part1 .p1-airdrop-title-container{
 	align:center;
 }
