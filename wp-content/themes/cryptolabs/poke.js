@@ -383,7 +383,9 @@ $(document).ready(function () {
 								  .append( items )
 								  .isotope( 'appended', items )
 								  .isotope('layout');
+								  setTimeout(function (){ $grid.isotope('layout'); },100);
 							}
+							setTimeout(function (){ $grid.isotope('layout'); },100);
 						$(".p1-airdrop-load-more").attr("data-paging", parseInt(page) + 1);
 					}
 				},

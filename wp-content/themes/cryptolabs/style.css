@@ -446,13 +446,11 @@ body footer footer-background .stag.offLeft {
 .p1-airdrop-logo-container {
     display: flex;
     flex-direction: row;
-    margin: 0px 20px;
+    margin: 20px;
+	align-items: center;
 }
 
 .p1-airdrop-logo-container .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     max-width: 150px;
     min-width: 100px;
 }
