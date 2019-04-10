@@ -399,6 +399,7 @@ $(document).ready(function () {
 	// ------------------ RATING ------------------ //
 	
 	$(document).on('mousemove', '.star-rating .star', function(e) {   //Action on mouse-move over the stars
+		var $grid = $('.p1-airdrop');
 		var $object = $(this).closest('.star-rating').first();
 		
 		// return if rated already
@@ -474,6 +475,7 @@ $(document).ready(function () {
 									//console.log(nusers);
 									var rating = (nrate/nusers);
 									adjustStarRating( $object, rating, nusers, true);
+									setTimeout(function (){ $grid.isotope('layout'); },100);
 									closeAndRemoveFSNotice();
 									$object.click(true);
 					}
@@ -585,18 +587,18 @@ $(document).ready(function () {
 
 	function OnloadFunction () {
 		$(".p1-step").hide();
-		$(".primary.p1-close-btn").hide();
+		//$(".primary.p1-close-btn").hide();
 
 	
 	$(document).on('click',".primary.p1-steps-btn", function() {
 			$(this).hide('slow');
 			$(this).closest(".steps-format").find(".p1-step").show('slow');
-			$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
+			//$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
 			
 	});
 	$(document).on('click',".primary.p1-close-btn", function() {
 				$(".p1-step").hide('slow');
-				$(".primary.p1-close-btn").hide('slow');
+				//$(".primary.p1-close-btn").hide('slow');
 				$(".primary.p1-steps-btn").show('slow');
 	}); 
 	}
@@ -610,15 +612,17 @@ $(document).ready(function () {
 	$(document).on('click',".primary.p1-steps-btn", function() {
 			$(this).hide('slow');
 			$(this).closest(".steps-format").find(".p1-step").show('slow');
-			$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
+			//$(this).closest(".steps-format").find(".primary.p1-close-btn").show('slow');
 			
 	});
+	/*
 	$(document).on('click',".primary.p1-close-btn", function() {
 				$(".p1-step").hide('slow');
 				$(".primary.p1-close-btn").hide('slow');
 				$(".primary.p1-steps-btn").show('slow');
-			}); 	
-		});
+			});
+			*/ 	
+		}); 
 }); 
 // Document.ready ends
 	
