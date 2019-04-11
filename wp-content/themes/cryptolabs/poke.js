@@ -391,7 +391,7 @@ $(document).ready(function () {
 				},
 				error : function( response ) {
 					console.log("error" + response);
-				}
+				} 
 			});
 		}
 	});
@@ -399,7 +399,7 @@ $(document).ready(function () {
 	// ------------------ RATING ------------------ //
 	
 	$(document).on('mousemove', '.star-rating .star', function(e) {   //Action on mouse-move over the stars
-		var $grid = $('.p1-airdrop');
+		
 		var $object = $(this).closest('.star-rating').first();
 		
 		// return if rated already
@@ -467,6 +467,7 @@ $(document).ready(function () {
 					dataType    : 'json', // what type of data do we expect back from the server
 					encode		: true,
 					success		: function(data) {
+									var $grid = $('.p1-airdrop');
 									var ajaxData = data;
 									//console.log(data);
 									var nrate = data[0].rate;
@@ -475,9 +476,9 @@ $(document).ready(function () {
 									//console.log(nusers);
 									var rating = (nrate/nusers);
 									adjustStarRating( $object, rating, nusers, true);
-									setTimeout(function (){ $grid.isotope('layout'); },100);
-									closeAndRemoveFSNotice();
-									$object.click(true);
+									setTimeout(function (){ $grid.isotope('layout'); },50);
+									//closeAndRemoveFSNotice();
+									//$object.click(true);
 					}
 					
 				}) 
@@ -630,11 +631,13 @@ $(document).ready(function () {
 	// --- 3 ---
 	
 	//---------AJAX SEARCH BAR-------// 
+	/*
 	$(document).ready(function () {
 	$("input").blur(function(){
   		$('div.p1-search-result').empty();
 	});
 });
+*/
 	$(document).keyup(".airdrop-search .form-control",function() {
 		
 		var value = $(".form-control").val();

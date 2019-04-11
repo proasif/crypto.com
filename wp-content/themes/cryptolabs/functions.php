@@ -782,7 +782,7 @@ function deleteUploadedImage($url) {
 	}
 	else {
 		return json_encode("Error: File not found for delete - " . ($result));	
-	}
+	} die();
 }
 
 // --------- 11. GETTING REQUIRED LOGOS ----------

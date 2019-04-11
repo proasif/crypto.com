@@ -165,10 +165,17 @@ body {
 	min-width:320px;
 	max-width:320px;
 }
+.airdrop-search .form-control{
+	
+}
 
 .p1-search-result a{
 	text-decoration: none;
 	justify-content:center;
+}
+
+.p1-nav .p1-nav-main{
+	
 }
 
 .p1-airdrop{
@@ -193,6 +200,7 @@ body {
 }
 .button-group button:hover { 
  color:white;
+ font-size:1.1em;
 }
 .p1-airdrop-item {
 	display:flex;
@@ -208,7 +216,11 @@ body {
 }
 
 .p1-airdrop-item .p1-airdrop-title-container{
+	font-size:1.2em;
+}
 
+.p1-airdrop-item .p1-airdrop-title-container:hover{
+	font-size:1.5em;
 }
 
 .p1-airdrop-item .p1-airdrop-rating-container{
@@ -229,15 +241,18 @@ body {
 
 .p1-airdrop-item .content-container .p1-steps-btn{
 	width:100px;
-	height: 25px;
+	height: 35px;
+	font-size:1em;
 	background:linear-gradient(45deg, rgb(255, 140, 51) 0%,rgb(255, 83, 86) 50%,rgb(252, 70, 113) 100%);
 	border-radius: 4px;
+	box-shadow: 0 10px 20px 0px rgba(167,174,187,.33);
 }
 .p1-airdrop-item .content-container .p1-steps-btn:hover{
 	 color:white;
+	 font-size:1.1em;
 }
 
-.p1-airdrop-item .content-container-part1 .p1-airdrop-requisites{
+.p1-airdrop-requisites{
 	position:absolute;
     bottom:0;
     right:0;
@@ -249,6 +264,10 @@ body {
 
 .p1-airdrop-item .content-container-part1 .p1-airdrop-requisites .p1-airdrop-req-items{
 	margin-left:2px;
+}
+
+.p1-airdrop-item .content-container-part1 .p1-airdrop-requisites .p1-airdrop-req-items:hover{
+	font-size:1.5em;
 }
 
 .p1-airdrop-item .content-container-part1 .p1-airdrop-content-container .p1-steps{
@@ -267,6 +286,10 @@ body {
 	padding-right:0px;
 	padding-bottom:20px;  
 	padding-top:0px;
+}
+
+.p1-airdrop-item .content-container-part1 .p1-airdrop-content-container .p1-steps .p1-step:hover {
+		
 }
 
 .p1-airdrop-item .content-container-part1 .p1-airdrop-content-container .p1-steps .p1-step::before{
